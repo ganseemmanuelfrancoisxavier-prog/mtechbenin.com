@@ -1,172 +1,1569 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>MTECH Bénin — Boutique High-Tech à Cotonou</title>
-  <meta name="description" content="MTECH Bénin : vente de téléphones, ordinateurs et accessoires high-tech au Bénin. Produits authentiques, garantie et livraison rapide à Cotonou." />
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>MTECH BENIN — Technologie & Accessoires</title>
+
+  <meta name="description"
+        content="MTECH BENIN — Smartphones, accessoires, produits électroniques et services informatiques au Bénin.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+  <style>
+    /* =====================================================
+       MTECH BENIN
+       STYLE DE LA PAGE D'ACCUEIL
+       ===================================================== */
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --black: #050505;
+      --dark: #111111;
+      --white: #ffffff;
+      --gray: #777777;
+      --light-gray: #f5f5f5;
+      --border: #e9e9e9;
+      --accent: #000000;
+      --radius: 16px;
+    }
+
+    body {
+      font-family: "Inter", Arial, sans-serif;
+      background: #fff;
+      color: #111;
+      line-height: 1.5;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    button {
+      font-family: inherit;
+      cursor: pointer;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    /* ================= HEADER ================= */
+
+    .topbar {
+      background: #050505;
+      color: white;
+      text-align: center;
+      padding: 9px 15px;
+      font-size: 12px;
+      letter-spacing: .3px;
+    }
+
+    header {
+      background: white;
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .nav {
+      max-width: 1250px;
+      margin: auto;
+      height: 76px;
+      padding: 0 25px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 25px;
+    }
+
+    .logo {
+      font-size: 25px;
+      font-weight: 800;
+      letter-spacing: -1.5px;
+      white-space: nowrap;
+    }
+
+    .logo span {
+      font-weight: 400;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    .nav-links a {
+      transition: .2s;
+    }
+
+    .nav-links a:hover {
+      opacity: .55;
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .icon-button {
+      width: 42px;
+      height: 42px;
+      border: 1px solid var(--border);
+      background: white;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      font-size: 18px;
+    }
+
+    .cart-count {
+      position: absolute;
+      right: -3px;
+      top: -4px;
+      background: black;
+      color: white;
+      width: 19px;
+      height: 19px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 10px;
+      font-weight: 700;
+    }
+
+    .mobile-menu {
+      display: none;
+      font-size: 23px;
+      background: transparent;
+      border: 0;
+    }
+
+    /* ================= HERO ================= */
+
+    .hero {
+      background: #f4f4f4;
+      min-height: 560px;
+      display: flex;
+      align-items: center;
+    }
+
+    .hero-container {
+      max-width: 1250px;
+      width: 100%;
+      margin: auto;
+      padding: 70px 25px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 50px;
+      align-items: center;
+    }
+
+    .hero-content small {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-weight: 700;
+      color: #777;
+    }
+
+    .hero-content h1 {
+      font-size: clamp(42px, 5vw, 70px);
+      line-height: .98;
+      letter-spacing: -4px;
+      margin: 18px 0;
+      font-weight: 800;
+    }
+
+    .hero-content p {
+      max-width: 500px;
+      color: #666;
+      font-size: 16px;
+      margin-bottom: 30px;
+    }
+
+    .btn {
+      border: none;
+      padding: 15px 26px;
+      border-radius: 50px;
+      background: black;
+      color: white;
+      font-weight: 600;
+      font-size: 14px;
+      transition: .2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      background: #252525;
+    }
+
+    .btn-light {
+      background: white;
+      color: black;
+      margin-left: 8px;
+      border: 1px solid #ddd;
+    }
+
+    .hero-image {
+      height: 430px;
+      border-radius: 25px;
+      background:
+        linear-gradient(145deg, #202020, #050505);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .hero-product {
+      width: 230px;
+      height: 380px;
+      border-radius: 35px;
+      background: linear-gradient(145deg, #333, #111);
+      border: 5px solid #444;
+      box-shadow: 0 35px 70px rgba(0,0,0,.55);
+      transform: rotate(-8deg);
+      position: relative;
+    }
+
+    .hero-product::before {
+      content: "";
+      position: absolute;
+      width: 70px;
+      height: 70px;
+      border-radius: 20px;
+      background: #111;
+      top: 25px;
+      left: 25px;
+      box-shadow:
+        0 0 0 3px #333,
+        37px 0 0 -10px #222,
+        0 37px 0 -10px #222;
+    }
+
+    .hero-product::after {
+      content: "MTECH";
+      position: absolute;
+      bottom: 60px;
+      width: 100%;
+      text-align: center;
+      color: #aaa;
+      font-weight: 700;
+      letter-spacing: 2px;
+    }
+
+    /* ================= CATEGORIES ================= */
+
+    .section {
+      max-width: 1250px;
+      margin: auto;
+      padding: 75px 25px;
+    }
+
+    .section-heading {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      margin-bottom: 30px;
+      gap: 20px;
+    }
+
+    .section-heading h2 {
+      font-size: 32px;
+      letter-spacing: -1.5px;
+    }
+
+    .section-heading p {
+      color: #777;
+      font-size: 14px;
+    }
+
+    .categories {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 15px;
+    }
+
+    .category {
+      min-height: 160px;
+      background: #f5f5f5;
+      border-radius: var(--radius);
+      padding: 25px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: .25s;
+    }
+
+    .category:hover {
+      background: #111;
+      color: white;
+      transform: translateY(-4px);
+    }
+
+    .category-icon {
+      font-size: 30px;
+    }
+
+    .category h3 {
+      font-size: 17px;
+    }
+
+    .category p {
+      color: #888;
+      font-size: 12px;
+    }
+
+    .category:hover p {
+      color: #aaa;
+    }
+
+    /* ================= PRODUCTS ================= */
+
+    .products {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+
+    .product-card {
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      background: white;
+      transition: .25s;
+    }
+
+    .product-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 40px rgba(0,0,0,.08);
+    }
+
+    .product-image {
+      height: 250px;
+      background: #f5f5f5;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .product-placeholder {
+      font-size: 65px;
+      filter: grayscale(1);
+    }
+
+    .badge {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      background: black;
+      color: white;
+      padding: 6px 10px;
+      border-radius: 30px;
+      font-size: 10px;
+      font-weight: 700;
+    }
+
+    .product-info {
+      padding: 18px;
+    }
+
+    .product-category {
+      font-size: 10px;
+      color: #888;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .product-info h3 {
+      margin: 7px 0;
+      font-size: 16px;
+    }
+
+    .product-price {
+      font-size: 17px;
+      font-weight: 800;
+      margin-bottom: 15px;
+    }
+
+    .product-actions {
+      display: flex;
+      gap: 8px;
+    }
+
+    .add-cart {
+      flex: 1;
+      border: 0;
+      background: black;
+      color: white;
+      border-radius: 9px;
+      padding: 11px;
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    .details {
+      width: 42px;
+      border: 1px solid #ddd;
+      background: white;
+      border-radius: 9px;
+    }
+
+    /* ================= BANNER ================= */
+
+    .promo {
+      background: #050505;
+      color: white;
+      border-radius: 25px;
+      max-width: 1200px;
+      margin: 20px auto 80px;
+      padding: 65px 55px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 40px;
+    }
+
+    .promo h2 {
+      font-size: clamp(30px, 4vw, 50px);
+      line-height: 1;
+      letter-spacing: -2px;
+      margin-bottom: 15px;
+    }
+
+    .promo p {
+      color: #aaa;
+      max-width: 520px;
+      font-size: 14px;
+    }
+
+    .promo .btn {
+      background: white;
+      color: black;
+      white-space: nowrap;
+    }
+
+    /* ================= SERVICES ================= */
+
+    .services {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .service {
+      padding: 30px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+    }
+
+    .service-icon {
+      font-size: 28px;
+      margin-bottom: 20px;
+    }
+
+    .service h3 {
+      margin-bottom: 8px;
+      font-size: 17px;
+    }
+
+    .service p {
+      font-size: 13px;
+      color: #777;
+    }
+
+    /* ================= FOOTER ================= */
+
+    footer {
+      background: #050505;
+      color: white;
+      margin-top: 50px;
+    }
+
+    .footer-container {
+      max-width: 1250px;
+      margin: auto;
+      padding: 65px 25px 30px;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 50px;
+    }
+
+    .footer-logo {
+      font-size: 25px;
+      font-weight: 800;
+      margin-bottom: 15px;
+    }
+
+    .footer-description {
+      color: #999;
+      font-size: 13px;
+      max-width: 350px;
+    }
+
+    .footer-column h4 {
+      font-size: 13px;
+      margin-bottom: 17px;
+    }
+
+    .footer-column a {
+      display: block;
+      color: #999;
+      font-size: 12px;
+      margin-bottom: 10px;
+    }
+
+    .footer-column a:hover {
+      color: white;
+    }
+
+    .copyright {
+      border-top: 1px solid #222;
+      margin-top: 50px;
+      padding-top: 25px;
+      color: #777;
+      font-size: 11px;
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    /* ================= CART ================= */
+
+    .cart-panel {
+      position: fixed;
+      right: -420px;
+      top: 0;
+      width: min(420px, 100%);
+      height: 100vh;
+      background: white;
+      z-index: 3000;
+      box-shadow: -15px 0 50px rgba(0,0,0,.15);
+      transition: .3s;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .cart-panel.active {
+      right: 0;
+    }
+
+    .cart-header {
+      padding: 25px;
+      border-bottom: 1px solid #eee;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .close-cart {
+      border: 0;
+      background: #f5f5f5;
+      width: 35px;
+      height: 35px;
+      border-radius: 50%;
+    }
+
+    .cart-items {
+      flex: 1;
+      overflow-y: auto;
+      padding: 20px;
+    }
+
+    .empty-cart {
+      text-align: center;
+      color: #888;
+      margin-top: 70px;
+      font-size: 14px;
+    }
+
+    .cart-item {
+      display: flex;
+      gap: 12px;
+      padding: 15px 0;
+      border-bottom: 1px solid #eee;
+    }
+
+    .cart-item-image {
+      width: 65px;
+      height: 65px;
+      border-radius: 10px;
+      background: #f5f5f5;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 25px;
+    }
+
+    .cart-item-info {
+      flex: 1;
+    }
+
+    .cart-item-info h4 {
+      font-size: 13px;
+      margin-bottom: 5px;
+    }
+
+    .cart-item-info p {
+      font-size: 12px;
+      color: #777;
+    }
+
+    .remove-item {
+      border: 0;
+      background: transparent;
+      color: #999;
+      font-size: 12px;
+    }
+
+    .cart-footer {
+      padding: 20px;
+      border-top: 1px solid #eee;
+    }
+
+    .cart-total {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 15px;
+      font-weight: 800;
+    }
+
+    .checkout {
+      width: 100%;
+      padding: 15px;
+      border: 0;
+      border-radius: 10px;
+      background: black;
+      color: white;
+      font-weight: 700;
+    }
+
+    .overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,.45);
+      z-index: 2500;
+      opacity: 0;
+      visibility: hidden;
+      transition: .3s;
+    }
+
+    .overlay.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    /* ================= RESPONSIVE ================= */
+
+    @media (max-width: 950px) {
+
+      .nav-links {
+        display: none;
+      }
+
+      .mobile-menu {
+        display: block;
+      }
+
+      .hero-container {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-image {
+        height: 350px;
+      }
+
+      .categories,
+      .products {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 600px) {
+
+      .topbar {
+        font-size: 10px;
+      }
+
+      .nav {
+        height: 65px;
+        padding: 0 15px;
+      }
+
+      .logo {
+        font-size: 21px;
+      }
+
+      .hero-container {
+        padding: 55px 18px;
+      }
+
+      .hero-content h1 {
+        font-size: 45px;
+        letter-spacing: -2.5px;
+      }
+
+      .hero-image {
+        height: 300px;
+      }
+
+      .hero-product {
+        width: 170px;
+        height: 280px;
+      }
+
+      .section {
+        padding: 55px 18px;
+      }
+
+      .section-heading {
+        display: block;
+      }
+
+      .section-heading p {
+        margin-top: 7px;
+      }
+
+      .categories,
+      .products,
+      .services {
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+      }
+
+      .category {
+        min-height: 130px;
+        padding: 18px;
+      }
+
+      .product-image {
+        height: 180px;
+      }
+
+      .product-placeholder {
+        font-size: 48px;
+      }
+
+      .product-info {
+        padding: 13px;
+      }
+
+      .product-info h3 {
+        font-size: 13px;
+      }
+
+      .product-price {
+        font-size: 14px;
+      }
+
+      .promo {
+        margin: 10px 18px 60px;
+        padding: 40px 25px;
+        display: block;
+      }
+
+      .promo .btn {
+        margin-top: 25px;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 30px;
+      }
+
+      .footer-grid > div:first-child {
+        grid-column: 1 / -1;
+      }
+
+      .copyright {
+        display: block;
+      }
+
+      .copyright span {
+        display: block;
+        margin-top: 8px;
+      }
+    }
+  </style>
 </head>
+
 <body>
 
-  <!-- ===== NAVIGATION ===== -->
-  <header class="entete">
+  <!-- ================= TOP BAR ================= -->
+
+  <div class="topbar">
+    Livraison disponible à Cotonou et partout au Bénin
+  </div>
+
+  <!-- ================= HEADER ================= -->
+
+  <header>
+
     <nav class="nav">
-      <a href="#accueil" class="logo">MTECH<span>Bénin</span></a>
-      <button class="menu-btn" id="menuBtn" aria-label="Ouvrir le menu">&#9776;</button>
-      <ul class="nav-links" id="navLinks">
-        <li><a href="#accueil">Accueil</a></li>
-        <li><a href="#produits">Produits</a></li>
-        <li><a href="#services">Services</a></li>
-        <li><a href="#apropos">À propos</a></li>
-        <li><a href="#contact" class="btn-contact">Contact</a></li>
-      </ul>
+
+      <a href="index.html" class="logo">
+        MTECH<span>BENIN</span>
+      </a>
+
+      <div class="nav-links">
+        <a href="#accueil">Accueil</a>
+        <a href="#boutique">Boutique</a>
+        <a href="#categories">Catégories</a>
+        <a href="#services">Services</a>
+        <a href="#contact">Contact</a>
+      </div>
+
+      <div class="nav-actions">
+
+        <button class="icon-button" onclick="openCart()" aria-label="Panier">
+          🛒
+          <span class="cart-count" id="cartCount">0</span>
+        </button>
+
+        <button class="mobile-menu" aria-label="Menu">
+          ☰
+        </button>
+
+      </div>
+
     </nav>
+
   </header>
 
-  <!-- ===== BANNIÈRE ===== -->
-  <section class="hero" id="accueil">
-    <p class="hero-surtitre">Boutique high-tech à Cotonou</p>
-    <h1>La technologie,<br />en noir et blanc.</h1>
-    <p class="hero-texte">
-      Téléphones, ordinateurs et accessoires authentiques.
-      Garantie incluse, livraison rapide partout au Bénin.
-    </p>
-    <div class="hero-actions">
-      <a href="#produits" class="btn btn-noir">Voir nos produits</a>
-      <a href="#contact" class="btn btn-blanc">Nous contacter</a>
-    </div>
-  </section>
+  <!-- ================= HERO ================= -->
 
-  <!-- ===== AVANTAGES ===== -->
-  <section class="avantages">
-    <div class="avantage">
-      <span>✓</span>
-      <h3>Produits authentiques</h3>
-      <p>Uniquement des appareils d'origine, vérifiés un par un.</p>
-    </div>
-    <div class="avantage">
-      <span>✓</span>
-      <h3>Garantie incluse</h3>
-      <p>Chaque appareil est couvert contre les défauts.</p>
-    </div>
-    <div class="avantage">
-      <span>✓</span>
-      <h3>Livraison rapide</h3>
-      <p>Cotonou et tout le Bénin, directement chez vous.</p>
-    </div>
-  </section>
+  <main id="accueil">
 
-  <!-- ===== PRODUITS ===== -->
-  <section class="section" id="produits">
-    <h2>Nos produits</h2>
-    <p class="section-sous-titre">Une sélection rigoureuse, des prix justes.</p>
-    <div class="grille">
-      <article class="carte">
-        <div class="carte-icone">📱</div>
-        <h3>Smartphones</h3>
-        <p>iPhone, Samsung, Tecno, Infinix et plus. Neufs et testés, avec garantie.</p>
-      </article>
-      <article class="carte">
-        <div class="carte-icone">💻</div>
-        <h3>Ordinateurs</h3>
-        <p>PC portables pour le travail, les études et la création.</p>
-      </article>
-      <article class="carte">
-        <div class="carte-icone">🎧</div>
-        <h3>Accessoires</h3>
-        <p>Écouteurs, enceintes Bluetooth, chargeurs, coques et protections.</p>
-      </article>
-      <article class="carte">
-        <div class="carte-icone">⌚</div>
-        <h3>Montres connectées</h3>
-        <p>Montres intelligentes pour suivre votre santé et vos notifications.</p>
-      </article>
-    </div>
-  </section>
+    <section class="hero">
 
-  <!-- ===== SERVICES ===== -->
-  <section class="section section-foncee" id="services">
-    <h2>Nos services</h2>
-    <p class="section-sous-titre">Bien plus qu'une boutique.</p>
-    <div class="grille">
-      <article class="carte carte-foncee">
-        <div class="carte-icone">🛠</div>
-        <h3>Réparation</h3>
-        <p>Écrans, batteries, diagnostics : nos techniciens réparent vite et bien.</p>
-      </article>
-      <article class="carte carte-foncee">
-        <div class="carte-icone">🚚</div>
-        <h3>Livraison</h3>
-        <p>Livraison express à Cotonou et dans tout le Bénin.</p>
-      </article>
-      <article class="carte carte-foncee">
-        <div class="carte-icone">🛡</div>
-        <h3>Garantie</h3>
-        <p>Chaque achat est protégé. En cas de problème, nous sommes là.</p>
-      </article>
-    </div>
-  </section>
+      <div class="hero-container">
 
-  <!-- ===== À PROPOS ===== -->
-  <section class="section" id="apropos">
-    <h2>À propos de MTECH Bénin</h2>
-    <div class="apropos">
-      <p>
-        MTECH Bénin est une boutique high-tech basée à Cotonou. Notre mission :
-        rendre la technologie fiable et accessible à tous, avec des produits
-        authentiques, un service honnête et une vraie assistance après-vente.
-      </p>
-      <p>
-        Que vous cherchiez un téléphone, un ordinateur ou une simple paire
-        d'écouteurs, notre équipe vous conseille et vous accompagne avant,
-        pendant et après votre achat.
-      </p>
-    </div>
-  </section>
+        <div class="hero-content">
 
-  <!-- ===== CONTACT ===== -->
-  <section class="section section-foncee" id="contact">
-    <h2>Contact</h2>
-    <p class="section-sous-titre">Passez nous voir ou écrivez-nous, on répond vite.</p>
-    <div class="contact-grille">
-      <div class="contact-item">
-        <h3>📞 Téléphone / WhatsApp</h3>
-        <p><a href="tel:+22900000000">+229 00 00 00 00</a></p>
+          <small>MTECH BENIN — TECHNOLOGIE</small>
+
+          <h1>
+            La technologie
+            autrement.
+          </h1>
+
+          <p>
+            Découvrez nos smartphones, accessoires, produits
+            électroniques et services au meilleur rapport
+            qualité-prix.
+          </p>
+
+          <a href="#boutique" class="btn">
+            Découvrir la boutique →
+          </a>
+
+          <a href="#categories" class="btn btn-light">
+            Explorer
+          </a>
+
+        </div>
+
+        <div class="hero-image">
+          <div class="hero-product"></div>
+        </div>
+
       </div>
-      <div class="contact-item">
-        <h3>📍 Adresse</h3>
-        <p>Cotonou, Bénin</p>
-      </div>
-      <div class="contact-item">
-        <h3>🕘 Horaires</h3>
-        <p>Lundi – Samedi : 8h – 19h</p>
-      </div>
-    </div>
-    <div class="contact-cta">
-      <a href="https://wa.me/22900000000" class="btn btn-blanc">Écrire sur WhatsApp</a>
-    </div>
-  </section>
 
-  <!-- ===== PIED DE PAGE ===== -->
-  <footer class="pied">
-    <p class="logo logo-pied">MTECH<span>Bénin</span></p>
-    <p>© 2026 MTECH Bénin. Tous droits réservés.</p>
-    <p class="pied-liens">
-      <a href="#accueil">Accueil</a> ·
-      <a href="#produits">Produits</a> ·
-      <a href="#services">Services</a> ·
-      <a href="#contact">Contact</a>
-    </p>
+    </section>
+
+    <!-- ================= CATEGORIES ================= -->
+
+    <section class="section" id="categories">
+
+      <div class="section-heading">
+
+        <div>
+          <h2>Nos catégories</h2>
+          <p>Tout ce dont vous avez besoin au même endroit.</p>
+        </div>
+
+      </div>
+
+      <div class="categories">
+
+        <a href="#boutique" class="category">
+          <div class="category-icon">📱</div>
+          <div>
+            <h3>Smartphones</h3>
+            <p>iPhone & Android</p>
+          </div>
+        </a>
+
+        <a href="#boutique" class="category">
+          <div class="category-icon">🎧</div>
+          <div>
+            <h3>Audio</h3>
+            <p>AirPods & écouteurs</p>
+          </div>
+        </a>
+
+        <a href="#boutique" class="category">
+          <div class="category-icon">⌚</div>
+          <div>
+            <h3>Accessoires</h3>
+            <p>Tech & mobile</p>
+          </div>
+        </a>
+
+        <a href="#services" class="category">
+          <div class="category-icon">🔧</div>
+          <div>
+            <h3>Réparation</h3>
+            <p>Smartphones & PC</p>
+          </div>
+        </a>
+
+      </div>
+
+    </section>
+
+    <!-- ================= PRODUCTS ================= -->
+
+    <section class="section" id="boutique">
+
+      <div class="section-heading">
+
+        <div>
+          <h2>Produits populaires</h2>
+          <p>Une sélection de produits disponibles chez MTECH BENIN.</p>
+        </div>
+
+        <a href="#" style="font-size:13px;font-weight:600;">
+          Voir tout →
+        </a>
+
+      </div>
+
+      <div class="products">
+
+        <!-- PRODUIT 1 -->
+
+        <article class="product-card">
+
+          <div class="product-image">
+
+            <span class="badge">POPULAIRE</span>
+
+            <div class="product-placeholder">
+              📱
+            </div>
+
+          </div>
+
+          <div class="product-info">
+
+            <span class="product-category">
+              Smartphone
+            </span>
+
+            <h3>iPhone</h3>
+
+            <div class="product-price">
+              Sur demande
+            </div>
+
+            <div class="product-actions">
+
+              <button
+                class="add-cart"
+                onclick="addToCart('iPhone', 0, '📱')">
+                Ajouter au panier
+              </button>
+
+              <button class="details">
+                →
+              </button>
+
+            </div>
+
+          </div>
+
+        </article>
+
+        <!-- PRODUIT 2 -->
+
+        <article class="product-card">
+
+          <div class="product-image">
+
+            <span class="badge">NOUVEAU</span>
+
+            <div class="product-placeholder">
+              🎧
+            </div>
+
+          </div>
+
+          <div class="product-info">
+
+            <span class="product-category">
+              Audio
+            </span>
+
+            <h3>AirPods</h3>
+
+            <div class="product-price">
+              Sur demande
+            </div>
+
+            <div class="product-actions">
+
+              <button
+                class="add-cart"
+                onclick="addToCart('AirPods', 0, '🎧')">
+                Ajouter au panier
+              </button>
+
+              <button class="details">
+                →
+              </button>
+
+            </div>
+
+          </div>
+
+        </article>
+
+        <!-- PRODUIT 3 -->
+
+        <article class="product-card">
+
+          <div class="product-image">
+
+            <div class="product-placeholder">
+              ⌚
+            </div>
+
+          </div>
+
+          <div class="product-info">
+
+            <span class="product-category">
+              Accessoire
+            </span>
+
+            <h3>Apple Watch</h3>
+
+            <div class="product-price">
+              Sur demande
+            </div>
+
+            <div class="product-actions">
+
+              <button
+                class="add-cart"
+                onclick="addToCart('Apple Watch', 0, '⌚')">
+                Ajouter au panier
+              </button>
+
+              <button class="details">
+                →
+              </button>
+
+            </div>
+
+          </div>
+
+        </article>
+
+        <!-- PRODUIT 4 -->
+
+        <article class="product-card">
+
+          <div class="product-image">
+
+            <span class="badge">OFFRE</span>
+
+            <div class="product-placeholder">
+              💻
+            </div>
+
+          </div>
+
+          <div class="product-info">
+
+            <span class="product-category">
+              Informatique
+            </span>
+
+            <h3>MacBook</h3>
+
+            <div class="product-price">
+              Sur demande
+            </div>
+
+            <div class="product-actions">
+
+              <button
+                class="add-cart"
+                onclick="addToCart('MacBook', 0, '💻')">
+                Ajouter au panier
+              </button>
+
+              <button class="details">
+                →
+              </button>
+
+            </div>
+
+          </div>
+
+        </article>
+
+      </div>
+
+    </section>
+
+    <!-- ================= PROMO ================= -->
+
+    <section class="promo">
+
+      <div>
+
+        <h2>
+          La technologie<br>
+          à portée de main.
+        </h2>
+
+        <p>
+          Retrouvez vos produits électroniques préférés,
+          accessoires et services chez MTECH BENIN.
+        </p>
+
+      </div>
+
+      <a href="#boutique" class="btn">
+        Voir les produits →
+      </a>
+
+    </section>
+
+    <!-- ================= SERVICES ================= -->
+
+    <section class="section" id="services">
+
+      <div class="section-heading">
+
+        <div>
+          <h2>Nos services</h2>
+          <p>Plus qu'une boutique technologique.</p>
+        </div>
+
+      </div>
+
+      <div class="services">
+
+        <div class="service">
+
+          <div class="service-icon">
+            🔧
+          </div>
+
+          <h3>Réparation</h3>
+
+          <p>
+            Réparation de smartphones, ordinateurs
+            et appareils électroniques.
+          </p>
+
+        </div>
+
+        <div class="service">
+
+          <div class="service-icon">
+            🚚
+          </div>
+
+          <h3>Livraison</h3>
+
+          <p>
+            Livraison de vos commandes à Cotonou
+            et dans plusieurs zones du Bénin.
+          </p>
+
+        </div>
+
+        <div class="service">
+
+          <div class="service-icon">
+            💬
+          </div>
+
+          <h3>Assistance</h3>
+
+          <p>
+            Notre équipe est disponible pour vous
+            accompagner avant et après votre achat.
+          </p>
+
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- ================= FOOTER ================= -->
+
+  <footer id="contact">
+
+    <div class="footer-container">
+
+      <div class="footer-grid">
+
+        <div>
+
+          <div class="footer-logo">
+            MTECH BENIN
+          </div>
+
+          <p class="footer-description">
+            Votre boutique technologique au Bénin.
+            Smartphones, accessoires, informatique,
+            réparation et services numériques.
+          </p>
+
+        </div>
+
+        <div class="footer-column">
+
+          <h4>BOUTIQUE</h4>
+
+          <a href="#boutique">Smartphones</a>
+          <a href="#boutique">Accessoires</a>
+          <a href="#boutique">Audio</a>
+          <a href="#boutique">Informatique</a>
+
+        </div>
+
+        <div class="footer-column">
+
+          <h4>SERVICES</h4>
+
+          <a href="#services">Réparation</a>
+          <a href="#services">Livraison</a>
+          <a href="#services">Assistance</a>
+
+        </div>
+
+        <div class="footer-column">
+
+          <h4>CONTACT</h4>
+
+          <a href="https://wa.me/22960506320">
+            WhatsApp
+          </a>
+
+          <a href="mailto:ganseemmanuelfrancoisxavier@gmail.com">
+            Email
+          </a>
+
+          <a href="#">
+            Cotonou, Bénin
+          </a>
+
+        </div>
+
+      </div>
+
+      <div class="copyright">
+
+        <span>
+          © 2026 MTECH BENIN. Tous droits réservés.
+        </span>
+
+        <span>
+          mtechbenin.com
+        </span>
+
+      </div>
+
+    </div>
+
   </footer>
 
+  <!-- ================= CART ================= -->
+
+  <div class="overlay" id="overlay" onclick="closeCart()"></div>
+
+  <aside class="cart-panel" id="cartPanel">
+
+    <div class="cart-header">
+
+      <h2>Mon panier</h2>
+
+      <button
+        class="close-cart"
+        onclick="closeCart()">
+        ✕
+      </button>
+
+    </div>
+
+    <div class="cart-items" id="cartItems">
+
+      <div class="empty-cart">
+        Votre panier est vide.
+      </div>
+
+    </div>
+
+    <div class="cart-footer">
+
+      <div class="cart-total">
+
+        <span>Total</span>
+
+        <span id="cartTotal">
+          0 FCFA
+        </span>
+
+      </div>
+
+      <button class="checkout" onclick="checkout()">
+        Passer la commande
+      </button>
+
+    </div>
+
+  </aside>
+
+  <!-- ================= JAVASCRIPT ================= -->
+
   <script>
-    const btn = document.getElementById("menuBtn");
-    const liens = document.getElementById("navLinks");
-    btn.addEventListener("click", () => liens.classList.toggle("open"));
-    liens.querySelectorAll("a").forEach((a) =>
-      a.addEventListener("click", () => liens.classList.remove("open"))
-    );
+
+    let cart = [];
+
+    /*
+      Ajouter un produit au panier
+    */
+
+    function addToCart(name, price, icon) {
+
+      const existing = cart.find(item => item.name === name);
+
+      if (existing) {
+        existing.quantity++;
+      } else {
+        cart.push({
+          name: name,
+          price: price,
+          icon: icon,
+          quantity: 1
+        });
+      }
+
+      updateCart();
+
+      openCart();
+    }
+
+    /*
+      Supprimer un produit
+    */
+
+    function removeFromCart(index) {
+
+      cart.splice(index, 1);
+
+      updateCart();
+    }
+
+    /*
+      Actualiser le panier
+    */
+
+    function updateCart() {
+
+      const container = document.getElementById("cartItems");
+
+      const count = cart.reduce(
+        (total, item) => total + item.quantity,
+        0
+      );
+
+      document.getElementById("cartCount").textContent = count;
+
+      if (cart.length === 0) {
+
+        container.innerHTML = `
+          <div class="empty-cart">
+            Votre panier est vide.
+          </div>
+        `;
+
+        document.getElementById("cartTotal").textContent =
+          "0 FCFA";
+
+        return;
+      }
+
+      let total = 0;
+
+      container.innerHTML = cart.map((item, index) => {
+
+        total += item.price * item.quantity;
+
+        return `
+          <div class="cart-item">
+
+            <div class="cart-item-image">
+              ${item.icon}
+            </div>
+
+            <div class="cart-item-info">
+
+              <h4>${item.name}</h4>
+
+              <p>
+                Quantité : ${item.quantity}
+              </p>
+
+              ${
+                item.price > 0
+                ? `<p>${formatPrice(item.price * item.quantity)}</p>`
+                : `<p>Prix à confirmer</p>`
+              }
+
+            </div>
+
+            <button
+              class="remove-item"
+              onclick="removeFromCart(${index})">
+              Supprimer
+            </button>
+
+          </div>
+        `;
+
+      }).join("");
+
+      document.getElementById("cartTotal").textContent =
+        total > 0
+          ? formatPrice(total)
+          : "À confirmer";
+    }
+
+    /*
+      Format FCFA
+    */
+
+    function formatPrice(price) {
+
+      return new Intl.NumberFormat("fr-FR").format(price)
+        + " FCFA";
+
+    }
+
+    /*
+      Ouvrir panier
+    */
+
+    function openCart() {
+
+      document
+        .getElementById("cartPanel")
+        .classList.add("active");
+
+      document
+        .getElementById("overlay")
+        .classList.add("active");
+
+    }
+
+    /*
+      Fermer panier
+    */
+
+    function closeCart() {
+
+      document
+        .getElementById("cartPanel")
+        .classList.remove("active");
+
+      document
+        .getElementById("overlay")
+        .classList.remove("active");
+
+    }
+
+    /*
+      Commande
+    */
+
+    function checkout() {
+
+      if (cart.length === 0) {
+
+        alert("Votre panier est vide.");
+
+        return;
+      }
+
+      let message =
+        "Bonjour MTECH BENIN, je souhaite passer une commande :%0A%0A";
+
+      cart.forEach(item => {
+
+        message +=
+          "• " +
+          item.name +
+          " × " +
+          item.quantity +
+          "%0A";
+
+      });
+
+      message +=
+        "%0AMerci de me confirmer la disponibilité et le prix.";
+
+      window.open(
+        "https://wa.me/22960506320?text=" + message,
+        "_blank"
+      );
+
+    }
+
   </script>
+
 </body>
 </html>
