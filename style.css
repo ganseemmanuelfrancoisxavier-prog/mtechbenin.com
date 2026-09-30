@@ -1,6 +1,6 @@
 /* ============================================
-   MTECH BÃ©nin â€” Feuille de style principale
-   Palette : bleu nuit, bleu Ã©lectrique, ambre
+   MTECH Bénin — Feuille de style principale
+   Palette : bleu nuit, bleu électrique, ambre
    ============================================ */
 
 :root {
@@ -138,7 +138,7 @@ h1, h2, h3 {
   color: var(--bleu-nuit);
 }
 
-/* ===== BanniÃ¨re ===== */
+/* ===== Bannière ===== */
 .hero {
   background: linear-gradient(135deg, var(--bleu-nuit) 0%, #123a75 60%, var(--bleu) 100%);
   color: #fff;
@@ -323,7 +323,7 @@ h1, h2, h3 {
   font-size: 0.95rem;
 }
 
-/* ===== Ã€ propos ===== */
+/* ===== À propos ===== */
 .about-inner {
   display: grid;
   grid-template-columns: 1fr 1.2fr;
