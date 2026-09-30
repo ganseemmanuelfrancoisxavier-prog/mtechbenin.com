@@ -1,1 +1,310 @@
+<!DOCTYPE html>
+<html lang="fr">
 
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0">
+
+  <title>
+    MTECHBENIN — Dashboard
+  </title>
+
+  <link
+    rel="stylesheet"
+    href="dashboard.css">
+
+</head>
+
+
+<body>
+
+<div class="admin-shell">
+
+
+  <!-- ================= SIDEBAR ================= -->
+
+  <aside class="sidebar">
+
+    <div class="admin-brand">
+
+      MTECHBENIN
+
+      <span>
+        ADMIN
+      </span>
+
+    </div>
+
+
+    <nav>
+
+      <a
+        class="active"
+        href="#hero-admin">
+
+        🎬 Première plan
+
+      </a>
+
+
+      <a href="#products-admin">
+
+        📦 Produits
+
+      </a>
+
+
+      <a href="#orders-admin">
+
+        🛒 Commandes
+
+      </a>
+
+
+      <a href="#settings">
+
+        ⚙️ Paramètres
+
+      </a>
+
+
+      <a href="index.html">
+
+        ↗ Voir le site
+
+      </a>
+
+    </nav>
+
+  </aside>
+
+
+  <!-- ================= CONTENU ================= -->
+
+  <main class="admin-main">
+
+
+    <div class="admin-top">
+
+      <div>
+
+        <span>
+          MTECHBENIN
+        </span>
+
+        <h1>
+          Dashboard
+        </h1>
+
+      </div>
+
+
+      <a
+        href="index.html"
+        class="view-site">
+
+        Voir le site →
+
+      </a>
+
+    </div>
+
+
+    <!-- ================= PREMIER PLAN ================= -->
+
+    <section
+      id="hero-admin"
+      class="admin-card">
+
+
+      <div class="card-title">
+
+        <div>
+
+          <h2>
+            Première plan
+          </h2>
+
+          <p>
+            Gère les images et vidéos
+            affichées en grand sur l'accueil.
+          </p>
+
+        </div>
+
+
+        <button
+          class="primary"
+          onclick="openMediaPicker()">
+
+          + Ajouter une photo / vidéo
+
+        </button>
+
+      </div>
+
+
+      <input
+        id="mediaFile"
+        type="file"
+        accept="image/*,video/*"
+        hidden>
+
+
+      <!-- FORMULAIRE -->
+
+      <div
+        id="mediaForm"
+        class="form-grid">
+
+      </div>
+
+
+      <!-- LISTE DES SLIDES -->
+
+      <div
+        id="slidesList">
+
+      </div>
+
+    </section>
+
+
+    <!-- ================= PRODUITS ================= -->
+
+    <section
+      id="products-admin"
+      class="admin-card">
+
+
+      <div class="card-title">
+
+        <div>
+
+          <h2>
+            Produits
+          </h2>
+
+          <p>
+            Gère les produits affichés
+            sur la boutique.
+          </p>
+
+        </div>
+
+
+        <button
+          class="primary"
+          onclick="addProduct()">
+
+          + Nouveau produit
+
+        </button>
+
+      </div>
+
+
+      <div
+        id="productsList">
+
+      </div>
+
+    </section>
+
+
+    <!-- ================= COMMANDES ================= -->
+
+    <section
+      id="orders-admin"
+      class="admin-card">
+
+
+      <div class="card-title">
+
+        <div>
+
+          <h2>
+            Commandes
+          </h2>
+
+          <p>
+            Les commandes seront affichées
+            ici lorsque le système de commandes
+            sera connecté.
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <div class="empty">
+
+        Aucune commande pour le moment.
+
+      </div>
+
+    </section>
+
+
+    <!-- ================= PARAMÈTRES ================= -->
+
+    <section
+      id="settings"
+      class="admin-card">
+
+
+      <div class="card-title">
+
+        <div>
+
+          <h2>
+            Paramètres
+          </h2>
+
+          <p>
+            Paramètres de MTECHBENIN.
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <label>
+
+        Numéro WhatsApp
+
+        <input
+          id="whatsapp"
+          type="text"
+          value="22960506320">
+
+      </label>
+
+
+      <button
+        class="primary save-settings"
+        onclick="saveSettings()">
+
+        Enregistrer
+
+      </button>
+
+    </section>
+
+
+  </main>
+
+</div>
+
+
+<script src="dashboard.js"></script>
+
+</body>
+
+</html>
