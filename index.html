@@ -1,871 +1,198 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-
-  <meta name="theme-color" content="#ffffff">
-  <title>MTECHBENIN — Technologie, accessoires & services</title>
-
-  <meta
-    name="description"
-    content="MTECHBENIN — produits technologiques, abonnements et réparation."
-  >
-
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MTECH Bénin — Boutique High-Tech à Cotonou</title>
+  <meta name="description" content="MTECH Bénin : vente de téléphones, ordinateurs et accessoires high-tech au Bénin. Produits authentiques, garantie et livraison rapide." />
+  <link rel="stylesheet" href="style.css" />
 </head>
-
 <body>
 
-<header class="header">
-
-  <a class="brand" href="#home">
-    MTECHBENIN
-  </a>
-
-  <div class="header-actions">
-
-    <button
-      class="ico"
-      aria-label="Recherche"
-      onclick="openSearch()"
-    >
-      ⌕
-    </button>
-
-    <button
-      class="ico cart-trigger"
-      aria-label="Panier"
-      onclick="openCart()"
-    >
-      🛒
-      <span id="cartBadge">0</span>
-    </button>
-
-    <button
-      class="ico"
-      aria-label="Menu"
-      onclick="toggleMenu()"
-    >
-      ☰
-    </button>
-
-  </div>
-
-</header>
-
-
-<!-- MENU MOBILE -->
-
-<div id="menu" class="menu">
-
-  <a href="#home" onclick="closeMenu()">
-    Accueil
-  </a>
-
-  <a href="#categories" onclick="closeMenu()">
-    Catégories
-  </a>
-
-  <a href="#products" onclick="closeMenu()">
-    Produits
-  </a>
-
-  <a href="#subscriptions" onclick="closeMenu()">
-    Abonnements
-  </a>
-
-  <a href="#repair" onclick="closeMenu()">
-    Réparation
-  </a>
-
-  <a href="#contact" onclick="closeMenu()">
-    Contact
-  </a>
-
-</div>
-
-
-<main>
-
-
-<!-- HERO -->
-
-<section id="home" class="hero">
-
-  <div class="hero-bg"></div>
-
-  <div class="hero-shade"></div>
-
-  <div class="hero-content">
-
-    <div class="eyebrow">
-      <span></span>
-      LE MEILLEUR AU QUOTIDIEN
+  <!-- ===== Barre de navigation ===== -->
+  <header class="navbar" id="top">
+    <div class="container nav-inner">
+      <a href="#top" class="logo">MTECH<span>Bénin</span></a>
+      <nav class="nav-links" id="navLinks">
+        <a href="#accueil">Accueil</a>
+        <a href="#produits">Produits</a>
+        <a href="#apropos">À propos</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <a href="#contact" class="btn btn-primary nav-cta">Nous contacter</a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Ouvrir le menu">☰</button>
     </div>
-
-    <h1>
-      Elégance -
-      <br>
-      Performance
-    </h1>
-
-    <div class="hero-price">
-      À partir de 50 000 fcfa
-    </div>
-
-    <div class="hero-actions">
-
-      <a
-        class="outline-btn"
-        href="#products"
-      >
-        Découvrir
-        <b>→</b>
-      </a>
-
-      <a
-        class="light-link"
-        href="#categories"
-      >
-        Tout voir
-      </a>
-
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- CATEGORIES -->
-
-<section
-  id="categories"
-  class="section categories"
->
-
-  <div class="kicker">
-    CATÉGORIES
-  </div>
-
-  <h2>
-    Notre Catalogue
-  </h2>
-
-
-  <div class="category-grid">
-
-
-    <a
-      href="#subscriptions"
-      class="category"
-    >
-
-      <div class="cat-icon">
-        ▱
-      </div>
-
-      <strong>
-        Abonnements
-      </strong>
-
-    </a>
-
-
-    <a
-      href="#products"
-      class="category"
-    >
-
-      <div class="cat-icon">
-        ⌁
-      </div>
-
-      <strong>
-        Accessoires
-      </strong>
-
-    </a>
-
-
-    <a
-      href="#products"
-      class="category"
-    >
-
-      <div class="cat-icon">
-        ◇
-      </div>
-
-      <strong>
-        Basket
-      </strong>
-
-    </a>
-
-
-    <a
-      href="#products"
-      class="category"
-    >
-
-      <div class="cat-icon">
-        ♧
-      </div>
-
-      <strong>
-        Écouteurs
-      </strong>
-
-    </a>
-
-
-    <a
-      href="#products"
-      class="category"
-    >
-
-      <div class="cat-icon">
-        ▣
-      </div>
-
-      <strong>
-        Enceintes
-      </strong>
-
-    </a>
-
-
-    <a
-      href="#products"
-      class="category"
-    >
-
-      <div class="cat-icon">
-        ⌚
-      </div>
-
-      <strong>
-        For men
-      </strong>
-
-    </a>
-
-
-    <a
-      href="#products"
-      class="category"
-    >
-
-      <div class="cat-icon">
-        ▢
-      </div>
-
-      <strong>
-        T-shirt
-      </strong>
-
-    </a>
-
-
-    <a
-      href="#products"
-      class="category"
-    >
-
-      <div class="cat-icon">
-        ▯
-      </div>
-
-      <strong>
-        Téléphone/Tablette/PC
-      </strong>
-
-    </a>
-
-
-  </div>
-
-</section>
-
-
-<!-- PRODUITS -->
-
-<section
-  id="products"
-  class="section products"
->
-
-  <div class="section-title-row">
-
-    <div>
-
-      <div class="kicker">
-        SÉLECTION
-      </div>
-
-      <h2>
-        Nos Coups de Cœur
-      </h2>
-
-    </div>
-
-    <button
-      class="see-all"
-      onclick="openSearch()"
-    >
-      Rechercher
-    </button>
-
-  </div>
-
-
-  <div class="product-grid">
-
-
-    <!-- AIRPODS PRO 2 -->
-
-    <article
-      class="product"
-      data-name="AirPods Pro 2"
-      data-price="8000"
-    >
-
-      <div class="product-img">
-
-        <img
-          src="assets/airpods-pro-2.jpg"
-          alt="AirPods Pro 2"
-        >
-
-        <button
-          class="heart"
-          onclick="like(this)"
-        >
-          ♡
-        </button>
-
-      </div>
-
-      <span class="stock">
-        En stock
-      </span>
-
-      <h3>
-        AirPods Pro 2
-      </h3>
-
-      <div class="price">
-        8 000 FCFA
-      </div>
-
-      <button
-        class="buy"
-        onclick="add('AirPods Pro 2',8000)"
-      >
-        Choisir les options
-      </button>
-
-    </article>
-
-
-    <!-- BOSE -->
-
-    <article
-      class="product"
-      data-name="Bose QuietComfort Ultra"
-      data-price="13500"
-    >
-
-      <div class="product-img">
-
-        <img
-          src="assets/bose-quietcomfort-ultra.jpg"
-          alt="Bose QuietComfort Ultra"
-        >
-
-        <span class="sale">
-          -33%
-        </span>
-
-        <button
-          class="heart"
-          onclick="like(this)"
-        >
-          ♡
-        </button>
-
-      </div>
-
-      <span class="stock">
-        En stock
-      </span>
-
-      <h3>
-        Bose QuietComfort Ultra
-      </h3>
-
-      <div class="price">
-
-        13 500 FCFA
-
-        <del>
-          20 000 FCFA
-        </del>
-
-      </div>
-
-      <button
-        class="buy"
-        onclick="add('Bose QuietComfort Ultra',13500)"
-      >
-        Commander
-      </button>
-
-    </article>
-
-
-    <!-- AIRPODS PRO 3 -->
-
-    <article
-      class="product"
-      data-name="AirPods Pro 3"
-      data-price="12000"
-    >
-
-      <div class="product-img">
-
-        <img
-          src="assets/airpods-pro-3.jpg"
-          alt="AirPods Pro 3"
-        >
-
-        <button
-          class="heart"
-          onclick="like(this)"
-        >
-          ♡
-        </button>
-
-      </div>
-
-      <span class="stock">
-        En stock
-      </span>
-
-      <h3>
-        AirPods Pro 3
-      </h3>
-
-      <div class="price">
-        12 000 FCFA
-      </div>
-
-      <button
-        class="buy"
-        onclick="add('AirPods Pro 3',12000)"
-      >
-        Commander
-      </button>
-
-    </article>
-
-
-    <!-- AIRPODS 4 -->
-
-    <article
-      class="product"
-      data-name="AirPods 4"
-      data-price="7500"
-    >
-
-      <div class="product-img">
-
-        <img
-          src="assets/airpods-4.jpg"
-          alt="AirPods 4"
-        >
-
-        <button
-          class="heart"
-          onclick="like(this)"
-        >
-          ♡
-        </button>
-
-      </div>
-
-      <span class="stock">
-        En stock
-      </span>
-
-      <h3>
-        AirPods 4
-      </h3>
-
-      <div class="price">
-        7 500 FCFA
-      </div>
-
-      <button
-        class="buy"
-        onclick="add('AirPods 4',7500)"
-      >
-        Commander
-      </button>
-
-    </article>
-
-
-  </div>
-
-</section>
-
-
-<!-- ABONNEMENTS -->
-
-<section
-  id="subscriptions"
-  class="subscriptions"
->
-
-  <div class="sub-heading">
-
-    <div>
-
-      <div class="sub-kicker">
-        DIGITAL
-      </div>
-
-      <h2>
-        Abonnements
-      </h2>
-
-    </div>
-
-    <a href="#subscriptions">
-      Voir tout →
-    </a>
-
-  </div>
-
-
-  <div class="sub-slider">
-
-
-    <!-- APPLE MUSIC -->
-
-    <article class="subscription">
-
-      <img
-        src="assets/apple-music.jpg"
-        alt="Apple Music"
-      >
-
-      <div class="sub-overlay">
-
-        <h3>
-          Apple Music
-        </h3>
-
-        <p>
-          100 millions de titres en...
+  </header>
+
+  <!-- ===== Bannière / Accueil ===== -->
+  <section class="hero" id="accueil">
+    <div class="container hero-inner">
+      <div class="hero-text">
+        <p class="hero-badge">🇧🇯 N°1 du high-tech au Bénin</p>
+        <h1>La technologie de demain, <span>disponible aujourd'hui</span></h1>
+        <p class="hero-sub">
+          Téléphones, ordinateurs, accessoires et gadgets authentiques aux meilleurs prix.
+          Garantie officielle et livraison rapide partout au Bénin.
         </p>
-
-        <div class="sub-price">
-          Dès
-          <b>
-            1 500 FCFA
-          </b>
-          /mois
+        <div class="hero-actions">
+          <a href="#produits" class="btn btn-primary">Voir nos produits</a>
+          <a href="#contact" class="btn btn-outline">Demander un devis</a>
         </div>
-
-        <button
-          onclick="add('Apple Music',1500)"
-        >
-          S'abonner
-        </button>
-
-      </div>
-
-    </article>
-
-
-    <!-- APPLE TV -->
-
-    <article class="subscription">
-
-      <img
-        src="assets/apple-tv.jpg"
-        alt="Apple TV"
-      >
-
-      <div class="sub-overlay">
-
-        <h3>
-          Apple TV
-        </h3>
-
-        <p>
-          Le meilleur du divertissement
-        </p>
-
-        <div class="sub-price">
-          Dès
-          <b>
-            1 500 FCFA
-          </b>
-          /mois
+        <div class="hero-stats">
+          <div><strong>+500</strong><span>Clients satisfaits</span></div>
+          <div><strong>+200</strong><span>Produits en stock</span></div>
+          <div><strong>24h</strong><span>Livraison Cotonou</span></div>
         </div>
-
-        <button
-          onclick="add('Apple TV',1500)"
-        >
-          S'abonner
-        </button>
-
       </div>
-
-    </article>
-
-
-    <!-- PACK -->
-
-    <article class="subscription dark-card">
-
-      <div class="sub-overlay">
-
-        <h3>
-          Apple Music + TV
-        </h3>
-
-        <p>
-          Offre MTECHBENIN
-        </p>
-
-        <div class="sub-price">
-          À partir de
-          <b>
-            2 500 FCFA
-          </b>
+      <div class="hero-visual">
+        <div class="hero-card">
+          <span class="hero-emoji">📱</span>
+          <p>Smartphones dernière génération</p>
         </div>
-
-        <button
-          onclick="add('Apple Music + Apple TV',2500)"
-        >
-          S'abonner
-        </button>
-
+        <div class="hero-card hero-card-2">
+          <span class="hero-emoji">💻</span>
+          <p>PC portables &amp; gaming</p>
+        </div>
       </div>
-
-    </article>
-
-
-  </div>
-
-</section>
-
-
-<!-- ANNONCE -->
-
-<section class="announcement section">
-
-  <div class="kicker">
-    ANNONCE
-  </div>
-
-  <div class="announcement-box"></div>
-
-</section>
-
-
-<!-- RÉPARATION -->
-
-<section
-  id="repair"
-  class="repair"
->
-
-  <div class="repair-inner">
-
-    <div class="kicker">
-      SERVICE MTECH
     </div>
+  </section>
 
-    <h2>
-      Réparation
-    </h2>
+  <!-- ===== Produits / Services ===== -->
+  <section class="section" id="produits">
+    <div class="container">
+      <div class="section-head">
+        <p class="section-tag">Nos produits</p>
+        <h2>Tout l'univers high-tech en un seul endroit</h2>
+        <p>Des produits 100 % authentiques, avec garantie et service après-vente.</p>
+      </div>
+      <div class="grid grid-3">
+        <article class="card">
+          <div class="card-icon">📱</div>
+          <h3>Smartphones</h3>
+          <p>iPhone, Samsung, Xiaomi, Tecno, Infinix… Les dernières nouveautés aux meilleurs prix du marché.</p>
+        </article>
+        <article class="card">
+          <div class="card-icon">💻</div>
+          <h3>Ordinateurs</h3>
+          <p>PC portables, ordinateurs de bureau et machines gaming pour le travail, les études et le divertissement.</p>
+        </article>
+        <article class="card">
+          <div class="card-icon">🎧</div>
+          <h3>Accessoires</h3>
+          <p>Écouteurs, enceintes, chargeurs, montres connectées et bien plus pour compléter votre équipement.</p>
+        </article>
+        <article class="card">
+          <div class="card-icon">🔧</div>
+          <h3>Réparation</h3>
+          <p>Diagnostic gratuit et réparation express de vos appareils par des techniciens certifiés.</p>
+        </article>
+        <article class="card">
+          <div class="card-icon">🚚</div>
+          <h3>Livraison rapide</h3>
+          <p>Livraison en 24h à Cotonou et dans toutes les grandes villes du Bénin. Paiement à la livraison.</p>
+        </article>
+        <article class="card">
+          <div class="card-icon">🛡️</div>
+          <h3>Garantie &amp; SAV</h3>
+          <p>Tous nos produits sont garantis. Un service après-vente réactif et à votre écoute.</p>
+        </article>
+      </div>
+    </div>
+  </section>
 
-    <p>
-      Smartphones, ordinateurs et appareils électroniques.
-      Décris ton problème et contacte directement MTECHBENIN.
-    </p>
+  <!-- ===== À propos ===== -->
+  <section class="section section-alt" id="apropos">
+    <div class="container about-inner">
+      <div class="about-visual">
+        <div class="about-box">
+          <span>🏪</span>
+          <p>MTECH Bénin, votre partenaire tech de confiance depuis Cotonou.</p>
+        </div>
+      </div>
+      <div class="about-text">
+        <p class="section-tag">À propos de nous</p>
+        <h2>Une boutique née de la passion pour la technologie</h2>
+        <p>
+          MTECH Bénin est une boutique spécialisée dans la vente de produits high-tech au Bénin.
+          Notre mission : rendre la technologie accessible à tous, avec des produits authentiques,
+          des prix justes et un service client irréprochable.
+        </p>
+        <ul class="about-list">
+          <li>✅ Produits 100 % authentiques et garantis</li>
+          <li>✅ Prix compétitifs et paiement flexible</li>
+          <li>✅ Équipe jeune, dynamique et à votre écoute</li>
+          <li>✅ Livraison partout au Bénin</li>
+        </ul>
+        <a href="#contact" class="btn btn-primary">Discuter avec nous</a>
+      </div>
+    </div>
+  </section>
 
-    <a
-      class="repair-button"
-      href="https://wa.me/22960506320?text=Bonjour%20MTECHBENIN,%20je%20souhaite%20une%20réparation"
-    >
-      Demander une réparation →
-    </a>
+  <!-- ===== Contact ===== -->
+  <section class="section" id="contact">
+    <div class="container">
+      <div class="section-head">
+        <p class="section-tag">Contact</p>
+        <h2>Parlons de votre projet</h2>
+        <p>Une question, un produit recherché, un devis ? Écrivez-nous !</p>
+      </div>
+      <div class="contact-inner">
+        <div class="contact-info">
+          <div class="contact-item">
+            <span>📍</span>
+            <div><strong>Adresse</strong><p>Cotonou, Bénin</p></div>
+          </div>
+          <div class="contact-item">
+            <span>📞</span>
+            <div><strong>Téléphone / WhatsApp</strong><p>+229 00 00 00 00</p></div>
+          </div>
+          <div class="contact-item">
+            <span>✉️</span>
+            <div><strong>Email</strong><p>contact@mtechbenin.com</p></div>
+          </div>
+          <div class="contact-item">
+            <span>🕒</span>
+            <div><strong>Horaires</strong><p>Lun – Sam : 8h à 19h</p></div>
+          </div>
+        </div>
+        <form class="contact-form" action="mailto:contact@mtechbenin.com" method="post" enctype="text/plain">
+          <div class="form-row">
+            <input type="text" name="nom" placeholder="Votre nom" required />
+            <input type="tel" name="telephone" placeholder="Votre téléphone" required />
+          </div>
+          <input type="email" name="email" placeholder="Votre email (facultatif)" />
+          <textarea name="message" rows="5" placeholder="Votre message…" required></textarea>
+          <button type="submit" class="btn btn-primary btn-full">Envoyer le message</button>
+        </form>
+      </div>
+    </div>
+  </section>
 
-  </div>
+  <!-- ===== Pied de page ===== -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div>
+        <a href="#top" class="logo logo-footer">MTECH<span>Bénin</span></a>
+        <p>La technologie accessible à tous les Béninois.</p>
+      </div>
+      <div class="footer-links">
+        <a href="#accueil">Accueil</a>
+        <a href="#produits">Produits</a>
+        <a href="#apropos">À propos</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+    <p class="footer-copy">© 2026 MTECH Bénin — Tous droits réservés.</p>
+  </footer>
 
-</section>
-
-
-<!-- CONTACT -->
-
-<section
-  id="contact"
-  class="contact section"
->
-
-  <div class="kicker">
-    MTECHBENIN
-  </div>
-
-  <h2>
-    Contact
-  </h2>
-
-  <p>
-    Une question sur un produit,
-    une commande ou une réparation ?
-  </p>
-
-  <a
-    class="contact-link"
-    href="https://wa.me/22960506320"
-  >
-    WhatsApp : +229 60 50 63 20
-  </a>
-
-</section>
-
-</main>
-
-
-<!-- BOUTON RETOUR EN HAUT -->
-
-<button
-  class="top"
-  onclick="scrollTopSmooth()"
->
-  ⌃
-</button>
-
-
-<!-- BARRE DE NAVIGATION MOBILE -->
-
-<nav class="bottom">
-
-  <a
-    href="#home"
-    class="active"
-  >
-    <span>⌂</span>
-    <b>Accueil</b>
-    <i></i>
-  </a>
-
-  <a href="#subscriptions">
-    <span>▱</span>
-    <b>Abonnements</b>
-  </a>
-
-  <a href="#products">
-    <span>▦</span>
-    <b>Produits</b>
-  </a>
-
-  <a href="#repair">
-    <span>⚒</span>
-    <b>Réparation</b>
-  </a>
-
-</nav>
-
-
-<!-- RECHERCHE -->
-
-<div
-  id="searchModal"
-  class="overlay"
-  onclick="if(event.target===this)closeSearch()"
->
-
-  <div class="dialog">
-
-    <button
-      class="x"
-      onclick="closeSearch()"
-    >
-      ×
-    </button>
-
-    <h3>
-      Rechercher
-    </h3>
-
-    <input
-      id="search"
-      placeholder="AirPods, Apple Music..."
-      oninput="searchProducts()"
-    >
-
-    <div id="results"></div>
-
-  </div>
-
-</div>
-
-
-<!-- PANIER -->
-
-<aside
-  id="cart"
-  class="cart"
->
-
-  <div class="cart-title">
-
-    <h3>
-      Votre panier
-    </h3>
-
-    <button onclick="closeCart()">
-      ×
-    </button>
-
-  </div>
-
-  <div id="cartItems"></div>
-
-  <div class="cart-total">
-
-    Total
-
-    <strong id="total">
-      0 FCFA
-    </strong>
-
-  </div>
-
-  <a
-    id="wa"
-    class="wa"
-    target="_blank"
-  >
-    Commander sur WhatsApp
-  </a>
-
-</aside>
-
-
-<!-- JAVASCRIPT -->
-
-<script src="script.js"></script>
-
+  <script>
+    // Menu mobile
+    const toggle = document.getElementById('menuToggle');
+    const links = document.getElementById('navLinks');
+    toggle.addEventListener('click', () => links.classList.toggle('open'));
+    links.querySelectorAll('a').forEach(a =>
+      a.addEventListener('click', () => links.classList.remove('open'))
+    );
+  </script>
 </body>
 </html>
