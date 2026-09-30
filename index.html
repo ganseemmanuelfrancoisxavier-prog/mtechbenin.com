@@ -4,194 +4,168 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>MTECH Bénin — Boutique High-Tech à Cotonou</title>
-  <meta name="description" content="MTECH Bénin : vente de téléphones, ordinateurs et accessoires high-tech au Bénin. Produits authentiques, garantie et livraison rapide." />
+  <meta name="description" content="MTECH Bénin : vente de téléphones, ordinateurs et accessoires high-tech au Bénin. Produits authentiques, garantie et livraison rapide à Cotonou." />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-  <!-- ===== Barre de navigation ===== -->
-  <header class="navbar" id="top">
-    <div class="container nav-inner">
-      <a href="#top" class="logo">MTECH<span>Bénin</span></a>
-      <nav class="nav-links" id="navLinks">
-        <a href="#accueil">Accueil</a>
-        <a href="#produits">Produits</a>
-        <a href="#apropos">À propos</a>
-        <a href="#contact">Contact</a>
-      </nav>
-      <a href="#contact" class="btn btn-primary nav-cta">Nous contacter</a>
-      <button class="menu-toggle" id="menuToggle" aria-label="Ouvrir le menu">☰</button>
-    </div>
+  <!-- ===== NAVIGATION ===== -->
+  <header class="entete">
+    <nav class="nav">
+      <a href="#accueil" class="logo">MTECH<span>Bénin</span></a>
+      <button class="menu-btn" id="menuBtn" aria-label="Ouvrir le menu">&#9776;</button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#accueil">Accueil</a></li>
+        <li><a href="#produits">Produits</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#apropos">À propos</a></li>
+        <li><a href="#contact" class="btn-contact">Contact</a></li>
+      </ul>
+    </nav>
   </header>
 
-  <!-- ===== Bannière / Accueil ===== -->
+  <!-- ===== BANNIÈRE ===== -->
   <section class="hero" id="accueil">
-    <div class="container hero-inner">
-      <div class="hero-text">
-        <p class="hero-badge">🇧🇯 N°1 du high-tech au Bénin</p>
-        <h1>La technologie de demain, <span>disponible aujourd'hui</span></h1>
-        <p class="hero-sub">
-          Téléphones, ordinateurs, accessoires et gadgets authentiques aux meilleurs prix.
-          Garantie officielle et livraison rapide partout au Bénin.
-        </p>
-        <div class="hero-actions">
-          <a href="#produits" class="btn btn-primary">Voir nos produits</a>
-          <a href="#contact" class="btn btn-outline">Demander un devis</a>
-        </div>
-        <div class="hero-stats">
-          <div><strong>+500</strong><span>Clients satisfaits</span></div>
-          <div><strong>+200</strong><span>Produits en stock</span></div>
-          <div><strong>24h</strong><span>Livraison Cotonou</span></div>
-        </div>
-      </div>
-      <div class="hero-visual">
-        <div class="hero-card">
-          <span class="hero-emoji">📱</span>
-          <p>Smartphones dernière génération</p>
-        </div>
-        <div class="hero-card hero-card-2">
-          <span class="hero-emoji">💻</span>
-          <p>PC portables &amp; gaming</p>
-        </div>
-      </div>
+    <p class="hero-surtitre">Boutique high-tech à Cotonou</p>
+    <h1>La technologie,<br />en noir et blanc.</h1>
+    <p class="hero-texte">
+      Téléphones, ordinateurs et accessoires authentiques.
+      Garantie incluse, livraison rapide partout au Bénin.
+    </p>
+    <div class="hero-actions">
+      <a href="#produits" class="btn btn-noir">Voir nos produits</a>
+      <a href="#contact" class="btn btn-blanc">Nous contacter</a>
     </div>
   </section>
 
-  <!-- ===== Produits / Services ===== -->
+  <!-- ===== AVANTAGES ===== -->
+  <section class="avantages">
+    <div class="avantage">
+      <span>✓</span>
+      <h3>Produits authentiques</h3>
+      <p>Uniquement des appareils d'origine, vérifiés un par un.</p>
+    </div>
+    <div class="avantage">
+      <span>✓</span>
+      <h3>Garantie incluse</h3>
+      <p>Chaque appareil est couvert contre les défauts.</p>
+    </div>
+    <div class="avantage">
+      <span>✓</span>
+      <h3>Livraison rapide</h3>
+      <p>Cotonou et tout le Bénin, directement chez vous.</p>
+    </div>
+  </section>
+
+  <!-- ===== PRODUITS ===== -->
   <section class="section" id="produits">
-    <div class="container">
-      <div class="section-head">
-        <p class="section-tag">Nos produits</p>
-        <h2>Tout l'univers high-tech en un seul endroit</h2>
-        <p>Des produits 100 % authentiques, avec garantie et service après-vente.</p>
-      </div>
-      <div class="grid grid-3">
-        <article class="card">
-          <div class="card-icon">📱</div>
-          <h3>Smartphones</h3>
-          <p>iPhone, Samsung, Xiaomi, Tecno, Infinix… Les dernières nouveautés aux meilleurs prix du marché.</p>
-        </article>
-        <article class="card">
-          <div class="card-icon">💻</div>
-          <h3>Ordinateurs</h3>
-          <p>PC portables, ordinateurs de bureau et machines gaming pour le travail, les études et le divertissement.</p>
-        </article>
-        <article class="card">
-          <div class="card-icon">🎧</div>
-          <h3>Accessoires</h3>
-          <p>Écouteurs, enceintes, chargeurs, montres connectées et bien plus pour compléter votre équipement.</p>
-        </article>
-        <article class="card">
-          <div class="card-icon">🔧</div>
-          <h3>Réparation</h3>
-          <p>Diagnostic gratuit et réparation express de vos appareils par des techniciens certifiés.</p>
-        </article>
-        <article class="card">
-          <div class="card-icon">🚚</div>
-          <h3>Livraison rapide</h3>
-          <p>Livraison en 24h à Cotonou et dans toutes les grandes villes du Bénin. Paiement à la livraison.</p>
-        </article>
-        <article class="card">
-          <div class="card-icon">🛡️</div>
-          <h3>Garantie &amp; SAV</h3>
-          <p>Tous nos produits sont garantis. Un service après-vente réactif et à votre écoute.</p>
-        </article>
-      </div>
+    <h2>Nos produits</h2>
+    <p class="section-sous-titre">Une sélection rigoureuse, des prix justes.</p>
+    <div class="grille">
+      <article class="carte">
+        <div class="carte-icone">📱</div>
+        <h3>Smartphones</h3>
+        <p>iPhone, Samsung, Tecno, Infinix et plus. Neufs et testés, avec garantie.</p>
+      </article>
+      <article class="carte">
+        <div class="carte-icone">💻</div>
+        <h3>Ordinateurs</h3>
+        <p>PC portables pour le travail, les études et la création.</p>
+      </article>
+      <article class="carte">
+        <div class="carte-icone">🎧</div>
+        <h3>Accessoires</h3>
+        <p>Écouteurs, enceintes Bluetooth, chargeurs, coques et protections.</p>
+      </article>
+      <article class="carte">
+        <div class="carte-icone">⌚</div>
+        <h3>Montres connectées</h3>
+        <p>Montres intelligentes pour suivre votre santé et vos notifications.</p>
+      </article>
     </div>
   </section>
 
-  <!-- ===== À propos ===== -->
-  <section class="section section-alt" id="apropos">
-    <div class="container about-inner">
-      <div class="about-visual">
-        <div class="about-box">
-          <span>🏪</span>
-          <p>MTECH Bénin, votre partenaire tech de confiance depuis Cotonou.</p>
-        </div>
-      </div>
-      <div class="about-text">
-        <p class="section-tag">À propos de nous</p>
-        <h2>Une boutique née de la passion pour la technologie</h2>
-        <p>
-          MTECH Bénin est une boutique spécialisée dans la vente de produits high-tech au Bénin.
-          Notre mission : rendre la technologie accessible à tous, avec des produits authentiques,
-          des prix justes et un service client irréprochable.
-        </p>
-        <ul class="about-list">
-          <li>✅ Produits 100 % authentiques et garantis</li>
-          <li>✅ Prix compétitifs et paiement flexible</li>
-          <li>✅ Équipe jeune, dynamique et à votre écoute</li>
-          <li>✅ Livraison partout au Bénin</li>
-        </ul>
-        <a href="#contact" class="btn btn-primary">Discuter avec nous</a>
-      </div>
+  <!-- ===== SERVICES ===== -->
+  <section class="section section-foncee" id="services">
+    <h2>Nos services</h2>
+    <p class="section-sous-titre">Bien plus qu'une boutique.</p>
+    <div class="grille">
+      <article class="carte carte-foncee">
+        <div class="carte-icone">🛠</div>
+        <h3>Réparation</h3>
+        <p>Écrans, batteries, diagnostics : nos techniciens réparent vite et bien.</p>
+      </article>
+      <article class="carte carte-foncee">
+        <div class="carte-icone">🚚</div>
+        <h3>Livraison</h3>
+        <p>Livraison express à Cotonou et dans tout le Bénin.</p>
+      </article>
+      <article class="carte carte-foncee">
+        <div class="carte-icone">🛡</div>
+        <h3>Garantie</h3>
+        <p>Chaque achat est protégé. En cas de problème, nous sommes là.</p>
+      </article>
     </div>
   </section>
 
-  <!-- ===== Contact ===== -->
-  <section class="section" id="contact">
-    <div class="container">
-      <div class="section-head">
-        <p class="section-tag">Contact</p>
-        <h2>Parlons de votre projet</h2>
-        <p>Une question, un produit recherché, un devis ? Écrivez-nous !</p>
-      </div>
-      <div class="contact-inner">
-        <div class="contact-info">
-          <div class="contact-item">
-            <span>📍</span>
-            <div><strong>Adresse</strong><p>Cotonou, Bénin</p></div>
-          </div>
-          <div class="contact-item">
-            <span>📞</span>
-            <div><strong>Téléphone / WhatsApp</strong><p>+229 00 00 00 00</p></div>
-          </div>
-          <div class="contact-item">
-            <span>✉️</span>
-            <div><strong>Email</strong><p>contact@mtechbenin.com</p></div>
-          </div>
-          <div class="contact-item">
-            <span>🕒</span>
-            <div><strong>Horaires</strong><p>Lun – Sam : 8h à 19h</p></div>
-          </div>
-        </div>
-        <form class="contact-form" action="mailto:contact@mtechbenin.com" method="post" enctype="text/plain">
-          <div class="form-row">
-            <input type="text" name="nom" placeholder="Votre nom" required />
-            <input type="tel" name="telephone" placeholder="Votre téléphone" required />
-          </div>
-          <input type="email" name="email" placeholder="Votre email (facultatif)" />
-          <textarea name="message" rows="5" placeholder="Votre message…" required></textarea>
-          <button type="submit" class="btn btn-primary btn-full">Envoyer le message</button>
-        </form>
-      </div>
+  <!-- ===== À PROPOS ===== -->
+  <section class="section" id="apropos">
+    <h2>À propos de MTECH Bénin</h2>
+    <div class="apropos">
+      <p>
+        MTECH Bénin est une boutique high-tech basée à Cotonou. Notre mission :
+        rendre la technologie fiable et accessible à tous, avec des produits
+        authentiques, un service honnête et une vraie assistance après-vente.
+      </p>
+      <p>
+        Que vous cherchiez un téléphone, un ordinateur ou une simple paire
+        d'écouteurs, notre équipe vous conseille et vous accompagne avant,
+        pendant et après votre achat.
+      </p>
     </div>
   </section>
 
-  <!-- ===== Pied de page ===== -->
-  <footer class="footer">
-    <div class="container footer-inner">
-      <div>
-        <a href="#top" class="logo logo-footer">MTECH<span>Bénin</span></a>
-        <p>La technologie accessible à tous les Béninois.</p>
+  <!-- ===== CONTACT ===== -->
+  <section class="section section-foncee" id="contact">
+    <h2>Contact</h2>
+    <p class="section-sous-titre">Passez nous voir ou écrivez-nous, on répond vite.</p>
+    <div class="contact-grille">
+      <div class="contact-item">
+        <h3>📞 Téléphone / WhatsApp</h3>
+        <p><a href="tel:+22900000000">+229 00 00 00 00</a></p>
       </div>
-      <div class="footer-links">
-        <a href="#accueil">Accueil</a>
-        <a href="#produits">Produits</a>
-        <a href="#apropos">À propos</a>
-        <a href="#contact">Contact</a>
+      <div class="contact-item">
+        <h3>📍 Adresse</h3>
+        <p>Cotonou, Bénin</p>
+      </div>
+      <div class="contact-item">
+        <h3>🕘 Horaires</h3>
+        <p>Lundi – Samedi : 8h – 19h</p>
       </div>
     </div>
-    <p class="footer-copy">© 2026 MTECH Bénin — Tous droits réservés.</p>
+    <div class="contact-cta">
+      <a href="https://wa.me/22900000000" class="btn btn-blanc">Écrire sur WhatsApp</a>
+    </div>
+  </section>
+
+  <!-- ===== PIED DE PAGE ===== -->
+  <footer class="pied">
+    <p class="logo logo-pied">MTECH<span>Bénin</span></p>
+    <p>© 2026 MTECH Bénin. Tous droits réservés.</p>
+    <p class="pied-liens">
+      <a href="#accueil">Accueil</a> ·
+      <a href="#produits">Produits</a> ·
+      <a href="#services">Services</a> ·
+      <a href="#contact">Contact</a>
+    </p>
   </footer>
 
   <script>
-    // Menu mobile
-    const toggle = document.getElementById('menuToggle');
-    const links = document.getElementById('navLinks');
-    toggle.addEventListener('click', () => links.classList.toggle('open'));
-    links.querySelectorAll('a').forEach(a =>
-      a.addEventListener('click', () => links.classList.remove('open'))
+    const btn = document.getElementById("menuBtn");
+    const liens = document.getElementById("navLinks");
+    btn.addEventListener("click", () => liens.classList.toggle("open"));
+    liens.querySelectorAll("a").forEach((a) =>
+      a.addEventListener("click", () => liens.classList.remove("open"))
     );
   </script>
 </body>
