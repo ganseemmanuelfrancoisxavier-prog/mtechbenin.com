@@ -1,1238 +1,258 @@
-/* =========================================================
-   MTECHBENIN — APP.JS
-   Slider + Produits + Panier + Recherche
-   ========================================================= */
+/* =====================================================
+   MTECH BENIN — APP.JS
+   Gestion des produits, panier et interactions
+   ===================================================== */
 
+// ================= DONNÉES PRODUITS =================
 
-/* =========================================================
-   1. CONTENU DU PREMIER PLAN
-   ========================================================= */
-
-const defaultHeroSlides = [
-
-  {
-    type: "image",
-
-    src: "",
-
-    badge: "BEST SELLER",
-
-    title: "JBL Boombox",
-
-    subtitle: "4ème Génération",
-
-    description:
-      "Son puissant, basses profondes. La référence des enceintes Bluetooth au Bénin.",
-
-    tag: "Authentique",
-
-    button: "Voir les enceintes",
-
-    link: "#products"
-  },
-
-
-  {
-    type: "image",
-
-    src: "",
-
-    badge: "NOUVEAUTÉ",
-
-    title: "La technologie",
-
-    subtitle: "à portée de main",
-
-    description:
-      "Découvrez les produits et accessoires disponibles chez MTECHBENIN.",
-
-    tag: "Disponible",
-
-    button: "Découvrir",
-
-    link: "#products"
-  }
-
-];
-
-
-/* =========================================================
-   2. PRODUITS
-   ========================================================= */
-
-const defaultProducts = [
-
+const products = [
   {
     id: 1,
-
-    name: "JBL Boombox",
-
-    cat: "Enceinte",
-
-    price: 0,
-
-    icon: "🔊",
-
-    image: ""
+    name: "Routeur WiFi Pro",
+    category: "Réseau",
+    price: 25000,
+    icon: "📶"
   },
-
-
   {
     id: 2,
-
-    name: "iPhone",
-
-    cat: "Smartphone",
-
-    price: 0,
-
-    icon: "📱",
-
-    image: ""
+    name: "Câble Ethernet 10m",
+    category: "Accessoires",
+    price: 8000,
+    icon: "🔌"
   },
-
-
   {
     id: 3,
-
-    name: "AirPods",
-
-    cat: "Audio",
-
-    price: 0,
-
-    icon: "🎧",
-
-    image: ""
+    name: "Hub USB 3.0",
+    category: "Accessoires",
+    price: 15000,
+    icon: "💾"
   },
-
-
   {
     id: 4,
-
-    name: "MacBook",
-
-    cat: "Informatique",
-
-    price: 0,
-
-    icon: "💻",
-
-    image: ""
+    name: "Souris Wireless",
+    category: "Périphériques",
+    price: 12000,
+    icon: "🖱️"
+  },
+  {
+    id: 5,
+    name: "Clavier Mécanique",
+    category: "Périphériques",
+    price: 45000,
+    icon: "⌨️"
+  },
+  {
+    id: 6,
+    name: "Écran LED 24\"",
+    category: "Écrans",
+    price: 120000,
+    icon: "🖥️"
+  },
+  {
+    id: 7,
+    name: "Antivirus Premium",
+    category: "Logiciels",
+    price: 35000,
+    icon: "🔒"
+  },
+  {
+    id: 8,
+    name: "SSD 512GB",
+    category: "Stockage",
+    price: 65000,
+    icon: "💿"
   }
-
 ];
 
+// ================= PANIER =================
 
-/* =========================================================
-   3. CHARGEMENT DES DONNÉES
-   ========================================================= */
+let cart = JSON.parse(localStorage.getItem('mtech_cart')) || [];
 
-let slides =
-  JSON.parse(
-    localStorage.getItem("mtech_hero")
-  ) || defaultHeroSlides;
-
-
-let products =
-  JSON.parse(
-    localStorage.getItem("mtech_products")
-  ) || defaultProducts;
-
-
-let cart =
-  JSON.parse(
-    localStorage.getItem("mtech_cart")
-  ) || [];
-
-
-let currentSlide = 0;
-
-
-/* =========================================================
-   4. SAUVEGARDE
-   ========================================================= */
-
+// Sauvegarder le panier
 function saveCart() {
-
-  localStorage.setItem(
-    "mtech_cart",
-    JSON.stringify(cart)
-  );
-
+  localStorage.setItem('mtech_cart', JSON.stringify(cart));
 }
 
-
-function saveSlides() {
-
-  localStorage.setItem(
-    "mtech_hero",
-    JSON.stringify(slides)
-  );
-
-}
-
-
-function saveProducts() {
-
-  localStorage.setItem(
-    "mtech_products",
-    JSON.stringify(products)
-  );
-
-}
-
-
-/* =========================================================
-   5. FORMAT PRIX
-   ========================================================= */
-
+// Formater le prix
 function formatPrice(price) {
-
-  if (!price || price <= 0) {
-
-    return "Prix sur demande";
-
-  }
-
-
-  return new Intl.NumberFormat(
-    "fr-FR"
-  ).format(price) + " FCFA";
-
+  return new Intl.NumberFormat('fr-FR').format(price) + ' FCFA';
 }
 
-
-/* =========================================================
-   6. PROTECTION HTML
-   ========================================================= */
-
-function escapeHtml(value) {
-
-  return String(value ?? "")
-    .replace(
-      /[&<>"']/g,
-
-      function(character) {
-
-        const entities = {
-
-          "&": "&amp;",
-          "<": "&lt;",
-          ">": "&gt;",
-          '"': "&quot;",
-          "'": "&#039;"
-
-        };
-
-        return entities[character];
-
-      }
-    );
-
+// Mettre à jour le badge du panier
+function updateCartBadge() {
+  const count = cart.reduce((total, item) => total + item.qty, 0);
+  document.getElementById('cartCount').textContent = count;
 }
 
-
-/* =========================================================
-   7. AFFICHER LE PREMIER PLAN
-   ========================================================= */
-
-function renderHero() {
-
-  if (!slides.length) {
-
-    return;
-
-  }
-
-
-  const slide =
-    slides[currentSlide];
-
-
-  const heroMedia =
-    document.getElementById(
-      "heroMedia"
-    );
-
-
-  /* ================= MEDIA ================= */
-
-  if (slide.src) {
-
-    if (slide.type === "video") {
-
-      heroMedia.innerHTML = `
-
-        <video
-          autoplay
-          muted
-          loop
-          playsinline
-          src="${escapeHtml(slide.src)}">
-        </video>
-
-      `;
-
-    }
-
-    else {
-
-      heroMedia.innerHTML = `
-
-        <img
-          src="${escapeHtml(slide.src)}"
-          alt="${escapeHtml(slide.title)}">
-
-      `;
-
-    }
-
-  }
-
-  else {
-
-    /*
-      Aucun fichier n'est encore installé.
-      Le fond noir/bleu du CSS sera utilisé.
-    */
-
-    heroMedia.innerHTML = "";
-
-  }
-
-
-  /* ================= BADGE ================= */
-
-  const badge =
-    document.getElementById(
-      "heroBadge"
-    );
-
-
-  badge.innerHTML = `
-
-    <span></span>
-
-    ${escapeHtml(
-      slide.badge || "MTECHBENIN"
-    )}
-
-  `;
-
-
-  /* ================= TITRE ================= */
-
-  document.getElementById(
-    "heroTitle"
-  ).textContent =
-    slide.title || "";
-
-
-  /* ================= SOUS TITRE ================= */
-
-  document.getElementById(
-    "heroSubtitle"
-  ).textContent =
-    slide.subtitle || "";
-
-
-  /* ================= DESCRIPTION ================= */
-
-  document.getElementById(
-    "heroDescription"
-  ).textContent =
-    slide.description || "";
-
-
-  /* ================= TAG ================= */
-
-  document.getElementById(
-    "heroTag"
-  ).textContent =
-    slide.tag || "";
-
-
-  /* ================= BOUTON ================= */
-
-  const button =
-    document.getElementById(
-      "heroButton"
-    );
-
-
-  button.innerHTML = `
-
-    ${escapeHtml(
-      slide.button || "Découvrir"
-    )}
-
-    <span>→</span>
-
-  `;
-
-
-  button.href =
-    slide.link || "#products";
-
-
-  /* ================= POINTS ================= */
-
-  const dots =
-    document.getElementById(
-      "heroDots"
-    );
-
-
-  dots.innerHTML =
-    slides
-      .map(
-
-        function(_, index) {
-
-          return `
-
-            <span
-              class="hero-dot ${
-                index === currentSlide
-                  ? "active"
-                  : ""
-              }">
-            </span>
-
-          `;
-
-        }
-
+// Afficher les produits
+function renderProducts(filter = '') {
+  const grid = document.getElementById('productsGrid');
+  
+  const filtered = filter 
+    ? products.filter(p => 
+        p.name.toLowerCase().includes(filter.toLowerCase()) ||
+        p.category.toLowerCase().includes(filter.toLowerCase())
       )
-      .join("");
-
-}
-async function chargerDiapositivesSupabase() {
-    if (!window.supabaseClient) return;
-
-    const { data, error } = await window.supabaseClient
-        .from("hero_slides")
-        .select("*")
-        .eq("is_active", true)
-        .order("sort_order", { ascending: true });
-
-    if (error) {
-        console.error("Erreur Supabase :", error);
-        return;
-    }
-
-    if (!data || !data.length) return;
-
-    diapositives.splice(
-        0,
-        diapositives.length,
-        ...data.map(slide => ({
-            taper: slide.media_type || "image",
-            source: slide.media_url || "",
-            badge: slide.badge || "",
-            titre: slide.title || "",
-            sous_titre: slide.subtitle || "",
-            description: slide.description || "",
-            tag: slide.tag || "",
-            texte_bouton: slide.button_text || "",
-            lien_bouton: slide.button_link || ""
-        }))
-    );
-
-    diapositive_actuelle = 0;
-    renderHero();
-}
-
-chargerDiapositivesSupabase();
-
-/* =========================================================
-   8. SLIDER AUTOMATIQUE
-   ========================================================= */
-
-function nextSlide() {
-
-  if (slides.length <= 1) {
-
-    return;
-
-  }
-
-
-  currentSlide =
-    (currentSlide + 1)
-    % slides.length;
-
-
-  renderHero();
-
-}
-
-
-/*
-   Change automatiquement de slide
-   toutes les 6 secondes.
-*/
-
-setInterval(
-
-  function() {
-
-    nextSlide();
-
-  },
-
-  6000
-
-);
-
-
-/* =========================================================
-   9. AFFICHAGE DES PRODUITS
-   ========================================================= */
-
-function renderProducts(
-  search = ""
-) {
-
-  const productGrid =
-    document.getElementById(
-      "productGrid"
-    );
-
-
-  const searchResults =
-    document.getElementById(
-      "searchResults"
-    );
-
-
-  const query =
-    search
-      .trim()
-      .toLowerCase();
-
-
-  const filteredProducts =
-    products.filter(
-
-      function(product) {
-
-        return (
-
-          product.name
-            .toLowerCase()
-            .includes(query)
-
-          ||
-
-          product.cat
-            .toLowerCase()
-            .includes(query)
-
-        );
-
-      }
-
-    );
-
-
-  /* ================= HTML PRODUITS ================= */
-
-  const html =
-    filteredProducts
-      .map(
-
-        function(product) {
-
-          return `
-
-            <article
-              class="product">
-
-              <div
-                class="product-image">
-
-                ${
-                  product.image
-
-                    ?
-
-                    `
-
-                    <img
-                      src="${escapeHtml(
-                        product.image
-                      )}"
-
-                      alt="${escapeHtml(
-                        product.name
-                      )}">
-
-                    `
-
-                    :
-
-                    `
-
-                    <div
-                      class="product-placeholder">
-
-                      ${
-                        product.icon ||
-                        "📦"
-                      }
-
-                    </div>
-
-                    `
-                }
-
-              </div>
-
-
-              <div
-                class="product-info">
-
-                <span
-                  class="product-cat">
-
-                  ${escapeHtml(
-                    product.cat
-                  )}
-
-                </span>
-
-
-                <h3>
-
-                  ${escapeHtml(
-                    product.name
-                  )}
-
-                </h3>
-
-
-                <div
-                  class="price">
-
-                  ${formatPrice(
-                    product.price
-                  )}
-
-                </div>
-
-
-                <button
-                  class="add"
-                  onclick="addToCart(
-                    ${product.id}
-                  )">
-
-                  Ajouter au panier
-
-                </button>
-
-              </div>
-
-            </article>
-
-          `;
-
-        }
-
-      )
-      .join("");
-
-
-  /* ================= BOUTIQUE ================= */
-
-  if (productGrid) {
-
-    productGrid.innerHTML =
-      html ||
-
-      `
-
-        <div class="empty">
-
-          Aucun produit trouvé.
-
+    : products;
+
+  grid.innerHTML = filtered.map(product => `
+    <div class="product-card">
+      <div class="product-image">${product.icon}</div>
+      <div class="product-info">
+        <span class="product-cat">${product.category}</span>
+        <h3>${product.name}</h3>
+        <div class="product-price">${formatPrice(product.price)}</div>
+        <div class="product-actions">
+          <button class="add-to-cart" onclick="addToCart(${product.id})">
+            Ajouter
+          </button>
         </div>
+      </div>
+    </div>
+  `).join('');
 
-      `;
-
+  if (!filtered.length) {
+    grid.innerHTML = '<p style="grid-column: 1/-1; text-align: center; color: #999; padding: 40px;">Aucun produit trouvé</p>';
   }
-
-
-  /* ================= RECHERCHE ================= */
-
-  if (searchResults) {
-
-    searchResults.innerHTML =
-      html ||
-
-      `
-
-        <div class="empty">
-
-          Aucun résultat.
-
-        </div>
-
-      `;
-
-  }
-
 }
 
+// Rechercher des produits
+function searchProducts() {
+  const input = document.getElementById('searchInput').value;
+  renderProducts(input);
+}
 
-/* =========================================================
-   10. AJOUTER AU PANIER
-   ========================================================= */
-
+// Ajouter au panier
 function addToCart(productId) {
+  const product = products.find(p => p.id === productId);
+  if (!product) return;
 
-  const product =
-    products.find(
-
-      function(item) {
-
-        return item.id === productId;
-
-      }
-
-    );
-
-
-  if (!product) {
-
-    return;
-
-  }
-
-
-  const existing =
-    cart.find(
-
-      function(item) {
-
-        return item.id === productId;
-
-      }
-
-    );
-
-
+  const existing = cart.find(item => item.id === productId);
+  
   if (existing) {
-
     existing.qty++;
-
-  }
-
-  else {
-
+  } else {
     cart.push({
-
       id: productId,
-
       qty: 1
-
     });
-
   }
-
 
   saveCart();
-
+  updateCartBadge();
   renderCart();
-
   openCart();
-
 }
 
-
-/* =========================================================
-   11. AFFICHER LE PANIER
-   ========================================================= */
-
+// Afficher le panier
 function renderCart() {
+  const cartItems = document.getElementById('cartItems');
+  const cartTotal = document.getElementById('cartTotal');
 
-  const cartItems =
-    document.getElementById(
-      "cartItems"
-    );
-
-
-  const cartBadge =
-    document.getElementById(
-      "cartBadge"
-    );
-
-
-  const cartTotal =
-    document.getElementById(
-      "cartTotal"
-    );
-
-
-  if (!cartItems) {
-
+  if (!cart.length) {
+    cartItems.innerHTML = '<p class="empty-cart">Votre panier est vide</p>';
+    cartTotal.textContent = '0 FCFA';
     return;
-
   }
-
 
   let total = 0;
+  cartItems.innerHTML = cart.map((item, index) => {
+    const product = products.find(p => p.id === item.id);
+    if (!product) return '';
+    
+    const itemTotal = product.price * item.qty;
+    total += itemTotal;
 
-
-  let quantity = 0;
-
-
-  /* ================= PANIER VIDE ================= */
-
-  if (cart.length === 0) {
-
-    cartItems.innerHTML = `
-
-      <div class="empty">
-
-        Votre panier est vide.
-
+    return `
+      <div class="cart-item">
+        <div class="cart-item-image">${product.icon}</div>
+        <div class="cart-item-info">
+          <h4>${product.name}</h4>
+          <p>Quantité: ${item.qty}</p>
+          <p>${formatPrice(itemTotal)}</p>
+          <button class="remove-item" onclick="removeFromCart(${index})">
+            Supprimer
+          </button>
+        </div>
       </div>
-
     `;
+  }).join('');
 
-
-    cartBadge.textContent = "0";
-
-    cartTotal.textContent =
-      "0 FCFA";
-
-
-    return;
-
-  }
-
-
-  /* ================= PRODUITS ================= */
-
-  cartItems.innerHTML =
-
-    cart
-
-      .map(
-
-        function(item, index) {
-
-          const product =
-            products.find(
-
-              function(p) {
-
-                return p.id === item.id;
-
-              }
-
-            );
-
-
-          if (!product) {
-
-            return "";
-
-          }
-
-
-          quantity += item.qty;
-
-
-          if (product.price > 0) {
-
-            total +=
-              product.price *
-              item.qty;
-
-          }
-
-
-          return `
-
-            <div
-              class="cart-row">
-
-
-              <div
-                class="cart-thumb">
-
-                ${
-                  product.image
-
-                    ?
-
-                    `
-
-                    <img
-                      src="${escapeHtml(
-                        product.image
-                      )}"
-
-                      alt="">
-
-                    `
-
-                    :
-
-                    (
-                      product.icon ||
-                      "📦"
-                    )
-                }
-
-              </div>
-
-
-              <main>
-
-                <h4>
-
-                  ${escapeHtml(
-                    product.name
-                  )}
-
-                </h4>
-
-
-                <p>
-
-                  Quantité :
-                  ${item.qty}
-
-                </p>
-
-
-                <p>
-
-                  ${
-                    product.price > 0
-
-                      ?
-
-                      formatPrice(
-                        product.price *
-                        item.qty
-                      )
-
-                      :
-
-                      "Prix sur demande"
-
-                  }
-
-                </p>
-
-
-                <button
-                  class="remove"
-                  onclick="removeFromCart(
-                    ${index}
-                  )">
-
-                  Supprimer
-
-                </button>
-
-              </main>
-
-
-            </div>
-
-          `;
-
-        }
-
-      )
-
-      .join("");
-
-
-  cartBadge.textContent =
-    quantity;
-
-
-  cartTotal.textContent =
-    total > 0
-
-      ?
-
-      formatPrice(total)
-
-      :
-
-      "À confirmer";
-
+  cartTotal.textContent = formatPrice(total);
 }
 
-
-/* =========================================================
-   12. SUPPRIMER DU PANIER
-   ========================================================= */
-
+// Supprimer du panier
 function removeFromCart(index) {
-
-  cart.splice(
-    index,
-    1
-  );
-
-
+  cart.splice(index, 1);
   saveCart();
-
+  updateCartBadge();
   renderCart();
-
 }
 
-
-/* =========================================================
-   13. OUVRIR LE PANIER
-   ========================================================= */
-
+// Ouvrir le panier
 function openCart() {
-
-  closeAllPanels();
-
-
-  const cartDrawer =
-    document.getElementById(
-      "cartDrawer"
-    );
-
-
-  const overlay =
-    document.getElementById(
-      "overlay"
-    );
-
-
-  cartDrawer.classList.add(
-    "open"
-  );
-
-
-  overlay.classList.add(
-    "open"
-  );
-
-
+  document.getElementById('cartPanel').classList.add('active');
+  document.getElementById('overlay').classList.add('active');
   renderCart();
-
 }
 
-
-/* =========================================================
-   14. RECHERCHE
-   ========================================================= */
-
-function openSearch() {
-
-  closeAllPanels();
-
-
-  const searchDrawer =
-    document.getElementById(
-      "searchDrawer"
-    );
-
-
-  const overlay =
-    document.getElementById(
-      "overlay"
-    );
-
-
-  searchDrawer.classList.add(
-    "open"
-  );
-
-
-  overlay.classList.add(
-    "open"
-  );
-
-
-  const input =
-    document.getElementById(
-      "searchInput"
-    );
-
-
-  setTimeout(
-
-    function() {
-
-      input.focus();
-
-    },
-
-    200
-
-  );
-
+// Fermer le panier
+function closeCart() {
+  document.getElementById('cartPanel').classList.remove('active');
+  document.getElementById('overlay').classList.remove('active');
 }
 
-
-/* =========================================================
-   15. FERMER LES PANNEAUX
-   ========================================================= */
-
-function closeAllPanels() {
-
-  document
-    .querySelectorAll(
-      ".drawer"
-    )
-    .forEach(
-
-      function(drawer) {
-
-        drawer.classList.remove(
-          "open"
-        );
-
-      }
-
-    );
-
-
-  const overlay =
-    document.getElementById(
-      "overlay"
-    );
-
-
-  if (overlay) {
-
-    overlay.classList.remove(
-      "open"
-    );
-
-  }
-
-}
-
-
-/* =========================================================
-   16. MENU MOBILE
-   ========================================================= */
-
+// Menu mobile
 function toggleMenu() {
-
-  const menu =
-    document.getElementById(
-      "mobileMenu"
-    );
-
-
-  menu.classList.toggle(
-    "open"
-  );
-
+  document.getElementById('mobileMenu').classList.toggle('active');
 }
 
-
-/* =========================================================
-   17. COMMANDE WHATSAPP
-   ========================================================= */
-
+// Commander via WhatsApp
 function checkoutWhatsApp() {
-
-  if (cart.length === 0) {
-
-    alert(
-      "Votre panier est vide."
-    );
-
+  if (!cart.length) {
+    alert('Votre panier est vide');
     return;
-
   }
 
-
-  let message =
-    "Bonjour MTECHBENIN,%0A%0A";
-
-  message +=
-    "Je souhaite passer une commande :%0A%0A";
-
-
-  cart.forEach(
-
-    function(item) {
-
-      const product =
-        products.find(
-
-          function(p) {
-
-            return p.id === item.id;
-
-          }
-
-        );
-
-
-      if (product) {
-
-        message +=
-
-          "• " +
-
-          product.name +
-
-          " x" +
-
-          item.qty +
-
-          "%0A";
-
-      }
-
+  let message = 'Bonjour MTECH BENIN,%0A%0AJe souhaite commander:%0A%0A';
+  
+  let total = 0;
+  cart.forEach(item => {
+    const product = products.find(p => p.id === item.id);
+    if (product) {
+      const itemTotal = product.price * item.qty;
+      total += itemTotal;
+      message += `• ${product.name} (x${item.qty}) - ${formatPrice(itemTotal)}%0A`;
     }
+  });
 
-  );
+  message += `%0ATotal: ${formatPrice(total)}%0A%0AMerci de confirmer la disponibilité et de fournir les détails de livraison.`;
 
-
-  message +=
-    "%0AMerci de me confirmer la disponibilité et le prix.";
-
-
-  /*
-    Numéro WhatsApp MTECH BENIN
-  */
-
-  const whatsapp =
-    "22960506320";
-
-
-  window.open(
-
-    "https://wa.me/" +
-    whatsapp +
-    "?text=" +
-    message,
-
-    "_blank"
-
-  );
-
+  const whatsappNumber = '22960506320';
+  window.open(`https://wa.me/${whatsappNumber}?text=${message}`, '_blank');
 }
 
+// Envoyer un message de contact
+function sendMessage(event) {
+  event.preventDefault();
+  
+  const form = event.target;
+  const name = form.querySelector('input[type="text"]').value;
+  const email = form.querySelector('input[type="email"]').value;
+  const message = form.querySelector('textarea').value;
 
-/* =========================================================
-   18. INITIALISATION
-   ========================================================= */
+  const whatsappMessage = `Nouveau message depuis mtechbenin.com%0A%0ANom: ${name}%0AEmail: ${email}%0A%0AMessage:%0A${message}`;
+  
+  const whatsappNumber = '22960506320';
+  window.open(`https://wa.me/${whatsappNumber}?text=${whatsappMessage}`, '_blank');
+  
+  form.reset();
+  alert('Votre message a été envoyé à MTECH BENIN via WhatsApp!');
+}
 
-renderHero();
-
-renderProducts();
-
-renderCart();
+// Initialisation
+document.addEventListener('DOMContentLoaded', function() {
+  renderProducts();
+  updateCartBadge();
+  renderCart();
+});
