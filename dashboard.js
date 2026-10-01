@@ -300,7 +300,8 @@ async function loginAdmin(event) {
 // ======================================================
 
 function showDashboard(user) {
-  location.reload();
+  loadSlides();
+renderProducts();
 }
 
 // ======================================================
