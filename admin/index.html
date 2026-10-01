@@ -1,1 +1,794 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<title>MTECHBENIN — Administration</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
+    background:#f5f5f7;
+    color:#111;
+}
+
+button,
+input{
+    font:inherit;
+}
+
+
+/* =========================
+   CONNEXION
+========================= */
+
+.login{
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:20px;
+}
+
+.login-card{
+    width:min(420px,100%);
+    background:#fff;
+    border-radius:24px;
+    padding:36px;
+    box-shadow:0 20px 60px rgba(0,0,0,.08);
+}
+
+.logo{
+    font-size:27px;
+    font-weight:800;
+    letter-spacing:-1px;
+}
+
+.muted{
+    color:#777;
+    font-size:14px;
+}
+
+.login h1{
+    font-size:25px;
+    margin:28px 0 22px;
+}
+
+label{
+    display:block;
+    font-size:14px;
+    font-weight:600;
+    margin:16px 0 7px;
+}
+
+input{
+    width:100%;
+    padding:14px;
+    border:1px solid #ddd;
+    border-radius:12px;
+    outline:none;
+}
+
+input:focus{
+    border-color:#111;
+}
+
+.primary{
+    width:100%;
+    border:0;
+    background:#111;
+    color:#fff;
+    padding:15px;
+    border-radius:12px;
+    font-weight:700;
+    margin-top:22px;
+    cursor:pointer;
+}
+
+.primary:hover{
+    background:#333;
+}
+
+.error{
+    color:#d00000;
+    font-size:13px;
+    margin-top:12px;
+    display:none;
+}
+
+
+/* =========================
+   ADMIN
+========================= */
+
+.admin{
+    display:none;
+    min-height:100vh;
+}
+
+
+/* SIDEBAR */
+
+.sidebar{
+    position:fixed;
+    left:0;
+    top:0;
+    bottom:0;
+    width:250px;
+    background:#111;
+    color:#fff;
+    padding:28px 18px;
+}
+
+.sidebar .brand{
+    font-size:22px;
+    font-weight:800;
+    padding:0 12px 30px;
+}
+
+.nav button{
+    display:block;
+    width:100%;
+    border:0;
+    background:transparent;
+    color:#aaa;
+    text-align:left;
+    padding:14px 12px;
+    border-radius:10px;
+    cursor:pointer;
+    margin-bottom:4px;
+}
+
+.nav button:hover,
+.nav button.active{
+    background:#242424;
+    color:#fff;
+}
+
+.logout{
+    position:absolute;
+    left:18px;
+    right:18px;
+    bottom:25px;
+
+    border:1px solid #444;
+
+    background:transparent;
+
+    color:#fff;
+
+    padding:12px;
+
+    border-radius:10px;
+
+    cursor:pointer;
+}
+
+.logout:hover{
+    background:#fff;
+    color:#111;
+}
+
+
+/* CONTENU */
+
+.main{
+    margin-left:250px;
+    padding:35px;
+}
+
+.top{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:30px;
+}
+
+.top h1{
+    margin:0 0 5px;
+    font-size:30px;
+}
+
+
+/* STATISTIQUES */
+
+.grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:18px;
+}
+
+.card{
+    background:#fff;
+    border-radius:18px;
+    padding:22px;
+    box-shadow:0 8px 30px rgba(0,0,0,.04);
+}
+
+.card small{
+    color:#777;
+}
+
+.card strong{
+    display:block;
+    font-size:28px;
+    margin-top:10px;
+}
+
+
+/* PANELS */
+
+.panel{
+    background:#fff;
+    border-radius:18px;
+    padding:22px;
+    margin-top:22px;
+}
+
+.panel h2{
+    font-size:19px;
+    margin-bottom:18px;
+}
+
+
+/* TABLE */
+
+.table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+.table th,
+.table td{
+    text-align:left;
+    padding:14px 8px;
+    border-bottom:1px solid #eee;
+    font-size:14px;
+}
+
+.badge{
+    padding:6px 10px;
+    border-radius:20px;
+    background:#eaf7ed;
+    color:#16833b;
+    font-size:12px;
+    font-weight:700;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:800px){
+
+    .sidebar{
+        position:static;
+        width:100%;
+        min-height:auto;
+        padding:20px;
+    }
+
+    .sidebar .brand{
+        padding-bottom:18px;
+    }
+
+    .nav{
+        display:flex;
+        overflow-x:auto;
+        gap:5px;
+    }
+
+    .nav button{
+        white-space:nowrap;
+        width:auto;
+    }
+
+    .logout{
+        position:static;
+        width:100%;
+        margin-top:12px;
+    }
+
+    .main{
+        margin-left:0;
+        padding:20px;
+    }
+
+    .grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+}
+
+
+@media(max-width:480px){
+
+    .login-card{
+        padding:28px 22px;
+    }
+
+    .grid{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .card{
+        padding:18px;
+    }
+
+    .card strong{
+        font-size:22px;
+    }
+
+    .table{
+        min-width:600px;
+    }
+
+    .panel{
+        overflow-x:auto;
+    }
+}
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     PAGE DE CONNEXION
+===================================================== -->
+
+<section class="login" id="login">
+
+    <div class="login-card">
+
+        <div class="logo">
+            MTECHBENIN
+        </div>
+
+        <div class="muted">
+            Espace d'administration
+        </div>
+
+
+        <h1>
+            Connexion
+        </h1>
+
+
+        <label for="email">
+            Email
+        </label>
+
+        <input
+            id="email"
+            type="email"
+            placeholder="admin@mtechbenin.com"
+        >
+
+
+        <label for="password">
+            Mot de passe
+        </label>
+
+        <input
+            id="password"
+            type="password"
+            placeholder="••••••••"
+        >
+
+
+        <button
+            class="primary"
+            onclick="login()"
+        >
+            Se connecter
+        </button>
+
+
+        <div
+            class="error"
+            id="error"
+        >
+            Identifiants incorrects.
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     ADMINISTRATION
+===================================================== -->
+
+<section
+    class="admin"
+    id="admin"
+>
+
+
+    <!-- SIDEBAR -->
+
+    <aside class="sidebar">
+
+        <div class="brand">
+            MTECHBENIN
+        </div>
+
+
+        <div class="nav">
+
+            <button
+                class="active"
+            >
+                📊 Tableau de bord
+            </button>
+
+
+            <button>
+                📦 Produits
+            </button>
+
+
+            <button>
+                🛒 Commandes
+            </button>
+
+
+            <button>
+                📺 Abonnements
+            </button>
+
+
+            <button>
+                🔧 Réparations
+            </button>
+
+
+            <button>
+                👥 Clients
+            </button>
+
+
+            <button>
+                ⚙️ Paramètres
+            </button>
+
+        </div>
+
+
+        <button
+            class="logout"
+            onclick="logout()"
+        >
+            Se déconnecter
+        </button>
+
+    </aside>
+
+
+
+    <!-- CONTENU -->
+
+    <main class="main">
+
+
+        <div class="top">
+
+            <div>
+
+                <h1>
+                    Tableau de bord
+                </h1>
+
+                <div class="muted">
+                    Bienvenue dans l'administration MTECHBENIN.
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- STATISTIQUES -->
+
+        <div class="grid">
+
+
+            <div class="card">
+
+                <small>
+                    Commandes
+                </small>
+
+                <strong>
+                    0
+                </strong>
+
+            </div>
+
+
+            <div class="card">
+
+                <small>
+                    Produits
+                </small>
+
+                <strong>
+                    0
+                </strong>
+
+            </div>
+
+
+            <div class="card">
+
+                <small>
+                    Clients
+                </small>
+
+                <strong>
+                    0
+                </strong>
+
+            </div>
+
+
+            <div class="card">
+
+                <small>
+                    Chiffre d'affaires
+                </small>
+
+                <strong>
+                    0 F
+                </strong>
+
+            </div>
+
+
+        </div>
+
+
+
+        <!-- COMMANDES -->
+
+        <div class="panel">
+
+            <h2>
+                Dernières commandes
+            </h2>
+
+
+            <table class="table">
+
+                <thead>
+
+                    <tr>
+
+                        <th>
+                            Commande
+                        </th>
+
+                        <th>
+                            Client
+                        </th>
+
+                        <th>
+                            Total
+                        </th>
+
+                        <th>
+                            Statut
+                        </th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody>
+
+                    <tr>
+
+                        <td>
+                            #0001
+                        </td>
+
+                        <td>
+                            —
+                        </td>
+
+                        <td>
+                            —
+                        </td>
+
+                        <td>
+
+                            <span class="badge">
+                                Aucune commande
+                            </span>
+
+                        </td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+
+
+        <!-- INFORMATION -->
+
+        <div class="panel">
+
+            <h2>
+                Administration MTECHBENIN
+            </h2>
+
+            <p class="muted">
+
+                Cette interface constitue la base du
+                tableau de bord MTECHBENIN.
+
+                Les prochaines fonctionnalités pourront
+                permettre de gérer les produits,
+                commandes, abonnements, clients,
+                réparations et paiements.
+
+            </p>
+
+        </div>
+
+
+    </main>
+
+</section>
+
+
+
+<!-- =====================================================
+     JAVASCRIPT
+===================================================== -->
+
+<script>
+
+
+/*
+    IDENTIFIANTS DE DÉMONSTRATION
+
+    ⚠️ Cette connexion est une maquette.
+    Elle ne doit pas être utilisée comme système
+    de sécurité pour une vraie boutique.
+*/
+
+const ADMIN_EMAIL =
+    "admin@mtechbenin.com";
+
+const ADMIN_PASSWORD =
+    "MTECH2026";
+
+
+
+/* =========================
+   CONNEXION
+========================= */
+
+function login(){
+
+    const email =
+        document
+        .getElementById("email")
+        .value
+        .trim();
+
+
+    const password =
+        document
+        .getElementById("password")
+        .value;
+
+
+    const error =
+        document
+        .getElementById("error");
+
+
+    if(
+        email === ADMIN_EMAIL &&
+        password === ADMIN_PASSWORD
+    ){
+
+        sessionStorage.setItem(
+            "mtech_admin",
+            "1"
+        );
+
+
+        showAdmin();
+
+    }
+
+    else{
+
+        error.style.display =
+            "block";
+
+    }
+
+}
+
+
+
+/* =========================
+   AFFICHER ADMIN
+========================= */
+
+function showAdmin(){
+
+    document
+        .getElementById("login")
+        .style.display =
+        "none";
+
+
+    document
+        .getElementById("admin")
+        .style.display =
+        "block";
+
+}
+
+
+
+/* =========================
+   DÉCONNEXION
+========================= */
+
+function logout(){
+
+    sessionStorage.removeItem(
+        "mtech_admin"
+    );
+
+
+    location.reload();
+
+}
+
+
+
+/* =========================
+   VÉRIFIER SESSION
+========================= */
+
+if(
+    sessionStorage.getItem(
+        "mtech_admin"
+    ) === "1"
+){
+
+    showAdmin();
+
+}
+
+</script>
+
+
+</body>
+
+</html>
