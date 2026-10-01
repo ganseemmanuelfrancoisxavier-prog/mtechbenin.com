@@ -1,339 +1,876 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="viewport"
+content="width=device-width,initial-scale=1.0">
 
 <title>MTECHBENIN — Administration</title>
 
 <style>
+
+/* =====================================================
+   RESET
+===================================================== */
+
 *{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
+margin:0;
+padding:0;
+box-sizing:border-box;
 }
 
 body{
-    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
-    background:#f5f5f7;
-    color:#111;
+font-family:
+-apple-system,
+BlinkMacSystemFont,
+"Segoe UI",
+Roboto,
+Arial,
+sans-serif;
+
+background:#f5f5f7;
+color:#111;
+
+-webkit-font-smoothing:antialiased;
 }
 
 button,
-input{
-    font:inherit;
+input,
+select,
+textarea{
+font:inherit;
 }
 
 
-/* =========================
+/* =====================================================
    CONNEXION
-========================= */
+===================================================== */
 
 .login{
-    min-height:100vh;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    padding:20px;
+min-height:100vh;
+
+display:flex;
+align-items:center;
+justify-content:center;
+
+padding:20px;
 }
 
 .login-card{
-    width:min(420px,100%);
-    background:#fff;
-    border-radius:24px;
-    padding:36px;
-    box-shadow:0 20px 60px rgba(0,0,0,.08);
+width:min(420px,100%);
+
+background:#fff;
+
+border-radius:24px;
+
+padding:36px;
+
+box-shadow:
+0 20px 60px rgba(0,0,0,.08);
 }
 
 .logo{
-    font-size:27px;
-    font-weight:800;
-    letter-spacing:-1px;
+font-size:27px;
+font-weight:800;
+letter-spacing:-1px;
 }
 
 .muted{
-    color:#777;
-    font-size:14px;
+color:#777;
+font-size:14px;
 }
 
 .login h1{
-    font-size:25px;
-    margin:28px 0 22px;
+font-size:25px;
+margin:28px 0 22px;
 }
 
 label{
-    display:block;
-    font-size:14px;
-    font-weight:600;
-    margin:16px 0 7px;
+display:block;
+
+font-size:14px;
+font-weight:600;
+
+margin:16px 0 7px;
 }
 
-input{
-    width:100%;
-    padding:14px;
-    border:1px solid #ddd;
-    border-radius:12px;
-    outline:none;
+input,
+select,
+textarea{
+
+width:100%;
+
+padding:13px 14px;
+
+border:1px solid #ddd;
+
+border-radius:11px;
+
+outline:none;
+
+background:#fff;
 }
 
-input:focus{
-    border-color:#111;
+input:focus,
+select:focus,
+textarea:focus{
+
+border-color:#111;
+}
+
+textarea{
+
+min-height:100px;
+
+resize:vertical;
 }
 
 .primary{
-    width:100%;
-    border:0;
-    background:#111;
-    color:#fff;
-    padding:15px;
-    border-radius:12px;
-    font-weight:700;
-    margin-top:22px;
-    cursor:pointer;
+
+width:100%;
+
+border:0;
+
+background:#111;
+
+color:#fff;
+
+padding:15px;
+
+border-radius:12px;
+
+font-weight:700;
+
+margin-top:22px;
+
+cursor:pointer;
 }
 
 .primary:hover{
-    background:#333;
+background:#333;
 }
 
 .error{
-    color:#d00000;
-    font-size:13px;
-    margin-top:12px;
-    display:none;
+
+color:#d00000;
+
+font-size:13px;
+
+margin-top:12px;
+
+display:none;
 }
 
 
-/* =========================
+/* =====================================================
    ADMIN
-========================= */
+===================================================== */
 
 .admin{
-    display:none;
-    min-height:100vh;
+display:none;
+min-height:100vh;
 }
 
 
-/* SIDEBAR */
+/* =====================================================
+   SIDEBAR
+===================================================== */
 
 .sidebar{
-    position:fixed;
-    left:0;
-    top:0;
-    bottom:0;
-    width:250px;
-    background:#111;
-    color:#fff;
-    padding:28px 18px;
+
+position:fixed;
+
+left:0;
+top:0;
+bottom:0;
+
+width:250px;
+
+background:#111;
+
+color:#fff;
+
+padding:28px 18px;
+
+z-index:100;
 }
 
 .sidebar .brand{
-    font-size:22px;
-    font-weight:800;
-    padding:0 12px 30px;
+
+font-size:22px;
+
+font-weight:800;
+
+padding:
+0 12px 30px;
 }
 
 .nav button{
-    display:block;
-    width:100%;
-    border:0;
-    background:transparent;
-    color:#aaa;
-    text-align:left;
-    padding:14px 12px;
-    border-radius:10px;
-    cursor:pointer;
-    margin-bottom:4px;
+
+display:block;
+
+width:100%;
+
+border:0;
+
+background:transparent;
+
+color:#aaa;
+
+text-align:left;
+
+padding:14px 12px;
+
+border-radius:10px;
+
+cursor:pointer;
+
+margin-bottom:4px;
+
+transition:.2s;
 }
 
 .nav button:hover,
 .nav button.active{
-    background:#242424;
-    color:#fff;
+
+background:#242424;
+
+color:#fff;
 }
 
 .logout{
-    position:absolute;
-    left:18px;
-    right:18px;
-    bottom:25px;
 
-    border:1px solid #444;
+position:absolute;
 
-    background:transparent;
+left:18px;
+right:18px;
+bottom:25px;
 
-    color:#fff;
+border:1px solid #444;
 
-    padding:12px;
+background:transparent;
 
-    border-radius:10px;
+color:#fff;
 
-    cursor:pointer;
+padding:12px;
+
+border-radius:10px;
+
+cursor:pointer;
 }
 
 .logout:hover{
-    background:#fff;
-    color:#111;
+
+background:#fff;
+
+color:#111;
 }
 
 
-/* CONTENU */
+/* =====================================================
+   MAIN
+===================================================== */
 
 .main{
-    margin-left:250px;
-    padding:35px;
+
+margin-left:250px;
+
+padding:35px;
 }
 
 .top{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    margin-bottom:30px;
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+margin-bottom:30px;
 }
 
 .top h1{
-    margin:0 0 5px;
-    font-size:30px;
+
+font-size:30px;
+
+margin-bottom:5px;
 }
 
 
-/* STATISTIQUES */
+/* =====================================================
+   PAGES
+===================================================== */
+
+.page{
+display:none;
+}
+
+.page.active{
+display:block;
+}
+
+
+/* =====================================================
+   STATS
+===================================================== */
 
 .grid{
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
-    gap:18px;
+
+display:grid;
+
+grid-template-columns:
+repeat(4,1fr);
+
+gap:18px;
 }
 
 .card{
-    background:#fff;
-    border-radius:18px;
-    padding:22px;
-    box-shadow:0 8px 30px rgba(0,0,0,.04);
+
+background:#fff;
+
+border-radius:18px;
+
+padding:22px;
+
+box-shadow:
+0 8px 30px rgba(0,0,0,.04);
 }
 
 .card small{
-    color:#777;
+color:#777;
 }
 
 .card strong{
-    display:block;
-    font-size:28px;
-    margin-top:10px;
+
+display:block;
+
+font-size:28px;
+
+margin-top:10px;
 }
 
 
-/* PANELS */
+/* =====================================================
+   PANEL
+===================================================== */
 
 .panel{
-    background:#fff;
-    border-radius:18px;
-    padding:22px;
-    margin-top:22px;
+
+background:#fff;
+
+border-radius:18px;
+
+padding:22px;
+
+margin-top:22px;
 }
 
 .panel h2{
-    font-size:19px;
-    margin-bottom:18px;
+
+font-size:19px;
+
+margin-bottom:18px;
 }
 
 
-/* TABLE */
+/* =====================================================
+   TOOLBAR
+===================================================== */
+
+.toolbar{
+
+display:flex;
+
+gap:12px;
+
+justify-content:space-between;
+
+align-items:center;
+
+margin-bottom:20px;
+}
+
+.search{
+
+max-width:350px;
+}
+
+.add-button{
+
+background:#111;
+
+color:#fff;
+
+border:0;
+
+padding:12px 18px;
+
+border-radius:10px;
+
+cursor:pointer;
+
+font-weight:700;
+}
+
+.add-button:hover{
+
+background:#333;
+}
+
+
+/* =====================================================
+   PRODUCTS
+===================================================== */
+
+.products-grid{
+
+display:grid;
+
+grid-template-columns:
+repeat(3,1fr);
+
+gap:20px;
+}
+
+.product-card{
+
+background:#fff;
+
+border-radius:18px;
+
+overflow:hidden;
+
+box-shadow:
+0 8px 30px rgba(0,0,0,.05);
+}
+
+.product-image{
+
+height:210px;
+
+background:#f1f1f1;
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
+overflow:hidden;
+}
+
+.product-image img{
+
+width:100%;
+height:100%;
+
+object-fit:cover;
+}
+
+.no-image{
+
+font-size:55px;
+
+opacity:.2;
+}
+
+.product-info{
+
+padding:20px;
+}
+
+.product-info h3{
+
+font-size:18px;
+
+margin-bottom:8px;
+}
+
+.product-price{
+
+color:#e50914;
+
+font-weight:800;
+
+margin-bottom:6px;
+}
+
+.product-stock{
+
+color:#777;
+
+font-size:13px;
+
+margin-bottom:18px;
+}
+
+.product-actions{
+
+display:flex;
+
+gap:8px;
+}
+
+.edit{
+
+flex:1;
+
+border:0;
+
+background:#111;
+
+color:#fff;
+
+padding:10px;
+
+border-radius:9px;
+
+cursor:pointer;
+}
+
+.delete{
+
+flex:1;
+
+border:0;
+
+background:#eee;
+
+color:#c00;
+
+padding:10px;
+
+border-radius:9px;
+
+cursor:pointer;
+}
+
+
+/* =====================================================
+   MODAL
+===================================================== */
+
+.modal{
+
+position:fixed;
+
+inset:0;
+
+background:
+rgba(0,0,0,.55);
+
+display:none;
+
+align-items:center;
+
+justify-content:center;
+
+padding:20px;
+
+z-index:1000;
+}
+
+.modal.open{
+
+display:flex;
+}
+
+.modal-box{
+
+width:min(520px,100%);
+
+max-height:90vh;
+
+overflow-y:auto;
+
+background:#fff;
+
+border-radius:22px;
+
+padding:28px;
+}
+
+.modal-header{
+
+display:flex;
+
+align-items:center;
+
+justify-content:space-between;
+
+margin-bottom:20px;
+}
+
+.modal-header h2{
+
+font-size:22px;
+}
+
+.close{
+
+border:0;
+
+background:#eee;
+
+width:36px;
+height:36px;
+
+border-radius:50%;
+
+font-size:22px;
+
+cursor:pointer;
+}
+
+.form-group{
+margin-bottom:14px;
+}
+
+.form-actions{
+
+display:flex;
+
+gap:10px;
+
+margin-top:20px;
+}
+
+.cancel{
+
+flex:1;
+
+border:0;
+
+background:#eee;
+
+padding:13px;
+
+border-radius:10px;
+
+cursor:pointer;
+}
+
+.save{
+
+flex:1;
+
+border:0;
+
+background:#111;
+
+color:#fff;
+
+padding:13px;
+
+border-radius:10px;
+
+cursor:pointer;
+}
+
+
+/* =====================================================
+   TABLE
+===================================================== */
+
+.table-container{
+
+overflow-x:auto;
+}
 
 .table{
-    width:100%;
-    border-collapse:collapse;
+
+width:100%;
+
+border-collapse:collapse;
 }
 
 .table th,
 .table td{
-    text-align:left;
-    padding:14px 8px;
-    border-bottom:1px solid #eee;
-    font-size:14px;
+
+text-align:left;
+
+padding:14px 8px;
+
+border-bottom:
+1px solid #eee;
+
+font-size:14px;
 }
 
 .badge{
-    padding:6px 10px;
-    border-radius:20px;
-    background:#eaf7ed;
-    color:#16833b;
-    font-size:12px;
-    font-weight:700;
+
+display:inline-block;
+
+padding:6px 10px;
+
+border-radius:20px;
+
+background:#eaf7ed;
+
+color:#16833b;
+
+font-size:12px;
+
+font-weight:700;
 }
 
 
-/* =========================
+/* =====================================================
+   EMPTY
+===================================================== */
+
+.empty{
+
+text-align:center;
+
+padding:60px 20px;
+
+color:#888;
+}
+
+
+/* =====================================================
    MOBILE
-========================= */
+===================================================== */
 
-@media(max-width:800px){
+@media(max-width:900px){
 
-    .sidebar{
-        position:static;
-        width:100%;
-        min-height:auto;
-        padding:20px;
-    }
+.sidebar{
 
-    .sidebar .brand{
-        padding-bottom:18px;
-    }
+position:static;
 
-    .nav{
-        display:flex;
-        overflow-x:auto;
-        gap:5px;
-    }
+width:100%;
 
-    .nav button{
-        white-space:nowrap;
-        width:auto;
-    }
+min-height:auto;
 
-    .logout{
-        position:static;
-        width:100%;
-        margin-top:12px;
-    }
+padding:20px;
+}
 
-    .main{
-        margin-left:0;
-        padding:20px;
-    }
+.sidebar .brand{
 
-    .grid{
-        grid-template-columns:repeat(2,1fr);
-    }
+padding-bottom:18px;
+}
+
+.nav{
+
+display:flex;
+
+overflow-x:auto;
+
+gap:5px;
+}
+
+.nav button{
+
+white-space:nowrap;
+
+width:auto;
+}
+
+.logout{
+
+position:static;
+
+width:100%;
+
+margin-top:12px;
+}
+
+.main{
+
+margin-left:0;
+
+padding:20px;
+}
+
+.grid{
+
+grid-template-columns:
+repeat(2,1fr);
+}
+
+.products-grid{
+
+grid-template-columns:
+repeat(2,1fr);
+}
+
 }
 
 
-@media(max-width:480px){
+@media(max-width:550px){
 
-    .login-card{
-        padding:28px 22px;
-    }
+.grid{
 
-    .grid{
-        grid-template-columns:1fr 1fr;
-    }
-
-    .card{
-        padding:18px;
-    }
-
-    .card strong{
-        font-size:22px;
-    }
-
-    .table{
-        min-width:600px;
-    }
-
-    .panel{
-        overflow-x:auto;
-    }
+grid-template-columns:
+repeat(2,1fr);
 }
+
+.products-grid{
+
+grid-template-columns:1fr;
+}
+
+.toolbar{
+
+flex-direction:column;
+
+align-items:stretch;
+}
+
+.search{
+
+max-width:none;
+}
+
+.top h1{
+
+font-size:25px;
+}
+
+}
+
+
+/* =====================================================
+   TOAST
+===================================================== */
+
+.toast{
+
+position:fixed;
+
+right:20px;
+bottom:20px;
+
+background:#111;
+
+color:#fff;
+
+padding:14px 20px;
+
+border-radius:12px;
+
+z-index:2000;
+
+opacity:0;
+
+transform:translateY(20px);
+
+pointer-events:none;
+
+transition:.3s;
+}
+
+.toast.show{
+
+opacity:1;
+
+transform:translateY(0);
+}
+
 </style>
 
 </head>
@@ -343,321 +880,872 @@ input:focus{
 
 
 <!-- =====================================================
-     PAGE DE CONNEXION
+     LOGIN
 ===================================================== -->
 
-<section class="login" id="login">
+<section
+class="login"
+id="login"
+>
 
-    <div class="login-card">
+<div class="login-card">
 
-        <div class="logo">
-            MTECHBENIN
-        </div>
+<div class="logo">
+MTECHBENIN
+</div>
 
-        <div class="muted">
-            Espace d'administration
-        </div>
+<div class="muted">
+Espace d'administration
+</div>
 
+<h1>
+Connexion
+</h1>
 
-        <h1>
-            Connexion
-        </h1>
+<label>
+Email
+</label>
 
+<input
+id="email"
+type="email"
+placeholder="admin@mtechbenin.com"
+>
 
-        <label for="email">
-            Email
-        </label>
+<label>
+Mot de passe
+</label>
 
-        <input
-            id="email"
-            type="email"
-            placeholder="admin@mtechbenin.com"
-        >
+<input
+id="password"
+type="password"
+placeholder="••••••••"
+>
 
+<button
+class="primary"
+onclick="login()"
+>
+Se connecter
+</button>
 
-        <label for="password">
-            Mot de passe
-        </label>
+<div
+class="error"
+id="error"
+>
+Identifiants incorrects.
+</div>
 
-        <input
-            id="password"
-            type="password"
-            placeholder="••••••••"
-        >
-
-
-        <button
-            class="primary"
-            onclick="login()"
-        >
-            Se connecter
-        </button>
-
-
-        <div
-            class="error"
-            id="error"
-        >
-            Identifiants incorrects.
-        </div>
-
-    </div>
+</div>
 
 </section>
 
 
 
 <!-- =====================================================
-     ADMINISTRATION
+     ADMIN
 ===================================================== -->
 
 <section
-    class="admin"
-    id="admin"
+class="admin"
+id="admin"
 >
 
 
-    <!-- SIDEBAR -->
+<!-- SIDEBAR -->
 
-    <aside class="sidebar">
+<aside class="sidebar">
 
-        <div class="brand">
-            MTECHBENIN
-        </div>
+<div class="brand">
+MTECHBENIN
+</div>
 
 
-        <div class="nav">
+<div class="nav">
 
-            <button
-                class="active"
-            >
-                📊 Tableau de bord
-            </button>
 
+<button
+class="active"
+onclick="showPage('dashboard',this)"
+>
+📊 Tableau de bord
+</button>
 
-            <button>
-                📦 Produits
-            </button>
 
+<button
+onclick="showPage('products',this)"
+>
+📦 Produits
+</button>
 
-            <button>
-                🛒 Commandes
-            </button>
 
+<button
+onclick="showPage('orders',this)"
+>
+🛒 Commandes
+</button>
 
-            <button>
-                📺 Abonnements
-            </button>
 
+<button
+onclick="showPage('subscriptions',this)"
+>
+📺 Abonnements
+</button>
 
-            <button>
-                🔧 Réparations
-            </button>
 
+<button
+onclick="showPage('repairs',this)"
+>
+🔧 Réparations
+</button>
 
-            <button>
-                👥 Clients
-            </button>
 
+<button
+onclick="showPage('customers',this)"
+>
+👥 Clients
+</button>
 
-            <button>
-                ⚙️ Paramètres
-            </button>
 
-        </div>
+<button
+onclick="showPage('settings',this)"
+>
+⚙️ Paramètres
+</button>
 
 
-        <button
-            class="logout"
-            onclick="logout()"
-        >
-            Se déconnecter
-        </button>
+</div>
 
-    </aside>
 
+<button
+class="logout"
+onclick="logout()"
+>
+Se déconnecter
+</button>
 
+</aside>
 
-    <!-- CONTENU -->
 
-    <main class="main">
 
+<!-- MAIN -->
 
-        <div class="top">
+<main class="main">
 
-            <div>
 
-                <h1>
-                    Tableau de bord
-                </h1>
+<!-- =====================================================
+     DASHBOARD
+===================================================== -->
 
-                <div class="muted">
-                    Bienvenue dans l'administration MTECHBENIN.
-                </div>
+<section
+class="page active"
+id="dashboard"
+>
 
-            </div>
+<div class="top">
 
-        </div>
+<div>
 
+<h1>
+Tableau de bord
+</h1>
 
+<div class="muted">
+Bienvenue dans l'administration MTECHBENIN.
+</div>
 
-        <!-- STATISTIQUES -->
+</div>
 
-        <div class="grid">
+</div>
 
 
-            <div class="card">
+<div class="grid">
 
-                <small>
-                    Commandes
-                </small>
 
-                <strong>
-                    0
-                </strong>
+<div class="card">
 
-            </div>
+<small>
+Commandes
+</small>
 
+<strong>
+0
+</strong>
 
-            <div class="card">
+</div>
 
-                <small>
-                    Produits
-                </small>
 
-                <strong>
-                    0
-                </strong>
+<div class="card">
 
-            </div>
+<small>
+Produits
+</small>
 
+<strong id="dashboardProducts">
+0
+</strong>
 
-            <div class="card">
+</div>
 
-                <small>
-                    Clients
-                </small>
 
-                <strong>
-                    0
-                </strong>
+<div class="card">
 
-            </div>
+<small>
+Clients
+</small>
 
+<strong>
+0
+</strong>
 
-            <div class="card">
+</div>
 
-                <small>
-                    Chiffre d'affaires
-                </small>
 
-                <strong>
-                    0 F
-                </strong>
+<div class="card">
 
-            </div>
+<small>
+Chiffre d'affaires
+</small>
 
+<strong>
+0 F
+</strong>
 
-        </div>
+</div>
 
 
+</div>
 
-        <!-- COMMANDES -->
 
-        <div class="panel">
+<div class="panel">
 
-            <h2>
-                Dernières commandes
-            </h2>
+<h2>
+Bienvenue
+</h2>
 
+<p class="muted">
 
-            <table class="table">
+Utilise le menu à gauche pour gérer
+les produits, commandes, abonnements,
+réparations et clients.
 
-                <thead>
+</p>
 
-                    <tr>
-
-                        <th>
-                            Commande
-                        </th>
-
-                        <th>
-                            Client
-                        </th>
-
-                        <th>
-                            Total
-                        </th>
-
-                        <th>
-                            Statut
-                        </th>
-
-                    </tr>
-
-                </thead>
-
-
-                <tbody>
-
-                    <tr>
-
-                        <td>
-                            #0001
-                        </td>
-
-                        <td>
-                            —
-                        </td>
-
-                        <td>
-                            —
-                        </td>
-
-                        <td>
-
-                            <span class="badge">
-                                Aucune commande
-                            </span>
-
-                        </td>
-
-                    </tr>
-
-                </tbody>
-
-            </table>
-
-        </div>
-
-
-
-        <!-- INFORMATION -->
-
-        <div class="panel">
-
-            <h2>
-                Administration MTECHBENIN
-            </h2>
-
-            <p class="muted">
-
-                Cette interface constitue la base du
-                tableau de bord MTECHBENIN.
-
-                Les prochaines fonctionnalités pourront
-                permettre de gérer les produits,
-                commandes, abonnements, clients,
-                réparations et paiements.
-
-            </p>
-
-        </div>
-
-
-    </main>
+</div>
 
 </section>
+
+
+
+<!-- =====================================================
+     PRODUITS
+===================================================== -->
+
+<section
+class="page"
+id="products"
+>
+
+<div class="top">
+
+<div>
+
+<h1>
+Produits
+</h1>
+
+<div class="muted">
+Gérer les produits de votre boutique.
+</div>
+
+</div>
+
+<button
+class="add-button"
+onclick="openProductModal()"
+>
++ Ajouter un produit
+</button>
+
+</div>
+
+
+<div class="toolbar">
+
+<input
+class="search"
+id="productSearch"
+placeholder="🔎 Rechercher un produit..."
+oninput="renderProducts()"
+>
+
+</div>
+
+
+<div
+class="products-grid"
+id="productsGrid"
+>
+</div>
+
+</section>
+
+
+
+<!-- =====================================================
+     COMMANDES
+===================================================== -->
+
+<section
+class="page"
+id="orders"
+>
+
+<div class="top">
+
+<div>
+
+<h1>
+Commandes
+</h1>
+
+<div class="muted">
+Toutes les commandes de vos clients.
+</div>
+
+</div>
+
+</div>
+
+
+<div class="panel">
+
+<div class="empty">
+
+🛒
+
+<h2>
+Aucune commande
+</h2>
+
+<p>
+Les commandes de vos clients
+apparaîtront ici.
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- =====================================================
+     ABONNEMENTS
+===================================================== -->
+
+<section
+class="page"
+id="subscriptions"
+>
+
+<div class="top">
+
+<div>
+
+<h1>
+Abonnements
+</h1>
+
+<div class="muted">
+Gérer vos abonnements digitaux.
+</div>
+
+</div>
+
+</div>
+
+
+<div class="panel">
+
+<h2>
+Services disponibles
+</h2>
+
+<table class="table">
+
+<thead>
+
+<tr>
+
+<th>
+Service
+</th>
+
+<th>
+Prix
+</th>
+
+<th>
+Statut
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+<tr>
+
+<td>
+Netflix
+</td>
+
+<td>
+2 000 FCFA
+</td>
+
+<td>
+<span class="badge">
+Actif
+</span>
+</td>
+
+</tr>
+
+
+<tr>
+
+<td>
+Apple Music
+</td>
+
+<td>
+1 500 FCFA
+</td>
+
+<td>
+<span class="badge">
+Actif
+</span>
+</td>
+
+</tr>
+
+
+<tr>
+
+<td>
+Apple TV
+</td>
+
+<td>
+1 500 FCFA
+</td>
+
+<td>
+<span class="badge">
+Actif
+</span>
+</td>
+
+</tr>
+
+
+<tr>
+
+<td>
+Apple Services
+</td>
+
+<td>
+2 500 FCFA
+</td>
+
+<td>
+<span class="badge">
+Actif
+</span>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+
+</div>
+
+</section>
+
+
+
+<!-- =====================================================
+     REPARATIONS
+===================================================== -->
+
+<section
+class="page"
+id="repairs"
+>
+
+<div class="top">
+
+<div>
+
+<h1>
+Réparations
+</h1>
+
+<div class="muted">
+Demandes de réparation.
+</div>
+
+</div>
+
+</div>
+
+
+<div class="panel">
+
+<div class="empty">
+
+🔧
+
+<h2>
+Aucune demande
+</h2>
+
+<p>
+Les demandes de réparation
+apparaîtront ici.
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- =====================================================
+     CLIENTS
+===================================================== -->
+
+<section
+class="page"
+id="customers"
+>
+
+<div class="top">
+
+<div>
+
+<h1>
+Clients
+</h1>
+
+<div class="muted">
+Clients de MTECHBENIN.
+</div>
+
+</div>
+
+</div>
+
+
+<div class="panel">
+
+<div class="empty">
+
+👥
+
+<h2>
+Aucun client
+</h2>
+
+<p>
+Les clients apparaîtront ici
+après leurs premières commandes.
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- =====================================================
+     PARAMETRES
+===================================================== -->
+
+<section
+class="page"
+id="settings"
+>
+
+<div class="top">
+
+<div>
+
+<h1>
+Paramètres
+</h1>
+
+<div class="muted">
+Configuration de votre boutique.
+</div>
+
+</div>
+
+</div>
+
+
+<div class="panel">
+
+<h2>
+Informations de la boutique
+</h2>
+
+
+<div class="form-group">
+
+<label>
+Nom de la boutique
+</label>
+
+<input
+value="MTECHBENIN"
+>
+
+</div>
+
+
+<div class="form-group">
+
+<label>
+Téléphone
+</label>
+
+<input
+value="+229 60 50 63 20"
+>
+
+</div>
+
+
+<div class="form-group">
+
+<label>
+Site internet
+</label>
+
+<input
+value="https://mtechbenin.com"
+>
+
+</div>
+
+
+<button
+class="save"
+onclick="showToast('Paramètres enregistrés')"
+>
+Enregistrer
+</button>
+
+</div>
+
+</section>
+
+
+</main>
+
+</section>
+
+
+
+<!-- =====================================================
+     MODAL PRODUIT
+===================================================== -->
+
+<div
+class="modal"
+id="productModal"
+>
+
+<div class="modal-box">
+
+
+<div class="modal-header">
+
+<h2 id="modalTitle">
+Ajouter un produit
+</h2>
+
+<button
+class="close"
+onclick="closeProductModal()"
+>
+×
+</button>
+
+</div>
+
+
+<input
+type="hidden"
+id="productId"
+>
+
+
+<div class="form-group">
+
+<label>
+Nom du produit
+</label>
+
+<input
+id="productName"
+placeholder="Ex : AirPods Pro"
+>
+
+</div>
+
+
+<div class="form-group">
+
+<label>
+Prix (FCFA)
+</label>
+
+<input
+id="productPrice"
+type="number"
+placeholder="25000"
+>
+
+</div>
+
+
+<div class="form-group">
+
+<label>
+Stock
+</label>
+
+<input
+id="productStock"
+type="number"
+placeholder="10"
+>
+
+</div>
+
+
+<div class="form-group">
+
+<label>
+Catégorie
+</label>
+
+<select id="productCategory">
+
+<option>
+Écouteurs
+</option>
+
+<option>
+Enceintes
+</option>
+
+<option>
+Accessoires
+</option>
+
+<option>
+Smartphones
+</option>
+
+<option>
+Ordinateurs
+</option>
+
+<option>
+Autres
+</option>
+
+</select>
+
+</div>
+
+
+<div class="form-group">
+
+<label>
+URL de l'image
+</label>
+
+<input
+id="productImage"
+placeholder="https://..."
+>
+
+</div>
+
+
+<div class="form-group">
+
+<label>
+Description
+</label>
+
+<textarea
+id="productDescription"
+placeholder="Description du produit..."
+></textarea>
+
+</div>
+
+
+<div class="form-actions">
+
+<button
+class="cancel"
+onclick="closeProductModal()"
+>
+Annuler
+</button>
+
+<button
+class="save"
+onclick="saveProduct()"
+>
+Enregistrer
+</button>
+
+</div>
+
+
+</div>
+
+</div>
+
+
+
+<!-- TOAST -->
+
+<div
+class="toast"
+id="toast"
+>
+Produit enregistré
+</div>
 
 
 
@@ -668,123 +1756,741 @@ input:focus{
 <script>
 
 
-/*
-    IDENTIFIANTS DE DÉMONSTRATION
-
-    ⚠️ Cette connexion est une maquette.
-    Elle ne doit pas être utilisée comme système
-    de sécurité pour une vraie boutique.
-*/
+/* =====================================================
+   IDENTIFIANTS
+===================================================== */
 
 const ADMIN_EMAIL =
-    "admin@mtechbenin.com";
+"admin@mtechbenin.com";
 
 const ADMIN_PASSWORD =
-    "MTECH2026";
+"MTECH2026";
 
 
 
-/* =========================
-   CONNEXION
-========================= */
+/* =====================================================
+   LOGIN
+===================================================== */
 
 function login(){
 
-    const email =
-        document
-        .getElementById("email")
-        .value
-        .trim();
+const email =
+document
+.getElementById("email")
+.value
+.trim();
+
+const password =
+document
+.getElementById("password")
+.value;
+
+const error =
+document
+.getElementById("error");
 
 
-    const password =
-        document
-        .getElementById("password")
-        .value;
+if(
+email === ADMIN_EMAIL &&
+password === ADMIN_PASSWORD
+){
 
+sessionStorage.setItem(
+"mtech_admin",
+"1"
+);
 
-    const error =
-        document
-        .getElementById("error");
+showAdmin();
 
+}
 
-    if(
-        email === ADMIN_EMAIL &&
-        password === ADMIN_PASSWORD
-    ){
+else{
 
-        sessionStorage.setItem(
-            "mtech_admin",
-            "1"
-        );
+error.style.display="block";
 
-
-        showAdmin();
-
-    }
-
-    else{
-
-        error.style.display =
-            "block";
-
-    }
+}
 
 }
 
 
-
-/* =========================
-   AFFICHER ADMIN
-========================= */
 
 function showAdmin(){
 
-    document
-        .getElementById("login")
-        .style.display =
-        "none";
+document
+.getElementById("login")
+.style.display="none";
 
+document
+.getElementById("admin")
+.style.display="block";
 
-    document
-        .getElementById("admin")
-        .style.display =
-        "block";
+renderProducts();
 
 }
 
 
-
-/* =========================
-   DÉCONNEXION
-========================= */
 
 function logout(){
 
-    sessionStorage.removeItem(
-        "mtech_admin"
-    );
+sessionStorage.removeItem(
+"mtech_admin"
+);
 
-
-    location.reload();
+location.reload();
 
 }
 
 
-
-/* =========================
-   VÉRIFIER SESSION
-========================= */
 
 if(
-    sessionStorage.getItem(
-        "mtech_admin"
-    ) === "1"
+sessionStorage.getItem(
+"mtech_admin"
+)==="1"
 ){
 
-    showAdmin();
+showAdmin();
 
 }
+
+
+
+/* =====================================================
+   NAVIGATION
+===================================================== */
+
+function showPage(
+page,
+button
+){
+
+document
+.querySelectorAll(".page")
+.forEach(
+p=>p.classList.remove("active")
+);
+
+
+document
+.getElementById(page)
+.classList.add("active");
+
+
+document
+.querySelectorAll(".nav button")
+.forEach(
+b=>b.classList.remove("active")
+);
+
+
+if(button){
+
+button.classList.add("active");
+
+}
+
+}
+
+
+
+/* =====================================================
+   PRODUITS
+===================================================== */
+
+function getProducts(){
+
+return JSON.parse(
+localStorage.getItem(
+"mtech_products"
+)||"[]"
+);
+
+}
+
+
+
+function saveProducts(products){
+
+localStorage.setItem(
+"mtech_products",
+JSON.stringify(products)
+);
+
+}
+
+
+
+/* =====================================================
+   AFFICHER PRODUITS
+===================================================== */
+
+function renderProducts(){
+
+const grid =
+document.getElementById(
+"productsGrid"
+);
+
+if(!grid) return;
+
+
+const search =
+(
+document
+.getElementById(
+"productSearch"
+)?.value || ""
+)
+.toLowerCase();
+
+
+const products =
+getProducts()
+.filter(
+p=>
+p.name
+.toLowerCase()
+.includes(search)
+);
+
+
+grid.innerHTML="";
+
+
+if(products.length===0){
+
+grid.innerHTML=`
+
+<div
+class="empty"
+style="grid-column:1/-1"
+>
+
+📦
+
+<h2>
+Aucun produit
+</h2>
+
+<p>
+Cliquez sur « Ajouter un produit »
+pour commencer.
+</p>
+
+</div>
+
+`;
+
+}
+else{
+
+products.forEach(
+product=>{
+
+const card =
+document.createElement(
+"article"
+);
+
+card.className=
+"product-card";
+
+
+card.innerHTML=`
+
+<div class="product-image">
+
+${
+product.image
+
+?
+
+`<img
+src="${escapeHTML(product.image)}"
+alt="${escapeHTML(product.name)}"
+onerror="this.style.display='none';this.nextElementSibling.style.display='block';"
+>
+<span
+class="no-image"
+style="display:none"
+>
+📦
+</span>`
+
+:
+
+`<span class="no-image">
+📦
+</span>`
+
+}
+
+</div>
+
+
+<div class="product-info">
+
+<h3>
+${escapeHTML(product.name)}
+</h3>
+
+<div class="product-price">
+${formatPrice(product.price)} FCFA
+</div>
+
+<div class="product-stock">
+Stock : ${product.stock}
+</div>
+
+<div class="product-actions">
+
+<button
+class="edit"
+onclick="editProduct('${product.id}')"
+>
+Modifier
+</button>
+
+<button
+class="delete"
+onclick="deleteProduct('${product.id}')"
+>
+Supprimer
+</button>
+
+</div>
+
+</div>
+
+`;
+
+grid.appendChild(card);
+
+}
+
+);
+
+}
+
+
+const dashboardProducts =
+document.getElementById(
+"dashboardProducts"
+);
+
+if(dashboardProducts){
+
+dashboardProducts.textContent =
+getProducts().length;
+
+}
+
+}
+
+
+
+/* =====================================================
+   PRIX
+===================================================== */
+
+function formatPrice(
+price
+){
+
+return Number(price || 0)
+.toLocaleString(
+"fr-FR"
+);
+
+}
+
+
+
+/* =====================================================
+   ECHAPPEMENT HTML
+===================================================== */
+
+function escapeHTML(
+value
+){
+
+return String(value)
+.replace(/&/g,"&amp;")
+.replace(/</g,"&lt;")
+.replace(/>/g,"&gt;")
+.replace(/"/g,"&quot;")
+.replace(/'/g,"&#039;");
+
+}
+
+
+
+/* =====================================================
+   MODAL
+===================================================== */
+
+function openProductModal(){
+
+document
+.getElementById(
+"productModal"
+)
+.classList.add("open");
+
+
+document
+.getElementById(
+"modalTitle"
+)
+.textContent=
+"Ajouter un produit";
+
+
+clearProductForm();
+
+}
+
+
+
+function closeProductModal(){
+
+document
+.getElementById(
+"productModal"
+)
+.classList.remove("open");
+
+}
+
+
+
+/* =====================================================
+   FORMULAIRE
+===================================================== */
+
+function clearProductForm(){
+
+document
+.getElementById("productId")
+.value="";
+
+document
+.getElementById("productName")
+.value="";
+
+document
+.getElementById("productPrice")
+.value="";
+
+document
+.getElementById("productStock")
+.value="";
+
+document
+.getElementById("productImage")
+.value="";
+
+document
+.getElementById("productDescription")
+.value="";
+
+}
+
+
+
+/* =====================================================
+   ENREGISTRER PRODUIT
+===================================================== */
+
+function saveProduct(){
+
+const id =
+document
+.getElementById("productId")
+.value;
+
+
+const name =
+document
+.getElementById("productName")
+.value
+.trim();
+
+
+const price =
+document
+.getElementById("productPrice")
+.value;
+
+
+const stock =
+document
+.getElementById("productStock")
+.value;
+
+
+const category =
+document
+.getElementById("productCategory")
+.value;
+
+
+const image =
+document
+.getElementById("productImage")
+.value
+.trim();
+
+
+const description =
+document
+.getElementById("productDescription")
+.value
+.trim();
+
+
+if(!name){
+
+alert(
+"Veuillez entrer le nom du produit."
+);
+
+return;
+
+}
+
+
+let products =
+getProducts();
+
+
+if(id){
+
+products =
+products.map(
+p=>{
+
+if(p.id===id){
+
+return {
+
+...p,
+
+name,
+
+price,
+
+stock,
+
+category,
+
+image,
+
+description
+
+};
+
+}
+
+return p;
+
+}
+);
+
+showToast(
+"Produit modifié"
+);
+
+}
+
+else{
+
+products.push({
+
+id:
+Date.now().toString(),
+
+name,
+
+price,
+
+stock,
+
+category,
+
+image,
+
+description
+
+});
+
+showToast(
+"Produit ajouté"
+);
+
+}
+
+
+saveProducts(products);
+
+renderProducts();
+
+closeProductModal();
+
+}
+
+
+
+/* =====================================================
+   MODIFIER
+===================================================== */
+
+function editProduct(
+id
+){
+
+const product =
+getProducts()
+.find(
+p=>p.id===id
+);
+
+if(!product) return;
+
+
+document
+.getElementById(
+"productModal"
+)
+.classList.add("open");
+
+
+document
+.getElementById(
+"modalTitle"
+)
+.textContent=
+"Modifier le produit";
+
+
+document
+.getElementById("productId")
+.value=
+product.id;
+
+
+document
+.getElementById("productName")
+.value=
+product.name;
+
+
+document
+.getElementById("productPrice")
+.value=
+product.price;
+
+
+document
+.getElementById("productStock")
+.value=
+product.stock;
+
+
+document
+.getElementById("productCategory")
+.value=
+product.category;
+
+
+document
+.getElementById("productImage")
+.value=
+product.image || "";
+
+
+document
+.getElementById("productDescription")
+.value=
+product.description || "";
+
+}
+
+
+
+/* =====================================================
+   SUPPRIMER
+===================================================== */
+
+function deleteProduct(
+id
+){
+
+const product =
+getProducts()
+.find(
+p=>p.id===id
+);
+
+if(!product) return;
+
+
+if(
+confirm(
+`Supprimer "${product.name}" ?`
+)
+){
+
+const products =
+getProducts()
+.filter(
+p=>p.id!==id
+);
+
+saveProducts(products);
+
+renderProducts();
+
+showToast(
+"Produit supprimé"
+);
+
+}
+
+}
+
+
+
+/* =====================================================
+   TOAST
+===================================================== */
+
+function showToast(
+message
+){
+
+const toast =
+document.getElementById(
+"toast"
+);
+
+toast.textContent=
+message;
+
+toast.classList.add(
+"show"
+);
+
+setTimeout(
+()=>{
+toast.classList.remove(
+"show"
+);
+},
+2500
+);
+
+}
+
 
 </script>
 
