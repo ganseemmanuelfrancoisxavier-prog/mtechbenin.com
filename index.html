@@ -1,11 +1,30 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
+
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#ffffff">
 
   <title>MTECHBENIN — Technologie au Bénin</title>
+
+  <!-- ================= SUPABASE ================= -->
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+  <script>
+    const SUPABASE_URL = "https://eldbudjhbsnvuffjpiue.supabase.co";
+
+    const SUPABASE_PUBLISHABLE_KEY = "TA_CLÉ_PUBLISHABLE_EXISTANTE";
+
+    window.supabaseClient = window.supabase.createClient(
+      SUPABASE_URL,
+      SUPABASE_PUBLISHABLE_KEY
+    );
+  </script>
+
+  <!-- ================= STYLE ================= -->
 
   <link rel="stylesheet" href="style.css">
 
@@ -15,9 +34,12 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
     rel="stylesheet">
+
 </head>
 
+
 <body>
+
 
 <!-- ================= HEADER ================= -->
 
@@ -29,19 +51,31 @@
 
   <div class="header-actions">
 
-    <button class="icon-btn" onclick="openSearch()">
+    <button
+      class="icon-btn"
+      onclick="openSearch()">
+
       ⌕
+
     </button>
 
-    <button class="icon-btn cart-btn" onclick="openCart()">
+
+    <button
+      class="icon-btn cart-btn"
+      onclick="openCart()">
 
       🛒
 
-      <span class="cart-badge" id="cartBadge">
+      <span
+        class="cart-badge"
+        id="cartBadge">
+
         0
+
       </span>
 
     </button>
+
 
     <button
       class="icon-btn menu-btn"
@@ -60,7 +94,8 @@
 
 <main>
 
-  <!-- HERO -->
+
+  <!-- ================= HERO ================= -->
 
   <section class="hero">
 
@@ -69,27 +104,35 @@
       id="heroMedia">
     </div>
 
+
     <div class="hero-shade"></div>
 
+
     <div class="hero-content">
+
 
       <div
         class="hero-badge"
         id="heroBadge">
 
         <span></span>
+
         BEST SELLER
 
       </div>
 
 
       <h1 id="heroTitle">
+
         JBL Boombox
+
       </h1>
 
 
       <h2 id="heroSubtitle">
+
         4ème Génération
+
       </h2>
 
 
@@ -112,12 +155,14 @@
 
       <div class="hero-actions">
 
+
         <a
           id="heroButton"
           href="#products"
           class="hero-button">
 
           Voir les enceintes
+
           <span>→</span>
 
         </a>
@@ -150,22 +195,32 @@
     class="section"
     id="products">
 
+
     <div class="section-head">
+
 
       <div>
 
         <span class="eyebrow">
+
           MTECHBENIN
+
         </span>
 
+
         <h2>
+
           Nos produits
+
         </h2>
 
       </div>
 
+
       <a href="#products">
+
         Tout voir →
+
       </a>
 
     </div>
@@ -174,6 +229,7 @@
     <div
       class="product-grid"
       id="productGrid">
+
     </div>
 
   </section>
@@ -185,16 +241,23 @@
     class="section"
     id="services">
 
+
     <div class="section-head">
+
 
       <div>
 
         <span class="eyebrow">
+
           NOS SERVICES
+
         </span>
 
+
         <h2>
+
           Bien plus qu'une boutique.
+
         </h2>
 
       </div>
@@ -204,72 +267,106 @@
 
     <div class="service-grid">
 
+
       <article>
 
+
         <div class="service-icon">
+
           📱
+
         </div>
 
+
         <h3>
+
           Vente
+
         </h3>
 
+
         <p>
+
           Smartphones, enceintes,
           accessoires et produits
           technologiques.
+
         </p>
 
       </article>
 
 
+
       <article>
 
+
         <div class="service-icon">
+
           🔧
+
         </div>
 
+
         <h3>
+
           Réparation
+
         </h3>
 
+
         <p>
+
           Réparation de smartphones,
           ordinateurs et appareils
           électroniques.
+
         </p>
 
       </article>
+
 
 
       <article>
 
+
         <div class="service-icon">
+
           💬
+
         </div>
 
+
         <h3>
+
           Assistance
+
         </h3>
 
+
         <p>
+
           Une équipe disponible pour
           vous accompagner avant et
           après l'achat.
+
         </p>
 
       </article>
+
 
     </div>
 
   </section>
 
+
 </main>
+
 
 
 <!-- ================= MENU BAS MOBILE ================= -->
 
 <nav class="bottom-nav">
+
 
   <a
     class="active"
@@ -278,7 +375,9 @@
     <span>⌂</span>
 
     <small>
+
       Accueil
+
     </small>
 
   </a>
@@ -289,7 +388,9 @@
     <span>▱</span>
 
     <small>
+
       Abonnements
+
     </small>
 
   </a>
@@ -300,7 +401,9 @@
     <span>▦</span>
 
     <small>
+
       Produits
+
     </small>
 
   </a>
@@ -311,12 +414,16 @@
     <span>⚒</span>
 
     <small>
+
       Réparation
+
     </small>
 
   </a>
 
+
 </nav>
+
 
 
 <!-- ================= OVERLAY ================= -->
@@ -325,7 +432,9 @@
   class="overlay"
   id="overlay"
   onclick="closeAllPanels()">
+
 </div>
+
 
 
 <!-- ================= PANIER ================= -->
@@ -334,14 +443,22 @@
   class="drawer cart-drawer"
   id="cartDrawer">
 
+
   <div class="drawer-head">
 
+
     <h3>
+
       Mon panier
+
     </h3>
 
-    <button onclick="closeAllPanels()">
+
+    <button
+      onclick="closeAllPanels()">
+
       ×
+
     </button>
 
   </div>
@@ -350,19 +467,27 @@
   <div
     id="cartItems"
     class="drawer-body">
+
   </div>
 
 
   <div class="drawer-foot">
 
+
     <div>
 
+
       <span>
+
         Total
+
       </span>
 
+
       <strong id="cartTotal">
+
         0 FCFA
+
       </strong>
 
     </div>
@@ -376,9 +501,11 @@
 
     </button>
 
+
   </div>
 
 </aside>
+
 
 
 <!-- ================= RECHERCHE ================= -->
@@ -387,14 +514,22 @@
   class="drawer search-drawer"
   id="searchDrawer">
 
+
   <div class="drawer-head">
 
+
     <h3>
+
       Rechercher
+
     </h3>
 
-    <button onclick="closeAllPanels()">
+
+    <button
+      onclick="closeAllPanels()">
+
       ×
+
     </button>
 
   </div>
@@ -402,11 +537,13 @@
 
   <div class="search-wrap">
 
+
     <input
       id="searchInput"
       type="search"
       placeholder="Rechercher un produit..."
       oninput="renderProducts(this.value)">
+
 
   </div>
 
@@ -414,9 +551,12 @@
   <div
     id="searchResults"
     class="drawer-body">
+
   </div>
 
+
 </aside>
+
 
 
 <!-- ================= MENU ================= -->
@@ -425,9 +565,14 @@
   class="mobile-menu-panel"
   id="mobileMenu">
 
-  <button onclick="toggleMenu()">
+
+  <button
+    onclick="toggleMenu()">
+
     ×
+
   </button>
+
 
   <a
     href="#"
@@ -437,6 +582,7 @@
 
   </a>
 
+
   <a
     href="#products"
     onclick="toggleMenu()">
@@ -444,6 +590,7 @@
     Produits
 
   </a>
+
 
   <a
     href="#services"
@@ -453,16 +600,23 @@
 
   </a>
 
+
   <a href="dashboard.html">
 
     Dashboard
 
   </a>
 
+
 </div>
 
 
+
+<!-- ================= JAVASCRIPT ================= -->
+
 <script src="app.js"></script>
 
+
 </body>
+
 </html>
