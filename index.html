@@ -2,12 +2,15 @@
 <html lang="fr">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 
-  <meta name="theme-color" content="#fff">
-  <meta name="description" content="MTECHBENIN — produits technologiques, abonnements et réparation.">
-
+  <meta name="theme-color" content="#ffffff">
   <title>MTECHBENIN — Technologie, accessoires & services</title>
+
+  <meta
+    name="description"
+    content="MTECHBENIN — produits technologiques, abonnements et réparation."
+  >
 
   <link rel="stylesheet" href="style.css">
 </head>
@@ -22,16 +25,28 @@
 
   <div class="header-actions">
 
-    <button class="ico" aria-label="Recherche" onclick="openSearch()">
+    <button
+      class="ico"
+      aria-label="Recherche"
+      onclick="openSearch()"
+    >
       ⌕
     </button>
 
-    <button class="ico cart-trigger" aria-label="Panier" onclick="openCart()">
+    <button
+      class="ico cart-trigger"
+      aria-label="Panier"
+      onclick="openCart()"
+    >
       🛒
       <span id="cartBadge">0</span>
     </button>
 
-    <button class="ico" aria-label="Menu" onclick="toggleMenu()">
+    <button
+      class="ico"
+      aria-label="Menu"
+      onclick="toggleMenu()"
+    >
       ☰
     </button>
 
@@ -40,11 +55,13 @@
 </header>
 
 
-<!-- MENU -->
+<!-- MENU MOBILE -->
 
 <div id="menu" class="menu">
 
-  <a href="#home" onclick="closeMenu()">Accueil</a>
+  <a href="#home" onclick="closeMenu()">
+    Accueil
+  </a>
 
   <a href="#categories" onclick="closeMenu()">
     Catégories
@@ -88,7 +105,8 @@
     </div>
 
     <h1>
-      Elégance -<br>
+      Elégance -
+      <br>
       Performance
     </h1>
 
@@ -98,11 +116,18 @@
 
     <div class="hero-actions">
 
-      <a class="outline-btn" href="#products">
-        Découvrir <b>→</b>
+      <a
+        class="outline-btn"
+        href="#products"
+      >
+        Découvrir
+        <b>→</b>
       </a>
 
-      <a class="light-link" href="#categories">
+      <a
+        class="light-link"
+        href="#categories"
+      >
         Tout voir
       </a>
 
@@ -113,9 +138,12 @@
 </section>
 
 
-<!-- CATÉGORIES -->
+<!-- CATEGORIES -->
 
-<section id="categories" class="section categories">
+<section
+  id="categories"
+  class="section categories"
+>
 
   <div class="kicker">
     CATÉGORIES
@@ -128,7 +156,11 @@
 
   <div class="category-grid">
 
-    <a href="#subscriptions" class="category">
+
+    <a
+      href="#subscriptions"
+      class="category"
+    >
 
       <div class="cat-icon">
         ▱
@@ -141,7 +173,10 @@
     </a>
 
 
-    <a href="#products" class="category">
+    <a
+      href="#products"
+      class="category"
+    >
 
       <div class="cat-icon">
         ⌁
@@ -154,7 +189,10 @@
     </a>
 
 
-    <a href="#products" class="category">
+    <a
+      href="#products"
+      class="category"
+    >
 
       <div class="cat-icon">
         ◇
@@ -167,7 +205,10 @@
     </a>
 
 
-    <a href="#products" class="category">
+    <a
+      href="#products"
+      class="category"
+    >
 
       <div class="cat-icon">
         ♧
@@ -180,7 +221,10 @@
     </a>
 
 
-    <a href="#products" class="category">
+    <a
+      href="#products"
+      class="category"
+    >
 
       <div class="cat-icon">
         ▣
@@ -193,7 +237,10 @@
     </a>
 
 
-    <a href="#products" class="category">
+    <a
+      href="#products"
+      class="category"
+    >
 
       <div class="cat-icon">
         ⌚
@@ -206,7 +253,10 @@
     </a>
 
 
-    <a href="#products" class="category">
+    <a
+      href="#products"
+      class="category"
+    >
 
       <div class="cat-icon">
         ▢
@@ -219,7 +269,10 @@
     </a>
 
 
-    <a href="#products" class="category">
+    <a
+      href="#products"
+      class="category"
+    >
 
       <div class="cat-icon">
         ▯
@@ -231,15 +284,18 @@
 
     </a>
 
+
   </div>
 
 </section>
 
 
-
 <!-- PRODUITS -->
 
-<section id="products" class="section products">
+<section
+  id="products"
+  class="section products"
+>
 
   <div class="section-title-row">
 
@@ -255,8 +311,10 @@
 
     </div>
 
-
-    <button class="see-all" onclick="openSearch()">
+    <button
+      class="see-all"
+      onclick="openSearch()"
+    >
       Rechercher
     </button>
 
@@ -290,21 +348,17 @@
 
       </div>
 
-
       <span class="stock">
         En stock
       </span>
-
 
       <h3>
         AirPods Pro 2
       </h3>
 
-
       <div class="price">
         8 000 FCFA
       </div>
-
 
       <button
         class="buy"
@@ -314,7 +368,6 @@
       </button>
 
     </article>
-
 
 
     <!-- BOSE -->
@@ -345,16 +398,13 @@
 
       </div>
 
-
       <span class="stock">
         En stock
       </span>
 
-
       <h3>
         Bose QuietComfort Ultra
       </h3>
-
 
       <div class="price">
 
@@ -366,7 +416,6 @@
 
       </div>
 
-
       <button
         class="buy"
         onclick="add('Bose QuietComfort Ultra',13500)"
@@ -375,7 +424,6 @@
       </button>
 
     </article>
-
 
 
     <!-- AIRPODS PRO 3 -->
@@ -402,21 +450,17 @@
 
       </div>
 
-
       <span class="stock">
         En stock
       </span>
-
 
       <h3>
         AirPods Pro 3
       </h3>
 
-
       <div class="price">
         12 000 FCFA
       </div>
-
 
       <button
         class="buy"
@@ -426,7 +470,6 @@
       </button>
 
     </article>
-
 
 
     <!-- AIRPODS 4 -->
@@ -453,21 +496,17 @@
 
       </div>
 
-
       <span class="stock">
         En stock
       </span>
-
 
       <h3>
         AirPods 4
       </h3>
 
-
       <div class="price">
         7 500 FCFA
       </div>
-
 
       <button
         class="buy"
@@ -478,15 +517,18 @@
 
     </article>
 
+
   </div>
 
 </section>
 
 
-
 <!-- ABONNEMENTS -->
 
-<section id="subscriptions" class="subscriptions">
+<section
+  id="subscriptions"
+  class="subscriptions"
+>
 
   <div class="sub-heading">
 
@@ -501,7 +543,6 @@
       </h2>
 
     </div>
-
 
     <a href="#subscriptions">
       Voir tout →
@@ -533,7 +574,11 @@
         </p>
 
         <div class="sub-price">
-          Dès <b>1 500 FCFA</b>/mois
+          Dès
+          <b>
+            1 500 FCFA
+          </b>
+          /mois
         </div>
 
         <button
@@ -545,7 +590,6 @@
       </div>
 
     </article>
-
 
 
     <!-- APPLE TV -->
@@ -568,7 +612,11 @@
         </p>
 
         <div class="sub-price">
-          Dès <b>1 500 FCFA</b>/mois
+          Dès
+          <b>
+            1 500 FCFA
+          </b>
+          /mois
         </div>
 
         <button
@@ -580,7 +628,6 @@
       </div>
 
     </article>
-
 
 
     <!-- PACK -->
@@ -598,7 +645,10 @@
         </p>
 
         <div class="sub-price">
-          À partir de <b>2 500 FCFA</b>
+          À partir de
+          <b>
+            2 500 FCFA
+          </b>
         </div>
 
         <button
@@ -611,10 +661,10 @@
 
     </article>
 
+
   </div>
 
 </section>
-
 
 
 <!-- ANNONCE -->
@@ -630,10 +680,12 @@
 </section>
 
 
-
 <!-- RÉPARATION -->
 
-<section id="repair" class="repair">
+<section
+  id="repair"
+  class="repair"
+>
 
   <div class="repair-inner">
 
@@ -650,7 +702,6 @@
       Décris ton problème et contacte directement MTECHBENIN.
     </p>
 
-
     <a
       class="repair-button"
       href="https://wa.me/22960506320?text=Bonjour%20MTECHBENIN,%20je%20souhaite%20une%20réparation"
@@ -663,10 +714,12 @@
 </section>
 
 
-
 <!-- CONTACT -->
 
-<section id="contact" class="contact section">
+<section
+  id="contact"
+  class="contact section"
+>
 
   <div class="kicker">
     MTECHBENIN
@@ -677,7 +730,8 @@
   </h2>
 
   <p>
-    Une question sur un produit, une commande ou une réparation ?
+    Une question sur un produit,
+    une commande ou une réparation ?
   </p>
 
   <a
@@ -692,8 +746,7 @@
 </main>
 
 
-
-<!-- RETOUR EN HAUT -->
+<!-- BOUTON RETOUR EN HAUT -->
 
 <button
   class="top"
@@ -703,8 +756,7 @@
 </button>
 
 
-
-<!-- NAVIGATION MOBILE -->
+<!-- BARRE DE NAVIGATION MOBILE -->
 
 <nav class="bottom">
 
@@ -717,18 +769,15 @@
     <i></i>
   </a>
 
-
   <a href="#subscriptions">
     <span>▱</span>
     <b>Abonnements</b>
   </a>
 
-
   <a href="#products">
     <span>▦</span>
     <b>Produits</b>
   </a>
-
 
   <a href="#repair">
     <span>⚒</span>
@@ -736,7 +785,6 @@
   </a>
 
 </nav>
-
 
 
 <!-- RECHERCHE -->
@@ -773,10 +821,12 @@
 </div>
 
 
-
 <!-- PANIER -->
 
-<aside id="cart" class="cart">
+<aside
+  id="cart"
+  class="cart"
+>
 
   <div class="cart-title">
 
@@ -790,9 +840,7 @@
 
   </div>
 
-
   <div id="cartItems"></div>
-
 
   <div class="cart-total">
 
@@ -803,7 +851,6 @@
     </strong>
 
   </div>
-
 
   <a
     id="wa"
@@ -816,6 +863,7 @@
 </aside>
 
 
+<!-- JAVASCRIPT -->
 
 <script src="script.js"></script>
 
