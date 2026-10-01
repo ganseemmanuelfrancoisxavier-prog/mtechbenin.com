@@ -1,538 +1,468 @@
 <!DOCTYPE html>
 <html lang="fr">
-
 <head>
-    <meta charset="UTF-8">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#ffffff">
 
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
+  <title>MTECHBENIN — Technologie au Bénin</title>
 
-    <title>MTECHBENIN — La technologie autrement.</title>
+  <link rel="stylesheet" href="style.css">
 
-    <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet">
 </head>
 
 <body>
 
-    <!-- ================= HEADER ================= -->
+<!-- ================= HEADER ================= -->
 
-    <header class="header">
+<header class="site-header">
 
-        <a href="#" class="logo">
-            MTECHBENIN
+  <a href="index.html" class="brand">
+    MTECHBENIN
+  </a>
+
+  <div class="header-actions">
+
+    <button class="icon-btn" onclick="openSearch()">
+      ⌕
+    </button>
+
+    <button class="icon-btn cart-btn" onclick="openCart()">
+
+      🛒
+
+      <span class="cart-badge" id="cartBadge">
+        0
+      </span>
+
+    </button>
+
+    <button
+      class="icon-btn menu-btn"
+      onclick="toggleMenu()">
+
+      ☰
+
+    </button>
+
+  </div>
+
+</header>
+
+
+<!-- ================= SITE ================= -->
+
+<main>
+
+  <!-- HERO -->
+
+  <section class="hero">
+
+    <div
+      class="hero-media"
+      id="heroMedia">
+    </div>
+
+    <div class="hero-shade"></div>
+
+    <div class="hero-content">
+
+      <div
+        class="hero-badge"
+        id="heroBadge">
+
+        <span></span>
+        BEST SELLER
+
+      </div>
+
+
+      <h1 id="heroTitle">
+        JBL Boombox
+      </h1>
+
+
+      <h2 id="heroSubtitle">
+        4ème Génération
+      </h2>
+
+
+      <p id="heroDescription">
+
+        Son puissant, basses profondes.
+        La référence des enceintes Bluetooth au Bénin.
+
+      </p>
+
+
+      <div
+        class="hero-tag"
+        id="heroTag">
+
+        Authentique
+
+      </div>
+
+
+      <div class="hero-actions">
+
+        <a
+          id="heroButton"
+          href="#products"
+          class="hero-button">
+
+          Voir les enceintes
+          <span>→</span>
+
         </a>
 
-        <nav class="navigation">
 
-            <a href="#accueil">
-                Accueil
-            </a>
+        <a
+          href="#products"
+          class="hero-all">
 
-            <a href="#boutique">
-                Boutique
-            </a>
+          Tout voir
 
-            <a href="#categories">
-                Catégories
-            </a>
+        </a>
 
-            <a href="#services">
-                Services
-            </a>
+      </div>
 
-            <a href="#contact">
-                Contact
-            </a>
+    </div>
 
-        </nav>
 
-        <div class="header-icons">
+    <div
+      class="hero-dots"
+      id="heroDots">
+    </div>
 
-            <button aria-label="Recherche">
-                ⌕
-            </button>
+  </section>
 
-            <button aria-label="Panier">
-                🛒
-            </button>
 
+  <!-- ================= PRODUITS ================= -->
+
+  <section
+    class="section"
+    id="products">
+
+    <div class="section-head">
+
+      <div>
+
+        <span class="eyebrow">
+          MTECHBENIN
+        </span>
+
+        <h2>
+          Nos produits
+        </h2>
+
+      </div>
+
+      <a href="#products">
+        Tout voir →
+      </a>
+
+    </div>
+
+
+    <div
+      class="product-grid"
+      id="productGrid">
+    </div>
+
+  </section>
+
+
+  <!-- ================= SERVICES ================= -->
+
+  <section
+    class="section"
+    id="services">
+
+    <div class="section-head">
+
+      <div>
+
+        <span class="eyebrow">
+          NOS SERVICES
+        </span>
+
+        <h2>
+          Bien plus qu'une boutique.
+        </h2>
+
+      </div>
+
+    </div>
+
+
+    <div class="service-grid">
+
+      <article>
+
+        <div class="service-icon">
+          📱
         </div>
 
-    </header>
-
-
-    <!-- ================= ACCUEIL ================= -->
-
-    <main>
-
-        <section id="accueil" class="hero">
-
-            <div class="hero-content">
-
-                <div class="hero-label">
-                    MTECH BENIN — TECHNOLOGIE
-                </div>
-
-                <h1>
-                    La technologie
-                    <br>
-                    <strong>autrement.</strong>
-                </h1>
-
-                <p class="hero-description">
-                    Découvrez nos smartphones, accessoires,
-                    produits électroniques et services au
-                    meilleur rapport qualité-prix.
-                </p>
-
-                <div class="hero-buttons">
-
-                    <a href="#boutique"
-                       class="btn-primary">
-                        Découvrir la boutique
-                        <span>→</span>
-                    </a>
-
-                    <a href="#categories"
-                       class="btn-secondary">
-                        Explorer
-                    </a>
-
-                </div>
-
-            </div>
-
-
-            <!-- IMAGE / FUTUR CARROUSEL VIDÉO -->
-
-            <div class="hero-product">
-
-                <div class="product-frame">
-
-                    <img
-                        src="assets/hero-phone.jpg"
-                        alt="Produit MTECHBENIN"
-                    >
-
-                    <div class="product-brand">
-                        MTECH
-                    </div>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- ================= CATÉGORIES ================= -->
-
-        <section id="categories"
-                 class="categories">
-
-            <div class="section-intro">
-
-                <p class="section-label">
-                    NOS CATÉGORIES
-                </p>
-
-                <h2>
-                    Nos catégories
-                </h2>
-
-                <p>
-                    Tout ce dont vous avez besoin
-                    au même endroit.
-                </p>
-
-            </div>
-
-
-            <div class="category-grid">
-
-                <a href="#boutique"
-                   class="category-card">
-
-                    <span>01</span>
-
-                    <h3>
-                        Smartphones
-                    </h3>
-
-                    <b>→</b>
-
-                </a>
-
-
-                <a href="#boutique"
-                   class="category-card">
-
-                    <span>02</span>
-
-                    <h3>
-                        Accessoires
-                    </h3>
-
-                    <b>→</b>
-
-                </a>
-
-
-                <a href="#boutique"
-                   class="category-card">
-
-                    <span>03</span>
-
-                    <h3>
-                        Écouteurs
-                    </h3>
-
-                    <b>→</b>
-
-                </a>
-
-
-                <a href="#boutique"
-                   class="category-card">
-
-                    <span>04</span>
-
-                    <h3>
-                        Enceintes
-                    </h3>
-
-                    <b>→</b>
-
-                </a>
-
-
-                <a href="#boutique"
-                   class="category-card">
-
-                    <span>05</span>
-
-                    <h3>
-                        Téléphones / PC
-                    </h3>
-
-                    <b>→</b>
-
-                </a>
-
-
-                <a href="#boutique"
-                   class="category-card">
-
-                    <span>06</span>
-
-                    <h3>
-                        Mode
-                    </h3>
-
-                    <b>→</b>
-
-                </a>
-
-
-                <a href="#abonnements"
-                   class="category-card">
-
-                    <span>07</span>
-
-                    <h3>
-                        Abonnements
-                    </h3>
-
-                    <b>→</b>
-
-                </a>
-
-
-                <a href="#services"
-                   class="category-card">
-
-                    <span>08</span>
-
-                    <h3>
-                        Réparation
-                    </h3>
-
-                    <b>→</b>
-
-                </a>
-
-            </div>
-
-        </section>
-
-
-        <!-- ================= BOUTIQUE ================= -->
-
-        <section id="boutique"
-                 class="boutique">
-
-            <div class="section-heading">
-
-                <div>
-
-                    <p>
-                        BOUTIQUE
-                    </p>
-
-                    <h2>
-                        Nos produits
-                    </h2>
-
-                </div>
-
-                <a href="#">
-                    Voir tout →
-                </a>
-
-            </div>
-
-
-            <div class="products-grid">
-
-                <article class="product-card">
-
-                    <div class="product-image">
-
-                        <img
-                            src="assets/airpods-pro-2.jpg"
-                            alt="AirPods Pro 2"
-                        >
-
-                    </div>
-
-                    <p>
-                        ÉCOUTEURS
-                    </p>
-
-                    <h3>
-                        AirPods Pro 2
-                    </h3>
-
-                    <strong>
-                        8 000 FCFA
-                    </strong>
-
-                </article>
-
-
-                <article class="product-card">
-
-                    <div class="product-image">
-
-                        <img
-                            src="assets/bose-quietcomfort-ultra.jpg"
-                            alt="Bose QuietComfort Ultra"
-                        >
-
-                    </div>
-
-                    <p>
-                        AUDIO
-                    </p>
-
-                    <h3>
-                        Bose QuietComfort Ultra
-                    </h3>
-
-                    <strong>
-                        13 500 FCFA
-                    </strong>
-
-                </article>
-
-
-                <article class="product-card">
-
-                    <div class="product-image">
-
-                        <img
-                            src="assets/airpods-pro-3.jpg"
-                            alt="AirPods Pro 3"
-                        >
-
-                    </div>
-
-                    <p>
-                        ÉCOUTEURS
-                    </p>
-
-                    <h3>
-                        AirPods Pro 3
-                    </h3>
-
-                    <strong>
-                        12 000 FCFA
-                    </strong>
-
-                </article>
-
-            </div>
-
-        </section>
-
-
-        <!-- ================= ABONNEMENTS ================= -->
-
-        <section id="abonnements"
-                 class="subscriptions">
-
-            <div class="section-heading">
-
-                <div>
-
-                    <p>
-                        DIGITAL
-                    </p>
-
-                    <h2>
-                        Abonnements
-                    </h2>
-
-                </div>
-
-            </div>
-
-
-            <div class="subscription-grid">
-
-                <article>
-
-                    <img
-                        src="assets/apple-music.jpg"
-                        alt="Apple Music"
-                    >
-
-                    <div>
-
-                        <h3>
-                            Apple Music
-                        </h3>
-
-                        <p>
-                            Dès 1 500 FCFA / mois
-                        </p>
-
-                        <a href="#">
-                            S'abonner →
-                        </a>
-
-                    </div>
-
-                </article>
-
-
-                <article>
-
-                    <img
-                        src="assets/apple-tv.jpg"
-                        alt="Apple TV"
-                    >
-
-                    <div>
-
-                        <h3>
-                            Apple TV
-                        </h3>
-
-                        <p>
-                            Dès 1 500 FCFA / mois
-                        </p>
-
-                        <a href="#">
-                            S'abonner →
-                        </a>
-
-                    </div>
-
-                </article>
-
-            </div>
-
-        </section>
-
-
-        <!-- ================= SERVICES ================= -->
-
-        <section id="services"
-                 class="services">
-
-            <div>
-
-                <p>
-                    SERVICE MTECH
-                </p>
-
-                <h2>
-                    Réparation
-                    <br>
-                    <em>et expertise.</em>
-                </h2>
-
-            </div>
-
-            <div>
-
-                <p>
-                    Smartphones, ordinateurs et appareils
-                    électroniques.
-                </p>
-
-                <a href="https://wa.me/22960506320">
-                    Demander une réparation →
-                </a>
-
-            </div>
-
-        </section>
-
-
-        <!-- ================= CONTACT ================= -->
-
-        <section id="contact"
-                 class="contact">
-
-            <p>
-                MTECHBENIN
-            </p>
-
-            <h2>
-                Une question ?
-            </h2>
-
-            <a href="https://wa.me/22960506320">
-                WhatsApp : +229 60 50 63 20
-            </a>
-
-        </section>
-
-    </main>
-
-
-    <!-- ================= FOOTER ================= -->
-
-    <footer class="footer">
-
-        <strong>
-            MTECHBENIN
-        </strong>
+        <h3>
+          Vente
+        </h3>
 
         <p>
-            Technologie · Digital · Service
+          Smartphones, enceintes,
+          accessoires et produits
+          technologiques.
         </p>
 
-        <small>
-            © 2026 MTECHBENIN. Tous droits réservés.
-        </small>
-
-    </footer>
+      </article>
 
 
-    <script src="script.js"></script>
+      <article>
+
+        <div class="service-icon">
+          🔧
+        </div>
+
+        <h3>
+          Réparation
+        </h3>
+
+        <p>
+          Réparation de smartphones,
+          ordinateurs et appareils
+          électroniques.
+        </p>
+
+      </article>
+
+
+      <article>
+
+        <div class="service-icon">
+          💬
+        </div>
+
+        <h3>
+          Assistance
+        </h3>
+
+        <p>
+          Une équipe disponible pour
+          vous accompagner avant et
+          après l'achat.
+        </p>
+
+      </article>
+
+    </div>
+
+  </section>
+
+</main>
+
+
+<!-- ================= MENU BAS MOBILE ================= -->
+
+<nav class="bottom-nav">
+
+  <a
+    class="active"
+    href="#">
+
+    <span>⌂</span>
+
+    <small>
+      Accueil
+    </small>
+
+  </a>
+
+
+  <a href="#">
+
+    <span>▱</span>
+
+    <small>
+      Abonnements
+    </small>
+
+  </a>
+
+
+  <a href="#products">
+
+    <span>▦</span>
+
+    <small>
+      Produits
+    </small>
+
+  </a>
+
+
+  <a href="#services">
+
+    <span>⚒</span>
+
+    <small>
+      Réparation
+    </small>
+
+  </a>
+
+</nav>
+
+
+<!-- ================= OVERLAY ================= -->
+
+<div
+  class="overlay"
+  id="overlay"
+  onclick="closeAllPanels()">
+</div>
+
+
+<!-- ================= PANIER ================= -->
+
+<aside
+  class="drawer cart-drawer"
+  id="cartDrawer">
+
+  <div class="drawer-head">
+
+    <h3>
+      Mon panier
+    </h3>
+
+    <button onclick="closeAllPanels()">
+      ×
+    </button>
+
+  </div>
+
+
+  <div
+    id="cartItems"
+    class="drawer-body">
+  </div>
+
+
+  <div class="drawer-foot">
+
+    <div>
+
+      <span>
+        Total
+      </span>
+
+      <strong id="cartTotal">
+        0 FCFA
+      </strong>
+
+    </div>
+
+
+    <button
+      class="primary"
+      onclick="checkoutWhatsApp()">
+
+      Commander sur WhatsApp
+
+    </button>
+
+  </div>
+
+</aside>
+
+
+<!-- ================= RECHERCHE ================= -->
+
+<aside
+  class="drawer search-drawer"
+  id="searchDrawer">
+
+  <div class="drawer-head">
+
+    <h3>
+      Rechercher
+    </h3>
+
+    <button onclick="closeAllPanels()">
+      ×
+    </button>
+
+  </div>
+
+
+  <div class="search-wrap">
+
+    <input
+      id="searchInput"
+      type="search"
+      placeholder="Rechercher un produit..."
+      oninput="renderProducts(this.value)">
+
+  </div>
+
+
+  <div
+    id="searchResults"
+    class="drawer-body">
+  </div>
+
+</aside>
+
+
+<!-- ================= MENU ================= -->
+
+<div
+  class="mobile-menu-panel"
+  id="mobileMenu">
+
+  <button onclick="toggleMenu()">
+    ×
+  </button>
+
+  <a
+    href="#"
+    onclick="toggleMenu()">
+
+    Accueil
+
+  </a>
+
+  <a
+    href="#products"
+    onclick="toggleMenu()">
+
+    Produits
+
+  </a>
+
+  <a
+    href="#services"
+    onclick="toggleMenu()">
+
+    Réparation
+
+  </a>
+
+  <a href="dashboard.html">
+
+    Dashboard
+
+  </a>
+
+</div>
+
+
+<script src="app.js"></script>
 
 </body>
 </html>
