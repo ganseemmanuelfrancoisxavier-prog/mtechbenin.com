@@ -1,871 +1,538 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="fr">
+
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta charset="UTF-8">
 
-  <meta name="theme-color" content="#ffffff">
-  <title>MTECHBENIN — Technologie, accessoires & services</title>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
 
-  <meta
-    name="description"
-    content="MTECHBENIN — produits technologiques, abonnements et réparation."
-  >
+    <title>MTECHBENIN — La technologie autrement.</title>
 
-  <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<header class="header">
+    <!-- ================= HEADER ================= -->
 
-  <a class="brand" href="#home">
-    MTECHBENIN
-  </a>
+    <header class="header">
 
-  <div class="header-actions">
+        <a href="#" class="logo">
+            MTECHBENIN
+        </a>
 
-    <button
-      class="ico"
-      aria-label="Recherche"
-      onclick="openSearch()"
-    >
-      ⌕
-    </button>
+        <nav class="navigation">
 
-    <button
-      class="ico cart-trigger"
-      aria-label="Panier"
-      onclick="openCart()"
-    >
-      🛒
-      <span id="cartBadge">0</span>
-    </button>
+            <a href="#accueil">
+                Accueil
+            </a>
 
-    <button
-      class="ico"
-      aria-label="Menu"
-      onclick="toggleMenu()"
-    >
-      ☰
-    </button>
+            <a href="#boutique">
+                Boutique
+            </a>
 
-  </div>
+            <a href="#categories">
+                Catégories
+            </a>
 
-</header>
+            <a href="#services">
+                Services
+            </a>
 
+            <a href="#contact">
+                Contact
+            </a>
 
-<!-- MENU MOBILE -->
+        </nav>
 
-<div id="menu" class="menu">
+        <div class="header-icons">
 
-  <a href="#home" onclick="closeMenu()">
-    Accueil
-  </a>
+            <button aria-label="Recherche">
+                ⌕
+            </button>
 
-  <a href="#categories" onclick="closeMenu()">
-    Catégories
-  </a>
+            <button aria-label="Panier">
+                🛒
+            </button>
 
-  <a href="#products" onclick="closeMenu()">
-    Produits
-  </a>
-
-  <a href="#subscriptions" onclick="closeMenu()">
-    Abonnements
-  </a>
-
-  <a href="#repair" onclick="closeMenu()">
-    Réparation
-  </a>
-
-  <a href="#contact" onclick="closeMenu()">
-    Contact
-  </a>
-
-</div>
-
-
-<main>
-
-
-<!-- HERO -->
-
-<section id="home" class="hero">
-
-  <div class="hero-bg"></div>
-
-  <div class="hero-shade"></div>
-
-  <div class="hero-content">
-
-    <div class="eyebrow">
-      <span></span>
-      LE MEILLEUR AU QUOTIDIEN
-    </div>
-
-    <h1>
-      Elégance -
-      <br>
-      Performance
-    </h1>
-
-    <div class="hero-price">
-      À partir de 50 000 fcfa
-    </div>
-
-    <div class="hero-actions">
-
-      <a
-        class="outline-btn"
-        href="#products"
-      >
-        Découvrir
-        <b>→</b>
-      </a>
-
-      <a
-        class="light-link"
-        href="#categories"
-      >
-        Tout voir
-      </a>
-
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- CATEGORIES -->
-
-<section
-  id="categories"
-  class="section categories"
->
-
-  <div class="kicker">
-    CATÉGORIES
-  </div>
-
-  <h2>
-    Notre Catalogue
-  </h2>
-
-
-  <div class="category-grid">
-
-
-    <a
-      href="#subscriptions"
-      class="category"
-    >
-
-      <div class="cat-icon">
-        ▱
-      </div>
-
-      <strong>
-        Abonnements
-      </strong>
-
-    </a>
-
-
-    <a
-      href="#products"
-      class="category"
-    >
-
-      <div class="cat-icon">
-        ⌁
-      </div>
-
-      <strong>
-        Accessoires
-      </strong>
-
-    </a>
-
-
-    <a
-      href="#products"
-      class="category"
-    >
-
-      <div class="cat-icon">
-        ◇
-      </div>
-
-      <strong>
-        Basket
-      </strong>
-
-    </a>
-
-
-    <a
-      href="#products"
-      class="category"
-    >
-
-      <div class="cat-icon">
-        ♧
-      </div>
-
-      <strong>
-        Écouteurs
-      </strong>
-
-    </a>
-
-
-    <a
-      href="#products"
-      class="category"
-    >
-
-      <div class="cat-icon">
-        ▣
-      </div>
-
-      <strong>
-        Enceintes
-      </strong>
-
-    </a>
-
-
-    <a
-      href="#products"
-      class="category"
-    >
-
-      <div class="cat-icon">
-        ⌚
-      </div>
-
-      <strong>
-        For men
-      </strong>
-
-    </a>
-
-
-    <a
-      href="#products"
-      class="category"
-    >
-
-      <div class="cat-icon">
-        ▢
-      </div>
-
-      <strong>
-        T-shirt
-      </strong>
-
-    </a>
-
-
-    <a
-      href="#products"
-      class="category"
-    >
-
-      <div class="cat-icon">
-        ▯
-      </div>
-
-      <strong>
-        Téléphone/Tablette/PC
-      </strong>
-
-    </a>
-
-
-  </div>
-
-</section>
-
-
-<!-- PRODUITS -->
-
-<section
-  id="products"
-  class="section products"
->
-
-  <div class="section-title-row">
-
-    <div>
-
-      <div class="kicker">
-        SÉLECTION
-      </div>
-
-      <h2>
-        Nos Coups de Cœur
-      </h2>
-
-    </div>
-
-    <button
-      class="see-all"
-      onclick="openSearch()"
-    >
-      Rechercher
-    </button>
-
-  </div>
-
-
-  <div class="product-grid">
-
-
-    <!-- AIRPODS PRO 2 -->
-
-    <article
-      class="product"
-      data-name="AirPods Pro 2"
-      data-price="8000"
-    >
-
-      <div class="product-img">
-
-        <img
-          src="assets/airpods-pro-2.jpg"
-          alt="AirPods Pro 2"
-        >
-
-        <button
-          class="heart"
-          onclick="like(this)"
-        >
-          ♡
-        </button>
-
-      </div>
-
-      <span class="stock">
-        En stock
-      </span>
-
-      <h3>
-        AirPods Pro 2
-      </h3>
-
-      <div class="price">
-        8 000 FCFA
-      </div>
-
-      <button
-        class="buy"
-        onclick="add('AirPods Pro 2',8000)"
-      >
-        Choisir les options
-      </button>
-
-    </article>
-
-
-    <!-- BOSE -->
-
-    <article
-      class="product"
-      data-name="Bose QuietComfort Ultra"
-      data-price="13500"
-    >
-
-      <div class="product-img">
-
-        <img
-          src="assets/bose-quietcomfort-ultra.jpg"
-          alt="Bose QuietComfort Ultra"
-        >
-
-        <span class="sale">
-          -33%
-        </span>
-
-        <button
-          class="heart"
-          onclick="like(this)"
-        >
-          ♡
-        </button>
-
-      </div>
-
-      <span class="stock">
-        En stock
-      </span>
-
-      <h3>
-        Bose QuietComfort Ultra
-      </h3>
-
-      <div class="price">
-
-        13 500 FCFA
-
-        <del>
-          20 000 FCFA
-        </del>
-
-      </div>
-
-      <button
-        class="buy"
-        onclick="add('Bose QuietComfort Ultra',13500)"
-      >
-        Commander
-      </button>
-
-    </article>
-
-
-    <!-- AIRPODS PRO 3 -->
-
-    <article
-      class="product"
-      data-name="AirPods Pro 3"
-      data-price="12000"
-    >
-
-      <div class="product-img">
-
-        <img
-          src="assets/airpods-pro-3.jpg"
-          alt="AirPods Pro 3"
-        >
-
-        <button
-          class="heart"
-          onclick="like(this)"
-        >
-          ♡
-        </button>
-
-      </div>
-
-      <span class="stock">
-        En stock
-      </span>
-
-      <h3>
-        AirPods Pro 3
-      </h3>
-
-      <div class="price">
-        12 000 FCFA
-      </div>
-
-      <button
-        class="buy"
-        onclick="add('AirPods Pro 3',12000)"
-      >
-        Commander
-      </button>
-
-    </article>
-
-
-    <!-- AIRPODS 4 -->
-
-    <article
-      class="product"
-      data-name="AirPods 4"
-      data-price="7500"
-    >
-
-      <div class="product-img">
-
-        <img
-          src="assets/airpods-4.jpg"
-          alt="AirPods 4"
-        >
-
-        <button
-          class="heart"
-          onclick="like(this)"
-        >
-          ♡
-        </button>
-
-      </div>
-
-      <span class="stock">
-        En stock
-      </span>
-
-      <h3>
-        AirPods 4
-      </h3>
-
-      <div class="price">
-        7 500 FCFA
-      </div>
-
-      <button
-        class="buy"
-        onclick="add('AirPods 4',7500)"
-      >
-        Commander
-      </button>
-
-    </article>
-
-
-  </div>
-
-</section>
-
-
-<!-- ABONNEMENTS -->
-
-<section
-  id="subscriptions"
-  class="subscriptions"
->
-
-  <div class="sub-heading">
-
-    <div>
-
-      <div class="sub-kicker">
-        DIGITAL
-      </div>
-
-      <h2>
-        Abonnements
-      </h2>
-
-    </div>
-
-    <a href="#subscriptions">
-      Voir tout →
-    </a>
-
-  </div>
-
-
-  <div class="sub-slider">
-
-
-    <!-- APPLE MUSIC -->
-
-    <article class="subscription">
-
-      <img
-        src="assets/apple-music.jpg"
-        alt="Apple Music"
-      >
-
-      <div class="sub-overlay">
-
-        <h3>
-          Apple Music
-        </h3>
-
-        <p>
-          100 millions de titres en...
-        </p>
-
-        <div class="sub-price">
-          Dès
-          <b>
-            1 500 FCFA
-          </b>
-          /mois
         </div>
 
-        <button
-          onclick="add('Apple Music',1500)"
-        >
-          S'abonner
-        </button>
-
-      </div>
-
-    </article>
+    </header>
 
 
-    <!-- APPLE TV -->
+    <!-- ================= ACCUEIL ================= -->
 
-    <article class="subscription">
+    <main>
 
-      <img
-        src="assets/apple-tv.jpg"
-        alt="Apple TV"
-      >
+        <section id="accueil" class="hero">
 
-      <div class="sub-overlay">
+            <div class="hero-content">
 
-        <h3>
-          Apple TV
-        </h3>
+                <div class="hero-label">
+                    MTECH BENIN — TECHNOLOGIE
+                </div>
+
+                <h1>
+                    La technologie
+                    <br>
+                    <strong>autrement.</strong>
+                </h1>
+
+                <p class="hero-description">
+                    Découvrez nos smartphones, accessoires,
+                    produits électroniques et services au
+                    meilleur rapport qualité-prix.
+                </p>
+
+                <div class="hero-buttons">
+
+                    <a href="#boutique"
+                       class="btn-primary">
+                        Découvrir la boutique
+                        <span>→</span>
+                    </a>
+
+                    <a href="#categories"
+                       class="btn-secondary">
+                        Explorer
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- IMAGE / FUTUR CARROUSEL VIDÉO -->
+
+            <div class="hero-product">
+
+                <div class="product-frame">
+
+                    <img
+                        src="assets/hero-phone.jpg"
+                        alt="Produit MTECHBENIN"
+                    >
+
+                    <div class="product-brand">
+                        MTECH
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= CATÉGORIES ================= -->
+
+        <section id="categories"
+                 class="categories">
+
+            <div class="section-intro">
+
+                <p class="section-label">
+                    NOS CATÉGORIES
+                </p>
+
+                <h2>
+                    Nos catégories
+                </h2>
+
+                <p>
+                    Tout ce dont vous avez besoin
+                    au même endroit.
+                </p>
+
+            </div>
+
+
+            <div class="category-grid">
+
+                <a href="#boutique"
+                   class="category-card">
+
+                    <span>01</span>
+
+                    <h3>
+                        Smartphones
+                    </h3>
+
+                    <b>→</b>
+
+                </a>
+
+
+                <a href="#boutique"
+                   class="category-card">
+
+                    <span>02</span>
+
+                    <h3>
+                        Accessoires
+                    </h3>
+
+                    <b>→</b>
+
+                </a>
+
+
+                <a href="#boutique"
+                   class="category-card">
+
+                    <span>03</span>
+
+                    <h3>
+                        Écouteurs
+                    </h3>
+
+                    <b>→</b>
+
+                </a>
+
+
+                <a href="#boutique"
+                   class="category-card">
+
+                    <span>04</span>
+
+                    <h3>
+                        Enceintes
+                    </h3>
+
+                    <b>→</b>
+
+                </a>
+
+
+                <a href="#boutique"
+                   class="category-card">
+
+                    <span>05</span>
+
+                    <h3>
+                        Téléphones / PC
+                    </h3>
+
+                    <b>→</b>
+
+                </a>
+
+
+                <a href="#boutique"
+                   class="category-card">
+
+                    <span>06</span>
+
+                    <h3>
+                        Mode
+                    </h3>
+
+                    <b>→</b>
+
+                </a>
+
+
+                <a href="#abonnements"
+                   class="category-card">
+
+                    <span>07</span>
+
+                    <h3>
+                        Abonnements
+                    </h3>
+
+                    <b>→</b>
+
+                </a>
+
+
+                <a href="#services"
+                   class="category-card">
+
+                    <span>08</span>
+
+                    <h3>
+                        Réparation
+                    </h3>
+
+                    <b>→</b>
+
+                </a>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= BOUTIQUE ================= -->
+
+        <section id="boutique"
+                 class="boutique">
+
+            <div class="section-heading">
+
+                <div>
+
+                    <p>
+                        BOUTIQUE
+                    </p>
+
+                    <h2>
+                        Nos produits
+                    </h2>
+
+                </div>
+
+                <a href="#">
+                    Voir tout →
+                </a>
+
+            </div>
+
+
+            <div class="products-grid">
+
+                <article class="product-card">
+
+                    <div class="product-image">
+
+                        <img
+                            src="assets/airpods-pro-2.jpg"
+                            alt="AirPods Pro 2"
+                        >
+
+                    </div>
+
+                    <p>
+                        ÉCOUTEURS
+                    </p>
+
+                    <h3>
+                        AirPods Pro 2
+                    </h3>
+
+                    <strong>
+                        8 000 FCFA
+                    </strong>
+
+                </article>
+
+
+                <article class="product-card">
+
+                    <div class="product-image">
+
+                        <img
+                            src="assets/bose-quietcomfort-ultra.jpg"
+                            alt="Bose QuietComfort Ultra"
+                        >
+
+                    </div>
+
+                    <p>
+                        AUDIO
+                    </p>
+
+                    <h3>
+                        Bose QuietComfort Ultra
+                    </h3>
+
+                    <strong>
+                        13 500 FCFA
+                    </strong>
+
+                </article>
+
+
+                <article class="product-card">
+
+                    <div class="product-image">
+
+                        <img
+                            src="assets/airpods-pro-3.jpg"
+                            alt="AirPods Pro 3"
+                        >
+
+                    </div>
+
+                    <p>
+                        ÉCOUTEURS
+                    </p>
+
+                    <h3>
+                        AirPods Pro 3
+                    </h3>
+
+                    <strong>
+                        12 000 FCFA
+                    </strong>
+
+                </article>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= ABONNEMENTS ================= -->
+
+        <section id="abonnements"
+                 class="subscriptions">
+
+            <div class="section-heading">
+
+                <div>
+
+                    <p>
+                        DIGITAL
+                    </p>
+
+                    <h2>
+                        Abonnements
+                    </h2>
+
+                </div>
+
+            </div>
+
+
+            <div class="subscription-grid">
+
+                <article>
+
+                    <img
+                        src="assets/apple-music.jpg"
+                        alt="Apple Music"
+                    >
+
+                    <div>
+
+                        <h3>
+                            Apple Music
+                        </h3>
+
+                        <p>
+                            Dès 1 500 FCFA / mois
+                        </p>
+
+                        <a href="#">
+                            S'abonner →
+                        </a>
+
+                    </div>
+
+                </article>
+
+
+                <article>
+
+                    <img
+                        src="assets/apple-tv.jpg"
+                        alt="Apple TV"
+                    >
+
+                    <div>
+
+                        <h3>
+                            Apple TV
+                        </h3>
+
+                        <p>
+                            Dès 1 500 FCFA / mois
+                        </p>
+
+                        <a href="#">
+                            S'abonner →
+                        </a>
+
+                    </div>
+
+                </article>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= SERVICES ================= -->
+
+        <section id="services"
+                 class="services">
+
+            <div>
+
+                <p>
+                    SERVICE MTECH
+                </p>
+
+                <h2>
+                    Réparation
+                    <br>
+                    <em>et expertise.</em>
+                </h2>
+
+            </div>
+
+            <div>
+
+                <p>
+                    Smartphones, ordinateurs et appareils
+                    électroniques.
+                </p>
+
+                <a href="https://wa.me/22960506320">
+                    Demander une réparation →
+                </a>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= CONTACT ================= -->
+
+        <section id="contact"
+                 class="contact">
+
+            <p>
+                MTECHBENIN
+            </p>
+
+            <h2>
+                Une question ?
+            </h2>
+
+            <a href="https://wa.me/22960506320">
+                WhatsApp : +229 60 50 63 20
+            </a>
+
+        </section>
+
+    </main>
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer class="footer">
+
+        <strong>
+            MTECHBENIN
+        </strong>
 
         <p>
-          Le meilleur du divertissement
+            Technologie · Digital · Service
         </p>
 
-        <div class="sub-price">
-          Dès
-          <b>
-            1 500 FCFA
-          </b>
-          /mois
-        </div>
+        <small>
+            © 2026 MTECHBENIN. Tous droits réservés.
+        </small>
 
-        <button
-          onclick="add('Apple TV',1500)"
-        >
-          S'abonner
-        </button>
+    </footer>
 
-      </div>
 
-    </article>
-
-
-    <!-- PACK -->
-
-    <article class="subscription dark-card">
-
-      <div class="sub-overlay">
-
-        <h3>
-          Apple Music + TV
-        </h3>
-
-        <p>
-          Offre MTECHBENIN
-        </p>
-
-        <div class="sub-price">
-          À partir de
-          <b>
-            2 500 FCFA
-          </b>
-        </div>
-
-        <button
-          onclick="add('Apple Music + Apple TV',2500)"
-        >
-          S'abonner
-        </button>
-
-      </div>
-
-    </article>
-
-
-  </div>
-
-</section>
-
-
-<!-- ANNONCE -->
-
-<section class="announcement section">
-
-  <div class="kicker">
-    ANNONCE
-  </div>
-
-  <div class="announcement-box"></div>
-
-</section>
-
-
-<!-- RÉPARATION -->
-
-<section
-  id="repair"
-  class="repair"
->
-
-  <div class="repair-inner">
-
-    <div class="kicker">
-      SERVICE MTECH
-    </div>
-
-    <h2>
-      Réparation
-    </h2>
-
-    <p>
-      Smartphones, ordinateurs et appareils électroniques.
-      Décris ton problème et contacte directement MTECHBENIN.
-    </p>
-
-    <a
-      class="repair-button"
-      href="https://wa.me/22960506320?text=Bonjour%20MTECHBENIN,%20je%20souhaite%20une%20réparation"
-    >
-      Demander une réparation →
-    </a>
-
-  </div>
-
-</section>
-
-
-<!-- CONTACT -->
-
-<section
-  id="contact"
-  class="contact section"
->
-
-  <div class="kicker">
-    MTECHBENIN
-  </div>
-
-  <h2>
-    Contact
-  </h2>
-
-  <p>
-    Une question sur un produit,
-    une commande ou une réparation ?
-  </p>
-
-  <a
-    class="contact-link"
-    href="https://wa.me/22960506320"
-  >
-    WhatsApp : +229 60 50 63 20
-  </a>
-
-</section>
-
-</main>
-
-
-<!-- BOUTON RETOUR EN HAUT -->
-
-<button
-  class="top"
-  onclick="scrollTopSmooth()"
->
-  ⌃
-</button>
-
-
-<!-- BARRE DE NAVIGATION MOBILE -->
-
-<nav class="bottom">
-
-  <a
-    href="#home"
-    class="active"
-  >
-    <span>⌂</span>
-    <b>Accueil</b>
-    <i></i>
-  </a>
-
-  <a href="#subscriptions">
-    <span>▱</span>
-    <b>Abonnements</b>
-  </a>
-
-  <a href="#products">
-    <span>▦</span>
-    <b>Produits</b>
-  </a>
-
-  <a href="#repair">
-    <span>⚒</span>
-    <b>Réparation</b>
-  </a>
-
-</nav>
-
-
-<!-- RECHERCHE -->
-
-<div
-  id="searchModal"
-  class="overlay"
-  onclick="if(event.target===this)closeSearch()"
->
-
-  <div class="dialog">
-
-    <button
-      class="x"
-      onclick="closeSearch()"
-    >
-      ×
-    </button>
-
-    <h3>
-      Rechercher
-    </h3>
-
-    <input
-      id="search"
-      placeholder="AirPods, Apple Music..."
-      oninput="searchProducts()"
-    >
-
-    <div id="results"></div>
-
-  </div>
-
-</div>
-
-
-<!-- PANIER -->
-
-<aside
-  id="cart"
-  class="cart"
->
-
-  <div class="cart-title">
-
-    <h3>
-      Votre panier
-    </h3>
-
-    <button onclick="closeCart()">
-      ×
-    </button>
-
-  </div>
-
-  <div id="cartItems"></div>
-
-  <div class="cart-total">
-
-    Total
-
-    <strong id="total">
-      0 FCFA
-    </strong>
-
-  </div>
-
-  <a
-    id="wa"
-    class="wa"
-    target="_blank"
-  >
-    Commander sur WhatsApp
-  </a>
-
-</aside>
-
-
-<!-- JAVASCRIPT -->
-
-<script src="script.js"></script>
+    <script src="script.js"></script>
 
 </body>
 </html>
