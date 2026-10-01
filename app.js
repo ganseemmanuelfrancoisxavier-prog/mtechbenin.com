@@ -408,7 +408,43 @@ function renderHero() {
       .join("");
 
 }
+async function chargerDiapositivesSupabase() {
+    if (!window.supabaseClient) return;
 
+    const { data, error } = await window.supabaseClient
+        .from("hero_slides")
+        .select("*")
+        .eq("is_active", true)
+        .order("sort_order", { ascending: true });
+
+    if (error) {
+        console.error("Erreur Supabase :", error);
+        return;
+    }
+
+    if (!data || !data.length) return;
+
+    diapositives.splice(
+        0,
+        diapositives.length,
+        ...data.map(slide => ({
+            taper: slide.media_type || "image",
+            source: slide.media_url || "",
+            badge: slide.badge || "",
+            titre: slide.title || "",
+            sous_titre: slide.subtitle || "",
+            description: slide.description || "",
+            tag: slide.tag || "",
+            texte_bouton: slide.button_text || "",
+            lien_bouton: slide.button_link || ""
+        }))
+    );
+
+    diapositive_actuelle = 0;
+    renderHero();
+}
+
+chargerDiapositivesSupabase();
 
 /* =========================================================
    8. SLIDER AUTOMATIQUE
