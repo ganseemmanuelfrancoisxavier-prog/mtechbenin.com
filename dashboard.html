@@ -16,9 +16,20 @@
   <link
     rel="stylesheet"
     href="dashboard.css">
+  
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script>
+const SUPABASE_URL = "https://eldbudjhbsnvuffjpiue.supabase.co";
+const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_u8yaezMW2z78tLG7DnIe3g_kjVQIlde";
+
+const supabaseClient = window.supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_PUBLISHABLE_KEY
+);
+</script>
 
 </head>
-
 
 <body>
 
