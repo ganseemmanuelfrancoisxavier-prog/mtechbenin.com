@@ -1,59 +1,823 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MTECH BENIN — Services Informatiques & Vente en Ligne</title>
-  <meta name="description" content="MTECH BENIN - Services informatiques professionnels, vente en ligne et accompagnement digital à Cotonou, Bénin.">
-  
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+
+  <meta name="theme-color" content="#fff">
+  <meta name="description" content="MTECHBENIN — produits technologiques, abonnements et réparation.">
+
+  <title>MTECHBENIN — Technologie, accessoires & services</title>
+
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-  <!-- ================= HEADER ================= -->
-  <header class="header">
-    <div class="header-container">
-      <div class="logo">MTECH<span>BENIN</span></div>
-      
-      <nav class="nav-links">
-        <a href="#accueil">Accueil</a>
-        <a href="#services">Services</a>
-        <a href="#boutique">Boutique</a>
-        <a href="#contact">Contact</a>
-      </nav>
+<header class="header">
 
-      <div class="header-actions">
-        <button class="cart-btn" onclick="openCart()">
-          🛒 <span id="cartCount">0</span>
-        </button>
-        <button class="menu-toggle" onclick="toggleMenu()">☰</button>
-      </div>
-    </div>
-  </header>
+  <a class="brand" href="#home">
+    MTECHBENIN
+  </a>
 
-  <!-- ================= MOBILE MENU ================= -->
-  <div class="mobile-menu" id="mobileMenu">
-    <button onclick="toggleMenu()">✕</button>
-    <nav>
-      <a href="#accueil" onclick="toggleMenu()">Accueil</a>
-      <a href="#services" onclick="toggleMenu()">Services</a>
-      <a href="#boutique" onclick="toggleMenu()">Boutique</a>
-      <a href="#contact" onclick="toggleMenu()">Contact</a>
-    </nav>
+  <div class="header-actions">
+
+    <button class="ico" aria-label="Recherche" onclick="openSearch()">
+      ⌕
+    </button>
+
+    <button class="ico cart-trigger" aria-label="Panier" onclick="openCart()">
+      🛒
+      <span id="cartBadge">0</span>
+    </button>
+
+    <button class="ico" aria-label="Menu" onclick="toggleMenu()">
+      ☰
+    </button>
+
   </div>
 
-  <!-- ================= HERO SECTION ================= -->
-  <section class="hero" id="accueil">
-    <div class="hero-content">
-      <small>MTECH BENIN — SOLUTIONS DIGITALES</small>
-      <h1>La technologie au service de votre entreprise</h1>
-      <p>Services informatiques professionnels, vente en ligne et accompagnement digital à Cotonou</p>
-      <div class="hero-actions">
-        <a href="#services" class="btn btn-primary">Découvrir nos services</a>
-        <a href="#boutique" class="btn btn-secondary">Voir la boutique</a>
+</header>
+
+
+<!-- MENU -->
+
+<div id="menu" class="menu">
+
+  <a href="#home" onclick="closeMenu()">Accueil</a>
+
+  <a href="#categories" onclick="closeMenu()">
+    Catégories
+  </a>
+
+  <a href="#products" onclick="closeMenu()">
+    Produits
+  </a>
+
+  <a href="#subscriptions" onclick="closeMenu()">
+    Abonnements
+  </a>
+
+  <a href="#repair" onclick="closeMenu()">
+    Réparation
+  </a>
+
+  <a href="#contact" onclick="closeMenu()">
+    Contact
+  </a>
+
+</div>
+
+
+<main>
+
+
+<!-- HERO -->
+
+<section id="home" class="hero">
+
+  <div class="hero-bg"></div>
+
+  <div class="hero-shade"></div>
+
+  <div class="hero-content">
+
+    <div class="eyebrow">
+      <span></span>
+      LE MEILLEUR AU QUOTIDIEN
+    </div>
+
+    <h1>
+      Elégance -<br>
+      Performance
+    </h1>
+
+    <div class="hero-price">
+      À partir de 50 000 fcfa
+    </div>
+
+    <div class="hero-actions">
+
+      <a class="outline-btn" href="#products">
+        Découvrir <b>→</b>
+      </a>
+
+      <a class="light-link" href="#categories">
+        Tout voir
+      </a>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- CATÉGORIES -->
+
+<section id="categories" class="section categories">
+
+  <div class="kicker">
+    CATÉGORIES
+  </div>
+
+  <h2>
+    Notre Catalogue
+  </h2>
+
+
+  <div class="category-grid">
+
+    <a href="#subscriptions" class="category">
+
+      <div class="cat-icon">
+        ▱
       </div>
-    
+
+      <strong>
+        Abonnements
+      </strong>
+
+    </a>
+
+
+    <a href="#products" class="category">
+
+      <div class="cat-icon">
+        ⌁
+      </div>
+
+      <strong>
+        Accessoires
+      </strong>
+
+    </a>
+
+
+    <a href="#products" class="category">
+
+      <div class="cat-icon">
+        ◇
+      </div>
+
+      <strong>
+        Basket
+      </strong>
+
+    </a>
+
+
+    <a href="#products" class="category">
+
+      <div class="cat-icon">
+        ♧
+      </div>
+
+      <strong>
+        Écouteurs
+      </strong>
+
+    </a>
+
+
+    <a href="#products" class="category">
+
+      <div class="cat-icon">
+        ▣
+      </div>
+
+      <strong>
+        Enceintes
+      </strong>
+
+    </a>
+
+
+    <a href="#products" class="category">
+
+      <div class="cat-icon">
+        ⌚
+      </div>
+
+      <strong>
+        For men
+      </strong>
+
+    </a>
+
+
+    <a href="#products" class="category">
+
+      <div class="cat-icon">
+        ▢
+      </div>
+
+      <strong>
+        T-shirt
+      </strong>
+
+    </a>
+
+
+    <a href="#products" class="category">
+
+      <div class="cat-icon">
+        ▯
+      </div>
+
+      <strong>
+        Téléphone/Tablette/PC
+      </strong>
+
+    </a>
+
+  </div>
+
+</section>
+
+
+
+<!-- PRODUITS -->
+
+<section id="products" class="section products">
+
+  <div class="section-title-row">
+
+    <div>
+
+      <div class="kicker">
+        SÉLECTION
+      </div>
+
+      <h2>
+        Nos Coups de Cœur
+      </h2>
+
+    </div>
+
+
+    <button class="see-all" onclick="openSearch()">
+      Rechercher
+    </button>
+
+  </div>
+
+
+  <div class="product-grid">
+
+
+    <!-- AIRPODS PRO 2 -->
+
+    <article
+      class="product"
+      data-name="AirPods Pro 2"
+      data-price="8000"
+    >
+
+      <div class="product-img">
+
+        <img
+          src="assets/airpods-pro-2.jpg"
+          alt="AirPods Pro 2"
+        >
+
+        <button
+          class="heart"
+          onclick="like(this)"
+        >
+          ♡
+        </button>
+
+      </div>
+
+
+      <span class="stock">
+        En stock
+      </span>
+
+
+      <h3>
+        AirPods Pro 2
+      </h3>
+
+
+      <div class="price">
+        8 000 FCFA
+      </div>
+
+
+      <button
+        class="buy"
+        onclick="add('AirPods Pro 2',8000)"
+      >
+        Choisir les options
+      </button>
+
+    </article>
+
+
+
+    <!-- BOSE -->
+
+    <article
+      class="product"
+      data-name="Bose QuietComfort Ultra"
+      data-price="13500"
+    >
+
+      <div class="product-img">
+
+        <img
+          src="assets/bose-quietcomfort-ultra.jpg"
+          alt="Bose QuietComfort Ultra"
+        >
+
+        <span class="sale">
+          -33%
+        </span>
+
+        <button
+          class="heart"
+          onclick="like(this)"
+        >
+          ♡
+        </button>
+
+      </div>
+
+
+      <span class="stock">
+        En stock
+      </span>
+
+
+      <h3>
+        Bose QuietComfort Ultra
+      </h3>
+
+
+      <div class="price">
+
+        13 500 FCFA
+
+        <del>
+          20 000 FCFA
+        </del>
+
+      </div>
+
+
+      <button
+        class="buy"
+        onclick="add('Bose QuietComfort Ultra',13500)"
+      >
+        Commander
+      </button>
+
+    </article>
+
+
+
+    <!-- AIRPODS PRO 3 -->
+
+    <article
+      class="product"
+      data-name="AirPods Pro 3"
+      data-price="12000"
+    >
+
+      <div class="product-img">
+
+        <img
+          src="assets/airpods-pro-3.jpg"
+          alt="AirPods Pro 3"
+        >
+
+        <button
+          class="heart"
+          onclick="like(this)"
+        >
+          ♡
+        </button>
+
+      </div>
+
+
+      <span class="stock">
+        En stock
+      </span>
+
+
+      <h3>
+        AirPods Pro 3
+      </h3>
+
+
+      <div class="price">
+        12 000 FCFA
+      </div>
+
+
+      <button
+        class="buy"
+        onclick="add('AirPods Pro 3',12000)"
+      >
+        Commander
+      </button>
+
+    </article>
+
+
+
+    <!-- AIRPODS 4 -->
+
+    <article
+      class="product"
+      data-name="AirPods 4"
+      data-price="7500"
+    >
+
+      <div class="product-img">
+
+        <img
+          src="assets/airpods-4.jpg"
+          alt="AirPods 4"
+        >
+
+        <button
+          class="heart"
+          onclick="like(this)"
+        >
+          ♡
+        </button>
+
+      </div>
+
+
+      <span class="stock">
+        En stock
+      </span>
+
+
+      <h3>
+        AirPods 4
+      </h3>
+
+
+      <div class="price">
+        7 500 FCFA
+      </div>
+
+
+      <button
+        class="buy"
+        onclick="add('AirPods 4',7500)"
+      >
+        Commander
+      </button>
+
+    </article>
+
+  </div>
+
+</section>
+
+
+
+<!-- ABONNEMENTS -->
+
+<section id="subscriptions" class="subscriptions">
+
+  <div class="sub-heading">
+
+    <div>
+
+      <div class="sub-kicker">
+        DIGITAL
+      </div>
+
+      <h2>
+        Abonnements
+      </h2>
+
+    </div>
+
+
+    <a href="#subscriptions">
+      Voir tout →
+    </a>
+
+  </div>
+
+
+  <div class="sub-slider">
+
+
+    <!-- APPLE MUSIC -->
+
+    <article class="subscription">
+
+      <img
+        src="assets/apple-music.jpg"
+        alt="Apple Music"
+      >
+
+      <div class="sub-overlay">
+
+        <h3>
+          Apple Music
+        </h3>
+
+        <p>
+          100 millions de titres en...
+        </p>
+
+        <div class="sub-price">
+          Dès <b>1 500 FCFA</b>/mois
+        </div>
+
+        <button
+          onclick="add('Apple Music',1500)"
+        >
+          S'abonner
+        </button>
+
+      </div>
+
+    </article>
+
+
+
+    <!-- APPLE TV -->
+
+    <article class="subscription">
+
+      <img
+        src="assets/apple-tv.jpg"
+        alt="Apple TV"
+      >
+
+      <div class="sub-overlay">
+
+        <h3>
+          Apple TV
+        </h3>
+
+        <p>
+          Le meilleur du divertissement
+        </p>
+
+        <div class="sub-price">
+          Dès <b>1 500 FCFA</b>/mois
+        </div>
+
+        <button
+          onclick="add('Apple TV',1500)"
+        >
+          S'abonner
+        </button>
+
+      </div>
+
+    </article>
+
+
+
+    <!-- PACK -->
+
+    <article class="subscription dark-card">
+
+      <div class="sub-overlay">
+
+        <h3>
+          Apple Music + TV
+        </h3>
+
+        <p>
+          Offre MTECHBENIN
+        </p>
+
+        <div class="sub-price">
+          À partir de <b>2 500 FCFA</b>
+        </div>
+
+        <button
+          onclick="add('Apple Music + Apple TV',2500)"
+        >
+          S'abonner
+        </button>
+
+      </div>
+
+    </article>
+
+  </div>
+
+</section>
+
+
+
+<!-- ANNONCE -->
+
+<section class="announcement section">
+
+  <div class="kicker">
+    ANNONCE
+  </div>
+
+  <div class="announcement-box"></div>
+
+</section>
+
+
+
+<!-- RÉPARATION -->
+
+<section id="repair" class="repair">
+
+  <div class="repair-inner">
+
+    <div class="kicker">
+      SERVICE MTECH
+    </div>
+
+    <h2>
+      Réparation
+    </h2>
+
+    <p>
+      Smartphones, ordinateurs et appareils électroniques.
+      Décris ton problème et contacte directement MTECHBENIN.
+    </p>
+
+
+    <a
+      class="repair-button"
+      href="https://wa.me/22960506320?text=Bonjour%20MTECHBENIN,%20je%20souhaite%20une%20réparation"
+    >
+      Demander une réparation →
+    </a>
+
+  </div>
+
+</section>
+
+
+
+<!-- CONTACT -->
+
+<section id="contact" class="contact section">
+
+  <div class="kicker">
+    MTECHBENIN
+  </div>
+
+  <h2>
+    Contact
+  </h2>
+
+  <p>
+    Une question sur un produit, une commande ou une réparation ?
+  </p>
+
+  <a
+    class="contact-link"
+    href="https://wa.me/22960506320"
+  >
+    WhatsApp : +229 60 50 63 20
+  </a>
+
+</section>
+
+</main>
+
+
+
+<!-- RETOUR EN HAUT -->
+
+<button
+  class="top"
+  onclick="scrollTopSmooth()"
+>
+  ⌃
+</button>
+
+
+
+<!-- NAVIGATION MOBILE -->
+
+<nav class="bottom">
+
+  <a
+    href="#home"
+    class="active"
+  >
+    <span>⌂</span>
+    <b>Accueil</b>
+    <i></i>
+  </a>
+
+
+  <a href="#subscriptions">
+    <span>▱</span>
+    <b>Abonnements</b>
+  </a>
+
+
+  <a href="#products">
+    <span>▦</span>
+    <b>Produits</b>
+  </a>
+
+
+  <a href="#repair">
+    <span>⚒</span>
+    <b>Réparation</b>
+  </a>
+
+</nav>
+
+
+
+<!-- RECHERCHE -->
+
+<div
+  id="searchModal"
+  class="overlay"
+  onclick="if(event.target===this)closeSearch()"
+>
+
+  <div class="dialog">
+
+    <button
+      class="x"
+      onclick="closeSearch()"
+    >
+      ×
+    </button>
+
+    <h3>
+      Rechercher
+    </h3>
+
+    <input
+      id="search"
+      placeholder="AirPods, Apple Music..."
+      oninput="searchProducts()"
+    >
+
+    <div id="results"></div>
+
+  </div>
+
+</div>
+
+
+
+<!-- PANIER -->
+
+<aside id="cart" class="cart">
+
+  <div class="cart-title">
+
+    <h3>
+      Votre panier
+    </h3>
+
+    <button onclick="closeCart()">
+      ×
+    </button>
+
+  </div>
+
+
+  <div id="cartItems"></div>
+
+
+  <div class="cart-total">
+
+    Total
+
+    <strong id="total">
+      0 FCFA
+    </strong>
+
+  </div>
+
+
+  <a
+    id="wa"
+    class="wa"
+    target="_blank"
+  >
+    Commander sur WhatsApp
+  </a>
+
+</aside>
+
+
+
+<script src="script.js"></script>
+
+</body>
+</html>
