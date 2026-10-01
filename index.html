@@ -1,622 +1,89 @@
 <!DOCTYPE html>
 <html lang="fr">
-
-<head>
-
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#ffffff">
-
-  <title>MTECHBENIN — Technologie au Bénin</title>
-
-  <!-- ================= SUPABASE ================= -->
-
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-
-  <script>
-    const SUPABASE_URL = "https://eldbudjhbsnvuffjpiue.supabase.co";
-
-    const SUPABASE_PUBLISHABLE_KEY = "TA_CLÉ_PUBLISHABLE_EXISTANTE";
-
-    window.supabaseClient = window.supabase.createClient(
-      SUPABASE_URL,
-      SUPABASE_PUBLISHABLE_KEY
-    );
-  </script>
-
-  <!-- ================= STYLE ================= -->
-
-  <link rel="stylesheet" href="style.css">
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-  <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
-    rel="stylesheet">
-
-</head>
-
-
-<body>
-
-
-<!-- ================= HEADER ================= -->
-
-<header class="site-header">
-
-  <a href="index.html" class="brand">
-    MTECHBENIN
-  </a>
-
-  <div class="header-actions">
-
-    <button
-      class="icon-btn"
-      onclick="openSearch()">
-
-      ⌕
-
-    </button>
-
-
-    <button
-      class="icon-btn cart-btn"
-      onclick="openCart()">
-
-      🛒
-
-      <span
-        class="cart-badge"
-        id="cartBadge">
-
-        0
-
-      </span>
-
-    </button>
-
-
-    <button
-      class="icon-btn menu-btn"
-      onclick="toggleMenu()">
-
-      ☰
-
-    </button>
-
-  </div>
-
-</header>
-
-
-<!-- ================= SITE ================= -->
-
-<main>
-
-
-  <!-- ================= HERO ================= -->
-
-  <section class="hero">
-
-    <div
-      class="hero-media"
-      id="heroMedia">
-    </div>
-
-
-    <div class="hero-shade"></div>
-
-
-    <div class="hero-content">
-
-
-      <div
-        class="hero-badge"
-        id="heroBadge">
-
-        <span></span>
-
-        BEST SELLER
-
-      </div>
-
-
-      <h1 id="heroTitle">
-
-        JBL Boombox
-
-      </h1>
-
-
-      <h2 id="heroSubtitle">
-
-        4ème Génération
-
-      </h2>
-
-
-      <p id="heroDescription">
-
-        Son puissant, basses profondes.
-        La référence des enceintes Bluetooth au Bénin.
-
-      </p>
-
-
-      <div
-        class="hero-tag"
-        id="heroTag">
-
-        Authentique
-
-      </div>
-
-
-      <div class="hero-actions">
-
-
-        <a
-          id="heroButton"
-          href="#products"
-          class="hero-button">
-
-          Voir les enceintes
-
-          <span>→</span>
-
-        </a>
-
-
-        <a
-          href="#products"
-          class="hero-all">
-
-          Tout voir
-
-        </a>
-
-      </div>
-
-    </div>
-
-
-    <div
-      class="hero-dots"
-      id="heroDots">
-    </div>
-
-  </section>
-
-
-  <!-- ================= PRODUITS ================= -->
-
-  <section
-    class="section"
-    id="products">
-
-
-    <div class="section-head">
-
-
-      <div>
-
-        <span class="eyebrow">
-
-          MTECHBENIN
-
-        </span>
-
-
-        <h2>
-
-          Nos produits
-
-        </h2>
-
-      </div>
-
-
-      <a href="#products">
-
-        Tout voir →
-
-      </a>
-
-    </div>
-
-
-    <div
-      class="product-grid"
-      id="productGrid">
-
-    </div>
-
-  </section>
-
-
-  <!-- ================= SERVICES ================= -->
-
-  <section
-    class="section"
-    id="services">
-
-
-    <div class="section-head">
-
-
-      <div>
-
-        <span class="eyebrow">
-
-          NOS SERVICES
-
-        </span>
-
-
-        <h2>
-
-          Bien plus qu'une boutique.
-
-        </h2>
-
-      </div>
-
-    </div>
-
-
-    <div class="service-grid">
-
-
-      <article>
-
-
-        <div class="service-icon">
-
-          📱
-
-        </div>
-
-
-        <h3>
-
-          Vente
-
-        </h3>
-
-
-        <p>
-
-          Smartphones, enceintes,
-          accessoires et produits
-          technologiques.
-
-        </p>
-
-      </article>
-
-
-
-      <article>
-
-
-        <div class="service-icon">
-
-          🔧
-
-        </div>
-
-
-        <h3>
-
-          Réparation
-
-        </h3>
-
-
-        <p>
-
-          Réparation de smartphones,
-          ordinateurs et appareils
-          électroniques.
-
-        </p>
-
-      </article>
-
-
-
-      <article>
-
-
-        <div class="service-icon">
-
-          💬
-
-        </div>
-
-
-        <h3>
-
-          Assistance
-
-        </h3>
-
-
-        <p>
-
-          Une équipe disponible pour
-          vous accompagner avant et
-          après l'achat.
-
-        </p>
-
-      </article>
-
-
-    </div>
-
-  </section>
-
-
-</main>
-
-
-
-<!-- ================= MENU BAS MOBILE ================= -->
-
-<nav class="bottom-nav">
-
-
-  <a
-    class="active"
-    href="#">
-
-    <span>⌂</span>
-
-    <small>
-
-      Accueil
-
-    </small>
-
-  </a>
-
-
-  <a href="#">
-
-    <span>▱</span>
-
-    <small>
-
-      Abonnements
-
-    </small>
-
-  </a>
-
-
-  <a href="#products">
-
-    <span>▦</span>
-
-    <small>
-
-      Produits
-
-    </small>
-
-  </a>
-
-
-  <a href="#services">
-
-    <span>⚒</span>
-
-    <small>
-
-      Réparation
-
-    </small>
-
-  </a>
-
-
-</nav>
-
-
-
-<!-- ================= OVERLAY ================= -->
-
-<div
-  class="overlay"
-  id="overlay"
-  onclick="closeAllPanels()">
-
-</div>
-
-
-
-<!-- ================= PANIER ================= -->
-
-<aside
-  class="drawer cart-drawer"
-  id="cartDrawer">
-
-
-  <div class="drawer-head">
-
-
-    <h3>
-
-      Mon panier
-
-    </h3>
-
-
-    <button
-      onclick="closeAllPanels()">
-
-      ×
-
-    </button>
-
-  </div>
-
-
-  <div
-    id="cartItems"
-    class="drawer-body">
-
-  </div>
-
-
-  <div class="drawer-foot">
-
-
-    <div>
-
-
-      <span>
-
-        Total
-
-      </span>
-
-
-      <strong id="cartTotal">
-
-        0 FCFA
-
-      </strong>
-
-    </div>
-
-
-    <button
-      class="primary"
-      onclick="checkoutWhatsApp()">
-
-      Commander sur WhatsApp
-
-    </button>
-
-
-  </div>
-
-</aside>
-
-
-
-<!-- ================= RECHERCHE ================= -->
-
-<aside
-  class="drawer search-drawer"
-  id="searchDrawer">
-
-
-  <div class="drawer-head">
-
-
-    <h3>
-
-      Rechercher
-
-    </h3>
-
-
-    <button
-      onclick="closeAllPanels()">
-
-      ×
-
-    </button>
-
-  </div>
-
-
-  <div class="search-wrap">
-
-
-    <input
-      id="searchInput"
-      type="search"
-      placeholder="Rechercher un produit..."
-      oninput="renderProducts(this.value)">
-
-
-  </div>
-
-
-  <div
-    id="searchResults"
-    class="drawer-body">
-
-  </div>
-
-
-</aside>
-
-
-
-<!-- ================= MENU ================= -->
-
-<div
-  class="mobile-menu-panel"
-  id="mobileMenu">
-
-
-  <button
-    onclick="toggleMenu()">
-
-    ×
-
-  </button>
-
-
-  <a
-    href="#"
-    onclick="toggleMenu()">
-
-    Accueil
-
-  </a>
-
-
-  <a
-    href="#products"
-    onclick="toggleMenu()">
-
-    Produits
-
-  </a>
-
-
-  <a
-    href="#services"
-    onclick="toggleMenu()">
-
-    Réparation
-
-  </a>
-
-
-  <a href="dashboard.html">
-
-    Dashboard
-
-  </a>
-
-
-</div>
-
-
-
-<!-- ================= JAVASCRIPT ================= -->
-
-<script src="app.js"></script>
-
-
-</body>
-
+    <head>
+        <meta charSet="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <link rel="preload" href="/_next/static/media/636a5ac981f94f8b-s.p.woff2" as="font" crossorigin="" type="font/woff2"/>
+        <link rel="preload" href="/_next/static/media/e4af272ccee01ff0-s.p.woff2" as="font" crossorigin="" type="font/woff2"/>
+        <link rel="stylesheet" href="/_next/static/css/b85ca0ecdafecf42.css" data-precedence="next"/>
+        <link rel="stylesheet" href="/_next/static/css/857aa62baa17c894.css" data-precedence="next"/>
+        <link rel="preload" as="script" fetchPriority="low" href="/_next/static/chunks/webpack-d34f3a570b2ada8e.js"/>
+        <script src="/_next/static/chunks/fd9d1056-e15ede1b72a350b4.js" async=""></script>
+        <script src="/_next/static/chunks/2117-ed62ea0e25c0a94e.js" async=""></script>
+        <script src="/_next/static/chunks/main-app-be3d940aef6bd3eb.js" async=""></script>
+        <script src="/_next/static/chunks/4890-e706d95fcbe769e5.js" async=""></script>
+        <script src="/_next/static/chunks/2972-359ceb67daf90d6f.js" async=""></script>
+        <script src="/_next/static/chunks/2564-a82fb18fe67f446d.js" async=""></script>
+        <script src="/_next/static/chunks/6912-0d7130dc7be1da14.js" async=""></script>
+        <script src="/_next/static/chunks/3193-81d531cb878bd7ca.js" async=""></script>
+        <script src="/_next/static/chunks/5864-a79e0de84607f560.js" async=""></script>
+        <script src="/_next/static/chunks/6718-2db6a34d889c0ff2.js" async=""></script>
+        <script src="/_next/static/chunks/4479-7566021a22514aa0.js" async=""></script>
+        <script src="/_next/static/chunks/170-89a59618e6f4585e.js" async=""></script>
+        <script src="/_next/static/chunks/app/page-7addd70399bc51c7.js" async=""></script>
+        <script src="/_next/static/chunks/app/layout-36ad7bef51b847d8.js" async=""></script>
+        <script src="/_next/static/chunks/app/not-found-b151f3ef7277f04a.js" async=""></script>
+        <meta name="apple-mobile-web-app-capable" content="yes"/>
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+        <meta name="apple-mobile-web-app-title" content="MTECHBENIN"/>
+        <meta name="mobile-web-app-capable" content="yes"/>
+        <meta name="msapplication-TileColor" content="#ffffff"/>
+        <meta name="msapplication-TileImage" content="/icons/icon-192x192.png"/>
+        <link rel="apple-touch-icon" href="/icons/icon-152x152.png"/>
+        <link rel="apple-touch-startup-image" href="/icons/icon-512x512.png"/>
+        <meta name="theme-color" content="#ffffff"/>
+        <title>MTECHBENIN — Écouteurs, Enceintes &amp; Abonnements Digitaux</title>
+        <meta name="description" content="Achetez les meilleurs écouteurs, enceintes Bluetooth et abonnements Netflix, Spotify, Apple Music au Bénin. Livraison express à Cotonou."/>
+        <link rel="manifest" href="/manifest.json" crossorigin="use-credentials"/>
+        <meta name="keywords" content="écouteurs bénin,enceintes bluetooth cotonou,netflix bénin,spotify bénin,mtechbenin"/>
+        <meta name="apple-mobile-web-app-capable" content="yes"/>
+        <meta name="apple-mobile-web-app-title" content="MTECHBENIN"/>
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+        <meta property="og:title" content="MTECHBENIN — Écouteurs, Enceintes &amp; Abonnements Digitaux"/>
+        <meta property="og:description" content="Achetez les meilleurs écouteurs, enceintes Bluetooth et abonnements Netflix, Spotify au Bénin."/>
+        <meta property="og:url" content="https://mtechbenin.com"/>
+        <meta property="og:site_name" content="MTECHBENIN"/>
+        <meta property="og:locale" content="fr_BJ"/>
+        <meta property="og:type" content="website"/>
+        <meta name="twitter:card" content="summary"/>
+        <meta name="twitter:title" content="MTECHBENIN — Écouteurs, Enceintes &amp; Abonnements Digitaux"/>
+        <meta name="twitter:description" content="Achetez les meilleurs écouteurs, enceintes Bluetooth et abonnements Netflix, Spotify au Bénin."/>
+        <link rel="shortcut icon" href="/favicon.ico"/>
+        <link rel="icon" href="/favicon.ico" type="image/x-icon"/>
+        <link rel="icon" href="/icons/icon-96x96.png" sizes="96x96" type="image/png"/>
+        <link rel="icon" href="/icons/icon-192x192.png" sizes="192x192" type="image/png"/>
+        <link rel="icon" href="/icons/icon-512x512.png" sizes="512x512" type="image/png"/>
+        <link rel="apple-touch-icon" href="/icons/icon-152x152.png" sizes="152x152" type="image/png"/>
+        <link rel="apple-touch-icon" href="/icons/icon-192x192.png" sizes="192x192" type="image/png"/>
+        <meta name="next-size-adjust"/>
+        <script src="/_next/static/chunks/polyfills-42372ed130431b0a.js" noModule=""></script>
+    </head>
+    <body class="__variable_f367f3 __variable_646807 font-sans bg-white text-gray-900 antialiased">
+        <script src="/_next/static/chunks/webpack-d34f3a570b2ada8e.js" async=""></script>
+        <script>
+            (self.__next_f = self.__next_f || []).push([0]);
+            self.__next_f.push([2, null])
+        </script>
+        <script>
+            self.__next_f.push([1, "1:HL[\"/_next/static/media/636a5ac981f94f8b-s.p.woff2\",\"font\",{\"crossOrigin\":\"\",\"type\":\"font/woff2\"}]\n2:HL[\"/_next/static/media/e4af272ccee01ff0-s.p.woff2\",\"font\",{\"crossOrigin\":\"\",\"type\":\"font/woff2\"}]\n3:HL[\"/_next/static/css/b85ca0ecdafecf42.css\",\"style\"]\n4:HL[\"/_next/static/css/857aa62baa17c894.css\",\"style\"]\n"])
+        </script>
+        <script>
+            self.__next_f.push([1, "5:I[12846,[],\"\"]\n7:I[6718,[\"4890\",\"static/chunks/4890-e706d95fcbe769e5.js\",\"2972\",\"static/chunks/2972-359ceb67daf90d6f.js\",\"2564\",\"static/chunks/2564-a82fb18fe67f446d.js\",\"6912\",\"static/chunks/6912-0d7130dc7be1da14.js\",\"3193\",\"static/chunks/3193-81d531cb878bd7ca.js\",\"5864\",\"static/chunks/5864-a79e0de84607f560.js\",\"6718\",\"static/chunks/6718-2db6a34d889c0ff2.js\",\"4479\",\"static/chunks/4479-7566021a22514aa0.js\",\"170\",\"static/chunks/170-89a59618e6f4585e.js\",\"1931\",\"static/chunks/app/page-7addd70399bc51c7.js\"],\"default\"]\n8:I[71604,[\"4890\",\"static/chunks/4890-e706d95fcbe769e5.js\",\"2972\",\"static/chunks/2972-359ceb67daf90d6f.js\",\"2564\",\"static/chunks/2564-a82fb18fe67f446d.js\",\"6912\",\"static/chunks/6912-0d7130dc7be1da14.js\",\"3193\",\"static/chunks/3193-81d531cb878bd7ca.js\",\"5864\",\"static/chunks/5864-a79e0de84607f560.js\",\"6718\",\"static/chunks/6718-2db6a34d889c0ff2.js\",\"4479\",\"static/chunks/4479-7566021a22514aa0.js\",\"170\",\"static/chunks/170-89a59618e6f4585e.js\",\"1931\",\"static/chunks/app/page-7addd70399bc51c7.js\"],\"default\"]\n9:I[76230,[\"4890\",\"static/chunks/4890-e706d95fcbe769e5.js\",\"2972\",\"static/chunks/2972-359ceb67daf90d6f.js\",\"2564\",\"static/chunks/2564-a82fb18fe67f446d.js\",\"6912\",\"static/chunks/6912-0d7130dc7be1da14.js\",\"3193\",\"static/chunks/3193-81d531cb878bd7ca.js\",\"5864\",\"static/chunks/5864-a79e0de84607f560.js\",\"6718\",\"static/chunks/6718-2db6a34d889c0ff2.js\",\"4479\",\"static/chunks/4479-7566021a22514aa0.js\",\"170\",\"static/chunks/170-89a59618e6f4585e.js\",\"1931\",\"static/chunks/app/page-7addd70399bc51c7.js\"],\"default\"]\na:I[76627,[\"4890\",\"static/chunks/4890-e706d95fcbe769e5.js\",\"2972\",\"static/chunks/2972-359ceb67daf90d6f.js\",\"2564\",\"static/chunks/2564-a82fb18fe67f446d.js\",\"6912\",\"static/chunks/6912-0d7130dc7be1da14.js\",\"3193\",\"static/chunks/3193-81d531cb878bd7ca.js\",\"5864\",\"static/chunks/5864-a79e0de84607f560.js\",\"6718\",\"static/chunks/6718-2db6a34d889c0ff2.js\",\"4479\",\"static/chunks/4479-7566021a22514aa0.js\",\"170\",\"static/chunks/170-89a59618e6f4585e.js\",\"1931\",\"static/chunks/app/page-7addd70399bc51c7.js\"],\"default\"]\nb:I[4833,[\"4"])
+        </script>
+        <script>
+            self.__next_f.push([1, "890\",\"static/chunks/4890-e706d95fcbe769e5.js\",\"2972\",\"static/chunks/2972-359ceb67daf90d6f.js\",\"2564\",\"static/chunks/2564-a82fb18fe67f446d.js\",\"6912\",\"static/chunks/6912-0d7130dc7be1da14.js\",\"3193\",\"static/chunks/3193-81d531cb878bd7ca.js\",\"5864\",\"static/chunks/5864-a79e0de84607f560.js\",\"6718\",\"static/chunks/6718-2db6a34d889c0ff2.js\",\"4479\",\"static/chunks/4479-7566021a22514aa0.js\",\"170\",\"static/chunks/170-89a59618e6f4585e.js\",\"1931\",\"static/chunks/app/page-7addd70399bc51c7.js\"],\"default\"]\nc:I[55945,[\"4890\",\"static/chunks/4890-e706d95fcbe769e5.js\",\"2972\",\"static/chunks/2972-359ceb67daf90d6f.js\",\"2564\",\"static/chunks/2564-a82fb18fe67f446d.js\",\"6912\",\"static/chunks/6912-0d7130dc7be1da14.js\",\"3193\",\"static/chunks/3193-81d531cb878bd7ca.js\",\"5864\",\"static/chunks/5864-a79e0de84607f560.js\",\"6718\",\"static/chunks/6718-2db6a34d889c0ff2.js\",\"4479\",\"static/chunks/4479-7566021a22514aa0.js\",\"170\",\"static/chunks/170-89a59618e6f4585e.js\",\"1931\",\"static/chunks/app/page-7addd70399bc51c7.js\"],\"default\"]\nd:I[31477,[\"4890\",\"static/chunks/4890-e706d95fcbe769e5.js\",\"2972\",\"static/chunks/2972-359ceb67daf90d6f.js\",\"2564\",\"static/chunks/2564-a82fb18fe67f446d.js\",\"6912\",\"static/chunks/6912-0d7130dc7be1da14.js\",\"3193\",\"static/chunks/3193-81d531cb878bd7ca.js\",\"5864\",\"static/chunks/5864-a79e0de84607f560.js\",\"6718\",\"static/chunks/6718-2db6a34d889c0ff2.js\",\"4479\",\"static/chunks/4479-7566021a22514aa0.js\",\"170\",\"static/chunks/170-89a59618e6f4585e.js\",\"1931\",\"static/chunks/app/page-7addd70399bc51c7.js\"],\"default\"]\ne:I[13174,[\"4890\",\"static/chunks/4890-e706d95fcbe769e5.js\",\"2972\",\"static/chunks/2972-359ceb67daf90d6f.js\",\"2564\",\"static/chunks/2564-a82fb18fe67f446d.js\",\"6912\",\"static/chunks/6912-0d7130dc7be1da14.js\",\"3193\",\"static/chunks/3193-81d531cb878bd7ca.js\",\"5864\",\"static/chunks/5864-a79e0de84607f560.js\",\"6718\",\"static/chunks/6718-2db6a34d889c0ff2.js\",\"4479\",\"static/chunks/4479-7566021a22514aa0.js\",\"170\",\"static/chunks/170-89a59618e6f4585e.js\",\"1931\",\"static/chunks/app/page-7addd70399bc51c7.js\"],\"default\"]\nf:I[98919,[\"4890\",\"static/chunks/4890-e70"])
+        </script>
+        <script>
+            self.__next_f.push([1, "6d95fcbe769e5.js\",\"5864\",\"static/chunks/5864-a79e0de84607f560.js\",\"3185\",\"static/chunks/app/layout-36ad7bef51b847d8.js\"],\"default\"]\n10:I[83561,[\"4890\",\"static/chunks/4890-e706d95fcbe769e5.js\",\"5864\",\"static/chunks/5864-a79e0de84607f560.js\",\"3185\",\"static/chunks/app/layout-36ad7bef51b847d8.js\"],\"default\"]\n11:I[95875,[\"4890\",\"static/chunks/4890-e706d95fcbe769e5.js\",\"5864\",\"static/chunks/5864-a79e0de84607f560.js\",\"3185\",\"static/chunks/app/layout-36ad7bef51b847d8.js\"],\"default\"]\n12:I[4707,[],\"\"]\n13:I[36423,[],\"\"]\n14:I[72972,[\"2972\",\"static/chunks/2972-359ceb67daf90d6f.js\",\"9160\",\"static/chunks/app/not-found-b151f3ef7277f04a.js\"],\"\"]\n16:I[61060,[],\"\"]\n17:[]\n"])
+        </script>
+        <script>
+            self.__next_f.push([1, "0:[\"$\",\"$L5\",null,{\"buildId\":\"imYw5In1JSSSiKtmdIWSc\",\"assetPrefix\":\"\",\"urlParts\":[\"\",\"\"],\"initialTree\":[\"\",{\"children\":[\"__PAGE__\",{}]},\"$undefined\",\"$undefined\",true],\"initialSeedData\":[\"\",{\"children\":[\"__PAGE__\",{},[[\"$L6\",[\"$\",\"$L7\",null,{\"children\":[[\"$\",\"$L8\",null,{}],[\"$\",\"$L9\",null,{}],[\"$\",\"$La\",null,{}],[\"$\",\"$Lb\",null,{}],[\"$\",\"$Lc\",null,{}],[\"$\",\"$Ld\",null,{}],[\"$\",\"$Le\",null,{}]]}],null],null],null]},[[[[\"$\",\"link\",\"0\",{\"rel\":\"stylesheet\",\"href\":\"/_next/static/css/b85ca0ecdafecf42.css\",\"precedence\":\"next\",\"crossOrigin\":\"$undefined\"}],[\"$\",\"link\",\"1\",{\"rel\":\"stylesheet\",\"href\":\"/_next/static/css/857aa62baa17c894.css\",\"precedence\":\"next\",\"crossOrigin\":\"$undefined\"}]],[\"$\",\"html\",null,{\"lang\":\"fr\",\"children\":[[\"$\",\"head\",null,{\"children\":[[\"$\",\"meta\",null,{\"name\":\"apple-mobile-web-app-capable\",\"content\":\"yes\"}],[\"$\",\"meta\",null,{\"name\":\"apple-mobile-web-app-status-bar-style\",\"content\":\"black-translucent\"}],[\"$\",\"meta\",null,{\"name\":\"apple-mobile-web-app-title\",\"content\":\"MTECHBENIN\"}],[\"$\",\"meta\",null,{\"name\":\"mobile-web-app-capable\",\"content\":\"yes\"}],[\"$\",\"meta\",null,{\"name\":\"msapplication-TileColor\",\"content\":\"#ffffff\"}],[\"$\",\"meta\",null,{\"name\":\"msapplication-TileImage\",\"content\":\"/icons/icon-192x192.png\"}],[\"$\",\"link\",null,{\"rel\":\"apple-touch-icon\",\"href\":\"/icons/icon-152x152.png\"}],[\"$\",\"link\",null,{\"rel\":\"apple-touch-startup-image\",\"href\":\"/icons/icon-512x512.png\"}]]}],[\"$\",\"body\",null,{\"className\":\"__variable_f367f3 __variable_646807 font-sans bg-white text-gray-900 antialiased\",\"children\":[[\"$\",\"$Lf\",null,{}],[\"$\",\"$L10\",null,{}],[\"$\",\"$L11\",null,{\"children\":[\"$\",\"$L12\",null,{\"parallelRouterKey\":\"children\",\"segmentPath\":[\"children\"],\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$L13\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":[\"$\",\"div\",null,{\"className\":\"min-h-screen flex items-center justify-center text-center px-5\",\"children\":[\"$\",\"div\",null,{\"children\":[[\"$\",\"p\",null,{\"className\":\"font-display font-black text-8xl text-black/[0.06] mb-4\",\"children\":\"404\"}],[\"$\",\"h1\",null,{\"className\":\"font-display font-black text-2xl text-apple-black mb-3 tracking-tight\",\"children\":\"Page introuvable\"}],[\"$\",\"p\",null,{\"className\":\"text-apple-mid text-[14px] mb-8\",\"children\":\"Cette page n'existe pas ou a été déplacée.\"}],[\"$\",\"$L14\",null,{\"href\":\"/\",\"className\":\"btn-dark text-sm px-7 py-3.5 inline-flex items-center gap-2\",\"children\":\"Retour à l'accueil\"}]]}]}],\"notFoundStyles\":[]}]}]]}]]}]],null],null],\"couldBeIntercepted\":false,\"initialHead\":[null,\"$L15\"],\"globalErrorComponent\":\"$16\",\"missingSlots\":\"$W17\"}]\n"])
+        </script>
+        <script>
+            self.__next_f.push([1, "15:[[\"$\",\"meta\",\"0\",{\"name\":\"viewport\",\"content\":\"width=device-width, initial-scale=1\"}],[\"$\",\"meta\",\"1\",{\"name\":\"theme-color\",\"content\":\"#ffffff\"}],[\"$\",\"meta\",\"2\",{\"charSet\":\"utf-8\"}],[\"$\",\"title\",\"3\",{\"children\":\"MTECHBENIN — Écouteurs, Enceintes \u0026 Abonnements Digitaux\"}],[\"$\",\"meta\",\"4\",{\"name\":\"description\",\"content\":\"Achetez les meilleurs écouteurs, enceintes Bluetooth et abonnements Netflix, Spotify, Apple Music au Bénin. Livraison express à Cotonou.\"}],[\"$\",\"link\",\"5\",{\"rel\":\"manifest\",\"href\":\"/manifest.json\",\"crossOrigin\":\"use-credentials\"}],[\"$\",\"meta\",\"6\",{\"name\":\"keywords\",\"content\":\"écouteurs bénin,enceintes bluetooth cotonou,netflix bénin,spotify bénin,mtechbenin\"}],[\"$\",\"meta\",\"7\",{\"name\":\"apple-mobile-web-app-capable\",\"content\":\"yes\"}],[\"$\",\"meta\",\"8\",{\"name\":\"apple-mobile-web-app-title\",\"content\":\"MTECHBENIN\"}],[\"$\",\"meta\",\"9\",{\"name\":\"apple-mobile-web-app-status-bar-style\",\"content\":\"black-translucent\"}],[\"$\",\"meta\",\"10\",{\"property\":\"og:title\",\"content\":\"MTECHBENIN — Écouteurs, Enceintes \u0026 Abonnements Digitaux\"}],[\"$\",\"meta\",\"11\",{\"property\":\"og:description\",\"content\":\"Achetez les meilleurs écouteurs, enceintes Bluetooth et abonnements Netflix, Spotify au Bénin.\"}],[\"$\",\"meta\",\"12\",{\"property\":\"og:url\",\"content\":\"https://mtechbenin.com\"}],[\"$\",\"meta\",\"13\",{\"property\":\"og:site_name\",\"content\":\"MTECHBENIN\"}],[\"$\",\"meta\",\"14\",{\"property\":\"og:locale\",\"content\":\"fr_BJ\"}],[\"$\",\"meta\",\"15\",{\"property\":\"og:type\",\"content\":\"website\"}],[\"$\",\"meta\",\"16\",{\"name\":\"twitter:card\",\"content\":\"summary\"}],[\"$\",\"meta\",\"17\",{\"name\":\"twitter:title\",\"content\":\"MTECHBENIN — Écouteurs, Enceintes \u0026 Abonnements Digitaux\"}],[\"$\",\"meta\",\"18\",{\"name\":\"twitter:description\",\"content\":\"Achetez les meilleurs écouteurs, enceintes Bluetooth et abonnements Netflix, Spotify au Bénin.\"}],[\"$\",\"link\",\"19\",{\"rel\":\"shortcut icon\",\"href\":\"/favicon.ico\"}],[\"$\",\"link\",\"20\",{\"rel\":\"icon\",\"href\":\"/favicon.ico\",\"type\":\"image/x-icon\"}],[\"$\",\"link\",\"21\",{\"rel\":\"icon\",\"href\":\"/icons/icon-96x96.png\",\"sizes\":\"96x96\",\"type\":\"image/png\"}],[\"$\",\"link\",\"22\",{\"rel\":\"icon\",\"href\":\"/icons/icon-192x192.png\",\"sizes\":\"192x192\",\"type\":\"image/png\"}],[\"$\",\"link\",\"23\",{\"rel\":\"icon\",\"href\":\"/icons/icon-512x512.png\",\"sizes\":\"512x512\",\"type\":\"image/png\"}],[\"$\",\"link\",\"24\",{\"rel\":\"apple-touch-icon\",\"href\":\"/icons/icon-152x152.png\",\"sizes\":\"152x152\",\"type\":\"image/png\"}],[\"$\",\"link\",\"25\",{\"rel\":\"apple-touch-icon\",\"href\":\"/icons/icon-192x192.png\",\"sizes\":\"192x192\",\"type\":\"image/png\"}],[\"$\",\"meta\",\"26\",{\"name\":\"next-size-adjust\"}]]\n"])
+        </script>
+        <script>
+            self.__next_f.push([1, "6:null\n"])
+        </script>
+    </body>
 </html>
