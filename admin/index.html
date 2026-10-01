@@ -1,1277 +1,511 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fr">
-
 <head>
-
-<meta charset="UTF-8">
-
-<meta name="viewport"
-content="width=device-width,initial-scale=1.0">
-
-<title>MTECHBENIN — Administration</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>MTECH BENIN — Admin</title>
 
 <style>
-
-/* =====================================================
-   RESET
-===================================================== */
-
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-}
+*{box-sizing:border-box}
 
 body{
-font-family:
--apple-system,
-BlinkMacSystemFont,
-"Segoe UI",
-Roboto,
-Arial,
-sans-serif;
-
-background:#f5f5f7;
-color:#111;
-
--webkit-font-smoothing:antialiased;
+  margin:0;
+  background:#0b0b0d;
+  color:#fff;
+  font-family:Arial,sans-serif
 }
 
-button,
-input,
-select,
-textarea{
-font:inherit;
+button,input,textarea{
+  font:inherit
 }
 
-
-/* =====================================================
-   CONNEXION
-===================================================== */
+button{
+  cursor:pointer
+}
 
 .login{
-min-height:100vh;
-
-display:flex;
-align-items:center;
-justify-content:center;
-
-padding:20px;
-}
-
-.login-card{
-width:min(420px,100%);
-
-background:#fff;
-
-border-radius:24px;
-
-padding:36px;
-
-box-shadow:
-0 20px 60px rgba(0,0,0,.08);
-}
-
-.logo{
-font-size:27px;
-font-weight:800;
-letter-spacing:-1px;
-}
-
-.muted{
-color:#777;
-font-size:14px;
-}
-
-.login h1{
-font-size:25px;
-margin:28px 0 22px;
-}
-
-label{
-display:block;
-
-font-size:14px;
-font-weight:600;
-
-margin:16px 0 7px;
-}
-
-input,
-select,
-textarea{
-
-width:100%;
-
-padding:13px 14px;
-
-border:1px solid #ddd;
-
-border-radius:11px;
-
-outline:none;
-
-background:#fff;
-}
-
-input:focus,
-select:focus,
-textarea:focus{
-
-border-color:#111;
-}
-
-textarea{
-
-min-height:100px;
-
-resize:vertical;
-}
-
-.primary{
-
-width:100%;
-
-border:0;
-
-background:#111;
-
-color:#fff;
-
-padding:15px;
-
-border-radius:12px;
-
-font-weight:700;
-
-margin-top:22px;
-
-cursor:pointer;
-}
-
-.primary:hover{
-background:#333;
-}
-
-.error{
-
-color:#d00000;
-
-font-size:13px;
-
-margin-top:12px;
-
-display:none;
-}
-
-
-/* =====================================================
-   ADMIN
-===================================================== */
-
-.admin{
-display:none;
-min-height:100vh;
-}
-
-
-/* =====================================================
-   SIDEBAR
-===================================================== */
-
-.sidebar{
-
-position:fixed;
-
-left:0;
-top:0;
-bottom:0;
-
-width:250px;
-
-background:#111;
-
-color:#fff;
-
-padding:28px 18px;
-
-z-index:100;
-}
-
-.sidebar .brand{
-
-font-size:22px;
-
-font-weight:800;
-
-padding:
-0 12px 30px;
-}
-
-.nav button{
-
-display:block;
-
-width:100%;
-
-border:0;
-
-background:transparent;
-
-color:#aaa;
-
-text-align:left;
-
-padding:14px 12px;
-
-border-radius:10px;
-
-cursor:pointer;
-
-margin-bottom:4px;
-
-transition:.2s;
-}
-
-.nav button:hover,
-.nav button.active{
-
-background:#242424;
-
-color:#fff;
-}
-
-.logout{
-
-position:absolute;
-
-left:18px;
-right:18px;
-bottom:25px;
-
-border:1px solid #444;
-
-background:transparent;
-
-color:#fff;
-
-padding:12px;
-
-border-radius:10px;
-
-cursor:pointer;
-}
-
-.logout:hover{
-
-background:#fff;
-
-color:#111;
-}
-
-
-/* =====================================================
-   MAIN
-===================================================== */
-
-.main{
-
-margin-left:250px;
-
-padding:35px;
-}
-
-.top{
-
-display:flex;
-
-justify-content:space-between;
-
-align-items:center;
-
-margin-bottom:30px;
-}
-
-.top h1{
-
-font-size:30px;
-
-margin-bottom:5px;
-}
-
-
-/* =====================================================
-   PAGES
-===================================================== */
-
-.page{
-display:none;
-}
-
-.page.active{
-display:block;
-}
-
-
-/* =====================================================
-   STATS
-===================================================== */
-
-.grid{
-
-display:grid;
-
-grid-template-columns:
-repeat(4,1fr);
-
-gap:18px;
+  min-height:100vh;
+  display:grid;
+  place-items:center;
+  padding:20px
 }
 
 .card{
-
-background:#fff;
-
-border-radius:18px;
-
-padding:22px;
-
-box-shadow:
-0 8px 30px rgba(0,0,0,.04);
+  background:#151518;
+  border:1px solid #29292d;
+  border-radius:18px;
+  padding:24px
 }
 
-.card small{
-color:#777;
+.login .card{
+  width:min(420px,100%)
 }
 
-.card strong{
-
-display:block;
-
-font-size:28px;
-
-margin-top:10px;
+input,textarea{
+  width:100%;
+  background:#0e0e10;
+  color:#fff;
+  border:1px solid #34343a;
+  border-radius:10px;
+  padding:12px;
+  margin:7px 0 14px
 }
 
-
-/* =====================================================
-   PANEL
-===================================================== */
-
-.panel{
-
-background:#fff;
-
-border-radius:18px;
-
-padding:22px;
-
-margin-top:22px;
+.btn{
+  border:0;
+  border-radius:10px;
+  padding:11px 15px;
+  font-weight:bold
 }
 
-.panel h2{
-
-font-size:19px;
-
-margin-bottom:18px;
+.white{
+  background:#fff;
+  color:#111
 }
 
+.green{
+  background:#19c37d;
+  color:#07150f
+}
 
-/* =====================================================
-   TOOLBAR
-===================================================== */
+.dark{
+  background:#29292e;
+  color:#fff
+}
+
+.red{
+  background:#8b2525;
+  color:#fff
+}
+
+.full{
+  width:100%
+}
+
+.error{
+  color:#ff7272;
+  margin-top:10px
+}
+
+#app{
+  display:none
+}
+
+.side{
+  position:fixed;
+  top:0;
+  bottom:0;
+  width:230px;
+  background:#111113;
+  border-right:1px solid #29292d;
+  padding:20px 12px
+}
+
+.logo{
+  font-size:22px;
+  font-weight:900;
+  padding:10px 12px 25px
+}
+
+.logo span{
+  color:#888
+}
+
+.nav button{
+  width:100%;
+  border:0;
+  background:none;
+  color:#aaa;
+  text-align:left;
+  padding:12px;
+  border-radius:9px;
+  margin:2px 0
+}
+
+.nav button.active,
+.nav button:hover{
+  background:#27272b;
+  color:#fff
+}
+
+main{
+  margin-left:230px;
+  padding:28px;
+  max-width:1400px
+}
+
+.top{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:15px;
+  margin-bottom:22px
+}
+
+.muted{
+  color:#999
+}
+
+.page{
+  display:none
+}
+
+.page.active{
+  display:block
+}
+
+.stats{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:15px
+}
+
+.stat{
+  background:#151518;
+  border:1px solid #29292d;
+  border-radius:15px;
+  padding:20px
+}
+
+.stat b{
+  display:block;
+  font-size:30px;
+  margin-top:8px
+}
 
 .toolbar{
-
-display:flex;
-
-gap:12px;
-
-justify-content:space-between;
-
-align-items:center;
-
-margin-bottom:20px;
+  display:flex;
+  justify-content:space-between;
+  gap:10px;
+  align-items:center;
+  flex-wrap:wrap;
+  margin:18px 0
 }
 
-.search{
-
-max-width:350px;
+.toolbar input{
+  max-width:400px;
+  margin:0
 }
 
-.add-button{
-
-background:#111;
-
-color:#fff;
-
-border:0;
-
-padding:12px 18px;
-
-border-radius:10px;
-
-cursor:pointer;
-
-font-weight:700;
-}
-
-.add-button:hover{
-
-background:#333;
-}
-
-
-/* =====================================================
-   PRODUCTS
-===================================================== */
-
-.products-grid{
-
-display:grid;
-
-grid-template-columns:
-repeat(3,1fr);
-
-gap:20px;
-}
-
-.product-card{
-
-background:#fff;
-
-border-radius:18px;
-
-overflow:hidden;
-
-box-shadow:
-0 8px 30px rgba(0,0,0,.05);
-}
-
-.product-image{
-
-height:210px;
-
-background:#f1f1f1;
-
-display:flex;
-
-align-items:center;
-
-justify-content:center;
-
-overflow:hidden;
-}
-
-.product-image img{
-
-width:100%;
-height:100%;
-
-object-fit:cover;
-}
-
-.no-image{
-
-font-size:55px;
-
-opacity:.2;
-}
-
-.product-info{
-
-padding:20px;
-}
-
-.product-info h3{
-
-font-size:18px;
-
-margin-bottom:8px;
-}
-
-.product-price{
-
-color:#e50914;
-
-font-weight:800;
-
-margin-bottom:6px;
-}
-
-.product-stock{
-
-color:#777;
-
-font-size:13px;
-
-margin-bottom:18px;
-}
-
-.product-actions{
-
-display:flex;
-
-gap:8px;
-}
-
-.edit{
-
-flex:1;
-
-border:0;
-
-background:#111;
-
-color:#fff;
-
-padding:10px;
-
-border-radius:9px;
-
-cursor:pointer;
-}
-
-.delete{
-
-flex:1;
-
-border:0;
-
-background:#eee;
-
-color:#c00;
-
-padding:10px;
-
-border-radius:9px;
-
-cursor:pointer;
-}
-
-
-/* =====================================================
-   MODAL
-===================================================== */
-
-.modal{
-
-position:fixed;
-
-inset:0;
-
-background:
-rgba(0,0,0,.55);
-
-display:none;
-
-align-items:center;
-
-justify-content:center;
-
-padding:20px;
-
-z-index:1000;
-}
-
-.modal.open{
-
-display:flex;
-}
-
-.modal-box{
-
-width:min(520px,100%);
-
-max-height:90vh;
-
-overflow-y:auto;
-
-background:#fff;
-
-border-radius:22px;
-
-padding:28px;
-}
-
-.modal-header{
-
-display:flex;
-
-align-items:center;
-
-justify-content:space-between;
-
-margin-bottom:20px;
-}
-
-.modal-header h2{
-
-font-size:22px;
-}
-
-.close{
-
-border:0;
-
-background:#eee;
-
-width:36px;
-height:36px;
-
-border-radius:50%;
-
-font-size:22px;
-
-cursor:pointer;
-}
-
-.form-group{
-margin-bottom:14px;
-}
-
-.form-actions{
-
-display:flex;
-
-gap:10px;
-
-margin-top:20px;
-}
-
-.cancel{
-
-flex:1;
-
-border:0;
-
-background:#eee;
-
-padding:13px;
-
-border-radius:10px;
-
-cursor:pointer;
-}
-
-.save{
-
-flex:1;
-
-border:0;
-
-background:#111;
-
-color:#fff;
-
-padding:13px;
-
-border-radius:10px;
-
-cursor:pointer;
-}
-
-
-/* =====================================================
-   TABLE
-===================================================== */
-
-.table-container{
-
-overflow-x:auto;
+.wrap{
+  overflow:auto;
+  border:1px solid #29292d;
+  border-radius:15px
 }
 
 .table{
-
-width:100%;
-
-border-collapse:collapse;
+  width:100%;
+  min-width:750px;
+  border-collapse:collapse
 }
 
 .table th,
 .table td{
-
-text-align:left;
-
-padding:14px 8px;
-
-border-bottom:
-1px solid #eee;
-
-font-size:14px;
+  padding:13px;
+  border-bottom:1px solid #29292d;
+  text-align:left
 }
 
-.badge{
-
-display:inline-block;
-
-padding:6px 10px;
-
-border-radius:20px;
-
-background:#eaf7ed;
-
-color:#16833b;
-
-font-size:12px;
-
-font-weight:700;
+.table th{
+  color:#999;
+  font-size:12px
 }
 
-
-/* =====================================================
-   EMPTY
-===================================================== */
-
-.empty{
-
-text-align:center;
-
-padding:60px 20px;
-
-color:#888;
+.thumb{
+  width:55px;
+  height:55px;
+  object-fit:cover;
+  border-radius:8px;
+  background:#222
 }
 
-
-/* =====================================================
-   MOBILE
-===================================================== */
-
-@media(max-width:900px){
-
-.sidebar{
-
-position:static;
-
-width:100%;
-
-min-height:auto;
-
-padding:20px;
+.modal{
+  display:none;
+  position:fixed;
+  inset:0;
+  background:#000b;
+  place-items:center;
+  padding:20px;
+  z-index:20
 }
 
-.sidebar .brand{
-
-padding-bottom:18px;
+.modal.show{
+  display:grid
 }
 
-.nav{
-
-display:flex;
-
-overflow-x:auto;
-
-gap:5px;
+.modal .card{
+  width:min(650px,100%);
+  max-height:95vh;
+  overflow:auto
 }
 
-.nav button{
-
-white-space:nowrap;
-
-width:auto;
+.actions{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap
 }
 
-.logout{
+@media(max-width:800px){
 
-position:static;
+  .side{
+    position:static;
+    width:100%
+  }
 
-width:100%;
+  .nav{
+    display:flex;
+    overflow:auto
+  }
 
-margin-top:12px;
-}
+  .nav button{
+    white-space:nowrap;
+    width:auto
+  }
 
-.main{
+  main{
+    margin-left:0;
+    padding:16px
+  }
 
-margin-left:0;
-
-padding:20px;
-}
-
-.grid{
-
-grid-template-columns:
-repeat(2,1fr);
-}
-
-.products-grid{
-
-grid-template-columns:
-repeat(2,1fr);
-}
+  .stats{
+    grid-template-columns:1fr
+  }
 
 }
-
-
-@media(max-width:550px){
-
-.grid{
-
-grid-template-columns:
-repeat(2,1fr);
-}
-
-.products-grid{
-
-grid-template-columns:1fr;
-}
-
-.toolbar{
-
-flex-direction:column;
-
-align-items:stretch;
-}
-
-.search{
-
-max-width:none;
-}
-
-.top h1{
-
-font-size:25px;
-}
-
-}
-
-
-/* =====================================================
-   TOAST
-===================================================== */
-
-.toast{
-
-position:fixed;
-
-right:20px;
-bottom:20px;
-
-background:#111;
-
-color:#fff;
-
-padding:14px 20px;
-
-border-radius:12px;
-
-z-index:2000;
-
-opacity:0;
-
-transform:translateY(20px);
-
-pointer-events:none;
-
-transition:.3s;
-}
-
-.toast.show{
-
-opacity:1;
-
-transform:translateY(0);
-}
-
 </style>
-
 </head>
-
 
 <body>
 
+<!-- =========================
+     CONNEXION
+========================= -->
 
-<!-- =====================================================
-     LOGIN
-===================================================== -->
+<section id="login" class="login">
 
-<section
-class="login"
-id="login"
->
-
-<div class="login-card">
-
-<div class="logo">
-MTECHBENIN
-</div>
-
-<div class="muted">
-Espace d'administration
-</div>
+<div class="card">
 
 <h1>
-Connexion
+MTECH
+<span style="color:#888">BENIN</span>
 </h1>
 
-<label>
-Email
-</label>
+<p class="muted">
+Administration
+</p>
+
+<label>Email</label>
 
 <input
 id="email"
 type="email"
-placeholder="admin@mtechbenin.com"
+placeholder="Votre email"
 >
 
-<label>
-Mot de passe
-</label>
+<label>Mot de passe</label>
 
 <input
 id="password"
 type="password"
-placeholder="••••••••"
+placeholder="Votre mot de passe"
 >
 
 <button
-class="primary"
-onclick="login()"
+class="btn white full"
+id="loginBtn"
 >
 Se connecter
 </button>
 
 <div
+id="loginError"
 class="error"
-id="error"
->
-Identifiants incorrects.
-</div>
+></div>
 
 </div>
 
 </section>
 
 
+<!-- =========================
+     ADMINISTRATION
+========================= -->
 
-<!-- =====================================================
-     ADMIN
-===================================================== -->
+<section id="app">
 
-<section
-class="admin"
-id="admin"
->
+<aside class="side">
 
-
-<!-- SIDEBAR -->
-
-<aside class="sidebar">
-
-<div class="brand">
-MTECHBENIN
+<div class="logo">
+MTECH
+<span>BENIN</span>
 </div>
 
-
-<div class="nav">
-
+<nav class="nav">
 
 <button
 class="active"
-onclick="showPage('dashboard',this)"
+data-page="dashboard"
 >
 📊 Tableau de bord
 </button>
 
-
 <button
-onclick="showPage('products',this)"
+data-page="products"
 >
 📦 Produits
 </button>
 
-
 <button
-onclick="showPage('orders',this)"
+data-page="orders"
 >
 🛒 Commandes
 </button>
 
-
 <button
-onclick="showPage('subscriptions',this)"
->
-📺 Abonnements
-</button>
-
-
-<button
-onclick="showPage('repairs',this)"
->
-🔧 Réparations
-</button>
-
-
-<button
-onclick="showPage('customers',this)"
->
-👥 Clients
-</button>
-
-
-<button
-onclick="showPage('settings',this)"
+data-page="settings"
 >
 ⚙️ Paramètres
 </button>
 
-
-</div>
-
-
-<button
-class="logout"
-onclick="logout()"
->
-Se déconnecter
+<button id="logoutBtn">
+🚪 Déconnexion
 </button>
+
+</nav>
 
 </aside>
 
 
-
-<!-- MAIN -->
-
-<main class="main">
-
-
-<!-- =====================================================
-     DASHBOARD
-===================================================== -->
-
-<section
-class="page active"
-id="dashboard"
->
+<main>
 
 <div class="top">
 
 <div>
 
-<h1>
+<h1 id="title">
 Tableau de bord
 </h1>
 
-<div class="muted">
-Bienvenue dans l'administration MTECHBENIN.
-</div>
-
-</div>
-
-</div>
-
-
-<div class="grid">
-
-
-<div class="card">
-
-<small>
-Commandes
-</small>
-
-<strong>
-0
-</strong>
-
-</div>
-
-
-<div class="card">
-
-<small>
-Produits
-</small>
-
-<strong id="dashboardProducts">
-0
-</strong>
-
-</div>
-
-
-<div class="card">
-
-<small>
-Clients
-</small>
-
-<strong>
-0
-</strong>
-
-</div>
-
-
-<div class="card">
-
-<small>
-Chiffre d'affaires
-</small>
-
-<strong>
-0 F
-</strong>
-
-</div>
-
-
-</div>
-
-
-<div class="panel">
-
-<h2>
-Bienvenue
-</h2>
-
-<p class="muted">
-
-Utilise le menu à gauche pour gérer
-les produits, commandes, abonnements,
-réparations et clients.
-
-</p>
-
-</div>
-
-</section>
-
-
-
-<!-- =====================================================
-     PRODUITS
-===================================================== -->
-
-<section
-class="page"
-id="products"
->
-
-<div class="top">
-
-<div>
-
-<h1>
-Produits
-</h1>
-
-<div class="muted">
-Gérer les produits de votre boutique.
-</div>
+<div
+id="user"
+class="muted"
+></div>
 
 </div>
 
 <button
-class="add-button"
-onclick="openProductModal()"
+class="btn dark"
+id="refreshBtn"
 >
-+ Ajouter un produit
+↻ Actualiser
 </button>
 
 </div>
 
 
-<div class="toolbar">
+<!-- =========================
+     DASHBOARD
+========================= -->
 
-<input
-class="search"
-id="productSearch"
-placeholder="🔎 Rechercher un produit..."
-oninput="renderProducts()"
+<section
+id="dashboard"
+class="page active"
 >
+
+<div class="stats">
+
+<div class="stat">
+
+<span class="muted">
+Produits
+</span>
+
+<b id="countProducts">
+0
+</b>
+
+</div>
+
+
+<div class="stat">
+
+<span class="muted">
+Commandes
+</span>
+
+<b>
+0
+</b>
+
+</div>
+
+
+<div class="stat">
+
+<span class="muted">
+Clients
+</span>
+
+<b>
+0
+</b>
+
+</div>
 
 </div>
 
 
 <div
-class="products-grid"
-id="productsGrid"
+class="card"
+style="margin-top:18px"
 >
-</div>
-
-</section>
-
-
-
-<!-- =====================================================
-     COMMANDES
-===================================================== -->
-
-<section
-class="page"
-id="orders"
->
-
-<div class="top">
-
-<div>
-
-<h1>
-Commandes
-</h1>
-
-<div class="muted">
-Toutes les commandes de vos clients.
-</div>
-
-</div>
-
-</div>
-
-
-<div class="panel">
-
-<div class="empty">
-
-🛒
 
 <h2>
-Aucune commande
+Supabase connecté
 </h2>
 
-<p>
-Les commandes de vos clients
-apparaîtront ici.
+<p class="muted">
+
+Cette version utilise la table
+
+<b>
+public.products
+</b>
+
 </p>
 
 </div>
 
-</div>
-
 </section>
 
 
-
-<!-- =====================================================
-     ABONNEMENTS
-===================================================== -->
+<!-- =========================
+     PRODUITS
+========================= -->
 
 <section
+id="products"
 class="page"
-id="subscriptions"
 >
 
-<div class="top">
+<div class="toolbar">
 
-<div>
+<input
+id="search"
+placeholder="Rechercher un produit..."
+>
 
-<h1>
-Abonnements
-</h1>
+<button
+class="btn green"
+id="addBtn"
+>
+＋ Ajouter un produit
+</button>
 
-<div class="muted">
-Gérer vos abonnements digitaux.
 </div>
 
-</div>
 
-</div>
-
-
-<div class="panel">
-
-<h2>
-Services disponibles
-</h2>
+<div class="wrap">
 
 <table class="table">
 
@@ -1280,7 +514,11 @@ Services disponibles
 <tr>
 
 <th>
-Service
+Image
+</th>
+
+<th>
+Nom
 </th>
 
 <th>
@@ -1288,86 +526,28 @@ Prix
 </th>
 
 <th>
-Statut
+Stock
+</th>
+
+<th>
+Catégorie
+</th>
+
+<th>
+Actions
 </th>
 
 </tr>
 
 </thead>
 
-<tbody>
+
+<tbody id="rows">
 
 <tr>
 
-<td>
-Netflix
-</td>
-
-<td>
-2 000 FCFA
-</td>
-
-<td>
-<span class="badge">
-Actif
-</span>
-</td>
-
-</tr>
-
-
-<tr>
-
-<td>
-Apple Music
-</td>
-
-<td>
-1 500 FCFA
-</td>
-
-<td>
-<span class="badge">
-Actif
-</span>
-</td>
-
-</tr>
-
-
-<tr>
-
-<td>
-Apple TV
-</td>
-
-<td>
-1 500 FCFA
-</td>
-
-<td>
-<span class="badge">
-Actif
-</span>
-</td>
-
-</tr>
-
-
-<tr>
-
-<td>
-Apple Services
-</td>
-
-<td>
-2 500 FCFA
-</td>
-
-<td>
-<span class="badge">
-Actif
-</span>
+<td colspan="6">
+Chargement...
 </td>
 
 </tr>
@@ -1381,218 +561,80 @@ Actif
 </section>
 
 
-
-<!-- =====================================================
-     REPARATIONS
-===================================================== -->
+<!-- =========================
+     COMMANDES
+========================= -->
 
 <section
+id="orders"
 class="page"
-id="repairs"
 >
 
-<div class="top">
-
-<div>
-
-<h1>
-Réparations
-</h1>
-
-<div class="muted">
-Demandes de réparation.
-</div>
-
-</div>
-
-</div>
-
-
-<div class="panel">
-
-<div class="empty">
-
-🔧
+<div class="card">
 
 <h2>
-Aucune demande
+Commandes
 </h2>
 
-<p>
-Les demandes de réparation
-apparaîtront ici.
+<p class="muted">
+Nous connecterons cette partie ensuite.
 </p>
-
-</div>
 
 </div>
 
 </section>
 
 
-
-<!-- =====================================================
-     CLIENTS
-===================================================== -->
-
-<section
-class="page"
-id="customers"
->
-
-<div class="top">
-
-<div>
-
-<h1>
-Clients
-</h1>
-
-<div class="muted">
-Clients de MTECHBENIN.
-</div>
-
-</div>
-
-</div>
-
-
-<div class="panel">
-
-<div class="empty">
-
-👥
-
-<h2>
-Aucun client
-</h2>
-
-<p>
-Les clients apparaîtront ici
-après leurs premières commandes.
-</p>
-
-</div>
-
-</div>
-
-</section>
-
-
-
-<!-- =====================================================
-     PARAMETRES
-===================================================== -->
+<!-- =========================
+     PARAMÈTRES
+========================= -->
 
 <section
-class="page"
 id="settings"
+class="page"
 >
 
-<div class="top">
-
-<div>
-
-<h1>
-Paramètres
-</h1>
-
-<div class="muted">
-Configuration de votre boutique.
-</div>
-
-</div>
-
-</div>
-
-
-<div class="panel">
+<div class="card">
 
 <h2>
-Informations de la boutique
+Paramètres
 </h2>
 
-
-<div class="form-group">
-
-<label>
-Nom de la boutique
-</label>
-
-<input
-value="MTECHBENIN"
->
-
-</div>
-
-
-<div class="form-group">
-
-<label>
-Téléphone
-</label>
-
-<input
-value="+229 60 50 63 20"
->
-
-</div>
-
-
-<div class="form-group">
-
-<label>
-Site internet
-</label>
-
-<input
-value="https://mtechbenin.com"
->
-
-</div>
-
-
-<button
-class="save"
-onclick="showToast('Paramètres enregistrés')"
->
-Enregistrer
-</button>
+<p class="muted">
+Configuration Supabase active.
+</p>
 
 </div>
 
 </section>
-
 
 </main>
 
 </section>
 
 
-
-<!-- =====================================================
-     MODAL PRODUIT
-===================================================== -->
+<!-- =========================
+     MODALE PRODUIT
+========================= -->
 
 <div
+id="modal"
 class="modal"
-id="productModal"
 >
 
-<div class="modal-box">
+<div class="card">
 
-
-<div class="modal-header">
+<div class="top">
 
 <h2 id="modalTitle">
 Ajouter un produit
 </h2>
 
 <button
-class="close"
-onclick="closeProductModal()"
+class="btn dark"
+id="closeBtn"
 >
-×
+✕
 </button>
 
 </div>
@@ -1600,131 +642,95 @@ onclick="closeProductModal()"
 
 <input
 type="hidden"
-id="productId"
+id="pid"
 >
 
 
-<div class="form-group">
-
 <label>
-Nom du produit
+Nom *
 </label>
 
 <input
-id="productName"
-placeholder="Ex : AirPods Pro"
+id="name"
+placeholder="Ex. iPhone 15 Pro Max"
 >
 
-</div>
-
-
-<div class="form-group">
 
 <label>
-Prix (FCFA)
+Prix (FCFA) *
 </label>
 
 <input
-id="productPrice"
+id="price"
 type="number"
-placeholder="25000"
+min="0"
 >
 
-</div>
-
-
-<div class="form-group">
 
 <label>
 Stock
 </label>
 
 <input
-id="productStock"
+id="stock"
 type="number"
-placeholder="10"
+min="0"
+value="0"
 >
 
-</div>
-
-
-<div class="form-group">
 
 <label>
 Catégorie
 </label>
 
-<select id="productCategory">
+<input
+id="category"
+placeholder="Ex. iPhone"
+>
 
-<option>
-Écouteurs
-</option>
-
-<option>
-Enceintes
-</option>
-
-<option>
-Accessoires
-</option>
-
-<option>
-Smartphones
-</option>
-
-<option>
-Ordinateurs
-</option>
-
-<option>
-Autres
-</option>
-
-</select>
-
-</div>
-
-
-<div class="form-group">
 
 <label>
-URL de l'image
+Image URL
 </label>
 
 <input
-id="productImage"
+id="image"
 placeholder="https://..."
 >
 
-</div>
 
+<label>
+Vidéo URL
+</label>
 
-<div class="form-group">
+<input
+id="video"
+placeholder="https://..."
+>
+
 
 <label>
 Description
 </label>
 
 <textarea
-id="productDescription"
-placeholder="Description du produit..."
+id="description"
+rows="4"
 ></textarea>
 
-</div>
 
-
-<div class="form-actions">
+<div class="actions">
 
 <button
-class="cancel"
-onclick="closeProductModal()"
+class="btn dark"
+id="cancelBtn"
 >
 Annuler
 </button>
 
 <button
-class="save"
-onclick="saveProduct()"
+class="btn green"
+id="saveBtn"
 >
 Enregistrer
 </button>
@@ -1732,526 +738,483 @@ Enregistrer
 </div>
 
 
-</div>
-
-</div>
-
-
-
-<!-- TOAST -->
-
 <div
-class="toast"
-id="toast"
->
-Produit enregistré
+id="saveError"
+class="error"
+></div>
+
+</div>
+
 </div>
 
 
+<!-- =========================
+     JAVASCRIPT + SUPABASE
+========================= -->
 
-<!-- =====================================================
-     JAVASCRIPT
-===================================================== -->
+<script type="module">
 
-<script>
+/*
+=========================================
+MTECH BENIN — CONFIGURATION SUPABASE
+=========================================
 
+IMPORTANT :
 
-/* =====================================================
-   IDENTIFIANTS
-===================================================== */
-
-const ADMIN_EMAIL =
-"admin@mtechbenin.com";
-
-const ADMIN_PASSWORD =
-"MTECH2026";
+1. Mets ton PROJECT URL ici.
+2. Mets ta PUBLISHABLE KEY ici.
+3. NE METS PAS la SECRET KEY.
+*/
 
 
+const SUPABASE_URL =
+"COLLE_ICI_TON_PROJECT_URL";
 
-/* =====================================================
-   LOGIN
-===================================================== */
 
-function login(){
+const SUPABASE_KEY =
+"COLLE_ICI_TA_PUBLISHABLE_KEY";
+
+
+/*
+=========================================
+SUPABASE
+=========================================
+*/
+
+import {
+createClient
+}
+from
+"https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm";
+
+
+const sb =
+createClient(
+SUPABASE_URL,
+SUPABASE_KEY
+);
+
+
+let products = [];
+
+
+const $ =
+id =>
+document.getElementById(id);
+
+
+const esc =
+s =>
+String(s ?? "")
+.replace(
+/[&<>"']/g,
+c =>
+({
+"&":"&amp;",
+"<":"&lt;",
+">":"&gt;",
+'"':"&quot;",
+"'":"&#039;"
+}[c])
+);
+
+
+/*
+=========================================
+DÉMARRER
+=========================================
+*/
+
+async function start(){
+
+const {
+data:{
+user
+}
+}
+=
+await sb.auth.getUser();
+
+
+if(!user){
+
+return;
+
+}
+
+
+$("login").style.display =
+"none";
+
+
+$("app").style.display =
+"block";
+
+
+$("user").textContent =
+user.email || "";
+
+
+await loadProducts();
+
+}
+
+
+/*
+=========================================
+CONNEXION
+=========================================
+*/
+
+async function login(){
+
+$("loginError").textContent =
+"";
+
 
 const email =
-document
-.getElementById("email")
+$("email")
 .value
 .trim();
 
+
 const password =
-document
-.getElementById("password")
+$("password")
 .value;
 
-const error =
-document
-.getElementById("error");
 
-
-if(
-email === ADMIN_EMAIL &&
-password === ADMIN_PASSWORD
-){
-
-sessionStorage.setItem(
-"mtech_admin",
-"1"
-);
-
-showAdmin();
-
+const {
+error
 }
+=
+await sb.auth.signInWithPassword({
 
-else{
+email,
 
-error.style.display="block";
+password
 
-}
+});
+
+
+if(error){
+
+$("loginError").textContent =
+error.message;
+
+return;
 
 }
 
 
-
-function showAdmin(){
-
-document
-.getElementById("login")
-.style.display="none";
-
-document
-.getElementById("admin")
-.style.display="block";
-
-renderProducts();
+await start();
 
 }
 
 
+/*
+=========================================
+CHARGER LES PRODUITS
+=========================================
+*/
 
-function logout(){
+async function loadProducts(){
 
-sessionStorage.removeItem(
-"mtech_admin"
-);
-
-location.reload();
-
+const {
+data,
+error
 }
-
-
-
-if(
-sessionStorage.getItem(
-"mtech_admin"
-)==="1"
-){
-
-showAdmin();
-
-}
-
-
-
-/* =====================================================
-   NAVIGATION
-===================================================== */
-
-function showPage(
-page,
-button
-){
-
-document
-.querySelectorAll(".page")
-.forEach(
-p=>p.classList.remove("active")
-);
-
-
-document
-.getElementById(page)
-.classList.add("active");
-
-
-document
-.querySelectorAll(".nav button")
-.forEach(
-b=>b.classList.remove("active")
-);
-
-
-if(button){
-
-button.classList.add("active");
-
-}
-
-}
-
-
-
-/* =====================================================
-   PRODUITS
-===================================================== */
-
-function getProducts(){
-
-return JSON.parse(
-localStorage.getItem(
-"mtech_products"
-)||"[]"
-);
-
-}
-
-
-
-function saveProducts(products){
-
-localStorage.setItem(
-"mtech_products",
-JSON.stringify(products)
-);
-
-}
-
-
-
-/* =====================================================
-   AFFICHER PRODUITS
-===================================================== */
-
-function renderProducts(){
-
-const grid =
-document.getElementById(
-"productsGrid"
-);
-
-if(!grid) return;
-
-
-const search =
-(
-document
-.getElementById(
-"productSearch"
-)?.value || ""
+=
+await sb
+.from("products")
+.select(
+"id,created_at,name,price,stock,category,image_url,video_url,description,active"
 )
+.order(
+"created_at",
+{
+ascending:false
+}
+);
+
+
+if(error){
+
+$("rows").innerHTML =
+"<tr><td colspan='6'>Erreur : "
++
+esc(error.message)
++
+"</td></tr>";
+
+return;
+
+}
+
+
+products =
+data || [];
+
+
+render();
+
+
+$("countProducts").textContent =
+products.length;
+
+}
+
+
+/*
+=========================================
+AFFICHER LES PRODUITS
+=========================================
+*/
+
+function render(){
+
+const q =
+$("search")
+.value
 .toLowerCase();
 
 
-const products =
-getProducts()
-.filter(
-p=>
-p.name
+const list =
+products.filter(
+p =>
+
+(p.name || "")
 .toLowerCase()
-.includes(search)
+.includes(q)
+
+||
+
+(p.category || "")
+.toLowerCase()
+.includes(q)
 );
 
 
-grid.innerHTML="";
+if(!list.length){
 
+$("rows").innerHTML =
+"<tr><td colspan='6'>Aucun produit.</td></tr>";
 
-if(products.length===0){
-
-grid.innerHTML=`
-
-<div
-class="empty"
-style="grid-column:1/-1"
->
-
-📦
-
-<h2>
-Aucun produit
-</h2>
-
-<p>
-Cliquez sur « Ajouter un produit »
-pour commencer.
-</p>
-
-</div>
-
-`;
+return;
 
 }
-else{
-
-products.forEach(
-product=>{
-
-const card =
-document.createElement(
-"article"
-);
-
-card.className=
-"product-card";
 
 
-card.innerHTML=`
+$("rows").innerHTML =
+list
+.map(
+p => `
 
-<div class="product-image">
+<tr>
+
+<td>
 
 ${
-product.image
+p.image_url
 
 ?
 
 `<img
-src="${escapeHTML(product.image)}"
-alt="${escapeHTML(product.name)}"
-onerror="this.style.display='none';this.nextElementSibling.style.display='block';"
->
-<span
-class="no-image"
-style="display:none"
->
-📦
-</span>`
+class="thumb"
+src="${esc(p.image_url)}"
+onerror="this.style.display='none'"
+>`
 
 :
 
-`<span class="no-image">
-📦
-</span>`
+"—"
 
 }
 
-</div>
+</td>
 
 
-<div class="product-info">
+<td>
 
-<h3>
-${escapeHTML(product.name)}
-</h3>
+<b>
+${esc(p.name)}
+</b>
 
-<div class="product-price">
-${formatPrice(product.price)} FCFA
-</div>
+</td>
 
-<div class="product-stock">
-Stock : ${product.stock}
-</div>
 
-<div class="product-actions">
+<td>
+
+${Number(p.price || 0)
+.toLocaleString("fr-FR")}
+
+FCFA
+
+</td>
+
+
+<td>
+
+${p.stock ?? 0}
+
+</td>
+
+
+<td>
+
+${esc(p.category || "—")}
+
+</td>
+
+
+<td>
+
+<div class="actions">
 
 <button
-class="edit"
-onclick="editProduct('${product.id}')"
+class="btn dark"
+onclick="editProduct(${p.id})"
 >
 Modifier
 </button>
 
+
 <button
-class="delete"
-onclick="deleteProduct('${product.id}')"
+class="btn red"
+onclick="deleteProduct(${p.id})"
 >
 Supprimer
 </button>
 
 </div>
 
-</div>
+</td>
 
-`;
+</tr>
 
-grid.appendChild(card);
-
-}
-
-);
-
-}
-
-
-const dashboardProducts =
-document.getElementById(
-"dashboardProducts"
-);
-
-if(dashboardProducts){
-
-dashboardProducts.textContent =
-getProducts().length;
-
-}
-
-}
-
-
-
-/* =====================================================
-   PRIX
-===================================================== */
-
-function formatPrice(
-price
-){
-
-return Number(price || 0)
-.toLocaleString(
-"fr-FR"
-);
-
-}
-
-
-
-/* =====================================================
-   ECHAPPEMENT HTML
-===================================================== */
-
-function escapeHTML(
-value
-){
-
-return String(value)
-.replace(/&/g,"&amp;")
-.replace(/</g,"&lt;")
-.replace(/>/g,"&gt;")
-.replace(/"/g,"&quot;")
-.replace(/'/g,"&#039;");
-
-}
-
-
-
-/* =====================================================
-   MODAL
-===================================================== */
-
-function openProductModal(){
-
-document
-.getElementById(
-"productModal"
+`
 )
-.classList.add("open");
+.join("");
+
+}
 
 
-document
-.getElementById(
-"modalTitle"
-)
-.textContent=
+/*
+=========================================
+OUVRIR MODALE
+=========================================
+*/
+
+function openModal(p = null){
+
+$("pid").value =
+p?.id || "";
+
+
+$("name").value =
+p?.name || "";
+
+
+$("price").value =
+p?.price || "";
+
+
+$("stock").value =
+p?.stock ?? 0;
+
+
+$("category").value =
+p?.category || "";
+
+
+$("image").value =
+p?.image_url || "";
+
+
+$("video").value =
+p?.video_url || "";
+
+
+$("description").value =
+p?.description || "";
+
+
+$("modalTitle").textContent =
+p
+?
+"Modifier un produit"
+:
 "Ajouter un produit";
 
 
-clearProductForm();
+$("saveError").textContent =
+"";
+
+
+$("modal").classList.add(
+"show"
+);
 
 }
 
 
+/*
+=========================================
+MODIFIER
+=========================================
+*/
 
-function closeProductModal(){
+window.editProduct =
+id => {
 
-document
-.getElementById(
-"productModal"
+const p =
+products.find(
+p =>
+p.id === id
+);
+
+
+openModal(p);
+
+};
+
+
+/*
+=========================================
+SUPPRIMER
+=========================================
+*/
+
+window.deleteProduct =
+async id => {
+
+if(
+!confirm(
+"Supprimer ce produit ?"
 )
-.classList.remove("open");
+){
+
+return;
 
 }
 
 
-
-/* =====================================================
-   FORMULAIRE
-===================================================== */
-
-function clearProductForm(){
-
-document
-.getElementById("productId")
-.value="";
-
-document
-.getElementById("productName")
-.value="";
-
-document
-.getElementById("productPrice")
-.value="";
-
-document
-.getElementById("productStock")
-.value="";
-
-document
-.getElementById("productImage")
-.value="";
-
-document
-.getElementById("productDescription")
-.value="";
-
+const {
+error
 }
+=
+await sb
+.from("products")
+.delete()
+.eq(
+"id",
+id
+);
 
 
-
-/* =====================================================
-   ENREGISTRER PRODUIT
-===================================================== */
-
-function saveProduct(){
-
-const id =
-document
-.getElementById("productId")
-.value;
-
-
-const name =
-document
-.getElementById("productName")
-.value
-.trim();
-
-
-const price =
-document
-.getElementById("productPrice")
-.value;
-
-
-const stock =
-document
-.getElementById("productStock")
-.value;
-
-
-const category =
-document
-.getElementById("productCategory")
-.value;
-
-
-const image =
-document
-.getElementById("productImage")
-.value
-.trim();
-
-
-const description =
-document
-.getElementById("productDescription")
-.value
-.trim();
-
-
-if(!name){
+if(error){
 
 alert(
-"Veuillez entrer le nom du produit."
+error.message
 );
 
 return;
@@ -2259,242 +1222,339 @@ return;
 }
 
 
-let products =
-getProducts();
+await loadProducts();
+
+};
+
+
+/*
+=========================================
+ENREGISTRER
+=========================================
+*/
+
+async function save(){
+
+$("saveError").textContent =
+"";
+
+
+const payload = {
+
+name:
+$("name")
+.value
+.trim(),
+
+
+price:
+Number(
+$("price")
+.value || 0
+),
+
+
+stock:
+Number(
+$("stock")
+.value || 0
+),
+
+
+category:
+$("category")
+.value
+.trim()
+||
+null,
+
+
+image_url:
+$("image")
+.value
+.trim()
+||
+null,
+
+
+video_url:
+$("video")
+.value
+.trim()
+||
+null,
+
+
+description:
+$("description")
+.value
+.trim()
+||
+null,
+
+
+active:
+true
+
+};
+
+
+if(
+!payload.name
+){
+
+$("saveError").textContent =
+"Le nom est obligatoire.";
+
+return;
+
+}
+
+
+const id =
+$("pid").value;
+
+
+let result;
 
 
 if(id){
 
-products =
-products.map(
-p=>{
-
-if(p.id===id){
-
-return {
-
-...p,
-
-name,
-
-price,
-
-stock,
-
-category,
-
-image,
-
-description
-
-};
-
-}
-
-return p;
-
-}
-);
-
-showToast(
-"Produit modifié"
+result =
+await sb
+.from("products")
+.update(payload)
+.eq(
+"id",
+Number(id)
 );
 
 }
 
 else{
 
-products.push({
-
-id:
-Date.now().toString(),
-
-name,
-
-price,
-
-stock,
-
-category,
-
-image,
-
-description
-
-});
-
-showToast(
-"Produit ajouté"
+result =
+await sb
+.from("products")
+.insert(
+payload
 );
 
 }
-
-
-saveProducts(products);
-
-renderProducts();
-
-closeProductModal();
-
-}
-
-
-
-/* =====================================================
-   MODIFIER
-===================================================== */
-
-function editProduct(
-id
-){
-
-const product =
-getProducts()
-.find(
-p=>p.id===id
-);
-
-if(!product) return;
-
-
-document
-.getElementById(
-"productModal"
-)
-.classList.add("open");
-
-
-document
-.getElementById(
-"modalTitle"
-)
-.textContent=
-"Modifier le produit";
-
-
-document
-.getElementById("productId")
-.value=
-product.id;
-
-
-document
-.getElementById("productName")
-.value=
-product.name;
-
-
-document
-.getElementById("productPrice")
-.value=
-product.price;
-
-
-document
-.getElementById("productStock")
-.value=
-product.stock;
-
-
-document
-.getElementById("productCategory")
-.value=
-product.category;
-
-
-document
-.getElementById("productImage")
-.value=
-product.image || "";
-
-
-document
-.getElementById("productDescription")
-.value=
-product.description || "";
-
-}
-
-
-
-/* =====================================================
-   SUPPRIMER
-===================================================== */
-
-function deleteProduct(
-id
-){
-
-const product =
-getProducts()
-.find(
-p=>p.id===id
-);
-
-if(!product) return;
 
 
 if(
-confirm(
-`Supprimer "${product.name}" ?`
+result.error
+){
+
+$("saveError").textContent =
+result.error.message;
+
+return;
+
+}
+
+
+$("modal")
+.classList.remove(
+"show"
+);
+
+
+await loadProducts();
+
+}
+
+
+/*
+=========================================
+NAVIGATION
+=========================================
+*/
+
+document
+.querySelectorAll(
+".nav button[data-page]"
 )
+.forEach(
+b => {
+
+b.onclick =
+() => {
+
+document
+.querySelectorAll(
+".page"
+)
+.forEach(
+x =>
+x.classList.remove(
+"active"
+)
+);
+
+
+document
+.querySelectorAll(
+".nav button"
+)
+.forEach(
+x =>
+x.classList.remove(
+"active"
+)
+);
+
+
+$(
+b.dataset.page
+)
+.classList.add(
+"active"
+);
+
+
+b.classList.add(
+"active"
+);
+
+
+$("title").textContent =
+
+b.dataset.page ===
+"dashboard"
+
+?
+
+"Tableau de bord"
+
+:
+
+b.dataset.page ===
+"products"
+
+?
+
+"Produits"
+
+:
+
+b.dataset.page ===
+"orders"
+
+?
+
+"Commandes"
+
+:
+
+"Paramètres";
+
+};
+
+}
+);
+
+
+/*
+=========================================
+BOUTONS
+=========================================
+*/
+
+$("loginBtn")
+.onclick =
+login;
+
+
+$("password")
+.onkeydown =
+e => {
+
+if(
+e.key ===
+"Enter"
 ){
 
-const products =
-getProducts()
-.filter(
-p=>p.id!==id
-);
-
-saveProducts(products);
-
-renderProducts();
-
-showToast(
-"Produit supprimé"
-);
+login();
 
 }
 
-}
+};
 
 
+$("logoutBtn")
+.onclick =
+async () => {
 
-/* =====================================================
-   TOAST
-===================================================== */
+await sb.auth.signOut();
 
-function showToast(
-message
-){
+location.reload();
 
-const toast =
-document.getElementById(
-"toast"
-);
+};
 
-toast.textContent=
-message;
 
-toast.classList.add(
+$("refreshBtn")
+.onclick =
+loadProducts;
+
+
+$("search")
+.oninput =
+render;
+
+
+$("addBtn")
+.onclick =
+() =>
+openModal();
+
+
+$("closeBtn")
+.onclick =
+() =>
+$("modal")
+.classList.remove(
 "show"
 );
 
-setTimeout(
-()=>{
-toast.classList.remove(
+
+$("cancelBtn")
+.onclick =
+() =>
+$("modal")
+.classList.remove(
 "show"
 );
-},
-2500
-);
+
+
+$("saveBtn")
+.onclick =
+save;
+
+
+/*
+=========================================
+SESSION EXISTANTE
+=========================================
+*/
+
+const {
+data:{
+session
+}
+}
+=
+await sb.auth.getSession();
+
+
+if(session){
+
+await start();
 
 }
-
 
 </script>
 
-
 </body>
-
 </html>
