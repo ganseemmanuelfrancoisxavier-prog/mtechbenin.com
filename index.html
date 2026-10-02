@@ -77,14 +77,10 @@ video{
     width:100%;
     height:76px;
     z-index:5000;
-
     background:rgba(255,255,255,.96);
-
     backdrop-filter:blur(20px);
     -webkit-backdrop-filter:blur(20px);
-
     border-bottom:1px solid rgba(0,0,0,.06);
-
     transition:.3s;
 }
 
@@ -97,7 +93,6 @@ video{
     height:100%;
     margin:auto;
     padding:0 35px;
-
     display:flex;
     align-items:center;
     justify-content:space-between;
@@ -117,15 +112,11 @@ video{
 
 .header-button{
     position:relative;
-
     width:46px;
     height:46px;
-
     border:0;
     background:transparent;
-
     color:#666;
-
     display:flex;
     align-items:center;
     justify-content:center;
@@ -134,7 +125,6 @@ video{
 .header-button svg{
     width:27px;
     height:27px;
-
     fill:none;
     stroke:currentColor;
     stroke-width:1.8;
@@ -148,23 +138,16 @@ video{
 
 .cart-number{
     position:absolute;
-
     top:0;
     right:-1px;
-
     min-width:21px;
     height:21px;
-
     padding:0 5px;
-
     background:#df2929;
     color:#fff;
-
     border-radius:50px;
-
     font-size:11px;
     font-weight:900;
-
     display:flex;
     align-items:center;
     justify-content:center;
@@ -177,27 +160,17 @@ video{
 
 .mobile-menu{
     position:fixed;
-
     top:85px;
     right:15px;
-
     width:300px;
-
     padding:12px;
-
     background:#fff;
-
     border-radius:25px;
-
     box-shadow:0 20px 60px rgba(0,0,0,.16);
-
     opacity:0;
     visibility:hidden;
-
     transform:translateY(-15px);
-
     transition:.25s;
-
     z-index:4900;
 }
 
@@ -209,11 +182,8 @@ video{
 
 .mobile-menu a{
     display:block;
-
     padding:15px;
-
     border-radius:15px;
-
     font-weight:700;
 }
 
@@ -221,54 +191,37 @@ video{
     background:#f5f5f5;
 }
 
-
-/* =========================================================
-   MENU SEARCH
-========================================================= */
-
 .menu-search{
     margin-bottom:8px;
 }
 
 .menu-search-box{
     height:50px;
-
     display:flex;
     align-items:center;
-
     gap:10px;
-
     padding:0 15px;
-
     background:#f5f5f5;
-
     border-radius:15px;
 }
 
 .menu-search-box svg{
     width:21px;
     height:21px;
-
     flex:none;
-
     fill:none;
     stroke:#777;
     stroke-width:1.8;
-
     stroke-linecap:round;
     stroke-linejoin:round;
 }
 
 .menu-search-box input{
     width:100%;
-
     border:0;
     outline:0;
-
     background:transparent;
-
     color:#111;
-
     font-size:15px;
 }
 
@@ -279,33 +232,25 @@ video{
 
 .hero{
     position:relative;
-
     margin-top:76px;
-
     width:100%;
     height:calc(100svh - 76px);
-
     min-height:620px;
-
     overflow:hidden;
-
     background:#080808;
 }
 
 .hero-slides{
     width:100%;
     height:100%;
-
     position:relative;
 }
 
 .hero-slide{
     position:absolute;
     inset:0;
-
     opacity:0;
     visibility:hidden;
-
     transition:opacity .8s ease;
 }
 
@@ -317,17 +262,14 @@ video{
 .hero-media{
     position:absolute;
     inset:0;
-
     width:100%;
     height:100%;
-
     object-fit:cover;
 }
 
 .hero-overlay{
     position:absolute;
     inset:0;
-
     background:
         linear-gradient(
             90deg,
@@ -339,14 +281,10 @@ video{
 
 .hero-content{
     position:absolute;
-
     left:6%;
     bottom:12%;
-
     max-width:720px;
-
     color:#fff;
-
     z-index:5;
 }
 
@@ -354,92 +292,59 @@ video{
     display:inline-flex;
     align-items:center;
     gap:10px;
-
     padding:12px 20px;
-
     margin-bottom:25px;
-
     border-radius:50px;
-
     background:rgba(20,20,20,.72);
-
     border:1px solid rgba(255,255,255,.18);
-
     font-size:15px;
     font-weight:800;
-
     letter-spacing:1.5px;
 }
 
 .hero-label-dot{
     width:9px;
     height:9px;
-
     flex:none;
-
     border-radius:50%;
-
     background:#ef2525;
-
-    animation:
-        heroDotBlink
-        1.4s
-        ease-in-out
-        infinite;
+    animation:heroDotBlink 1.4s ease-in-out infinite;
 }
 
 @keyframes heroDotBlink{
-
-    0%,
-    100%{
+    0%,100%{
         opacity:1;
         transform:scale(1);
-        box-shadow:
-            0 0 0 0
-            rgba(239,37,37,.45);
+        box-shadow:0 0 0 0 rgba(239,37,37,.45);
     }
 
     50%{
         opacity:.35;
         transform:scale(.75);
-        box-shadow:
-            0 0 0 6px
-            rgba(239,37,37,0);
+        box-shadow:0 0 0 6px rgba(239,37,37,0);
     }
-
 }
 
 .hero-title{
     font-size:clamp(45px,7vw,90px);
-
     line-height:.95;
-
     letter-spacing:-5px;
-
     margin-bottom:25px;
 }
 
 .hero-subtitle{
     font-size:clamp(22px,3vw,38px);
-
     font-weight:800;
-
     margin-bottom:25px;
 }
 
 .hero-price{
     display:inline-block;
-
     padding:15px 25px;
-
     margin-bottom:25px;
-
     border-radius:50px;
-
     background:rgba(20,20,20,.82);
-
     color:#ff3030;
-
     font-weight:900;
 }
 
@@ -450,11 +355,8 @@ video{
 
 .hero-button{
     padding:16px 28px;
-
     border-radius:17px;
-
     font-weight:800;
-
     border:1px solid transparent;
 }
 
@@ -465,48 +367,33 @@ video{
 
 .hero-button.secondary{
     background:rgba(255,255,255,.12);
-
     color:#fff;
-
-    border-color:
-        rgba(255,255,255,.25);
+    border-color:rgba(255,255,255,.25);
 }
 
 .hero-dots{
     position:absolute;
-
     left:50%;
     bottom:28px;
-
     transform:translateX(-50%);
-
     display:flex;
-
     gap:8px;
-
     z-index:20;
 }
 
 .hero-dot{
     width:9px;
     height:9px;
-
     border-radius:50%;
-
     background:#777;
-
     border:0;
-
     padding:0;
-
     transition:.3s;
 }
 
 .hero-dot.active{
     width:38px;
-
     border-radius:20px;
-
     background:#fff;
 }
 
@@ -526,22 +413,16 @@ video{
 
 .section-label{
     margin-bottom:20px;
-
     color:#777;
-
     font-size:14px;
     font-weight:900;
-
     letter-spacing:2px;
 }
 
 .section-title{
     margin-bottom:45px;
-
     font-size:clamp(42px,6vw,72px);
-
     line-height:.95;
-
     letter-spacing:-4px;
 }
 
@@ -552,57 +433,36 @@ video{
 
 .categories-grid{
     display:grid;
-
-    grid-template-columns:
-        repeat(4,1fr);
-
+    grid-template-columns:repeat(4,1fr);
     gap:22px;
 }
 
 .category-card{
     min-height:225px;
-
     padding:25px;
-
     border-radius:35px;
-
     background:#fff;
-
-    box-shadow:
-        0 12px 40px
-        rgba(0,0,0,.07);
-
+    box-shadow:0 12px 40px rgba(0,0,0,.07);
     display:flex;
     flex-direction:column;
-
     align-items:center;
     justify-content:center;
-
     text-align:center;
-
     transition:.3s;
-
     cursor:pointer;
 }
 
 .category-card:hover{
     transform:translateY(-6px);
-
-    box-shadow:
-        0 20px 50px
-        rgba(0,0,0,.11);
+    box-shadow:0 20px 50px rgba(0,0,0,.11);
 }
 
 .category-icon{
     width:90px;
     height:90px;
-
     margin-bottom:25px;
-
     border-radius:30px;
-
     background:#f5f5f5;
-
     display:flex;
     align-items:center;
     justify-content:center;
@@ -611,13 +471,9 @@ video{
 .category-icon svg{
     width:38px;
     height:38px;
-
     fill:none;
-
     stroke:#222;
-
     stroke-width:1.7;
-
     stroke-linecap:round;
     stroke-linejoin:round;
 }
@@ -638,24 +494,15 @@ video{
 
 .products-grid{
     display:grid;
-
-    grid-template-columns:
-        repeat(4,1fr);
-
+    grid-template-columns:repeat(4,1fr);
     gap:20px;
 }
 
 .product-card{
     overflow:hidden;
-
     background:#fff;
-
     border-radius:30px;
-
-    box-shadow:
-        0 10px 30px
-        rgba(0,0,0,.05);
-
+    box-shadow:0 10px 30px rgba(0,0,0,.05);
     transition:.3s;
 }
 
@@ -665,9 +512,7 @@ video{
 
 .product-media{
     height:320px;
-
     background:#eee;
-
     overflow:hidden;
 }
 
@@ -675,7 +520,6 @@ video{
 .product-media video{
     width:100%;
     height:100%;
-
     object-fit:cover;
 }
 
@@ -685,60 +529,45 @@ video{
 
 .product-category{
     margin-bottom:8px;
-
     color:#888;
-
     font-size:11px;
     font-weight:700;
-
     text-transform:uppercase;
-
     letter-spacing:1.5px;
 }
 
 .product-name{
     margin-bottom:10px;
-
     font-size:21px;
     font-weight:900;
 }
 
 .product-description{
     margin-bottom:15px;
-
     color:#777;
-
     font-size:13px;
     line-height:1.5;
 }
 
 .product-price{
     margin-bottom:8px;
-
     font-size:20px;
     font-weight:900;
 }
 
 .product-stock{
     margin-bottom:15px;
-
     color:#777;
-
     font-size:12px;
 }
 
 .product-button{
     width:100%;
-
     padding:14px;
-
     border:0;
-
     border-radius:50px;
-
     background:#111;
     color:#fff;
-
     font-weight:800;
 }
 
@@ -753,21 +582,15 @@ video{
 
 .subscriptions-section{
     overflow:hidden;
-
     background:#090909;
-
     color:#fff;
 }
 
 .subscription-heading{
     display:flex;
-
     align-items:flex-end;
-
     justify-content:space-between;
-
     gap:30px;
-
     margin-bottom:40px;
 }
 
@@ -781,40 +604,27 @@ video{
 
 .carousel-buttons{
     display:flex;
-
     align-items:center;
-
     gap:12px;
 }
 
 .carousel-button{
     width:58px;
     height:58px;
-
     border-radius:50%;
-
     border:1px solid #444;
-
     background:#222;
-
     color:#fff;
-
     font-size:27px;
 }
 
 .subscription-track{
     display:flex;
-
     gap:22px;
-
     overflow-x:auto;
-
     padding-bottom:15px;
-
     scroll-snap-type:x mandatory;
-
     scrollbar-width:none;
-
     -webkit-overflow-scrolling:touch;
 }
 
@@ -824,38 +634,27 @@ video{
 
 .subscription-card{
     position:relative;
-
     flex:0 0 330px;
-
     height:520px;
-
     overflow:hidden;
-
     border-radius:35px;
-
     background:#151515;
-
     scroll-snap-align:start;
 }
 
 .subscription-media{
     position:absolute;
     inset:0;
-
     width:100%;
     height:100%;
-
     object-fit:cover;
-
     object-position:center;
-
     background:#111;
 }
 
 .subscription-overlay{
     position:absolute;
     inset:0;
-
     background:
         linear-gradient(
             to top,
@@ -866,26 +665,21 @@ video{
 
 .subscription-content{
     position:absolute;
-
     left:30px;
     right:30px;
     bottom:30px;
-
     z-index:5;
 }
 
 .subscription-name{
     margin-bottom:8px;
-
     font-size:30px;
     font-weight:900;
 }
 
 .subscription-description{
     margin-bottom:22px;
-
     color:#aaa;
-
     line-height:1.4;
 }
 
@@ -899,38 +693,24 @@ video{
 
 .subscribe-button{
     padding:15px 25px;
-
     border:0;
-
     border-radius:50px;
-
     background:#fff;
-
     color:#111;
-
     font-weight:800;
 }
 
 .video-control{
     position:absolute;
-
     top:18px;
     right:18px;
-
     width:44px;
     height:44px;
-
     z-index:20;
-
     border-radius:50%;
-
-    border:1px solid
-        rgba(255,255,255,.4);
-
+    border:1px solid rgba(255,255,255,.4);
     background:rgba(0,0,0,.45);
-
     color:#fff;
-
     display:flex;
     align-items:center;
     justify-content:center;
@@ -939,13 +719,9 @@ video{
 .video-control svg{
     width:20px;
     height:20px;
-
     fill:none;
-
     stroke:#fff;
-
     stroke-width:1.8;
-
     stroke-linecap:round;
     stroke-linejoin:round;
 }
@@ -957,29 +733,21 @@ video{
 
 .announcement-box{
     position:relative;
-
     height:470px;
-
     overflow:hidden;
-
     border-radius:35px;
-
     background:#eee;
 }
 
 .announcement-track{
     display:flex;
-
     width:100%;
     height:100%;
-
-    transition:
-        transform .7s ease;
+    transition:transform .7s ease;
 }
 
 .announcement-slide{
     position:relative;
-
     min-width:100%;
     height:100%;
 }
@@ -988,14 +756,12 @@ video{
 .announcement-slide video{
     width:100%;
     height:100%;
-
     object-fit:cover;
 }
 
 .announcement-overlay{
     position:absolute;
     inset:0;
-
     background:
         linear-gradient(
             to top,
@@ -1006,18 +772,14 @@ video{
 
 .announcement-content{
     position:absolute;
-
     left:35px;
     bottom:35px;
-
     color:#fff;
-
     z-index:5;
 }
 
 .announcement-discount{
     margin-bottom:12px;
-
     font-size:28px;
     font-weight:900;
 }
@@ -1028,32 +790,23 @@ video{
 
 .announcement-dots{
     display:flex;
-
     justify-content:center;
-
     gap:8px;
-
     margin-top:22px;
 }
 
 .announcement-dot{
     width:9px;
     height:9px;
-
     border:0;
-
     padding:0;
-
     border-radius:50%;
-
     background:#ccc;
 }
 
 .announcement-dot.active{
     width:32px;
-
     border-radius:20px;
-
     background:#111;
 }
 
@@ -1064,47 +817,31 @@ video{
 
 .stats-grid{
     display:grid;
-
-    grid-template-columns:
-        repeat(4,1fr);
-
+    grid-template-columns:repeat(4,1fr);
     gap:22px;
 }
 
 .stat-card{
     min-height:210px;
-
     border-radius:35px;
-
     background:#fff;
-
-    box-shadow:
-        0 12px 40px
-        rgba(0,0,0,.07);
-
+    box-shadow:0 12px 40px rgba(0,0,0,.07);
     display:flex;
-
     flex-direction:column;
-
     align-items:center;
     justify-content:center;
-
     text-align:center;
 }
 
 .stat-number{
     margin-bottom:10px;
-
     font-size:52px;
-
     font-weight:900;
-
     letter-spacing:-3px;
 }
 
 .stat-label{
     color:#777;
-
     font-size:18px;
 }
 
@@ -1115,103 +852,69 @@ video{
 
 .reviews-track{
     display:flex;
-
     flex-direction:column;
-
     gap:30px;
-
     padding:10px 5px 30px;
 }
 
 .review-card{
     width:100%;
-
     min-height:380px;
-
     padding:42px 48px 38px;
-
     border-radius:35px;
-
     background:#fff;
-
-    box-shadow:
-        0 12px 40px
-        rgba(0,0,0,.07);
+    box-shadow:0 12px 40px rgba(0,0,0,.07);
 }
 
 .review-stars{
     margin-bottom:30px;
-
     color:#df2e2e;
-
     font-size:25px;
-
     letter-spacing:3px;
 }
 
 .review-text{
     margin-bottom:28px;
-
     font-size:22px;
-
     line-height:1.5;
 }
 
 .review-photo{
     width:110px;
     height:110px;
-
     margin-bottom:28px;
-
     border-radius:20px;
-
     object-fit:cover;
 }
 
 .review-product{
     display:inline-flex;
-
     margin-bottom:30px;
-
     padding:12px 22px;
-
     border-radius:50px;
-
     background:#f4f4f4;
-
     color:#777;
-
     font-size:16px;
 }
 
 .review-author{
     padding-top:24px;
-
     border-top:1px solid #eee;
-
     display:flex;
-
     align-items:center;
-
     gap:18px;
 }
 
 .review-avatar{
     width:62px;
     height:62px;
-
     flex:none;
-
     border-radius:50%;
-
     background:#202020;
-
     color:#fff;
-
     display:flex;
     align-items:center;
     justify-content:center;
-
     font-size:22px;
     font-weight:800;
 }
@@ -1227,15 +930,13 @@ video{
 
 .review-author-info span{
     margin-top:3px;
-
     color:#777;
-
     font-size:17px;
 }
 
 
 /* =========================================================
-   CLIENT GALLERY
+   GALLERY
 ========================================================= */
 
 .gallery-section{
@@ -1244,29 +945,17 @@ video{
 
 .gallery-wrapper{
     width:100vw;
-
-    margin-left:
-        calc(50% - 50vw);
-
+    margin-left:calc(50% - 50vw);
     overflow:hidden;
 }
 
 .gallery-track{
     display:flex;
-
     gap:18px;
-
     width:max-content;
-
-    animation:
-        galleryScroll
-        42s
-        linear
-        infinite;
-
+    animation:galleryScroll 42s linear infinite;
     will-change:transform;
 }
-
 
 .gallery-track:hover{
     animation-play-state:paused;
@@ -1275,25 +964,19 @@ video{
 .gallery-item{
     width:300px;
     height:390px;
-
     flex-shrink:0;
-
     overflow:hidden;
-
     border-radius:30px;
-
     background:#eee;
 }
 
 .gallery-item img{
     width:100%;
     height:100%;
-
     object-fit:cover;
 }
 
 @keyframes galleryScroll{
-
     from{
         transform:translateX(0);
     }
@@ -1301,7 +984,6 @@ video{
     to{
         transform:translateX(-50%);
     }
-
 }
 
 
@@ -1311,49 +993,33 @@ video{
 
 .repair-box{
     display:flex;
-
     align-items:center;
-
     justify-content:space-between;
-
     gap:40px;
-
     padding:70px;
-
     border-radius:40px;
-
     background:#f3f3f3;
 }
 
 .repair-title{
     margin-bottom:20px;
-
     font-size:clamp(40px,6vw,70px);
-
     line-height:.95;
-
     letter-spacing:-4px;
 }
 
 .repair-description{
     max-width:650px;
-
     color:#777;
-
     line-height:1.7;
 }
 
 .repair-button{
     flex-shrink:0;
-
     padding:18px 30px;
-
     border-radius:50px;
-
     background:#111;
-
     color:#fff;
-
     font-weight:800;
 }
 
@@ -1364,84 +1030,58 @@ video{
 
 footer{
     padding:75px 35px 120px;
-
     background:#f6f6f8;
-
     color:#181818;
 }
 
 .footer-grid{
     max-width:1400px;
-
     margin:auto;
-
     display:grid;
-
-    grid-template-columns:
-        2fr 1fr 1fr;
-
+    grid-template-columns:2fr 1fr 1fr;
     gap:60px;
 }
 
 .footer-logo{
     margin-bottom:20px;
-
     font-size:28px;
-
     font-weight:900;
 }
 
 .footer-description{
     max-width:520px;
-
     color:#707070;
-
     font-size:18px;
-
     line-height:1.65;
 }
 
 .footer-socials{
     display:flex;
-
     flex-wrap:wrap;
-
     gap:25px;
-
     margin-top:28px;
-
     color:#666;
-
     font-size:17px;
 }
 
 .footer-contact{
     display:flex;
-
     flex-direction:column;
-
     gap:12px;
-
     margin-top:28px;
-
     color:#666;
-
     font-size:16px;
 }
 
 .footer-column h4{
     margin-bottom:25px;
-
     font-size:21px;
 }
 
 .footer-column a{
     display:block;
-
     margin-bottom:22px;
-
     color:#707070;
-
     font-size:17px;
 }
 
@@ -1451,37 +1091,27 @@ footer{
 
 .footer-support{
     max-width:1400px;
-
     margin:55px auto 0;
 }
 
 .footer-support h4{
     margin-bottom:25px;
-
     font-size:21px;
 }
 
 .footer-support a{
     display:block;
-
     margin-bottom:22px;
-
     color:#707070;
-
     font-size:17px;
 }
 
 .copyright{
     max-width:1400px;
-
     margin:50px auto 0;
-
     padding-top:25px;
-
     border-top:1px solid #ddd;
-
     color:#777;
-
     font-size:13px;
 }
 
@@ -1492,37 +1122,22 @@ footer{
 
 .back-to-top{
     position:fixed;
-
     right:25px;
     bottom:105px;
-
     width:62px;
     height:62px;
-
     border:0;
-
     border-radius:20px;
-
     background:#454545;
-
     color:#fff;
-
     display:flex;
-
     align-items:center;
     justify-content:center;
-
     z-index:4300;
-
-    box-shadow:
-        0 10px 30px
-        rgba(0,0,0,.18);
-
+    box-shadow:0 10px 30px rgba(0,0,0,.18);
     opacity:0;
     visibility:hidden;
-
     transform:translateY(10px);
-
     transition:.25s;
 }
 
@@ -1535,13 +1150,9 @@ footer{
 .back-to-top svg{
     width:27px;
     height:27px;
-
     fill:none;
-
     stroke:#fff;
-
     stroke-width:2;
-
     stroke-linecap:round;
     stroke-linejoin:round;
 }
@@ -1555,18 +1166,10 @@ footer{
     display:none;
 }
 
-
-/* =========================================================
-   LOADING
-========================================================= */
-
 .loading{
     grid-column:1/-1;
-
     padding:60px;
-
     text-align:center;
-
     color:#777;
 }
 
@@ -1580,13 +1183,11 @@ footer{
     .categories-grid,
     .products-grid,
     .stats-grid{
-        grid-template-columns:
-            repeat(2,1fr);
+        grid-template-columns:repeat(2,1fr);
     }
 
     .footer-grid{
-        grid-template-columns:
-            1.5fr 1fr 1fr;
+        grid-template-columns:1.5fr 1fr 1fr;
     }
 
 }
@@ -1601,9 +1202,6 @@ footer{
     body{
         padding-bottom:78px;
     }
-
-
-    /* HEADER */
 
     .site-header{
         height:64px;
@@ -1635,47 +1233,31 @@ footer{
     .cart-number{
         min-width:18px;
         height:18px;
-
         font-size:9px;
-
         top:0;
         right:0;
     }
 
-
-    /* MENU */
-
     .mobile-menu{
         top:70px;
-
         left:12px;
         right:12px;
-
         width:auto;
-
         padding:9px;
-
         border-radius:20px;
-
-        max-height:
-            calc(100svh - 90px);
-
+        max-height:calc(100svh - 90px);
         overflow-y:auto;
     }
 
     .mobile-menu a{
         padding:12px;
-
         border-radius:12px;
-
         font-size:14px;
     }
 
     .menu-search-box{
         height:44px;
-
         padding:0 12px;
-
         border-radius:13px;
     }
 
@@ -1683,14 +1265,9 @@ footer{
         font-size:13px;
     }
 
-
-    /* HERO */
-
     .hero{
         margin-top:64px;
-
         height:calc(100svh - 64px);
-
         min-height:540px;
     }
 
@@ -1698,17 +1275,13 @@ footer{
         left:18px;
         right:18px;
         bottom:70px;
-
         max-width:none;
     }
 
     .hero-label{
         padding:8px 12px;
-
         margin-bottom:15px;
-
         font-size:10px;
-
         letter-spacing:.8px;
     }
 
@@ -1719,23 +1292,18 @@ footer{
 
     .hero-title{
         font-size:39px;
-
         letter-spacing:-2.5px;
-
         margin-bottom:14px;
     }
 
     .hero-subtitle{
         font-size:19px;
-
         margin-bottom:15px;
     }
 
     .hero-price{
         padding:10px 16px;
-
         margin-bottom:17px;
-
         font-size:12px;
     }
 
@@ -1745,15 +1313,12 @@ footer{
 
     .hero-button{
         padding:12px 15px;
-
         border-radius:13px;
-
         font-size:12px;
     }
 
     .hero-dots{
         bottom:20px;
-
         gap:6px;
     }
 
@@ -1766,57 +1331,38 @@ footer{
         width:28px;
     }
 
-
-    /* SECTIONS */
-
     .section{
         padding:58px 16px;
     }
 
     .section-label{
         margin-bottom:10px;
-
         font-size:10px;
-
         letter-spacing:1.5px;
     }
 
     .section-title{
         margin-bottom:27px;
-
         font-size:27px;
-
         letter-spacing:-2px;
     }
 
-
-    /* CATALOGUE */
-
     .categories-grid{
-        grid-template-columns:
-            repeat(2,minmax(0,1fr));
-
+        grid-template-columns:repeat(2,minmax(0,1fr));
         gap:10px;
     }
 
     .category-card{
         min-height:101px;
-
         padding:10px;
-
         border-radius:20px;
-
-        box-shadow:
-            0 7px 22px
-            rgba(0,0,0,.06);
+        box-shadow:0 7px 22px rgba(0,0,0,.06);
     }
 
     .category-icon{
         width:39px;
         height:39px;
-
         margin-bottom:10px;
-
         border-radius:17px;
     }
 
@@ -1829,22 +1375,14 @@ footer{
         font-size:13px;
     }
 
-
-    /* PRODUCTS */
-
     .products-grid{
-        grid-template-columns:
-            repeat(2,minmax(0,1fr));
-
+        grid-template-columns:repeat(2,minmax(0,1fr));
         gap:10px;
     }
 
     .product-card{
         border-radius:18px;
-
-        box-shadow:
-            0 7px 22px
-            rgba(0,0,0,.05);
+        box-shadow:0 7px 22px rgba(0,0,0,.05);
     }
 
     .product-media{
@@ -1857,67 +1395,46 @@ footer{
 
     .product-category{
         margin-bottom:5px;
-
         font-size:8px;
-
         letter-spacing:1px;
     }
 
     .product-name{
         margin-bottom:6px;
-
         font-size:12px;
-
         line-height:1.15;
     }
 
     .product-description{
         margin-bottom:8px;
-
         font-size:10px;
-
         line-height:1.35;
-
-        display:
-            -webkit-box;
-
+        display:-webkit-box;
         -webkit-line-clamp:2;
-
         -webkit-box-orient:vertical;
-
         overflow:hidden;
     }
 
     .product-price{
         margin-bottom:5px;
-
         font-size:12px;
     }
 
     .product-stock{
         margin-bottom:9px;
-
         font-size:9px;
     }
 
     .product-button{
         padding:9px 6px;
-
         border-radius:30px;
-
         font-size:10px;
     }
 
-
-    /* SUBSCRIPTIONS */
-
     .subscription-heading{
         flex-direction:column;
-
         align-items:flex-start;
-
         gap:14px;
-
         margin-bottom:20px;
     }
 
@@ -1927,14 +1444,12 @@ footer{
 
     .carousel-buttons{
         width:100%;
-
         gap:8px;
     }
 
     .carousel-button{
         width:40px;
         height:40px;
-
         font-size:21px;
     }
 
@@ -1944,33 +1459,17 @@ footer{
 
     .subscription-track{
         gap:10px;
-
-        padding:
-            0
-            0
-            12px;
-
+        padding:0 0 12px;
         margin:0;
-
         scroll-snap-type:x mandatory;
     }
 
     .subscription-card{
-        flex:
-            0 0
-            calc((100% - 10px) / 2);
-
+        flex:0 0 calc((100% - 10px) / 2);
         height:248px;
         min-height:248px;
-
         border-radius:20px;
-
         scroll-snap-align:start;
-    }
-
-    .subscription-media{
-        object-fit:cover;
-        object-position:center;
     }
 
     .subscription-content{
@@ -1981,23 +1480,18 @@ footer{
 
     .subscription-name{
         margin-bottom:5px;
-
         font-size:13px;
-
         line-height:1.05;
     }
 
     .subscription-description{
         margin-bottom:8px;
-
         font-size:9px;
-
         line-height:1.25;
     }
 
     .subscription-price{
         margin-bottom:9px;
-
         font-size:9px;
     }
 
@@ -2007,18 +1501,14 @@ footer{
 
     .subscribe-button{
         width:100%;
-
         padding:8px 7px;
-
         font-size:10px;
-
         border-radius:30px;
     }
 
     .video-control{
         top:9px;
         right:9px;
-
         width:31px;
         height:31px;
     }
@@ -2028,12 +1518,8 @@ footer{
         height:15px;
     }
 
-
-    /* ANNONCES */
-
     .announcement-box{
         height:165px;
-
         border-radius:18px;
     }
 
@@ -2044,7 +1530,6 @@ footer{
 
     .announcement-discount{
         margin-bottom:6px;
-
         font-size:17px;
     }
 
@@ -2054,7 +1539,6 @@ footer{
 
     .announcement-dots{
         gap:6px;
-
         margin-top:12px;
     }
 
@@ -2067,31 +1551,20 @@ footer{
         width:23px;
     }
 
-
-    /* STATISTIQUES */
-
     .stats-grid{
-        grid-template-columns:
-            repeat(2,minmax(0,1fr));
-
+        grid-template-columns:repeat(2,minmax(0,1fr));
         gap:10px;
     }
 
     .stat-card{
         min-height:125px;
-
         border-radius:20px;
-
-        box-shadow:
-            0 7px 22px
-            rgba(0,0,0,.06);
+        box-shadow:0 7px 22px rgba(0,0,0,.06);
     }
 
     .stat-number{
         margin-bottom:5px;
-
         font-size:26px;
-
         letter-spacing:-1.5px;
     }
 
@@ -2099,76 +1572,51 @@ footer{
         font-size:10px;
     }
 
-
-    /* AVIS */
-
     .reviews-track{
         gap:12px;
-
-        padding:
-            4px
-            0
-            15px;
+        padding:4px 0 15px;
     }
 
     .review-card{
         min-height:0;
-
-        padding:
-            14px
-            13px
-            13px;
-
+        padding:14px 13px 13px;
         border-radius:20px;
-
-        box-shadow:
-            0 7px 22px
-            rgba(0,0,0,.06);
+        box-shadow:0 7px 22px rgba(0,0,0,.06);
     }
 
     .review-stars{
         margin-bottom:9px;
-
         font-size:11px;
-
         letter-spacing:1.5px;
     }
 
     .review-text{
         margin-bottom:10px;
-
         font-size:9px;
-
         line-height:1.45;
     }
 
     .review-photo{
         width:41px;
         height:41px;
-
         margin-bottom:12px;
-
         border-radius:13px;
     }
 
     .review-product{
         margin-bottom:11px;
-
         padding:5px 8px;
-
         font-size:7px;
     }
 
     .review-author{
         padding-top:13px;
-
         gap:10px;
     }
 
     .review-avatar{
         width:24px;
         height:24px;
-
         font-size:9px;
     }
 
@@ -2178,100 +1626,53 @@ footer{
 
     .review-author-info span{
         margin-top:2px;
-
         font-size:7px;
-    }
-
-
-    /* CLIENTS SATISFAITS */
-
-    .gallery-section{
-        overflow:hidden;
-    }
-
-    .gallery-wrapper{
-        width:100vw;
-
-        margin-left:
-            calc(50% - 50vw);
-
-        overflow:hidden;
     }
 
     .gallery-track{
         gap:10px;
-
-        animation:
-            galleryScroll
-            30s
-            linear
-            infinite;
+        animation:galleryScroll 30s linear infinite;
     }
 
     .gallery-item{
         width:210px;
         height:285px;
-
         border-radius:22px;
     }
 
-
-    /* REPAIR */
-
     .repair-box{
         flex-direction:column;
-
         align-items:flex-start;
-
         gap:20px;
-
         padding:30px 22px;
-
         border-radius:24px;
     }
 
     .repair-title{
         margin-bottom:12px;
-
         font-size:34px;
-
         letter-spacing:-2px;
     }
 
     .repair-description{
         font-size:12px;
-
         line-height:1.5;
     }
 
     .repair-button{
         width:100%;
-
         padding:12px 18px;
-
         text-align:center;
-
         font-size:12px;
-
         border-radius:30px;
     }
 
-
-    /* FOOTER */
-
     footer{
-        padding:
-            38px
-            18px
-            100px;
-
-        background:#f6f6f8;
+        padding:38px 18px 100px;
     }
 
     .footer-grid{
-        grid-template-columns:
-            1fr 1fr;
-
+        grid-template-columns:1fr 1fr;
         gap:28px 18px;
     }
 
@@ -2281,43 +1682,35 @@ footer{
 
     .footer-logo{
         margin-bottom:12px;
-
         font-size:21px;
     }
 
     .footer-description{
         font-size:12px;
-
         line-height:1.5;
     }
 
     .footer-socials{
         gap:14px;
-
         margin-top:17px;
-
         font-size:12px;
     }
 
     .footer-contact{
         gap:7px;
-
         margin-top:17px;
-
         font-size:11px;
     }
 
     .footer-column h4,
     .footer-support h4{
         margin-bottom:13px;
-
         font-size:14px;
     }
 
     .footer-column a,
     .footer-support a{
         margin-bottom:11px;
-
         font-size:11px;
     }
 
@@ -2327,22 +1720,15 @@ footer{
 
     .copyright{
         margin-top:25px;
-
         padding-top:16px;
-
         font-size:9px;
     }
-
-
-    /* BACK TO TOP */
 
     .back-to-top{
         right:16px;
         bottom:92px;
-
         width:43px;
         height:43px;
-
         border-radius:14px;
     }
 
@@ -2351,70 +1737,44 @@ footer{
         height:20px;
     }
 
-
-    /* BOTTOM NAV */
-
     .bottom-nav{
         position:fixed;
-
         left:0;
         bottom:0;
-
         width:100%;
         height:78px;
-
         z-index:4500;
-
         display:grid;
-
-        grid-template-columns:
-            repeat(4,1fr);
-
+        grid-template-columns:repeat(4,1fr);
         align-items:start;
-
         padding-top:8px;
-
-        background:
-            rgba(255,255,255,.97);
-
+        background:rgba(255,255,255,.97);
         backdrop-filter:blur(20px);
         -webkit-backdrop-filter:blur(20px);
-
         border-top:1px solid #eee;
     }
 
     .bottom-nav a{
         position:relative;
-
         height:68px;
-
         display:flex;
-
         flex-direction:column;
-
         align-items:center;
-
         justify-content:flex-start;
-
         gap:3px;
-
         color:#777;
-
         font-size:10px;
-
         font-weight:400;
     }
 
     .bottom-nav a.active{
         color:#111;
-
         font-weight:800;
     }
 
     .bottom-icon{
         width:25px;
         height:25px;
-
         display:flex;
         align-items:center;
         justify-content:center;
@@ -2423,35 +1783,25 @@ footer{
     .bottom-icon svg{
         width:25px;
         height:25px;
-
         fill:none;
-
         stroke:#777;
-
         stroke-width:1.8;
-
         stroke-linecap:round;
         stroke-linejoin:round;
     }
 
-    .bottom-nav a.active
-    .bottom-icon svg{
+    .bottom-nav a.active .bottom-icon svg{
         stroke:#111;
-
         stroke-width:2.2;
     }
 
     .nav-active-dot{
         width:5px;
         height:5px;
-
         margin-top:0;
-
         border-radius:50%;
-
         background:#111;
     }
-
 }
 
 
@@ -2511,7 +1861,6 @@ footer{
     .repair-title{
         font-size:30px;
     }
-
 }
 
 
@@ -2531,7 +1880,6 @@ footer{
 </style>
 </head>
 
-
 <body>
 
 
@@ -2539,17 +1887,11 @@ footer{
      HEADER
 ========================================================= -->
 
-<header
-    class="site-header"
-    id="siteHeader"
->
+<header class="site-header" id="siteHeader">
 
     <div class="header-inner">
 
-        <a
-            href="#accueil"
-            class="logo"
-        >
+        <a href="#accueil" class="logo">
             MTECHBENIN
         </a>
 
@@ -2562,29 +1904,15 @@ footer{
             >
 
                 <svg viewBox="0 0 24 24">
-
-                    <circle
-                        cx="9"
-                        cy="20"
-                        r="1.4"
-                    ></circle>
-
-                    <circle
-                        cx="18"
-                        cy="20"
-                        r="1.4"
-                    ></circle>
+                    <circle cx="9" cy="20" r="1.4"></circle>
+                    <circle cx="18" cy="20" r="1.4"></circle>
 
                     <path
                         d="M3 4h2l2.2 11.5a2 2 0 0 0 2 1.6h8.5a2 2 0 0 0 1.9-1.4L21 8H6"
                     ></path>
-
                 </svg>
 
-                <span
-                    class="cart-number"
-                    id="cartNumber"
-                >
+                <span class="cart-number" id="cartNumber">
                     0
                 </span>
 
@@ -2594,14 +1922,14 @@ footer{
                 class="header-button"
                 onclick="toggleMenu()"
                 aria-label="Menu"
+                aria-expanded="false"
+                id="menuButton"
             >
 
                 <svg viewBox="0 0 24 24">
-
                     <path d="M4 6h16"></path>
                     <path d="M4 12h16"></path>
                     <path d="M4 18h16"></path>
-
                 </svg>
 
             </button>
@@ -2617,25 +1945,15 @@ footer{
      MENU
 ========================================================= -->
 
-<div
-    class="mobile-menu"
-    id="mobileMenu"
->
+<div class="mobile-menu" id="mobileMenu">
 
     <div class="menu-search">
 
         <div class="menu-search-box">
 
             <svg viewBox="0 0 24 24">
-
-                <circle
-                    cx="11"
-                    cy="11"
-                    r="7"
-                ></circle>
-
+                <circle cx="11" cy="11" r="7"></circle>
                 <path d="m20 20-4-4"></path>
-
             </svg>
 
             <input
@@ -2650,19 +1968,12 @@ footer{
     </div>
 
     <a href="#accueil">Accueil</a>
-
     <a href="#catalogue">Notre catalogue</a>
-
     <a href="#produits">Produits</a>
-
     <a href="#abonnements">Abonnements</a>
-
     <a href="#annonces">Annonces</a>
-
     <a href="#avis">Avis clients</a>
-
     <a href="#clients">Clients satisfaits</a>
-
     <a href="#reparation">Réparation</a>
 
 </div>
@@ -2672,15 +1983,9 @@ footer{
      HERO
 ========================================================= -->
 
-<section
-    class="hero"
-    id="accueil"
->
+<section class="hero" id="accueil">
 
-    <div
-        class="hero-slides"
-        id="heroSlides"
-    >
+    <div class="hero-slides" id="heroSlides">
 
         <div class="hero-slide active">
 
@@ -2745,10 +2050,7 @@ footer{
 
     </div>
 
-    <div
-        class="hero-dots"
-        id="heroDots"
-    ></div>
+    <div class="hero-dots" id="heroDots"></div>
 
 </section>
 
@@ -2757,10 +2059,7 @@ footer{
      CATALOGUE
 ========================================================= -->
 
-<section
-    class="section"
-    id="catalogue"
->
+<section class="section" id="catalogue">
 
     <div class="section-container">
 
@@ -2772,15 +2071,10 @@ footer{
             Notre Catalogue
         </h2>
 
-        <div
-            class="categories-grid"
-            id="categoriesGrid"
-        >
+        <div class="categories-grid" id="categoriesGrid">
 
-            <div
-                class="category-card"
-                onclick="filterProducts('Abonnements')"
-            >
+            <div class="category-card"
+                 onclick="filterProducts('Abonnements')">
 
                 <div class="category-icon">
 
@@ -2809,10 +2103,8 @@ footer{
             </div>
 
 
-            <div
-                class="category-card"
-                onclick="filterProducts('Accessoires')"
-            >
+            <div class="category-card"
+                 onclick="filterProducts('Accessoires')">
 
                 <div class="category-icon">
 
@@ -2839,10 +2131,8 @@ footer{
             </div>
 
 
-            <div
-                class="category-card"
-                onclick="filterProducts('Basket')"
-            >
+            <div class="category-card"
+                 onclick="filterProducts('Basket')">
 
                 <div class="category-icon">
 
@@ -2867,18 +2157,14 @@ footer{
             </div>
 
 
-            <div
-                class="category-card"
-                onclick="filterProducts('Écouteurs')"
-            >
+            <div class="category-card"
+                 onclick="filterProducts('Écouteurs')">
 
                 <div class="category-icon">
 
                     <svg viewBox="0 0 24 24">
 
-                        <path
-                            d="M5 13v-1a7 7 0 0 1 14 0v1"
-                        ></path>
+                        <path d="M5 13v-1a7 7 0 0 1 14 0v1"></path>
 
                         <path
                             d="M5 13h3v6H6a1 1 0 0 1-1-1v-5Z"
@@ -2899,10 +2185,8 @@ footer{
             </div>
 
 
-            <div
-                class="category-card"
-                onclick="filterProducts('Enceintes')"
-            >
+            <div class="category-card"
+                 onclick="filterProducts('Enceintes')">
 
                 <div class="category-icon">
 
@@ -2939,20 +2223,14 @@ footer{
             </div>
 
 
-            <div
-                class="category-card"
-                onclick="filterProducts('For men')"
-            >
+            <div class="category-card"
+                 onclick="filterProducts('For men')">
 
                 <div class="category-icon">
 
                     <svg viewBox="0 0 24 24">
 
-                        <circle
-                            cx="12"
-                            cy="12"
-                            r="4"
-                        ></circle>
+                        <circle cx="12" cy="12" r="4"></circle>
 
                         <path d="M12 3v5"></path>
                         <path d="M12 16v5"></path>
@@ -2984,10 +2262,7 @@ footer{
      PRODUITS
 ========================================================= -->
 
-<section
-    class="section products-section"
-    id="produits"
->
+<section class="section products-section" id="produits">
 
     <div class="section-container">
 
@@ -2999,10 +2274,7 @@ footer{
             Nos produits
         </h2>
 
-        <div
-            class="products-grid"
-            id="productsGrid"
-        >
+        <div class="products-grid" id="productsGrid">
 
             <div class="loading">
                 Chargement des produits...
@@ -3019,10 +2291,7 @@ footer{
      ABONNEMENTS
 ========================================================= -->
 
-<section
-    class="section subscriptions-section"
-    id="abonnements"
->
+<section class="section subscriptions-section" id="abonnements">
 
     <div class="section-container">
 
@@ -3067,10 +2336,8 @@ footer{
         </div>
 
 
-        <div
-            class="subscription-track"
-            id="subscriptionTrack"
-        >
+        <div class="subscription-track" id="subscriptionTrack">
+
 
             <article class="subscription-card">
 
@@ -3096,7 +2363,8 @@ footer{
                         Dès <strong>1 500 FCFA</strong>/mois
                     </div>
 
-                    <button class="subscribe-button">
+                    <button class="subscribe-button"
+                            onclick="subscribeTo('Apple Music')">
                         S'abonner
                     </button>
 
@@ -3112,6 +2380,7 @@ footer{
                     muted
                     loop
                     playsinline
+                    webkit-playsinline
                     preload="metadata"
                 ></video>
 
@@ -3121,10 +2390,7 @@ footer{
                     aria-label="Activer ou couper le son"
                 >
 
-                    <svg
-                        class="volume-icon"
-                        viewBox="0 0 24 24"
-                    >
+                    <svg viewBox="0 0 24 24">
 
                         <path
                             d="M11 5 6 9H3v6h3l5 4V5Z"
@@ -3158,7 +2424,8 @@ footer{
                         Dès <strong>1 500 FCFA</strong>/mois
                     </div>
 
-                    <button class="subscribe-button">
+                    <button class="subscribe-button"
+                            onclick="subscribeTo('Apple TV')">
                         S'abonner
                     </button>
 
@@ -3191,7 +2458,8 @@ footer{
                         Dès <strong>2 000 FCFA</strong>/mois
                     </div>
 
-                    <button class="subscribe-button">
+                    <button class="subscribe-button"
+                            onclick="subscribeTo('Netflix')">
                         S'abonner
                     </button>
 
@@ -3224,7 +2492,8 @@ footer{
                         Dès <strong>2 500 FCFA</strong>
                     </div>
 
-                    <button class="subscribe-button">
+                    <button class="subscribe-button"
+                            onclick="subscribeTo('Apple Services')">
                         S'abonner
                     </button>
 
@@ -3243,10 +2512,7 @@ footer{
      ANNONCES
 ========================================================= -->
 
-<section
-    class="section"
-    id="annonces"
->
+<section class="section" id="annonces">
 
     <div class="section-container">
 
@@ -3374,7 +2640,7 @@ footer{
                     data-decimals="1"
                     data-suffix="/5"
                 >
-                    0.0/5
+                    0,0/5
                 </div>
 
                 <div class="stat-label">
@@ -3411,10 +2677,7 @@ footer{
      AVIS
 ========================================================= -->
 
-<section
-    class="section"
-    id="avis"
->
+<section class="section" id="avis">
 
     <div class="section-container">
 
@@ -3427,6 +2690,7 @@ footer{
         </h2>
 
         <div class="reviews-track">
+
 
             <article class="review-card">
 
@@ -3567,10 +2831,7 @@ footer{
      CLIENTS SATISFAITS
 ========================================================= -->
 
-<section
-    class="section gallery-section"
-    id="clients"
->
+<section class="section gallery-section" id="clients">
 
     <div class="section-container">
 
@@ -3592,6 +2853,7 @@ footer{
                 <img
                     src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=700&q=85"
                     alt="Client satisfait"
+                    loading="lazy"
                 >
             </div>
 
@@ -3599,6 +2861,7 @@ footer{
                 <img
                     src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=700&q=85"
                     alt="Client satisfait"
+                    loading="lazy"
                 >
             </div>
 
@@ -3606,6 +2869,7 @@ footer{
                 <img
                     src="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&w=700&q=85"
                     alt="Cliente satisfaite"
+                    loading="lazy"
                 >
             </div>
 
@@ -3613,6 +2877,7 @@ footer{
                 <img
                     src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=700&q=85"
                     alt="Client satisfait"
+                    loading="lazy"
                 >
             </div>
 
@@ -3620,6 +2885,7 @@ footer{
                 <img
                     src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=700&q=85"
                     alt="Client satisfait"
+                    loading="lazy"
                 >
             </div>
 
@@ -3627,6 +2893,7 @@ footer{
                 <img
                     src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=700&q=85"
                     alt="Client satisfait"
+                    loading="lazy"
                 >
             </div>
 
@@ -3634,6 +2901,7 @@ footer{
                 <img
                     src="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&w=700&q=85"
                     alt="Cliente satisfaite"
+                    loading="lazy"
                 >
             </div>
 
@@ -3641,6 +2909,7 @@ footer{
                 <img
                     src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=700&q=85"
                     alt="Client satisfait"
+                    loading="lazy"
                 >
             </div>
 
@@ -3655,10 +2924,7 @@ footer{
      REPARATION
 ========================================================= -->
 
-<section
-    class="section"
-    id="reparation"
->
+<section class="section" id="reparation">
 
     <div class="section-container">
 
@@ -3769,39 +3035,28 @@ footer{
                 Tous les produits
             </a>
 
-            <a href="#catalogue">
-                T-shirt
-            </a>
-
-            <a href="#catalogue">
+            <a href="#catalogue"
+               onclick="filterProducts('Basket')">
                 Basket
             </a>
 
-            <a href="#catalogue">
+            <a href="#catalogue"
+               onclick="filterProducts('For men')">
                 For men
             </a>
 
-            <a href="#catalogue">
-                Téléphone/Tablette/Pc
-            </a>
-
-            <a href="#catalogue">
+            <a href="#catalogue"
+               onclick="filterProducts('Écouteurs')">
                 Écouteurs
             </a>
 
-            <a href="#catalogue">
+            <a href="#catalogue"
+               onclick="filterProducts('Enceintes')">
                 Enceintes
             </a>
 
-            <a href="#catalogue">
-                Vapes
-            </a>
-
-            <a href="#catalogue">
-                Univers des femmes
-            </a>
-
-            <a href="#catalogue">
+            <a href="#catalogue"
+               onclick="filterProducts('Accessoires')">
                 Accessoires
             </a>
 
@@ -3883,11 +3138,7 @@ footer{
 >
 
     <svg viewBox="0 0 24 24">
-
-        <path
-            d="m6 14 6-6 6 6"
-        ></path>
-
+        <path d="m6 14 6-6 6 6"></path>
     </svg>
 
 </button>
@@ -3899,19 +3150,14 @@ footer{
 
 <nav class="bottom-nav">
 
-    <a
-        href="#accueil"
-        class="active"
-    >
+    <a href="#accueil" class="active">
 
         <span class="bottom-icon">
 
             <svg viewBox="0 0 24 24">
-
                 <path d="M3 10.5 12 3l9 7.5"></path>
                 <path d="M5 9.5V21h14V9.5"></path>
                 <path d="M9 21v-7h6v7"></path>
-
             </svg>
 
         </span>
@@ -3992,11 +3238,7 @@ footer{
 
             <svg viewBox="0 0 24 24">
 
-                <circle
-                    cx="12"
-                    cy="12"
-                    r="5"
-                ></circle>
+                <circle cx="12" cy="12" r="5"></circle>
 
                 <path d="M12 2v3"></path>
                 <path d="M12 19v3"></path>
@@ -4005,7 +3247,7 @@ footer{
                 <path d="m4.9 4.9 2.1 2.1"></path>
                 <path d="m17 17 2.1 2.1"></path>
                 <path d="m19.1 4.9-2.1 2.1"></path>
-                <path d="m7 17-2.1 2.1"></path>
+                <path d="M7 17 4.9 19.1"></path>
                 <path d="M12 9v6"></path>
                 <path d="M9 12h6"></path>
 
@@ -4029,16 +3271,16 @@ footer{
 ========================================================= */
 
 const SUPABASE_URL =
-"https://eldbudjhbsnvuffjpiue.supabase.co";
+    "https://eldbudjhbsnvuffjpiue.supabase.co";
 
 const SUPABASE_PUBLISHABLE_KEY =
-"sb_publishable_u8yaezMW2z78tLG7DnIe3g_kjVQIlde";
+    "sb_publishable_u8yaezMW2z78tLG7DnIe3g_kjVQIlde";
 
 const supabaseClient =
-window.supabase.createClient(
-    SUPABASE_URL,
-    SUPABASE_PUBLISHABLE_KEY
-);
+    window.supabase.createClient(
+        SUPABASE_URL,
+        SUPABASE_PUBLISHABLE_KEY
+    );
 
 
 /* =========================================================
@@ -4046,19 +3288,22 @@ window.supabase.createClient(
 ========================================================= */
 
 let products = [];
-
 let cart = [];
-
 let heroIndex = 0;
-
 let heroTimer = null;
-
 let announcementIndex = 0;
 
 
 /* =========================================================
    UTILITAIRES
-======================================================== */
+========================================================= */
+
+/*
+    IMPORTANT :
+    Cette fonction était cassée dans ton ancien code.
+    Les caractères &, <, >, " et ' sont maintenant
+    correctement échappés.
+*/
 
 function escapeHtml(value){
 
@@ -4070,19 +3315,34 @@ function escapeHtml(value){
     }
 
     return String(value)
-        .replace(/&/g,"&")
-        .replace(/</g,"<")
-        .replace(/>/g,">")
-        .replace(/"/g,""")
+        .replace(/&/g,"&amp;")
+        .replace(/</g,"&lt;")
+        .replace(/>/g,"&gt;")
+        .replace(/"/g,"&quot;")
         .replace(/'/g,"&#039;");
 }
 
+
 function formatPrice(price){
 
+    const numericPrice =
+        Number(price);
+
+    if(
+        !Number.isFinite(
+            numericPrice
+        )
+    ){
+        return "0 FCFA";
+    }
+
     return new Intl.NumberFormat(
-        "fr-FR"
+        "fr-FR",
+        {
+            maximumFractionDigits:0
+        }
     ).format(
-        Number(price || 0)
+        numericPrice
     ) + " FCFA";
 }
 
@@ -4107,14 +3367,14 @@ async function loadHero(){
 
         const result =
             await supabaseClient
-            .from("hero_slides")
-            .select("*")
-            .order(
-                "id",
-                {
-                    ascending:true
-                }
-            );
+                .from("hero_slides")
+                .select("*")
+                .order(
+                    "id",
+                    {
+                        ascending:true
+                    }
+                );
 
         if(result.error){
 
@@ -4134,7 +3394,6 @@ async function loadHero(){
         }
 
         container.innerHTML = "";
-
         dots.innerHTML = "";
 
         rows.forEach(
@@ -4184,14 +3443,16 @@ async function loadHero(){
                             autoplay
                             loop
                             playsinline
+                            webkit-playsinline
                             preload="auto"
                         ></video>
                     `;
 
                 }else if(
                     mediaUrl &&
-                    /\.(mp4|webm|mov)(\?|$)/i
-                    .test(mediaUrl)
+                    /\.(mp4|webm|mov)(\?|$)/i.test(
+                        mediaUrl
+                    )
                 ){
 
                     mediaHTML = `
@@ -4202,18 +3463,36 @@ async function loadHero(){
                             autoplay
                             loop
                             playsinline
+                            webkit-playsinline
                             preload="auto"
                         ></video>
                     `;
 
-                }else{
+                }else if(mediaUrl){
 
                     mediaHTML = `
                         <img
                             class="hero-media"
                             src="${escapeHtml(mediaUrl)}"
                             alt="${escapeHtml(title)}"
+                            loading="eager"
                         >
+                    `;
+
+                }else{
+
+                    mediaHTML = `
+                        <div
+                            class="hero-media"
+                            style="
+                                background:
+                                linear-gradient(
+                                    135deg,
+                                    #080808,
+                                    #444
+                                );
+                            "
+                        ></div>
                     `;
 
                 }
@@ -4227,8 +3506,8 @@ async function loadHero(){
                     "hero-slide" +
                     (
                         index === 0
-                            ? " active"
-                            : ""
+                        ? " active"
+                        : ""
                     );
 
                 element.innerHTML = `
@@ -4241,7 +3520,9 @@ async function loadHero(){
 
                         <div class="hero-label">
 
-                            <span class="hero-label-dot"></span>
+                            <span
+                                class="hero-label-dot"
+                            ></span>
 
                             LE MEILLEUR AU QUOTIDIEN
 
@@ -4278,6 +3559,7 @@ async function loadHero(){
                         </div>
 
                     </div>
+
                 `;
 
                 container.appendChild(
@@ -4289,12 +3571,14 @@ async function loadHero(){
                         "button"
                     );
 
+                dot.type = "button";
+
                 dot.className =
                     "hero-dot" +
                     (
                         index === 0
-                            ? " active"
-                            : ""
+                        ? " active"
+                        : ""
                     );
 
                 dot.onclick =
@@ -4316,7 +3600,7 @@ async function loadHero(){
     }catch(error){
 
         console.error(
-            "Hero:",
+            "Hero :",
             error
         );
 
@@ -4342,8 +3626,10 @@ function showHero(index){
     }
 
     heroIndex =
-        (index + slides.length)
-        %
+        (
+            index +
+            slides.length
+        ) %
         slides.length;
 
     slides.forEach(
@@ -4361,12 +3647,16 @@ function showHero(index){
 
             if(video){
 
-                if(i === heroIndex){
+                if(
+                    i === heroIndex
+                ){
 
                     video.currentTime = 0;
 
                     video.play()
-                        .catch(()=>{});
+                        .catch(
+                            ()=>{}
+                        );
 
                 }else{
 
@@ -4395,7 +3685,9 @@ function showHero(index){
 
 function startHero(){
 
-    clearInterval(heroTimer);
+    clearInterval(
+        heroTimer
+    );
 
     heroTimer =
         setInterval(
@@ -4438,34 +3730,35 @@ async function loadProducts(){
 
         const result =
             await supabaseClient
-            .from("products")
-            .select(`
-                id,
-                created_at,
-                name,
-                price,
-                stock,
-                category,
-                image_url,
-                video_url,
-                description,
-                active,
-                featured
-            `)
-            .eq(
-                "active",
-                true
-            )
-            .order(
-                "created_at",
-                {
-                    ascending:false
-                }
-            );
+                .from("products")
+                .select(`
+                    id,
+                    created_at,
+                    name,
+                    price,
+                    stock,
+                    category,
+                    image_url,
+                    video_url,
+                    description,
+                    active,
+                    featured
+                `)
+                .eq(
+                    "active",
+                    true
+                )
+                .order(
+                    "created_at",
+                    {
+                        ascending:false
+                    }
+                );
 
         if(result.error){
 
             console.error(
+                "Erreur produits :",
                 result.error
             );
 
@@ -4488,6 +3781,7 @@ async function loadProducts(){
     }catch(error){
 
         console.error(
+            "Produits :",
             error
         );
 
@@ -4557,6 +3851,7 @@ function renderProducts(list){
                             autoplay
                             loop
                             playsinline
+                            webkit-playsinline
                             preload="metadata"
                         ></video>
                     `;
@@ -4592,7 +3887,9 @@ function renderProducts(list){
 
                 return `
 
-                    <article class="product-card">
+                    <article
+                        class="product-card"
+                    >
 
                         <div class="product-media">
                             ${media}
@@ -4646,7 +3943,7 @@ function renderProducts(list){
                                     :
                                     ""
                                 }
-                                onclick="addToCart(${product.id})"
+                                onclick="addToCart(${Number(product.id)})"
                             >
 
                                 ${
@@ -4679,23 +3976,30 @@ function filterProducts(category){
                 String(
                     product.category || ""
                 )
+                .trim()
                 .toLowerCase()
                 ===
                 String(category)
-                .toLowerCase()
+                    .trim()
+                    .toLowerCase()
         );
 
     renderProducts(
         filtered
     );
 
-    document
-        .getElementById(
+    const productsSection =
+        document.getElementById(
             "produits"
-        )
-        .scrollIntoView({
+        );
+
+    if(productsSection){
+
+        productsSection.scrollIntoView({
             behavior:"smooth"
         });
+
+    }
 
 }
 
@@ -4734,12 +4038,17 @@ function addToCart(id){
 
 function updateCart(){
 
-    document
-        .getElementById(
+    const cartNumber =
+        document.getElementById(
             "cartNumber"
-        )
-        .textContent =
-        cart.length;
+        );
+
+    if(cartNumber){
+
+        cartNumber.textContent =
+            cart.length;
+
+    }
 
 }
 
@@ -4783,12 +4092,37 @@ function openCart(){
    ABONNEMENTS
 ========================================================= */
 
+function subscribeTo(service){
+
+    const message =
+        "Bonjour MTECH BENIN, je souhaite m'abonner à : " +
+        service;
+
+    const url =
+        "https://wa.me/22960506320?text=" +
+        encodeURIComponent(
+            message
+        );
+
+    window.open(
+        url,
+        "_blank",
+        "noopener"
+    );
+
+}
+
+
 function moveSubscriptions(direction){
 
     const track =
         document.getElementById(
             "subscriptionTrack"
         );
+
+    if(!track){
+        return;
+    }
 
     const amount =
         window.innerWidth < 700
@@ -4810,7 +4144,14 @@ function moveSubscriptions(direction){
 }
 
 
-function setVolumeIcon(button, muted){
+function setVolumeIcon(
+    button,
+    muted
+){
+
+    if(!button){
+        return;
+    }
 
     if(muted){
 
@@ -4868,6 +4209,10 @@ function toggleSubscriptionVideo(button){
             ".subscription-card"
         );
 
+    if(!card){
+        return;
+    }
+
     const video =
         card.querySelector(
             "video"
@@ -4898,7 +4243,9 @@ function toggleSubscriptionVideo(button){
                     video.muted = true;
 
                     video.play()
-                        .catch(()=>{});
+                        .catch(
+                            ()=>{}
+                        );
 
                     setVolumeIcon(
                         button,
@@ -4910,7 +4257,8 @@ function toggleSubscriptionVideo(button){
 
     }else{
 
-        video.muted = !video.muted;
+        video.muted =
+            !video.muted;
 
         setVolumeIcon(
             button,
@@ -4926,79 +4274,76 @@ function toggleSubscriptionVideo(button){
    VIDEO ABONNEMENT
 ========================================================= */
 
-const subscriptionObserver =
-    new IntersectionObserver(
-        entries => {
+let subscriptionObserver = null;
 
-            entries.forEach(
-                entry => {
+if(
+    "IntersectionObserver"
+    in window
+){
 
-                    const card =
-                        entry.target;
+    subscriptionObserver =
+        new IntersectionObserver(
+            entries => {
 
-                    const video =
-                        card.querySelector(
-                            "video"
-                        );
+                entries.forEach(
+                    entry => {
 
-                    if(!video){
-                        return;
-                    }
+                        const card =
+                            entry.target;
 
-                    const button =
-                        card.querySelector(
-                            ".video-control"
-                        );
-
-                    if(
-                        entry.isIntersecting &&
-                        entry.intersectionRatio >= .55
-                    ){
-
-                        video.muted = true;
-
-                        video.play()
-                            .catch(
-                                ()=>{}
+                        const video =
+                            card.querySelector(
+                                "video"
                             );
 
-                        if(button){
+                        if(!video){
+                            return;
+                        }
 
-                            setVolumeIcon(
-                                button,
-                                true
+                        const button =
+                            card.querySelector(
+                                ".video-control"
                             );
+
+                        if(
+                            entry.isIntersecting &&
+                            entry.intersectionRatio >= .55
+                        ){
+
+                            video.muted = true;
+
+                            video.play()
+                                .catch(
+                                    ()=>{}
+                                );
+
+                            if(button){
+
+                                setVolumeIcon(
+                                    button,
+                                    true
+                                );
+
+                            }
+
+                        }else{
+
+                            video.pause();
 
                         }
 
-                    }else{
-
-                        video.pause();
-
                     }
+                );
 
-                }
-            );
+            },
+            {
+                threshold:[
+                    .55
+                ]
+            }
+        );
 
-        },
-        {
-            threshold:[
-                .55
-            ]
-        }
-    );
-
-
-document
-    .querySelectorAll(
-        ".subscription-card"
-    )
-    .forEach(
-        card =>
-            subscriptionObserver.observe(
-                card
-            )
-    );
+}
 
 
 /* =========================================================
@@ -5021,50 +4366,65 @@ const announcementDots =
     );
 
 
-announcementSlides.forEach(
-    (
-        slide,
-        index
-    )=>{
+if(
+    announcementSlides.length &&
+    announcementDots
+){
 
-        const dot =
-            document.createElement(
-                "button"
-            );
+    announcementSlides.forEach(
+        (
+            slide,
+            index
+        )=>{
 
-        dot.className =
-            "announcement-dot" +
-            (
-                index === 0
-                ?
-                " active"
-                :
-                ""
-            );
-
-        dot.onclick =
-            ()=>{
-                showAnnouncement(
-                    index
+            const dot =
+                document.createElement(
+                    "button"
                 );
-            };
 
-        announcementDots.appendChild(
-            dot
-        );
+            dot.type = "button";
 
-    }
-);
+            dot.className =
+                "announcement-dot" +
+                (
+                    index === 0
+                    ?
+                    " active"
+                    :
+                    ""
+                );
+
+            dot.onclick =
+                ()=>{
+                    showAnnouncement(
+                        index
+                    );
+                };
+
+            announcementDots.appendChild(
+                dot
+            );
+
+        }
+    );
+
+}
 
 
 function showAnnouncement(index){
 
-    if(!announcementSlides.length){
+    if(
+        !announcementSlides.length ||
+        !announcementTrack
+    ){
         return;
     }
 
     announcementIndex =
-        index %
+        (
+            index +
+            announcementSlides.length
+        ) %
         announcementSlides.length;
 
     announcementTrack.style.transform =
@@ -5095,28 +4455,34 @@ function showAnnouncement(index){
 }
 
 
-setInterval(
-    ()=>{
+if(
+    announcementSlides.length > 1
+){
 
-        showAnnouncement(
-            announcementIndex + 1
-        );
+    setInterval(
+        ()=>{
 
-    },
-    5000
-);
+            showAnnouncement(
+                announcementIndex + 1
+            );
+
+        },
+        5000
+    );
+
+}
 
 
 /* =========================================================
-   RECHERCHE DANS LE MENU
+   RECHERCHE
 ========================================================= */
 
 function searchFromMenu(query){
 
     query =
         String(query || "")
-        .trim()
-        .toLowerCase();
+            .trim()
+            .toLowerCase();
 
     if(!query){
 
@@ -5133,23 +4499,24 @@ function searchFromMenu(query){
 
                 const text =
                     (
-                        product.name +
-                        " " +
-                        (
-                            product.category ||
-                            ""
-                        ) +
-                        " " +
-                        (
-                            product.description ||
-                            ""
-                        )
-                    )
-                    .toLowerCase();
+                        product.name || ""
+                    ) +
+                    " " +
+                    (
+                        product.category ||
+                        ""
+                    ) +
+                    " " +
+                    (
+                        product.description ||
+                        ""
+                    );
 
-                return text.includes(
-                    query
-                );
+                return text
+                    .toLowerCase()
+                    .includes(
+                        query
+                    );
 
             }
         );
@@ -5167,13 +4534,33 @@ function searchFromMenu(query){
 
 function toggleMenu(){
 
-    document
-        .getElementById(
+    const menu =
+        document.getElementById(
             "mobileMenu"
-        )
-        .classList.toggle(
+        );
+
+    const button =
+        document.getElementById(
+            "menuButton"
+        );
+
+    if(!menu){
+        return;
+    }
+
+    const isActive =
+        menu.classList.toggle(
             "active"
         );
+
+    if(button){
+
+        button.setAttribute(
+            "aria-expanded",
+            String(isActive)
+        );
+
+    }
 
 }
 
@@ -5189,19 +4576,90 @@ document
                 "click",
                 ()=>{
 
-                    document
-                        .getElementById(
+                    const menu =
+                        document.getElementById(
                             "mobileMenu"
-                        )
-                        .classList.remove(
+                        );
+
+                    const button =
+                        document.getElementById(
+                            "menuButton"
+                        );
+
+                    if(menu){
+
+                        menu.classList.remove(
                             "active"
                         );
+
+                    }
+
+                    if(button){
+
+                        button.setAttribute(
+                            "aria-expanded",
+                            "false"
+                        );
+
+                    }
 
                 }
             );
 
         }
     );
+
+
+/* =========================================================
+   FERMER LE MENU EN CLIQUANT AILLEURS
+========================================================= */
+
+document.addEventListener(
+    "click",
+    event => {
+
+        const menu =
+            document.getElementById(
+                "mobileMenu"
+            );
+
+        const button =
+            document.getElementById(
+                "menuButton"
+            );
+
+        if(
+            !menu ||
+            !button
+        ){
+            return;
+        }
+
+        if(
+            menu.classList.contains(
+                "active"
+            ) &&
+            !menu.contains(
+                event.target
+            ) &&
+            !button.contains(
+                event.target
+            )
+        ){
+
+            menu.classList.remove(
+                "active"
+            );
+
+            button.setAttribute(
+                "aria-expanded",
+                "false"
+            );
+
+        }
+
+    }
+);
 
 
 /* =========================================================
@@ -5212,15 +4670,23 @@ window.addEventListener(
     "scroll",
     ()=>{
 
-        document
-            .getElementById(
+        const header =
+            document.getElementById(
                 "siteHeader"
-            )
-            .classList.toggle(
+            );
+
+        if(header){
+
+            header.classList.toggle(
                 "scrolled",
                 window.scrollY > 20
             );
 
+        }
+
+    },
+    {
+        passive:true
     }
 );
 
@@ -5263,18 +4729,20 @@ document
 
 
 /* =========================================================
-   STATISTIQUES — ANIMATION LENTE
+   STATISTIQUES
 ========================================================= */
 
 function animateCounter(element){
 
     if(
-        element.dataset.animated === "true"
+        element.dataset.animated ===
+        "true"
     ){
         return;
     }
 
-    element.dataset.animated = "true";
+    element.dataset.animated =
+        "true";
 
     const target =
         Number(
@@ -5302,11 +4770,13 @@ function animateCounter(element){
     function updateCounter(now){
 
         const elapsed =
-            now - startTime;
+            now -
+            startTime;
 
         const progress =
             Math.min(
-                elapsed / duration,
+                elapsed /
+                duration,
                 1
             );
 
@@ -5318,15 +4788,25 @@ function animateCounter(element){
             );
 
         const current =
-            target * eased;
+            target *
+            eased;
 
         let display;
 
-        if(decimals > 0){
+        if(
+            decimals > 0
+        ){
 
             display =
-                current.toFixed(
-                    decimals
+                current.toLocaleString(
+                    "fr-FR",
+                    {
+                        minimumFractionDigits:
+                            decimals,
+
+                        maximumFractionDigits:
+                            decimals
+                    }
                 );
 
         }else{
@@ -5344,7 +4824,9 @@ function animateCounter(element){
             display +
             suffix;
 
-        if(progress < 1){
+        if(
+            progress < 1
+        ){
 
             requestAnimationFrame(
                 updateCounter
@@ -5352,11 +4834,20 @@ function animateCounter(element){
 
         }else{
 
-            if(decimals > 0){
+            if(
+                decimals > 0
+            ){
 
                 element.textContent =
-                    target.toFixed(
-                        decimals
+                    target.toLocaleString(
+                        "fr-FR",
+                        {
+                            minimumFractionDigits:
+                                decimals,
+
+                            maximumFractionDigits:
+                                decimals
+                        }
                     ) +
                     suffix;
 
@@ -5381,56 +4872,71 @@ function animateCounter(element){
 }
 
 
-const statsObserver =
-    new IntersectionObserver(
-        entries => {
-
-            entries.forEach(
-                entry => {
-
-                    if(
-                        entry.isIntersecting
-                    ){
-
-                        const counters =
-                            entry.target
-                            .querySelectorAll(
-                                "[data-counter]"
-                            );
-
-                        counters.forEach(
-                            counter =>
-                                animateCounter(
-                                    counter
-                                )
-                        );
-
-                        statsObserver.unobserve(
-                            entry.target
-                        );
-
-                    }
-
-                }
-            );
-
-        },
-        {
-            threshold:.35
-        }
-    );
-
+let statsObserver = null;
 
 const statsSection =
     document.querySelector(
         ".stats-grid"
     );
 
-if(statsSection){
+if(
+    statsSection &&
+    "IntersectionObserver"
+    in window
+){
+
+    statsObserver =
+        new IntersectionObserver(
+            entries => {
+
+                entries.forEach(
+                    entry => {
+
+                        if(
+                            entry.isIntersecting
+                        ){
+
+                            const counters =
+                                entry.target
+                                    .querySelectorAll(
+                                        "[data-counter]"
+                                    );
+
+                            counters.forEach(
+                                counter =>
+                                    animateCounter(
+                                        counter
+                                    )
+                            );
+
+                            statsObserver.unobserve(
+                                entry.target
+                            );
+
+                        }
+
+                    }
+                );
+
+            },
+            {
+                threshold:.2
+            }
+        );
 
     statsObserver.observe(
         statsSection
     );
+
+}else if(statsSection){
+
+    statsSection
+        .querySelectorAll(
+            "[data-counter]"
+        )
+        .forEach(
+            animateCounter
+        );
 
 }
 
@@ -5448,6 +4954,10 @@ window.addEventListener(
     "scroll",
     ()=>{
 
+        if(!backToTop){
+            return;
+        }
+
         if(
             window.scrollY > 500
         ){
@@ -5464,6 +4974,9 @@ window.addEventListener(
 
         }
 
+    },
+    {
+        passive:true
     }
 );
 
@@ -5472,18 +4985,88 @@ window.addEventListener(
    INITIALISATION
 ========================================================= */
 
-document.addEventListener(
-    "DOMContentLoaded",
-    async ()=>{
+async function initializeSite(){
 
+    console.log(
+        "MTECH BENIN : initialisation..."
+    );
+
+    /*
+        On charge les données même si une partie
+        rencontre une erreur.
+    */
+
+    try{
         await loadHero();
+    }catch(error){
+        console.error(
+            "Initialisation Hero :",
+            error
+        );
+    }
 
+    try{
         await loadProducts();
+    }catch(error){
+        console.error(
+            "Initialisation Produits :",
+            error
+        );
+    }
 
-        updateCart();
+    updateCart();
+
+    /*
+        Activation des vidéos des abonnements
+        après que le DOM soit complètement prêt.
+    */
+
+    if(subscriptionObserver){
+
+        document
+            .querySelectorAll(
+                ".subscription-card"
+            )
+            .forEach(
+                card => {
+
+                    subscriptionObserver.observe(
+                        card
+                    );
+
+                }
+            );
 
     }
-);
+
+    console.log(
+        "MTECH BENIN : site prêt."
+    );
+
+}
+
+
+/*
+    DOMContentLoaded est utilisé pour garantir
+    que tous les éléments HTML existent avant
+    l'initialisation du JavaScript.
+*/
+
+if(
+    document.readyState ===
+    "loading"
+){
+
+    document.addEventListener(
+        "DOMContentLoaded",
+        initializeSite
+    );
+
+}else{
+
+    initializeSite();
+
+}
 
 </script>
 
