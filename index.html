@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -25,7 +26,6 @@ content="MTECH BENIN - Smartphones, accessoires, abonnements, produits numériqu
 
 html{
     scroll-behavior:smooth;
-    -webkit-text-size-adjust:100%;
 }
 
 body{
@@ -41,8 +41,6 @@ body{
         Arial,
         sans-serif;
     overflow-x:hidden;
-    -webkit-font-smoothing:antialiased;
-    text-rendering:optimizeLegibility;
 }
 
 button,
@@ -54,13 +52,11 @@ select{
 
 button{
     cursor:pointer;
-    -webkit-tap-highlight-color:transparent;
 }
 
 a{
     color:inherit;
     text-decoration:none;
-    -webkit-tap-highlight-color:transparent;
 }
 
 img,
@@ -82,7 +78,8 @@ video{
     height:76px;
     z-index:5000;
 
-    background:rgba(255,255,255,.94);
+    background:rgba(255,255,255,.96);
+
     backdrop-filter:blur(20px);
     -webkit-backdrop-filter:blur(20px);
 
@@ -115,7 +112,7 @@ video{
 .header-actions{
     display:flex;
     align-items:center;
-    gap:7px;
+    gap:5px;
 }
 
 .header-button{
@@ -132,24 +129,26 @@ video{
     display:flex;
     align-items:center;
     justify-content:center;
+}
 
-    font-size:25px;
+.header-button svg{
+    width:27px;
+    height:27px;
 
-    transition:
-        color:.2s ease,
-        transform:.2s ease;
+    fill:none;
+    stroke:currentColor;
+    stroke-width:1.8;
+    stroke-linecap:round;
+    stroke-linejoin:round;
 }
 
 .header-button:hover{
     color:#111;
 }
 
-.header-button:active{
-    transform:scale(.94);
-}
-
 .cart-number{
     position:absolute;
+
     top:0;
     right:-1px;
 
@@ -182,7 +181,7 @@ video{
     top:85px;
     right:15px;
 
-    width:280px;
+    width:300px;
 
     padding:12px;
 
@@ -194,6 +193,7 @@ video{
 
     opacity:0;
     visibility:hidden;
+
     transform:translateY(-15px);
 
     transition:.25s;
@@ -210,23 +210,66 @@ video{
 .mobile-menu a{
     display:block;
 
-    padding:16px;
+    padding:15px;
 
     border-radius:15px;
 
     font-weight:700;
-
-    transition:
-        background:.2s ease,
-        transform:.2s ease;
 }
 
 .mobile-menu a:hover{
     background:#f5f5f5;
 }
 
-.mobile-menu a:active{
-    transform:translateX(3px);
+
+/* =========================================================
+   MENU SEARCH
+========================================================= */
+
+.menu-search{
+    margin-bottom:8px;
+}
+
+.menu-search-box{
+    height:50px;
+
+    display:flex;
+    align-items:center;
+
+    gap:10px;
+
+    padding:0 15px;
+
+    background:#f5f5f5;
+
+    border-radius:15px;
+}
+
+.menu-search-box svg{
+    width:21px;
+    height:21px;
+
+    flex:none;
+
+    fill:none;
+    stroke:#777;
+    stroke-width:1.8;
+
+    stroke-linecap:round;
+    stroke-linejoin:round;
+}
+
+.menu-search-box input{
+    width:100%;
+
+    border:0;
+    outline:0;
+
+    background:transparent;
+
+    color:#111;
+
+    font-size:15px;
 }
 
 
@@ -319,6 +362,7 @@ video{
     border-radius:50px;
 
     background:rgba(20,20,20,.72);
+
     border:1px solid rgba(255,255,255,.18);
 
     font-size:15px;
@@ -328,12 +372,41 @@ video{
 }
 
 .hero-label-dot{
-    width:8px;
-    height:8px;
+    width:9px;
+    height:9px;
+
+    flex:none;
 
     border-radius:50%;
 
-    background:#f22;
+    background:#ef2525;
+
+    animation:
+        heroDotBlink
+        1.4s
+        ease-in-out
+        infinite;
+}
+
+@keyframes heroDotBlink{
+
+    0%,
+    100%{
+        opacity:1;
+        transform:scale(1);
+        box-shadow:
+            0 0 0 0
+            rgba(239,37,37,.45);
+    }
+
+    50%{
+        opacity:.35;
+        transform:scale(.75);
+        box-shadow:
+            0 0 0 6px
+            rgba(239,37,37,0);
+    }
+
 }
 
 .hero-title{
@@ -383,14 +456,6 @@ video{
     font-weight:800;
 
     border:1px solid transparent;
-
-    transition:
-        transform:.2s ease,
-        background:.2s ease;
-}
-
-.hero-button:active{
-    transform:scale(.96);
 }
 
 .hero-button.primary{
@@ -400,8 +465,11 @@ video{
 
 .hero-button.secondary{
     background:rgba(255,255,255,.12);
+
     color:#fff;
-    border-color:rgba(255,255,255,.25);
+
+    border-color:
+        rgba(255,255,255,.25);
 }
 
 .hero-dots{
@@ -413,6 +481,7 @@ video{
     transform:translateX(-50%);
 
     display:flex;
+
     gap:8px;
 
     z-index:20;
@@ -435,6 +504,7 @@ video{
 
 .hero-dot.active{
     width:38px;
+
     border-radius:20px;
 
     background:#fff;
@@ -499,18 +569,18 @@ video{
     background:#fff;
 
     box-shadow:
-        0 12px 40px rgba(0,0,0,.07);
+        0 12px 40px
+        rgba(0,0,0,.07);
 
     display:flex;
     flex-direction:column;
+
     align-items:center;
     justify-content:center;
 
     text-align:center;
 
-    transition:
-        transform:.3s ease,
-        box-shadow:.3s ease;
+    transition:.3s;
 
     cursor:pointer;
 }
@@ -519,11 +589,8 @@ video{
     transform:translateY(-6px);
 
     box-shadow:
-        0 20px 50px rgba(0,0,0,.11);
-}
-
-.category-card:active{
-    transform:scale(.98);
+        0 20px 50px
+        rgba(0,0,0,.11);
 }
 
 .category-icon{
@@ -539,8 +606,20 @@ video{
     display:flex;
     align-items:center;
     justify-content:center;
+}
 
-    font-size:38px;
+.category-icon svg{
+    width:38px;
+    height:38px;
+
+    fill:none;
+
+    stroke:#222;
+
+    stroke-width:1.7;
+
+    stroke-linecap:round;
+    stroke-linejoin:round;
 }
 
 .category-name{
@@ -574,11 +653,10 @@ video{
     border-radius:30px;
 
     box-shadow:
-        0 10px 30px rgba(0,0,0,.05);
+        0 10px 30px
+        rgba(0,0,0,.05);
 
-    transition:
-        transform:.3s ease,
-        box-shadow:.3s ease;
+    transition:.3s;
 }
 
 .product-card:hover{
@@ -662,14 +740,6 @@ video{
     color:#fff;
 
     font-weight:800;
-
-    transition:
-        transform:.2s ease,
-        opacity:.2s ease;
-}
-
-.product-button:active{
-    transform:scale(.97);
 }
 
 .product-button:disabled{
@@ -685,12 +755,15 @@ video{
     overflow:hidden;
 
     background:#090909;
+
     color:#fff;
 }
 
 .subscription-heading{
     display:flex;
+
     align-items:flex-end;
+
     justify-content:space-between;
 
     gap:30px;
@@ -708,7 +781,9 @@ video{
 
 .carousel-buttons{
     display:flex;
+
     align-items:center;
+
     gap:12px;
 }
 
@@ -721,27 +796,15 @@ video{
     border:1px solid #444;
 
     background:#222;
+
     color:#fff;
 
     font-size:27px;
-
-    transition:
-        transform:.2s ease,
-        background:.2s ease;
 }
-
-.carousel-button:active{
-    transform:scale(.92);
-}
-
-
-/* IMPORTANT :
-   Sur ordinateur = grandes cartes.
-   Sur mobile = modifié plus bas pour afficher 2 cartes.
-*/
 
 .subscription-track{
     display:flex;
+
     gap:22px;
 
     overflow-x:auto;
@@ -749,7 +812,6 @@ video{
     padding-bottom:15px;
 
     scroll-snap-type:x mandatory;
-    scroll-behavior:smooth;
 
     scrollbar-width:none;
 
@@ -774,16 +836,6 @@ video{
     background:#151515;
 
     scroll-snap-align:start;
-
-    box-shadow:
-        0 10px 30px rgba(0,0,0,.18);
-
-    transition:
-        transform:.25s ease;
-}
-
-.subscription-card:active{
-    transform:scale(.985);
 }
 
 .subscription-media{
@@ -794,6 +846,8 @@ video{
     height:100%;
 
     object-fit:cover;
+
+    object-position:center;
 
     background:#111;
 }
@@ -851,40 +905,49 @@ video{
     border-radius:50px;
 
     background:#fff;
+
     color:#111;
 
     font-weight:800;
-
-    transition:
-        transform:.2s ease;
-}
-
-.subscribe-button:active{
-    transform:scale(.96);
 }
 
 .video-control{
     position:absolute;
 
-    top:22px;
-    right:22px;
+    top:18px;
+    right:18px;
 
-    width:52px;
-    height:52px;
+    width:44px;
+    height:44px;
 
     z-index:20;
 
     border-radius:50%;
 
-    border:1px solid rgba(255,255,255,.4);
+    border:1px solid
+        rgba(255,255,255,.4);
 
-    background:rgba(0,0,0,.4);
+    background:rgba(0,0,0,.45);
+
     color:#fff;
 
-    font-size:18px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
 
-    backdrop-filter:blur(10px);
-    -webkit-backdrop-filter:blur(10px);
+.video-control svg{
+    width:20px;
+    height:20px;
+
+    fill:none;
+
+    stroke:#fff;
+
+    stroke-width:1.8;
+
+    stroke-linecap:round;
+    stroke-linejoin:round;
 }
 
 
@@ -910,7 +973,8 @@ video{
     width:100%;
     height:100%;
 
-    transition:transform .7s ease;
+    transition:
+        transform .7s ease;
 }
 
 .announcement-slide{
@@ -918,8 +982,6 @@ video{
 
     min-width:100%;
     height:100%;
-
-    flex-shrink:0;
 }
 
 .announcement-slide img,
@@ -928,10 +990,6 @@ video{
     height:100%;
 
     object-fit:cover;
-}
-
-.announcement-slide video{
-    pointer-events:none;
 }
 
 .announcement-overlay{
@@ -1004,11 +1062,6 @@ video{
    STATISTICS
 ========================================================= */
 
-.stats-section{
-    padding-top:80px;
-    padding-bottom:80px;
-}
-
 .stats-grid{
     display:grid;
 
@@ -1026,29 +1079,27 @@ video{
     background:#fff;
 
     box-shadow:
-        0 12px 40px rgba(0,0,0,.07);
+        0 12px 40px
+        rgba(0,0,0,.07);
 
     display:flex;
+
     flex-direction:column;
+
     align-items:center;
     justify-content:center;
 
     text-align:center;
-
-    transition:
-        transform:.25s ease,
-        box-shadow:.25s ease;
 }
 
 .stat-number{
     margin-bottom:10px;
 
     font-size:52px;
+
     font-weight:900;
 
     letter-spacing:-3px;
-
-    color:#111;
 }
 
 .stat-label{
@@ -1065,42 +1116,31 @@ video{
 .reviews-track{
     display:flex;
 
-    gap:20px;
+    flex-direction:column;
 
-    overflow-x:auto;
-
-    scrollbar-width:none;
+    gap:30px;
 
     padding:10px 5px 30px;
-
-    scroll-snap-type:x mandatory;
-
-    -webkit-overflow-scrolling:touch;
-}
-
-.reviews-track::-webkit-scrollbar{
-    display:none;
 }
 
 .review-card{
-    flex:0 0 470px;
+    width:100%;
 
     min-height:380px;
 
-    padding:35px;
+    padding:42px 48px 38px;
 
     border-radius:35px;
 
     background:#fff;
 
     box-shadow:
-        0 12px 40px rgba(0,0,0,.07);
-
-    scroll-snap-align:start;
+        0 12px 40px
+        rgba(0,0,0,.07);
 }
 
 .review-stars{
-    margin-bottom:25px;
+    margin-bottom:30px;
 
     color:#df2e2e;
 
@@ -1110,18 +1150,18 @@ video{
 }
 
 .review-text{
-    margin-bottom:25px;
+    margin-bottom:28px;
 
-    font-size:21px;
+    font-size:22px;
 
     line-height:1.5;
 }
 
 .review-photo{
-    width:90px;
-    height:90px;
+    width:110px;
+    height:110px;
 
-    margin-bottom:20px;
+    margin-bottom:28px;
 
     border-radius:20px;
 
@@ -1129,25 +1169,68 @@ video{
 }
 
 .review-product{
-    display:inline-block;
+    display:inline-flex;
 
-    margin-bottom:25px;
+    margin-bottom:30px;
 
-    padding:11px 17px;
+    padding:12px 22px;
 
     border-radius:50px;
 
     background:#f4f4f4;
 
     color:#777;
+
+    font-size:16px;
 }
 
 .review-author{
-    padding-top:20px;
+    padding-top:24px;
 
     border-top:1px solid #eee;
 
+    display:flex;
+
+    align-items:center;
+
+    gap:18px;
+}
+
+.review-avatar{
+    width:62px;
+    height:62px;
+
+    flex:none;
+
+    border-radius:50%;
+
+    background:#202020;
+
+    color:#fff;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:22px;
     font-weight:800;
+}
+
+.review-author-info strong,
+.review-author-info span{
+    display:block;
+}
+
+.review-author-info strong{
+    font-size:21px;
+}
+
+.review-author-info span{
+    margin-top:3px;
+
+    color:#777;
+
+    font-size:17px;
 }
 
 
@@ -1166,6 +1249,7 @@ video{
 
 .gallery-track{
     display:flex;
+
     gap:22px;
 
     width:max-content;
@@ -1220,7 +1304,9 @@ video{
 
 .repair-box{
     display:flex;
+
     align-items:center;
+
     justify-content:space-between;
 
     gap:40px;
@@ -1258,6 +1344,7 @@ video{
     border-radius:50px;
 
     background:#111;
+
     color:#fff;
 
     font-weight:800;
@@ -1269,10 +1356,11 @@ video{
 ========================================================= */
 
 footer{
-    padding:80px 35px 130px;
+    padding:75px 35px 120px;
 
-    background:#0b0b0b;
-    color:#fff;
+    background:#f6f6f8;
+
+    color:#181818;
 }
 
 .footer-grid{
@@ -1283,56 +1371,172 @@ footer{
     display:grid;
 
     grid-template-columns:
-        2fr 1fr 1fr 1fr;
+        2fr 1fr 1fr;
 
-    gap:50px;
+    gap:60px;
 }
 
 .footer-logo{
     margin-bottom:20px;
 
-    font-size:30px;
+    font-size:28px;
+
     font-weight:900;
 }
 
 .footer-description{
-    max-width:430px;
+    max-width:520px;
 
-    color:#888;
+    color:#707070;
 
-    line-height:1.7;
+    font-size:18px;
+
+    line-height:1.65;
+}
+
+.footer-socials{
+    display:flex;
+
+    flex-wrap:wrap;
+
+    gap:25px;
+
+    margin-top:28px;
+
+    color:#666;
+
+    font-size:17px;
+}
+
+.footer-contact{
+    display:flex;
+
+    flex-direction:column;
+
+    gap:12px;
+
+    margin-top:28px;
+
+    color:#666;
+
+    font-size:16px;
 }
 
 .footer-column h4{
-    margin-bottom:20px;
+    margin-bottom:25px;
+
+    font-size:21px;
 }
 
 .footer-column a{
     display:block;
 
-    margin-bottom:12px;
+    margin-bottom:22px;
 
-    color:#888;
+    color:#707070;
 
-    transition:color:.2s ease;
+    font-size:17px;
 }
 
 .footer-column a:hover{
-    color:#fff;
+    color:#111;
+}
+
+.footer-support{
+    max-width:1400px;
+
+    margin:55px auto 0;
+}
+
+.footer-support h4{
+    margin-bottom:25px;
+
+    font-size:21px;
+}
+
+.footer-support a{
+    display:block;
+
+    margin-bottom:22px;
+
+    color:#707070;
+
+    font-size:17px;
 }
 
 .copyright{
     max-width:1400px;
 
-    margin:60px auto 0;
+    margin:50px auto 0;
 
     padding-top:25px;
 
-    border-top:1px solid #292929;
+    border-top:1px solid #ddd;
 
-    color:#666;
+    color:#777;
 
     font-size:13px;
+}
+
+
+/* =========================================================
+   BACK TO TOP
+========================================================= */
+
+.back-to-top{
+    position:fixed;
+
+    right:25px;
+    bottom:105px;
+
+    width:62px;
+    height:62px;
+
+    border:0;
+
+    border-radius:20px;
+
+    background:#454545;
+
+    color:#fff;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    z-index:4300;
+
+    box-shadow:
+        0 10px 30px
+        rgba(0,0,0,.18);
+
+    opacity:0;
+    visibility:hidden;
+
+    transform:translateY(10px);
+
+    transition:.25s;
+}
+
+.back-to-top.visible{
+    opacity:1;
+    visibility:visible;
+    transform:translateY(0);
+}
+
+.back-to-top svg{
+    width:27px;
+    height:27px;
+
+    fill:none;
+
+    stroke:#fff;
+
+    stroke-width:2;
+
+    stroke-linecap:round;
+    stroke-linejoin:round;
 }
 
 
@@ -1361,7 +1565,7 @@ footer{
 
 
 /* =========================================================
-   TABLET
+   RESPONSIVE
 ========================================================= */
 
 @media(max-width:1100px){
@@ -1375,210 +1579,160 @@ footer{
 
     .footer-grid{
         grid-template-columns:
-            repeat(2,1fr);
+            1.5fr 1fr 1fr;
     }
 
 }
 
 
-/* =========================================================
-   MOBILE
-========================================================= */
-
 @media(max-width:700px){
 
     body{
-        padding-bottom:76px;
+        padding-bottom:88px;
     }
 
     .header-inner{
-        padding:0 18px;
+        padding:0 25px;
     }
 
     .logo{
-        font-size:23px;
-        letter-spacing:-1px;
-    }
-
-    .header-actions{
-        gap:2px;
+        font-size:24px;
     }
 
     .header-button{
         width:42px;
         height:42px;
-        font-size:22px;
     }
 
+    .header-button svg{
+        width:25px;
+        height:25px;
+    }
 
-    /* HERO */
+    .mobile-menu{
+        top:70px;
+        left:15px;
+        right:15px;
+        width:auto;
+
+        max-height:
+            calc(100svh - 95px);
+
+        overflow-y:auto;
+    }
 
     .hero{
         min-height:620px;
     }
 
     .hero-content{
-        left:22px;
-        right:22px;
+        left:25px;
+        right:25px;
         bottom:90px;
     }
 
     .hero-label{
-        padding:9px 14px;
-        margin-bottom:18px;
-        font-size:11px;
+        padding:10px 15px;
+
+        font-size:12px;
+
         letter-spacing:1px;
     }
 
     .hero-title{
-        font-size:42px;
-        letter-spacing:-2.5px;
-        margin-bottom:17px;
+        font-size:47px;
+        letter-spacing:-3px;
     }
 
     .hero-subtitle{
-        font-size:20px;
-        margin-bottom:18px;
-    }
-
-    .hero-price{
-        padding:11px 17px;
-        margin-bottom:18px;
-        font-size:13px;
+        font-size:23px;
     }
 
     .hero-buttons{
         width:100%;
-        gap:8px;
     }
 
     .hero-button{
         flex:1;
-        padding:13px 15px;
         text-align:center;
-        font-size:13px;
-        border-radius:14px;
     }
-
-
-    /* SECTIONS */
 
     .section{
-        padding:65px 18px;
-    }
-
-    .section-label{
-        margin-bottom:13px;
-        font-size:11px;
-        letter-spacing:1.6px;
+        padding:80px 25px;
     }
 
     .section-title{
-        margin-bottom:28px;
-        font-size:38px;
-        letter-spacing:-2.5px;
+        font-size:45px;
+        letter-spacing:-3px;
     }
 
 
-    /* CATEGORIES */
+    /* CATALOGUE */
 
     .categories-grid{
         grid-template-columns:
-            repeat(2,minmax(0,1fr));
+            repeat(2,1fr);
 
-        gap:12px;
+        gap:18px;
     }
 
     .category-card{
-        min-height:155px;
-        padding:16px;
-        border-radius:22px;
+        min-height:190px;
+
+        border-radius:28px;
+
+        padding:18px;
     }
 
     .category-icon{
-        width:62px;
-        height:62px;
-        margin-bottom:14px;
-        border-radius:20px;
-        font-size:27px;
+        width:75px;
+        height:75px;
+
+        margin-bottom:20px;
+
+        border-radius:24px;
+    }
+
+    .category-icon svg{
+        width:34px;
+        height:34px;
     }
 
     .category-name{
-        font-size:15px;
+        font-size:17px;
     }
 
 
     /* PRODUCTS */
 
     .products-grid{
-        grid-template-columns:
-            repeat(2,minmax(0,1fr));
-
-        gap:12px;
-    }
-
-    .product-card{
-        border-radius:20px;
+        grid-template-columns:1fr;
     }
 
     .product-media{
-        height:auto;
-        aspect-ratio:1 / 1;
-    }
-
-    .product-info{
-        padding:14px;
-    }
-
-    .product-category{
-        font-size:9px;
-        margin-bottom:6px;
-    }
-
-    .product-name{
-        font-size:15px;
-        margin-bottom:7px;
-    }
-
-    .product-description{
-        font-size:11px;
-        margin-bottom:10px;
-    }
-
-    .product-price{
-        font-size:15px;
-        margin-bottom:6px;
-    }
-
-    .product-stock{
-        font-size:10px;
-        margin-bottom:10px;
-    }
-
-    .product-button{
-        padding:10px 6px;
-        font-size:11px;
+        height:350px;
     }
 
 
-    /* =====================================================
-       ABONNEMENTS
-       2 CARTES VISIBLES
-    ===================================================== */
+    /* SUBSCRIPTIONS */
 
     .subscription-heading{
         flex-direction:column;
-        align-items:flex-start;
-        gap:18px;
-        margin-bottom:25px;
-    }
 
-    .subscription-heading .section-title{
-        margin-bottom:0;
+        align-items:flex-start;
+
+        gap:20px;
+
+        margin-bottom:28px;
     }
 
     .carousel-buttons{
-        display:none;
+        width:100%;
+    }
+
+    .carousel-button{
+        width:48px;
+        height:48px;
     }
 
     .subscription-track{
@@ -1586,112 +1740,89 @@ footer{
 
         padding:
             0
+            0
             18px
-            12px;
+            0;
 
-        margin:
-            0 -18px;
+        margin:0;
 
         scroll-snap-type:x mandatory;
     }
 
     .subscription-card{
-        /*
-           Deux cartes visibles en même temps.
-        */
-
         flex:
             0 0
             calc((100% - 12px) / 2);
 
-        height:400px;
+        height:480px;
+        min-height:480px;
 
-        border-radius:20px;
+        border-radius:26px;
 
         scroll-snap-align:start;
     }
 
+    .subscription-media{
+        object-fit:cover;
+        object-position:center;
+    }
+
     .subscription-content{
-        left:13px;
-        right:13px;
-        bottom:15px;
+        left:18px;
+        right:18px;
+        bottom:20px;
     }
 
     .subscription-name{
-        font-size:17px;
-        line-height:1.1;
-        margin-bottom:6px;
+        font-size:20px;
+
+        line-height:1.05;
     }
 
     .subscription-description{
-        font-size:11px;
-        line-height:1.3;
-        margin-bottom:9px;
+        font-size:12px;
+
+        margin-bottom:13px;
     }
 
     .subscription-price{
-        font-size:10px;
-        margin-bottom:10px;
+        font-size:12px;
+
+        margin-bottom:14px;
     }
 
     .subscription-price strong{
-        font-size:14px;
+        font-size:15px;
     }
 
     .subscribe-button{
         width:100%;
-        padding:9px 7px;
-        font-size:10px;
-    }
 
-    .video-control{
-        top:9px;
-        right:9px;
-        width:34px;
-        height:34px;
+        padding:11px 10px;
+
         font-size:13px;
     }
 
+    .video-control{
+        top:12px;
+        right:12px;
 
-    /* =====================================================
-       ANNONCES HORIZONTALES
-    ===================================================== */
+        width:38px;
+        height:38px;
+    }
+
+    .video-control svg{
+        width:18px;
+        height:18px;
+    }
+
+
+    /* ANNONCE */
 
     .announcement-box{
-        /*
-           Format horizontal compact.
-        */
-
         height:190px;
 
         border-radius:20px;
-
-        overflow:hidden;
-    }
-
-    .announcement-track{
-        height:100%;
-
-        scroll-snap-type:none;
-    }
-
-    .announcement-slide{
-        min-width:100%;
-        height:100%;
-    }
-
-    .announcement-slide img,
-    .announcement-slide video{
-        object-fit:cover;
-    }
-
-    .announcement-overlay{
-        background:
-            linear-gradient(
-                90deg,
-                rgba(0,0,0,.62),
-                rgba(0,0,0,.12)
-            );
     }
 
     .announcement-content{
@@ -1700,176 +1831,185 @@ footer{
     }
 
     .announcement-discount{
-        margin-bottom:7px;
         font-size:21px;
-        line-height:1.1;
     }
 
     .announcement-link{
         font-size:12px;
-        font-weight:700;
-    }
-
-    .announcement-dots{
-        margin-top:14px;
     }
 
 
-    /* =====================================================
-       STATISTIQUES
-    ===================================================== */
-
-    .stats-section{
-        padding:
-            55px
-            18px;
-    }
+    /* STATISTIQUES */
 
     .stats-grid{
         grid-template-columns:
-            repeat(2,minmax(0,1fr));
+            repeat(2,1fr);
 
-        gap:12px;
+        gap:18px;
     }
 
     .stat-card{
-        min-height:155px;
+        min-height:180px;
 
-        padding:20px 8px;
-
-        border-radius:22px;
-
-        box-shadow:
-            0 8px 25px rgba(0,0,0,.055);
+        border-radius:28px;
     }
 
     .stat-number{
-        font-size:29px;
-        letter-spacing:-1.5px;
-        margin-bottom:9px;
+        font-size:34px;
     }
 
     .stat-label{
-        font-size:12px;
-        line-height:1.3;
+        font-size:15px;
     }
 
 
-    /* =====================================================
-       AVIS
-    ===================================================== */
+    /* AVIS */
 
     .reviews-track{
-        gap:12px;
+        gap:30px;
+
         padding:
-            5px
+            10px
             0
-            20px;
+            30px;
     }
 
     .review-card{
-        flex:0 0 86vw;
-        min-height:300px;
-        padding:24px;
-        border-radius:22px;
+        width:100%;
+
+        min-height:0;
+
+        padding:
+            40px
+            48px
+            34px;
+
+        border-radius:32px;
     }
 
     .review-stars{
-        margin-bottom:18px;
-        font-size:20px;
+        font-size:25px;
+
+        margin-bottom:30px;
     }
 
     .review-text{
-        margin-bottom:18px;
-        font-size:17px;
+        font-size:20px;
+
+        line-height:1.55;
     }
 
     .review-photo{
-        width:65px;
-        height:65px;
-        border-radius:16px;
-        margin-bottom:14px;
-    }
-
-    .review-product{
-        margin-bottom:18px;
-        padding:8px 12px;
-        font-size:11px;
+        width:110px;
+        height:110px;
     }
 
 
-    /* =====================================================
-       GALERIE
-    ===================================================== */
-
-    .gallery-track{
-        gap:12px;
-        animation-duration:55s;
-    }
+    /* GALLERY */
 
     .gallery-item{
-        width:230px;
-        height:300px;
-        border-radius:22px;
+        width:260px;
+        height:350px;
+
+        border-radius:28px;
     }
 
 
-    /* =====================================================
-       REPAIR
-    ===================================================== */
+    /* REPAIR */
 
     .repair-box{
         flex-direction:column;
+
         align-items:flex-start;
 
-        padding:38px 24px;
+        padding:45px 30px;
 
-        border-radius:25px;
-
-        gap:25px;
-    }
-
-    .repair-title{
-        font-size:39px;
-        letter-spacing:-2.5px;
-    }
-
-    .repair-description{
-        font-size:14px;
-        line-height:1.6;
+        border-radius:30px;
     }
 
     .repair-button{
         width:100%;
+
         text-align:center;
-        padding:15px 20px;
     }
 
 
-    /* =====================================================
-       FOOTER
-    ===================================================== */
+    /* FOOTER */
 
     footer{
         padding:
-            60px
-            20px
-            120px;
+            55px
+            33px
+            115px;
+
+        background:#f6f6f8;
     }
 
     .footer-grid{
-        grid-template-columns:1fr;
-        gap:35px;
+        grid-template-columns:
+            1fr 1fr;
+
+        gap:45px 35px;
+    }
+
+    .footer-grid > div:first-child{
+        grid-column:1/-1;
     }
 
     .footer-logo{
         font-size:25px;
     }
 
+    .footer-description{
+        font-size:17px;
+        line-height:1.55;
+    }
 
-    /* =====================================================
-       BOTTOM NAV
-    ===================================================== */
+    .footer-socials{
+        gap:22px;
+
+        font-size:16px;
+    }
+
+    .footer-contact{
+        font-size:15px;
+    }
+
+    .footer-column h4,
+    .footer-support h4{
+        font-size:20px;
+    }
+
+    .footer-column a,
+    .footer-support a{
+        font-size:17px;
+
+        margin-bottom:22px;
+    }
+
+    .footer-support{
+        margin-top:20px;
+    }
+
+    .copyright{
+        margin-top:35px;
+    }
+
+
+    /* BACK TO TOP */
+
+    .back-to-top{
+        right:24px;
+        bottom:104px;
+
+        width:62px;
+        height:62px;
+
+        border-radius:20px;
+    }
+
+
+    /* BOTTOM NAV */
 
     .bottom-nav{
         position:fixed;
@@ -1878,186 +2018,121 @@ footer{
         bottom:0;
 
         width:100%;
-        height:76px;
+        height:88px;
 
         z-index:4500;
 
-        display:flex;
+        display:grid;
 
-        background:rgba(255,255,255,.97);
+        grid-template-columns:
+            repeat(4,1fr);
+
+        align-items:start;
+
+        padding-top:11px;
+
+        background:
+            rgba(255,255,255,.97);
 
         backdrop-filter:blur(20px);
         -webkit-backdrop-filter:blur(20px);
 
         border-top:1px solid #eee;
-
-        padding-bottom:
-            env(safe-area-inset-bottom);
     }
 
     .bottom-nav a{
-        flex:1;
+        position:relative;
+
+        height:76px;
 
         display:flex;
-        flex-direction:column;
-        align-items:center;
-        justify-content:center;
 
-        gap:4px;
+        flex-direction:column;
+
+        align-items:center;
+
+        justify-content:flex-start;
+
+        gap:5px;
 
         color:#777;
 
-        font-size:10px;
+        font-size:14px;
 
-        transition:
-            transform:.2s ease,
-            color:.2s ease;
-    }
-
-    .bottom-nav a:active{
-        transform:scale(.92);
+        font-weight:400;
     }
 
     .bottom-nav a.active{
         color:#111;
+
         font-weight:800;
     }
 
     .bottom-icon{
-        font-size:21px;
-        line-height:1;
+        width:30px;
+        height:30px;
+
+        display:flex;
+        align-items:center;
+        justify-content:center;
+    }
+
+    .bottom-icon svg{
+        width:30px;
+        height:30px;
+
+        fill:none;
+
+        stroke:#777;
+
+        stroke-width:1.8;
+
+        stroke-linecap:round;
+        stroke-linejoin:round;
+    }
+
+    .bottom-nav a.active
+    .bottom-icon svg{
+        stroke:#111;
+
+        stroke-width:2.2;
+    }
+
+    .nav-active-dot{
+        width:6px;
+        height:6px;
+
+        margin-top:1px;
+
+        border-radius:50%;
+
+        background:#111;
     }
 
 }
 
-
-/* =========================================================
-   TRÈS PETITS TÉLÉPHONES
-========================================================= */
 
 @media(max-width:380px){
 
-    .logo{
-        font-size:21px;
-    }
-
     .hero-title{
-        font-size:38px;
-    }
-
-    .hero-subtitle{
-        font-size:18px;
+        font-size:40px;
     }
 
     .category-card{
-        min-height:145px;
+        min-height:165px;
     }
 
     .category-name{
-        font-size:14px;
-    }
-
-
-    /* Encore plus compact pour garder 2 abonnements */
-
-    .subscription-track{
-        gap:10px;
-    }
-
-    .subscription-card{
-        flex:
-            0 0
-            calc((100% - 10px) / 2);
-
-        height:360px;
-        border-radius:17px;
-    }
-
-    .subscription-name{
         font-size:15px;
     }
 
-    .subscription-description{
-        font-size:10px;
+    .subscription-card{
+        height:400px;
+        min-height:400px;
     }
 
-    .subscription-price{
-        font-size:9px;
-    }
-
-    .subscription-price strong{
-        font-size:13px;
-    }
-
-    .subscribe-button{
-        padding:8px 5px;
-        font-size:9px;
-    }
-
-    .video-control{
-        width:31px;
-        height:31px;
-        top:8px;
-        right:8px;
-        font-size:11px;
-    }
-
-
-    /* Annonce */
-
-    .announcement-box{
-        height:170px;
-        border-radius:18px;
-    }
-
-    .announcement-content{
-        left:15px;
-        bottom:14px;
-    }
-
-    .announcement-discount{
-        font-size:19px;
-    }
-
-    .announcement-link{
-        font-size:11px;
-    }
-
-
-    /* Statistiques */
-
-    .stat-card{
-        min-height:145px;
-        border-radius:19px;
-    }
-
-    .stat-number{
-        font-size:26px;
-    }
-
-    .stat-label{
-        font-size:11px;
-    }
-
-}
-
-
-/* =========================================================
-   ACCESSIBILITÉ
-========================================================= */
-
-@media(prefers-reduced-motion:reduce){
-
-    *,
-    *::before,
-    *::after{
-
-        scroll-behavior:auto !important;
-
-        animation-duration:.01ms !important;
-        animation-iteration-count:1 !important;
-
-        transition-duration:.01ms !important;
+    .subscription-name{
+        font-size:18px;
     }
 
 }
@@ -2089,20 +2164,34 @@ footer{
 
         <div class="header-actions">
 
-            <button
-                class="header-button"
-                onclick="openSearch()"
-                aria-label="Rechercher"
-            >
-                ⌕
-            </button>
+
+            <!-- PANIER -->
 
             <button
                 class="header-button"
                 onclick="openCart()"
                 aria-label="Panier"
             >
-                🛒
+
+                <svg viewBox="0 0 24 24">
+
+                    <circle
+                        cx="9"
+                        cy="20"
+                        r="1.4"
+                    ></circle>
+
+                    <circle
+                        cx="18"
+                        cy="20"
+                        r="1.4"
+                    ></circle>
+
+                    <path
+                        d="M3 4h2l2.2 11.5a2 2 0 0 0 2 1.6h8.5a2 2 0 0 0 1.9-1.4L21 8H6"
+                    ></path>
+
+                </svg>
 
                 <span
                     class="cart-number"
@@ -2110,14 +2199,28 @@ footer{
                 >
                     0
                 </span>
+
             </button>
+
+
+            <!-- MENU -->
 
             <button
                 class="header-button"
                 onclick="toggleMenu()"
                 aria-label="Menu"
             >
-                ☰
+
+                <svg viewBox="0 0 24 24">
+
+                    <path d="M4 6h16"></path>
+
+                    <path d="M4 12h16"></path>
+
+                    <path d="M4 18h16"></path>
+
+                </svg>
+
             </button>
 
         </div>
@@ -2135,6 +2238,39 @@ footer{
     class="mobile-menu"
     id="mobileMenu"
 >
+
+
+    <!-- RECHERCHE APPARAÎT UNIQUEMENT DANS LE MENU -->
+
+    <div class="menu-search">
+
+        <div class="menu-search-box">
+
+            <svg viewBox="0 0 24 24">
+
+                <circle
+                    cx="11"
+                    cy="11"
+                    r="7"
+                ></circle>
+
+                <path
+                    d="m20 20-4-4"
+                ></path>
+
+            </svg>
+
+            <input
+                type="search"
+                id="menuSearchInput"
+                placeholder="Rechercher un produit..."
+                oninput="searchFromMenu(this.value)"
+            >
+
+        </div>
+
+    </div>
+
 
     <a href="#accueil">
         Accueil
@@ -2280,82 +2416,234 @@ footer{
             id="categoriesGrid"
         >
 
+
+            <!-- ABONNEMENTS -->
+
             <div
                 class="category-card"
                 onclick="filterProducts('Abonnements')"
             >
+
                 <div class="category-icon">
-                    📺
+
+                    <svg viewBox="0 0 24 24">
+
+                        <rect
+                            x="3"
+                            y="5"
+                            width="18"
+                            height="13"
+                            rx="2"
+                        ></rect>
+
+                        <path d="M8 21h8"></path>
+
+                        <path d="M12 18v3"></path>
+
+                        <path d="M8 2l4 3 4-3"></path>
+
+                    </svg>
+
                 </div>
 
                 <div class="category-name">
                     Abonnements
                 </div>
+
             </div>
+
+
+            <!-- ACCESSOIRES -->
 
             <div
                 class="category-card"
                 onclick="filterProducts('Accessoires')"
             >
+
                 <div class="category-icon">
-                    🎮
+
+                    <svg viewBox="0 0 24 24">
+
+                        <path
+                            d="M7 9h10a3 3 0 0 1 3 3v5a2 2 0 0 1-3.5 1.3L15 16h-6l-1.5 2.3A2 2 0 0 1 4 17v-5a3 3 0 0 1 3-3Z"
+                        ></path>
+
+                        <path d="M8 12v4"></path>
+
+                        <path d="M6 14h4"></path>
+
+                        <circle
+                            cx="16"
+                            cy="13"
+                            r="1"
+                        ></circle>
+
+                        <circle
+                            cx="18"
+                            cy="15"
+                            r="1"
+                        ></circle>
+
+                    </svg>
+
                 </div>
 
                 <div class="category-name">
                     Accessoires
                 </div>
+
             </div>
+
+
+            <!-- BASKET -->
 
             <div
                 class="category-card"
                 onclick="filterProducts('Basket')"
             >
+
                 <div class="category-icon">
-                    📦
+
+                    <svg viewBox="0 0 24 24">
+
+                        <path
+                            d="m12 3 8 4.5v9L12 21l-8-4.5v-9L12 3Z"
+                        ></path>
+
+                        <path d="m4 7.5 8 4.5 8-4.5"></path>
+
+                        <path d="M12 12v9"></path>
+
+                        <path d="m8 5.3 8 4.5"></path>
+
+                    </svg>
+
                 </div>
 
                 <div class="category-name">
                     Basket
                 </div>
+
             </div>
+
+
+            <!-- ÉCOUTEURS -->
 
             <div
                 class="category-card"
                 onclick="filterProducts('Écouteurs')"
             >
+
                 <div class="category-icon">
-                    🎧
+
+                    <svg viewBox="0 0 24 24">
+
+                        <path
+                            d="M5 13v-1a7 7 0 0 1 14 0v1"
+                        ></path>
+
+                        <path
+                            d="M5 13h3v6H6a1 1 0 0 1-1-1v-5Z"
+                        ></path>
+
+                        <path
+                            d="M19 13h-3v6h2a1 1 0 0 0 1-1v-5Z"
+                        ></path>
+
+                    </svg>
+
                 </div>
 
                 <div class="category-name">
                     Écouteurs
                 </div>
+
             </div>
+
+
+            <!-- ENCEINTES -->
 
             <div
                 class="category-card"
                 onclick="filterProducts('Enceintes')"
             >
+
                 <div class="category-icon">
-                    🔊
+
+                    <svg viewBox="0 0 24 24">
+
+                        <rect
+                            x="5"
+                            y="3"
+                            width="14"
+                            height="18"
+                            rx="2"
+                        ></rect>
+
+                        <circle
+                            cx="12"
+                            cy="14"
+                            r="3"
+                        ></circle>
+
+                        <circle
+                            cx="12"
+                            cy="8"
+                            r="1"
+                        ></circle>
+
+                    </svg>
+
                 </div>
 
                 <div class="category-name">
                     Enceintes
                 </div>
+
             </div>
+
+
+            <!-- FOR MEN -->
 
             <div
                 class="category-card"
                 onclick="filterProducts('For men')"
             >
+
                 <div class="category-icon">
-                    ⌚
+
+                    <svg viewBox="0 0 24 24">
+
+                        <circle
+                            cx="12"
+                            cy="12"
+                            r="4"
+                        ></circle>
+
+                        <path d="M12 3v5"></path>
+
+                        <path d="M12 16v5"></path>
+
+                        <path d="M3 12h5"></path>
+
+                        <path d="M16 12h5"></path>
+
+                        <path d="m5.6 5.6 3.5 3.5"></path>
+
+                        <path d="m14.9 14.9 3.5 3.5"></path>
+
+                        <path d="m18.4 5.6-3.5 3.5"></path>
+
+                        <path d="m9.1 14.9-3.5 3.5"></path>
+
+                    </svg>
+
                 </div>
 
                 <div class="category-name">
                     For men
                 </div>
+
             </div>
 
         </div>
@@ -2430,6 +2718,7 @@ footer{
                 <button
                     class="carousel-button"
                     onclick="moveSubscriptions(-1)"
+                    aria-label="Abonnements précédents"
                 >
                     ‹
                 </button>
@@ -2437,6 +2726,7 @@ footer{
                 <button
                     class="carousel-button"
                     onclick="moveSubscriptions(1)"
+                    aria-label="Abonnements suivants"
                 >
                     ›
                 </button>
@@ -2455,7 +2745,8 @@ footer{
             id="subscriptionTrack"
         >
 
-            <!-- Apple Music -->
+
+            <!-- APPLE MUSIC -->
 
             <article class="subscription-card">
 
@@ -2490,7 +2781,7 @@ footer{
             </article>
 
 
-            <!-- Apple TV -->
+            <!-- APPLE TV -->
 
             <article class="subscription-card">
 
@@ -2502,12 +2793,34 @@ footer{
                     preload="metadata"
                 ></video>
 
+
                 <button
                     class="video-control"
                     onclick="toggleSubscriptionVideo(this)"
+                    aria-label="Activer ou couper le son"
                 >
-                    🔇
+
+                    <svg
+                        class="volume-icon"
+                        viewBox="0 0 24 24"
+                    >
+
+                        <path
+                            d="M11 5 6 9H3v6h3l5 4V5Z"
+                        ></path>
+
+                        <path
+                            d="M15.5 8.5a5 5 0 0 1 0 7"
+                        ></path>
+
+                        <path
+                            d="M18.5 5.5a9 9 0 0 1 0 13"
+                        ></path>
+
+                    </svg>
+
                 </button>
+
 
                 <div class="subscription-overlay"></div>
 
@@ -2534,7 +2847,7 @@ footer{
             </article>
 
 
-            <!-- Netflix -->
+            <!-- NETFLIX -->
 
             <article class="subscription-card">
 
@@ -2569,7 +2882,7 @@ footer{
             </article>
 
 
-            <!-- Apple Services -->
+            <!-- APPLE SERVICES -->
 
             <article class="subscription-card">
 
@@ -2697,21 +3010,21 @@ footer{
      STATISTIQUES
 ========================================================= -->
 
-<section
-    class="section stats-section"
->
+<section class="section">
 
     <div class="section-container">
 
         <div class="stats-grid">
 
+
             <div class="stat-card">
 
                 <div
                     class="stat-number"
-                    data-counter="clients"
+                    data-counter="53712"
+                    data-suffix="+"
                 >
-                    0
+                    0+
                 </div>
 
                 <div class="stat-label">
@@ -2725,9 +3038,10 @@ footer{
 
                 <div
                     class="stat-number"
-                    data-counter="orders"
+                    data-counter="126328"
+                    data-suffix="+"
                 >
-                    0
+                    0+
                 </div>
 
                 <div class="stat-label">
@@ -2741,9 +3055,11 @@ footer{
 
                 <div
                     class="stat-number"
-                    data-counter="rating"
+                    data-counter="4.8"
+                    data-decimals="1"
+                    data-suffix="/5"
                 >
-                    0/5
+                    0.0/5
                 </div>
 
                 <div class="stat-label">
@@ -2757,9 +3073,10 @@ footer{
 
                 <div
                     class="stat-number"
-                    data-counter="years"
+                    data-counter="7"
+                    data-suffix=" ans"
                 >
-                    0
+                    0 ans
                 </div>
 
                 <div class="stat-label">
@@ -2794,7 +3111,11 @@ footer{
             Ils parlent de nous
         </h2>
 
+
         <div class="reviews-track">
+
+
+            <!-- AVIS 1 -->
 
             <article class="review-card">
 
@@ -2817,11 +3138,74 @@ footer{
                 </div>
 
                 <div class="review-author">
-                    Wilfried — Stade
+
+                    <div class="review-avatar">
+                        W
+                    </div>
+
+                    <div class="review-author-info">
+
+                        <strong>
+                            Wilfried
+                        </strong>
+
+                        <span>
+                            Stade
+                        </span>
+
+                    </div>
+
                 </div>
 
             </article>
 
+
+            <!-- AVIS 2 -->
+
+            <article class="review-card">
+
+                <div class="review-stars">
+                    ★★★★★
+                </div>
+
+                <p class="review-text">
+                    « La réduction de bruit et le mode transparence est vraiment Wahoo c'est ma première fois de tester ça 😭 »
+                </p>
+
+                <img
+                    class="review-photo"
+                    src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=300&q=85"
+                    alt="Cliente"
+                >
+
+                <div class="review-product">
+                    AirPods Pro 2
+                </div>
+
+                <div class="review-author">
+
+                    <div class="review-avatar">
+                        A
+                    </div>
+
+                    <div class="review-author-info">
+
+                        <strong>
+                            Aïmane Awal
+                        </strong>
+
+                        <span>
+                            Cotonou
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <!-- AVIS 3 -->
 
             <article class="review-card">
 
@@ -2835,8 +3219,8 @@ footer{
 
                 <img
                     class="review-photo"
-                    src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=300&q=85"
-                    alt="Cliente"
+                    src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=300&q=85"
+                    alt="Client"
                 >
 
                 <div class="review-product">
@@ -2844,28 +3228,23 @@ footer{
                 </div>
 
                 <div class="review-author">
-                    Cliente MTECH — Cotonou
-                </div>
 
-            </article>
+                    <div class="review-avatar">
+                        C
+                    </div>
 
+                    <div class="review-author-info">
 
-            <article class="review-card">
+                        <strong>
+                            Client MTECH
+                        </strong>
 
-                <div class="review-stars">
-                    ★★★★★
-                </div>
+                        <span>
+                            Cotonou
+                        </span>
 
-                <p class="review-text">
-                    « Service sérieux, je recommande. »
-                </p>
+                    </div>
 
-                <div class="review-product">
-                    Smartphone
-                </div>
-
-                <div class="review-author">
-                    Client MTECH
                 </div>
 
             </article>
@@ -2898,10 +3277,10 @@ footer{
 
     </div>
 
-
     <div class="gallery-wrapper">
 
         <div class="gallery-track">
+
 
             <div class="gallery-item">
                 <img
@@ -2910,6 +3289,7 @@ footer{
                 >
             </div>
 
+
             <div class="gallery-item">
                 <img
                     src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=700&q=85"
@@ -2917,12 +3297,14 @@ footer{
                 >
             </div>
 
+
             <div class="gallery-item">
                 <img
                     src="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&w=700&q=85"
                     alt="Cliente satisfaite"
                 >
             </div>
+
 
             <div class="gallery-item">
                 <img
@@ -2939,6 +3321,7 @@ footer{
                 >
             </div>
 
+
             <div class="gallery-item">
                 <img
                     src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=700&q=85"
@@ -2946,12 +3329,14 @@ footer{
                 >
             </div>
 
+
             <div class="gallery-item">
                 <img
                     src="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&w=700&q=85"
                     alt="Cliente satisfaite"
                 >
             </div>
+
 
             <div class="gallery-item">
                 <img
@@ -3023,19 +3408,62 @@ footer{
 
     <div class="footer-grid">
 
+
+        <!-- PRESENTATION -->
+
         <div>
 
             <div class="footer-logo">
-                MTECH BENIN
+                MTECHBENIN
             </div>
 
             <p class="footer-description">
-                Technologie, accessoires, produits numériques,
-                abonnements et services de réparation.
+                MTECH BENIN est une entreprise spécialisée dans
+                les solutions informatiques et électroniques.
+                Nous proposons des produits, accessoires et services
+                adaptés aux besoins des particuliers et des
+                professionnels. Notre objectif est de vous offrir une
+                expérience simple, fiable et professionnelle, aussi
+                bien pour l’achat de vos équipements que pour leur
+                entretien et leur réparation.
             </p>
+
+            <div class="footer-socials">
+
+                <a href="#">
+                    Facebook
+                </a>
+
+                <a href="#">
+                    Instagram
+                </a>
+
+                <a href="#">
+                    TikTok
+                </a>
+
+            </div>
+
+            <div class="footer-contact">
+
+                <span>
+                    +229 60 50 63 20
+                </span>
+
+                <span>
+                    contact@mtechbenin.com
+                </span>
+
+                <span>
+                    Cotonou, Bénin
+                </span>
+
+            </div>
 
         </div>
 
+
+        <!-- BOUTIQUE -->
 
         <div class="footer-column">
 
@@ -3044,11 +3472,43 @@ footer{
             </h4>
 
             <a href="#produits">
-                Produits
+                Tous les produits
             </a>
 
             <a href="#catalogue">
-                Catalogue
+                T-shirt
+            </a>
+
+            <a href="#catalogue">
+                Basket
+            </a>
+
+            <a href="#catalogue">
+                For men
+            </a>
+
+            <a href="#catalogue">
+                Téléphone/Tablette/Pc
+            </a>
+
+            <a href="#catalogue">
+                Écouteurs
+            </a>
+
+            <a href="#catalogue">
+                Enceintes
+            </a>
+
+            <a href="#catalogue">
+                Vapes
+            </a>
+
+            <a href="#catalogue">
+                Univers des femmes
+            </a>
+
+            <a href="#catalogue">
+                Accessoires
             </a>
 
             <a href="#abonnements">
@@ -3058,46 +3518,58 @@ footer{
         </div>
 
 
-        <div class="footer-column">
-
-            <h4>
-                Services
-            </h4>
-
-            <a href="#reparation">
-                Réparation
-            </a>
-
-            <a href="#avis">
-                Avis clients
-            </a>
-
-            <a href="#clients">
-                Clients satisfaits
-            </a>
-
-        </div>
-
+        <!-- LEGAL -->
 
         <div class="footer-column">
 
             <h4>
-                Contact
+                Légal
             </h4>
 
-            <a
-                href="https://wa.me/22960506320"
-                target="_blank"
-                rel="noopener"
-            >
-                WhatsApp
+            <a href="#">
+                Conditions d'utilisation
             </a>
 
-            <a href="mailto:contact@mtechbenin.com">
-                Email
+            <a href="#">
+                Confidentialité
+            </a>
+
+            <a href="#">
+                Retours & Échanges
+            </a>
+
+            <a href="#">
+                Livraison
             </a>
 
         </div>
+
+    </div>
+
+
+    <!-- SUPPORT -->
+
+    <div class="footer-support">
+
+        <h4>
+            Support
+        </h4>
+
+        <a href="#reparation">
+            Nous contacter
+        </a>
+
+        <a href="#">
+            FAQ
+        </a>
+
+        <a
+            href="https://wa.me/22960506320"
+            target="_blank"
+            rel="noopener"
+        >
+            WhatsApp
+        </a>
 
     </div>
 
@@ -3110,29 +3582,94 @@ footer{
 
 
 <!-- =========================================================
+     BACK TO TOP
+========================================================= -->
+
+<button
+    class="back-to-top"
+    id="backToTop"
+    onclick="window.scrollTo({top:0,behavior:'smooth'})"
+    aria-label="Retour en haut"
+>
+
+    <svg viewBox="0 0 24 24">
+
+        <path
+            d="m6 14 6-6 6 6"
+        ></path>
+
+    </svg>
+
+</button>
+
+
+<!-- =========================================================
      MOBILE NAVIGATION
 ========================================================= -->
 
 <nav class="bottom-nav">
 
+
+    <!-- ACCUEIL -->
+
     <a
         href="#accueil"
         class="active"
     >
+
         <span class="bottom-icon">
-            ⌂
+
+            <svg viewBox="0 0 24 24">
+
+                <path
+                    d="M3 10.5 12 3l9 7.5"
+                ></path>
+
+                <path
+                    d="M5 9.5V21h14V9.5"
+                ></path>
+
+                <path
+                    d="M9 21v-7h6v7"
+                ></path>
+
+            </svg>
+
         </span>
 
         <span>
             Accueil
         </span>
+
+        <i class="nav-active-dot"></i>
+
     </a>
 
+
+    <!-- ABONNEMENTS -->
 
     <a href="#abonnements">
 
         <span class="bottom-icon">
-            ▣
+
+            <svg viewBox="0 0 24 24">
+
+                <rect
+                    x="3"
+                    y="5"
+                    width="18"
+                    height="13"
+                    rx="2"
+                ></rect>
+
+                <path d="M8 21h8"></path>
+
+                <path d="M12 18v3"></path>
+
+                <path d="M8 2l4 3 4-3"></path>
+
+            </svg>
+
         </span>
 
         <span>
@@ -3142,10 +3679,36 @@ footer{
     </a>
 
 
+    <!-- PRODUITS -->
+
     <a href="#produits">
 
         <span class="bottom-icon">
-            ▦
+
+            <svg viewBox="0 0 24 24">
+
+                <rect
+                    x="4"
+                    y="4"
+                    width="16"
+                    height="16"
+                    rx="1"
+                ></rect>
+
+                <path d="M8 4v16"></path>
+
+                <path d="M12 4v16"></path>
+
+                <path d="M16 4v16"></path>
+
+                <path d="M4 8h16"></path>
+
+                <path d="M4 12h16"></path>
+
+                <path d="M4 16h16"></path>
+
+            </svg>
+
         </span>
 
         <span>
@@ -3155,10 +3718,42 @@ footer{
     </a>
 
 
+    <!-- REPARATION -->
+
     <a href="#reparation">
 
         <span class="bottom-icon">
-            ⚙
+
+            <svg viewBox="0 0 24 24">
+
+                <circle
+                    cx="12"
+                    cy="12"
+                    r="5"
+                ></circle>
+
+                <path d="M12 2v3"></path>
+
+                <path d="M12 19v3"></path>
+
+                <path d="M2 12h3"></path>
+
+                <path d="M19 12h3"></path>
+
+                <path d="m4.9 4.9 2.1 2.1"></path>
+
+                <path d="m17 17 2.1 2.1"></path>
+
+                <path d="m19.1 4.9-2.1 2.1"></path>
+
+                <path d="m7 17-2.1 2.1"></path>
+
+                <path d="M12 9v6"></path>
+
+                <path d="M9 12h6"></path>
+
+            </svg>
+
         </span>
 
         <span>
@@ -3194,9 +3789,11 @@ window.supabase.createClient(
 ========================================================= */
 
 let products = [];
+
 let cart = [];
 
 let heroIndex = 0;
+
 let heroTimer = null;
 
 let announcementIndex = 0;
@@ -3223,7 +3820,6 @@ function escapeHtml(value){
         .replace(/'/g,"&#039;");
 }
 
-
 function formatPrice(price){
 
     return new Intl.NumberFormat(
@@ -3231,211 +3827,6 @@ function formatPrice(price){
     ).format(
         Number(price || 0)
     ) + " FCFA";
-}
-
-
-/* =========================================================
-   COMPTEURS STATISTIQUES
-========================================================= */
-
-function animateCounter(
-    element,
-    target,
-    duration = 2000,
-    decimals = 0
-){
-
-    let startTime = null;
-
-
-    function updateCounter(currentTime){
-
-        if(!startTime){
-            startTime = currentTime;
-        }
-
-
-        const progress =
-            Math.min(
-                (currentTime - startTime)
-                /
-                duration,
-                1
-            );
-
-
-        /*
-           Animation douce :
-           départ rapide puis ralentissement
-        */
-
-        const easeOut =
-            1 -
-            Math.pow(
-                1 - progress,
-                3
-            );
-
-
-        const currentValue =
-            target * easeOut;
-
-
-        if(decimals > 0){
-
-            element.textContent =
-                currentValue.toFixed(
-                    decimals
-                ) + "/5";
-
-        }else{
-
-            element.textContent =
-                Math.floor(
-                    currentValue
-                ).toLocaleString(
-                    "fr-FR"
-                ) + "+";
-        }
-
-
-        if(progress < 1){
-
-            requestAnimationFrame(
-                updateCounter
-            );
-
-        }
-
-    }
-
-
-    requestAnimationFrame(
-        updateCounter
-    );
-
-}
-
-
-function startStatisticsAnimation(){
-
-    const clients =
-        document.querySelector(
-            '[data-counter="clients"]'
-        );
-
-    const orders =
-        document.querySelector(
-            '[data-counter="orders"]'
-        );
-
-    const rating =
-        document.querySelector(
-            '[data-counter="rating"]'
-        );
-
-    const years =
-        document.querySelector(
-            '[data-counter="years"]'
-        );
-
-
-    if(clients){
-
-        animateCounter(
-            clients,
-            53712,
-            2200
-        );
-
-    }
-
-
-    if(orders){
-
-        animateCounter(
-            orders,
-            126328,
-            2200
-        );
-
-    }
-
-
-    if(rating){
-
-        animateCounter(
-            rating,
-            4.8,
-            1800,
-            1
-        );
-
-    }
-
-
-    if(years){
-
-        animateCounter(
-            years,
-            7,
-            1500
-        );
-
-    }
-
-}
-
-
-/*
-   Le compteur démarre lorsque la section
-   entre dans l'écran.
-*/
-
-const statisticsSection =
-    document.querySelector(
-        ".stats-section"
-    );
-
-
-if(statisticsSection){
-
-    const statsObserver =
-        new IntersectionObserver(
-
-            (entries,observer)=>{
-
-                entries.forEach(
-                    entry => {
-
-                        if(
-                            entry.isIntersecting
-                        ){
-
-                            startStatisticsAnimation();
-
-                            observer.unobserve(
-                                entry.target
-                            );
-
-                        }
-
-                    }
-                );
-
-            },
-
-            {
-                threshold:.3
-            }
-
-        );
-
-
-    statsObserver.observe(
-        statisticsSection
-    );
-
 }
 
 
@@ -3468,7 +3859,6 @@ async function loadHero(){
                 }
             );
 
-
         if(result.error){
 
             console.error(
@@ -3479,19 +3869,16 @@ async function loadHero(){
             return;
         }
 
-
         const rows =
             result.data || [];
-
 
         if(!rows.length){
             return;
         }
 
-
         container.innerHTML = "";
-        dots.innerHTML = "";
 
+        dots.innerHTML = "";
 
         rows.forEach(
             (slide,index)=>{
@@ -3528,9 +3915,7 @@ async function loadHero(){
                     slide.price ||
                     "À partir de 50 000 FCFA";
 
-
                 let mediaHTML = "";
-
 
                 if(videoUrl){
 
@@ -3576,23 +3961,18 @@ async function loadHero(){
 
                 }
 
-
                 const element =
                     document.createElement(
                         "div"
                     );
 
-
                 element.className =
                     "hero-slide" +
                     (
                         index === 0
-                        ?
-                        " active"
-                        :
-                        ""
+                            ? " active"
+                            : ""
                     );
-
 
                 element.innerHTML = `
 
@@ -3643,34 +4023,27 @@ async function loadHero(){
                     </div>
                 `;
 
-
                 container.appendChild(
                     element
                 );
-
 
                 const dot =
                     document.createElement(
                         "button"
                     );
 
-
                 dot.className =
                     "hero-dot" +
                     (
                         index === 0
-                        ?
-                        " active"
-                        :
-                        ""
+                            ? " active"
+                            : ""
                     );
-
 
                 dot.onclick =
                     ()=>{
                         showHero(index);
                     };
-
 
                 dots.appendChild(
                     dot
@@ -3679,11 +4052,9 @@ async function loadHero(){
             }
         );
 
-
         heroIndex = 0;
 
         startHero();
-
 
     }catch(error){
 
@@ -3709,17 +4080,14 @@ function showHero(index){
             ".hero-dot"
         );
 
-
     if(!slides.length){
         return;
     }
-
 
     heroIndex =
         (index + slides.length)
         %
         slides.length;
-
 
     slides.forEach(
         (slide,i)=>{
@@ -3729,12 +4097,10 @@ function showHero(index){
                 i === heroIndex
             );
 
-
             const video =
                 slide.querySelector(
                     "video"
                 );
-
 
             if(video){
 
@@ -3743,9 +4109,7 @@ function showHero(index){
                     video.currentTime = 0;
 
                     video.play()
-                        .catch(
-                            ()=>{}
-                        );
+                        .catch(()=>{});
 
                 }else{
 
@@ -3757,7 +4121,6 @@ function showHero(index){
 
         }
     );
-
 
     dots.forEach(
         (dot,i)=>{
@@ -3775,10 +4138,7 @@ function showHero(index){
 
 function startHero(){
 
-    clearInterval(
-        heroTimer
-    );
-
+    clearInterval(heroTimer);
 
     heroTimer =
         setInterval(
@@ -3788,7 +4148,6 @@ function startHero(){
                     document.querySelectorAll(
                         ".hero-slide"
                     );
-
 
                 if(
                     slides.length > 1
@@ -3817,7 +4176,6 @@ async function loadProducts(){
         document.getElementById(
             "productsGrid"
         );
-
 
     try{
 
@@ -3848,13 +4206,11 @@ async function loadProducts(){
                 }
             );
 
-
         if(result.error){
 
             console.error(
                 result.error
             );
-
 
             grid.innerHTML = `
                 <div class="loading">
@@ -3862,26 +4218,21 @@ async function loadProducts(){
                 </div>
             `;
 
-
             return;
         }
-
 
         products =
             result.data || [];
 
-
         renderProducts(
             products
         );
-
 
     }catch(error){
 
         console.error(
             error
         );
-
 
         grid.innerHTML = `
             <div class="loading">
@@ -3901,7 +4252,6 @@ function renderProducts(list){
             "productsGrid"
         );
 
-
     if(!list.length){
 
         grid.innerHTML = `
@@ -3913,7 +4263,6 @@ function renderProducts(list){
         return;
     }
 
-
     grid.innerHTML =
         list.map(
             product => {
@@ -3923,13 +4272,11 @@ function renderProducts(list){
                         product.name
                     );
 
-
                 const category =
                     escapeHtml(
                         product.category ||
                         "Produit"
                     );
-
 
                 const description =
                     escapeHtml(
@@ -3937,15 +4284,12 @@ function renderProducts(list){
                         ""
                     );
 
-
                 const stock =
                     Number(
                         product.stock || 0
                     );
 
-
                 let media = "";
-
 
                 if(product.video_url){
 
@@ -3988,7 +4332,6 @@ function renderProducts(list){
                     `;
 
                 }
-
 
                 return `
 
@@ -4085,11 +4428,9 @@ function filterProducts(category){
                 .toLowerCase()
         );
 
-
     renderProducts(
         filtered
     );
-
 
     document
         .getElementById(
@@ -4116,19 +4457,15 @@ function addToCart(id){
                 Number(id)
         );
 
-
     if(!product){
         return;
     }
-
 
     cart.push(
         product
     );
 
-
     updateCart();
-
 
     alert(
         product.name +
@@ -4161,7 +4498,6 @@ function openCart(){
         return;
     }
 
-
     const total =
         cart.reduce(
             (
@@ -4174,7 +4510,6 @@ function openCart(){
                 ),
             0
         );
-
 
     alert(
         "Panier : " +
@@ -4198,14 +4533,12 @@ function moveSubscriptions(direction){
             "subscriptionTrack"
         );
 
-
     const amount =
         window.innerWidth < 700
         ?
-        window.innerWidth * .50
+        track.clientWidth * .88
         :
         352;
-
 
     track.scrollBy({
 
@@ -4220,6 +4553,57 @@ function moveSubscriptions(direction){
 }
 
 
+function setVolumeIcon(button, muted){
+
+    if(muted){
+
+        button.innerHTML = `
+
+            <svg viewBox="0 0 24 24">
+
+                <path
+                    d="M11 5 6 9H3v6h3l5 4V5Z"
+                ></path>
+
+                <path
+                    d="m16 9 5 6"
+                ></path>
+
+                <path
+                    d="m21 9-5 6"
+                ></path>
+
+            </svg>
+
+        `;
+
+    }else{
+
+        button.innerHTML = `
+
+            <svg viewBox="0 0 24 24">
+
+                <path
+                    d="M11 5 6 9H3v6h3l5 4V5Z"
+                ></path>
+
+                <path
+                    d="M15.5 8.5a5 5 0 0 1 0 7"
+                ></path>
+
+                <path
+                    d="M18.5 5.5a9 9 0 0 1 0 13"
+                ></path>
+
+            </svg>
+
+        `;
+
+    }
+
+}
+
+
 function toggleSubscriptionVideo(button){
 
     const card =
@@ -4227,29 +4611,27 @@ function toggleSubscriptionVideo(button){
             ".subscription-card"
         );
 
-
     const video =
         card.querySelector(
             "video"
         );
 
-
     if(!video){
         return;
     }
-
 
     if(video.paused){
 
         video.muted = false;
 
-
         video.play()
             .then(
                 ()=>{
 
-                    button.textContent =
-                        "⏸";
+                    setVolumeIcon(
+                        button,
+                        false
+                    );
 
                 }
             )
@@ -4259,19 +4641,24 @@ function toggleSubscriptionVideo(button){
                     video.muted = true;
 
                     video.play()
-                        .catch(
-                            ()=>{}
-                        );
+                        .catch(()=>{});
+
+                    setVolumeIcon(
+                        button,
+                        true
+                    );
 
                 }
             );
 
     }else{
 
-        video.pause();
+        video.muted = !video.muted;
 
-        button.textContent =
-            "▶";
+        setVolumeIcon(
+            button,
+            video.muted
+        );
 
     }
 
@@ -4292,21 +4679,23 @@ const subscriptionObserver =
                     const card =
                         entry.target;
 
-
                     const video =
                         card.querySelector(
                             "video"
                         );
 
-
                     if(!video){
                         return;
                     }
 
+                    const button =
+                        card.querySelector(
+                            ".video-control"
+                        );
 
                     if(
                         entry.isIntersecting &&
-                        entry.intersectionRatio >= .65
+                        entry.intersectionRatio >= .55
                     ){
 
                         video.muted = true;
@@ -4315,6 +4704,15 @@ const subscriptionObserver =
                             .catch(
                                 ()=>{}
                             );
+
+                        if(button){
+
+                            setVolumeIcon(
+                                button,
+                                true
+                            );
+
+                        }
 
                     }else{
 
@@ -4328,7 +4726,7 @@ const subscriptionObserver =
         },
         {
             threshold:[
-                .65
+                .55
             ]
         }
     );
@@ -4355,12 +4753,10 @@ const announcementTrack =
         "announcementTrack"
     );
 
-
 const announcementSlides =
     document.querySelectorAll(
         ".announcement-slide"
     );
-
 
 const announcementDots =
     document.getElementById(
@@ -4379,7 +4775,6 @@ announcementSlides.forEach(
                 "button"
             );
 
-
         dot.className =
             "announcement-dot" +
             (
@@ -4390,14 +4785,12 @@ announcementSlides.forEach(
                 ""
             );
 
-
         dot.onclick =
             ()=>{
                 showAnnouncement(
                     index
                 );
             };
-
 
         announcementDots.appendChild(
             dot
@@ -4413,11 +4806,9 @@ function showAnnouncement(index){
         return;
     }
 
-
     announcementIndex =
         index %
         announcementSlides.length;
-
 
     announcementTrack.style.transform =
         "translateX(-" +
@@ -4425,7 +4816,6 @@ function showAnnouncement(index){
             announcementIndex * 100
         ) +
         "%)";
-
 
     document
         .querySelectorAll(
@@ -4461,21 +4851,24 @@ setInterval(
 
 
 /* =========================================================
-   RECHERCHE
+   RECHERCHE DANS LE MENU
 ========================================================= */
 
-function openSearch(){
+function searchFromMenu(query){
 
-    const query =
-        prompt(
-            "Que recherchez-vous ?"
-        );
-
+    query =
+        String(query || "")
+        .trim()
+        .toLowerCase();
 
     if(!query){
+
+        renderProducts(
+            products
+        );
+
         return;
     }
-
 
     const results =
         products.filter(
@@ -4497,27 +4890,16 @@ function openSearch(){
                     )
                     .toLowerCase();
 
-
                 return text.includes(
-                    query.toLowerCase()
+                    query
                 );
 
             }
         );
 
-
     renderProducts(
         results
     );
-
-
-    document
-        .getElementById(
-            "produits"
-        )
-        .scrollIntoView({
-            behavior:"smooth"
-        });
 
 }
 
@@ -4612,7 +4994,6 @@ document
                                 )
                         );
 
-
                     link.classList.add(
                         "active"
                     );
@@ -4622,6 +5003,219 @@ document
 
         }
     );
+
+
+/* =========================================================
+   STATISTIQUES — ANIMATION LENTE
+========================================================= */
+
+function animateCounter(element){
+
+    if(
+        element.dataset.animated === "true"
+    ){
+        return;
+    }
+
+    element.dataset.animated = "true";
+
+    const target =
+        Number(
+            element.dataset.counter
+        );
+
+    const decimals =
+        Number(
+            element.dataset.decimals || 0
+        );
+
+    const suffix =
+        element.dataset.suffix || "";
+
+    const duration =
+        target < 10
+        ?
+        4000
+        :
+        5000;
+
+    const startTime =
+        performance.now();
+
+    function updateCounter(now){
+
+        const elapsed =
+            now - startTime;
+
+        const progress =
+            Math.min(
+                elapsed / duration,
+                1
+            );
+
+        /*
+           Progression douce :
+           démarre lentement,
+           accélère,
+           puis ralentit à la fin.
+        */
+
+        const eased =
+            1 -
+            Math.pow(
+                1 - progress,
+                3
+            );
+
+        const current =
+            target * eased;
+
+        let display;
+
+        if(decimals > 0){
+
+            display =
+                current.toFixed(
+                    decimals
+                );
+
+        }else{
+
+            display =
+                Math.floor(
+                    current
+                ).toLocaleString(
+                    "fr-FR"
+                );
+
+        }
+
+        element.textContent =
+            display +
+            suffix;
+
+        if(progress < 1){
+
+            requestAnimationFrame(
+                updateCounter
+            );
+
+        }else{
+
+            if(decimals > 0){
+
+                element.textContent =
+                    target.toFixed(
+                        decimals
+                    ) +
+                    suffix;
+
+            }else{
+
+                element.textContent =
+                    target.toLocaleString(
+                        "fr-FR"
+                    ) +
+                    suffix;
+
+            }
+
+        }
+
+    }
+
+    requestAnimationFrame(
+        updateCounter
+    );
+
+}
+
+
+const statsObserver =
+    new IntersectionObserver(
+        entries => {
+
+            entries.forEach(
+                entry => {
+
+                    if(
+                        entry.isIntersecting
+                    ){
+
+                        const counters =
+                            entry.target
+                            .querySelectorAll(
+                                "[data-counter]"
+                            );
+
+                        counters.forEach(
+                            counter =>
+                                animateCounter(
+                                    counter
+                                )
+                        );
+
+                        statsObserver.unobserve(
+                            entry.target
+                        );
+
+                    }
+
+                }
+            );
+
+        },
+        {
+            threshold:.35
+        }
+    );
+
+
+const statsSection =
+    document.querySelector(
+        ".stats-grid"
+    );
+
+if(statsSection){
+
+    statsObserver.observe(
+        statsSection
+    );
+
+}
+
+
+/* =========================================================
+   BACK TO TOP
+========================================================= */
+
+const backToTop =
+    document.getElementById(
+        "backToTop"
+    );
+
+window.addEventListener(
+    "scroll",
+    ()=>{
+
+        if(
+            window.scrollY > 500
+        ){
+
+            backToTop.classList.add(
+                "visible"
+            );
+
+        }else{
+
+            backToTop.classList.remove(
+                "visible"
+            );
+
+        }
+
+    }
+);
 
 
 /* =========================================================
