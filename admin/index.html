@@ -2,302 +2,430 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,viewport-fit=cover">
+<meta name="theme-color" content="#ffffff">
 <title>MTECHBENIN — Administration</title>
 
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 
 :root{
-  --bg:#f5f5f7;
+  --bg:#f7f7f9;
   --card:#fff;
-  --text:#111;
-  --muted:#777;
-  --line:#e8e8e8;
-  --dark:#111;
-  --danger:#e53935;
-  --green:#16833b
+  --text:#171717;
+  --muted:#858585;
+  --line:#ececef;
+  --soft:#f4f4f6;
+  --dark:#171717;
+  --danger:#ef233c;
+  --green:#35bd72;
 }
+
+html{scroll-behavior:smooth}
 
 body{
-  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
+  font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display",
+  "SF Pro Text","Segoe UI",Roboto,Arial,sans-serif;
   background:var(--bg);
   color:var(--text);
-  -webkit-font-smoothing:antialiased
+  -webkit-font-smoothing:antialiased;
 }
 
-button,input,select,textarea{
-  font:inherit
-}
-
-button{
-  cursor:pointer
-}
+button,input,select,textarea{font:inherit}
+button{cursor:pointer}
+button:disabled{cursor:not-allowed;opacity:.6}
 
 /* LOGIN */
 
 .login{
-  min-height:100vh;
+  min-height:100svh;
   display:flex;
   align-items:center;
   justify-content:center;
-  padding:20px
+  padding:20px;
 }
 
 .login-card{
-  width:min(420px,100%);
+  width:min(430px,100%);
   background:#fff;
-  border-radius:24px;
-  padding:36px;
-  box-shadow:0 20px 60px rgba(0,0,0,.08)
+  border:1px solid var(--line);
+  border-radius:28px;
+  padding:38px;
+  box-shadow:0 25px 80px rgba(0,0,0,.08);
 }
 
 .logo{
-  font-size:27px;
-  font-weight:800;
-  letter-spacing:-1px
+  font-size:28px;
+  font-weight:900;
+  letter-spacing:-1.5px;
 }
 
 .muted{
   color:var(--muted);
-  font-size:14px
+  font-size:14px;
 }
 
 .login h1{
-  font-size:25px;
-  margin:28px 0 22px
+  font-size:28px;
+  margin:28px 0 22px;
+  letter-spacing:-1px;
 }
 
 label{
   display:block;
-  font-size:14px;
-  font-weight:600;
-  margin:15px 0 7px
+  font-size:13px;
+  font-weight:800;
+  letter-spacing:.4px;
+  margin:16px 0 8px;
 }
 
-input,select,textarea{
+input,
+select,
+textarea{
   width:100%;
-  padding:13px 14px;
-  border:1px solid #ddd;
-  border-radius:11px;
+  padding:14px 15px;
+  border:1px solid #dedee2;
+  border-radius:14px;
   outline:none;
-  background:#fff
+  background:#fff;
+  color:#111;
 }
 
 input:focus,
 select:focus,
 textarea:focus{
-  border-color:#111
+  border-color:#111;
+  box-shadow:0 0 0 3px rgba(0,0,0,.05);
 }
 
 textarea{
   min-height:110px;
-  resize:vertical
+  resize:vertical;
 }
 
 .primary,
 .save{
   border:0;
-  background:#111;
+  background:#171717;
   color:#fff;
   padding:14px;
-  border-radius:11px;
-  font-weight:700
+  border-radius:14px;
+  font-weight:800;
 }
 
 .primary{
   width:100%;
-  margin-top:22px
+  margin-top:22px;
 }
 
 .error{
   display:none;
   color:#c00;
   font-size:13px;
-  margin-top:12px
+  margin-top:12px;
 }
 
-/* ADMIN */
+/* APP */
 
 .admin{
   display:none;
-  min-height:100vh
+  min-height:100svh;
 }
 
 .sidebar{
   position:fixed;
-  left:0;
-  top:0;
-  bottom:0;
+  inset:0 auto 0 0;
   width:260px;
-  background:#111;
-  color:#fff;
-  padding:24px 16px;
-  z-index:100;
-  overflow:auto
+  background:#fff;
+  border-right:1px solid var(--line);
+  padding:24px 15px;
+  z-index:1000;
+  overflow:auto;
 }
 
 .brand{
-  font-size:22px;
-  font-weight:800;
-  padding:0 12px 28px
+  font-size:23px;
+  font-weight:900;
+  padding:0 13px 28px;
+  letter-spacing:-1px;
 }
 
 .brand small{
   display:block;
-  color:#777;
-  font-size:12px;
+  color:#999;
+  font-size:10px;
   letter-spacing:2px;
-  margin-top:5px
+  margin-top:6px;
 }
 
 .nav button{
-  display:block;
+  display:flex;
+  align-items:center;
+  gap:11px;
   width:100%;
   border:0;
   background:transparent;
-  color:#aaa;
+  color:#777;
   text-align:left;
-  padding:13px 12px;
-  border-radius:10px;
-  margin-bottom:4px
+  padding:12px 13px;
+  border-radius:13px;
+  margin-bottom:3px;
+  font-weight:650;
 }
 
 .nav button:hover,
 .nav button.active{
-  background:#282828;
-  color:#fff
+  background:#f0f0f2;
+  color:#111;
+}
+
+.nav-icon{
+  width:22px;
+  text-align:center;
+  font-size:18px;
 }
 
 .logout{
   position:absolute;
-  left:16px;
-  right:16px;
-  bottom:20px;
-  border:1px solid #444;
-  background:#111;
-  color:#fff;
+  left:15px;
+  right:15px;
+  bottom:18px;
+  border:1px solid #ddd;
+  background:#fff;
+  color:#555;
   padding:12px;
-  border-radius:10px
+  border-radius:12px;
+  font-weight:700;
 }
 
 .main{
   margin-left:260px;
-  padding:32px
+  min-height:100svh;
+}
+
+.topbar{
+  height:76px;
+  background:rgba(255,255,255,.94);
+  backdrop-filter:blur(18px);
+  border-bottom:1px solid var(--line);
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 32px;
+  position:sticky;
+  top:0;
+  z-index:900;
+}
+
+.topbar-left{
+  display:flex;
+  align-items:center;
+  gap:13px;
+}
+
+.breadcrumb{
+  color:#8a8a8a;
+  font-size:14px;
+}
+
+.breadcrumb strong{
+  color:#222;
+}
+
+.order-pill{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  background:#fff0f1;
+  color:#ed2941;
+  padding:9px 14px;
+  border-radius:30px;
+  font-weight:900;
+}
+
+.order-pill span{
+  min-width:18px;
+  text-align:center;
+}
+
+.content{
+  padding:32px;
 }
 
 .page{
-  display:none
+  display:none;
+  max-width:1450px;
+  margin:auto;
 }
 
 .page.active{
-  display:block
+  display:block;
 }
 
 .top{
   display:flex;
   justify-content:space-between;
-  align-items:center;
+  align-items:flex-end;
   gap:20px;
-  margin-bottom:25px
+  margin-bottom:25px;
 }
 
 .top h1{
-  font-size:30px;
-  margin-bottom:5px
+  font-size:38px;
+  line-height:1;
+  letter-spacing:-2px;
+  margin-bottom:8px;
+}
+
+.page-subtitle{
+  color:#777;
+  font-size:16px;
+}
+
+.action-row{
+  display:flex;
+  gap:10px;
+  align-items:center;
 }
 
 /* DASHBOARD */
 
-.grid{
+.stats-grid{
   display:grid;
   grid-template-columns:repeat(4,1fr);
-  gap:18px
+  gap:16px;
 }
 
-.card,
+.stat-card{
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:24px;
+  padding:24px;
+  min-height:150px;
+  box-shadow:0 10px 35px rgba(0,0,0,.035);
+}
+
+.stat-label{
+  color:#777;
+  font-size:13px;
+  font-weight:700;
+}
+
+.stat-value{
+  display:block;
+  font-size:32px;
+  font-weight:900;
+  margin-top:13px;
+  letter-spacing:-1px;
+}
+
 .panel{
   background:#fff;
-  border-radius:18px;
-  padding:22px;
-  box-shadow:0 8px 30px rgba(0,0,0,.04)
-}
-
-.card small{
-  color:#777
-}
-
-.card strong{
-  display:block;
-  font-size:28px;
-  margin-top:10px
-}
-
-.panel{
-  margin-top:22px
+  border:1px solid var(--line);
+  border-radius:26px;
+  padding:25px;
+  margin-top:18px;
+  box-shadow:0 10px 35px rgba(0,0,0,.035);
 }
 
 .panel h2{
-  font-size:19px;
-  margin-bottom:18px
+  font-size:20px;
+  margin-bottom:15px;
 }
 
-/* PRODUCTS */
+/* BUTTONS */
+
+.add-button,
+.refresh-button{
+  border:0;
+  border-radius:14px;
+  padding:14px 20px;
+  font-weight:850;
+}
+
+.add-button{
+  background:#ed0b1d;
+  color:#fff;
+  box-shadow:0 10px 25px rgba(237,11,29,.16);
+}
+
+.refresh-button{
+  background:#f3f3f5;
+  color:#666;
+  border:1px solid #e5e5e8;
+}
+
+/* TOOLBAR */
+
+.toolbar-card{
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:24px;
+  padding:18px;
+  margin-bottom:18px;
+}
 
 .toolbar{
   display:flex;
   gap:12px;
-  justify-content:space-between;
   align-items:center;
-  margin-bottom:20px
 }
 
-.search{
-  max-width:360px
+.search-wrap{
+  position:relative;
+  flex:1;
 }
 
-.add-button{
-  background:#111;
-  color:#fff;
-  border:0;
-  padding:12px 18px;
-  border-radius:10px;
-  font-weight:700
+.search-wrap input{
+  padding-left:44px;
+  background:#f7f7f8;
+  border-color:#e5e5e8;
 }
+
+.search-icon{
+  position:absolute;
+  left:16px;
+  top:50%;
+  transform:translateY(-50%);
+  color:#888;
+}
+
+.category-filter{
+  max-width:230px;
+  background:#f7f7f8;
+}
+
+/* PRODUCTS */
 
 .products-grid{
   display:grid;
   grid-template-columns:repeat(3,1fr);
-  gap:20px
+  gap:18px;
 }
 
 .product-card{
   background:#fff;
-  border-radius:18px;
+  border:1px solid var(--line);
+  border-radius:23px;
   overflow:hidden;
-  box-shadow:0 8px 30px rgba(0,0,0,.05)
+  box-shadow:0 8px 28px rgba(0,0,0,.035);
 }
 
 .product-image{
-  height:210px;
-  background:#f1f1f1;
+  height:225px;
+  background:#f2f2f4;
   display:flex;
   align-items:center;
   justify-content:center;
   overflow:hidden;
-  position:relative
+  position:relative;
 }
 
-.product-image img{
-  width:100%;
-  height:100%;
-  object-fit:cover
-}
-
+.product-image img,
 .product-image video{
   width:100%;
   height:100%;
-  object-fit:cover
+  object-fit:cover;
 }
 
 .media-badge{
@@ -308,92 +436,105 @@ textarea{
   color:#fff;
   padding:6px 9px;
   border-radius:20px;
-  font-size:11px
+  font-size:11px;
 }
 
 .no-image{
   font-size:55px;
-  opacity:.2
+  opacity:.2;
 }
 
 .product-info{
-  padding:18px
+  padding:18px;
 }
 
 .product-info h3{
   font-size:18px;
-  margin-bottom:8px
+  margin-bottom:8px;
 }
 
 .product-price{
-  font-weight:800;
-  margin-bottom:6px
+  font-weight:900;
+  margin-bottom:6px;
 }
 
 .product-stock{
   color:#777;
   font-size:13px;
-  margin-bottom:15px
+  margin-bottom:14px;
 }
 
 .product-tags{
   display:flex;
   gap:6px;
   flex-wrap:wrap;
-  margin-bottom:14px
+  margin-bottom:14px;
 }
 
 .tag{
   font-size:11px;
-  padding:5px 8px;
+  padding:6px 9px;
   border-radius:20px;
-  background:#f0f0f0
+  background:#f0f0f2;
 }
 
 .tag.featured{
-  background:#fff0b8
+  background:#fff1b8;
+}
+
+.tag.off{
+  background:#ffe8e8;
+  color:#c00;
 }
 
 .product-actions{
-  display:flex;
-  gap:8px
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:8px;
 }
 
 .edit,
 .delete{
-  flex:1;
   border:0;
-  padding:10px;
-  border-radius:9px
+  padding:11px;
+  border-radius:11px;
+  font-weight:750;
 }
 
 .edit{
   background:#111;
-  color:#fff
+  color:#fff;
 }
 
 .delete{
-  background:#eee;
-  color:#c00
+  background:#f1f1f2;
+  color:#c00;
 }
 
 /* TABLE */
 
 .table-container{
-  overflow:auto
+  overflow:auto;
 }
 
 .table{
   width:100%;
-  border-collapse:collapse
+  border-collapse:collapse;
 }
 
 .table th,
 .table td{
   text-align:left;
-  padding:13px 8px;
+  padding:15px 9px;
   border-bottom:1px solid #eee;
-  font-size:14px
+  font-size:14px;
+}
+
+.table th{
+  font-size:12px;
+  color:#777;
+  text-transform:uppercase;
+  letter-spacing:.7px;
 }
 
 .badge{
@@ -403,13 +544,83 @@ textarea{
   background:#eaf7ed;
   color:#16833b;
   font-size:12px;
-  font-weight:700
+  font-weight:800;
 }
 
 .empty{
   text-align:center;
-  padding:60px 20px;
-  color:#888
+  padding:65px 20px;
+  color:#888;
+}
+
+.empty-icon{
+  font-size:45px;
+  margin-bottom:10px;
+}
+
+/* CATEGORIES */
+
+.category-list{
+  overflow:hidden;
+  border:1px solid var(--line);
+  border-radius:24px;
+  background:#fff;
+}
+
+.category-row{
+  min-height:100px;
+  display:grid;
+  grid-template-columns:48px 55px 1fr 90px 55px 55px;
+  align-items:center;
+  padding:0 25px;
+  border-bottom:1px solid var(--line);
+  gap:10px;
+}
+
+.category-row:last-child{
+  border-bottom:0;
+}
+
+.drag{
+  color:#c4c4c7;
+  font-size:20px;
+  letter-spacing:2px;
+}
+
+.category-emoji{
+  font-size:27px;
+}
+
+.category-name{
+  font-size:18px;
+  font-weight:850;
+}
+
+.category-slug{
+  color:#777;
+  font-family:monospace;
+  margin-top:4px;
+}
+
+.eye{
+  color:#3dbd70;
+  font-size:20px;
+}
+
+.icon-btn{
+  border:0;
+  background:transparent;
+  color:#777;
+  font-size:22px;
+  padding:7px;
+}
+
+.icon-btn:hover{
+  color:#111;
+}
+
+.icon-btn.danger:hover{
+  color:#e33;
 }
 
 /* MODAL */
@@ -422,20 +633,20 @@ textarea{
   align-items:center;
   justify-content:center;
   padding:15px;
-  z-index:1000
+  z-index:2000;
 }
 
 .modal.open{
-  display:flex
+  display:flex;
 }
 
 .modal-box{
-  width:min(700px,100%);
-  max-height:94vh;
+  width:min(720px,100%);
+  max-height:94svh;
   overflow:auto;
   background:#fff;
-  border-radius:22px;
-  padding:25px
+  border-radius:25px;
+  padding:25px;
 }
 
 .modal-header{
@@ -447,30 +658,30 @@ textarea{
   top:0;
   background:#fff;
   z-index:2;
-  padding-bottom:8px
+  padding-bottom:8px;
 }
 
 .modal-header h2{
-  font-size:22px
+  font-size:23px;
 }
 
 .close{
   border:0;
   background:#eee;
-  width:36px;
-  height:36px;
+  width:38px;
+  height:38px;
   border-radius:50%;
-  font-size:22px
+  font-size:22px;
 }
 
 .form-group{
-  margin-bottom:14px
+  margin-bottom:14px;
 }
 
 .form-actions{
   display:flex;
   gap:10px;
-  margin-top:20px
+  margin-top:20px;
 }
 
 .cancel{
@@ -478,38 +689,36 @@ textarea{
   border:0;
   background:#eee;
   padding:13px;
-  border-radius:10px
+  border-radius:12px;
 }
 
 .save{
-  flex:1
+  flex:1;
 }
 
 .section-title{
-  font-size:13px;
-  font-weight:800;
-  letter-spacing:1px;
+  font-size:12px;
+  font-weight:900;
+  letter-spacing:1.4px;
   color:#777;
   margin:25px 0 12px;
-  text-transform:uppercase
+  text-transform:uppercase;
 }
 
 .row{
   display:grid;
   grid-template-columns:1fr 1fr;
-  gap:12px
+  gap:12px;
 }
-
-/* SWITCH */
 
 .switch-row{
   display:flex;
   justify-content:space-between;
   align-items:center;
-  background:#f7f7f7;
+  background:#f7f7f8;
   border-radius:14px;
   padding:14px;
-  margin:10px 0
+  margin:10px 0;
 }
 
 .switch{
@@ -518,7 +727,7 @@ textarea{
   border-radius:30px;
   background:#bbb;
   position:relative;
-  border:0
+  border:0;
 }
 
 .switch i{
@@ -529,62 +738,58 @@ textarea{
   background:#fff;
   left:3px;
   top:3px;
-  transition:.2s
+  transition:.2s;
 }
 
 .switch.on{
-  background:#111
+  background:#111;
 }
 
 .switch.on i{
-  left:25px
+  left:25px;
 }
-
-/* SPECS / VARIANTS */
 
 .spec-list,
 .variant-list{
   display:flex;
   flex-direction:column;
-  gap:8px
+  gap:8px;
 }
 
 .item-row{
   display:grid;
   grid-template-columns:1fr 1fr auto;
-  gap:8px
+  gap:8px;
 }
 
 .item-row button{
   border:0;
   background:#eee;
   border-radius:9px;
-  padding:0 12px
+  padding:0 12px;
 }
 
 .add-line{
   border:0;
   background:#111;
   color:#fff;
-  border-radius:9px;
-  padding:9px 13px;
-  margin-top:9px
+  border-radius:10px;
+  padding:10px 14px;
+  margin-top:9px;
 }
-
-/* FILES */
 
 .file-box{
   border:1px dashed #ccc;
   border-radius:14px;
   padding:14px;
-  background:#fafafa
+  background:#fafafa;
 }
 
 .preview{
   display:grid;
   grid-template-columns:1fr 1fr;
   gap:10px;
-  margin-top:10px
+  margin-top:10px;
 }
 
 .preview img,
@@ -593,7 +798,7 @@ textarea{
   height:150px;
   object-fit:cover;
   border-radius:12px;
-  background:#eee
+  background:#eee;
 }
 
 .progress{
@@ -602,13 +807,13 @@ textarea{
   border-radius:10px;
   overflow:hidden;
   margin-top:10px;
-  display:none
+  display:none;
 }
 
 .progress div{
   height:100%;
   width:0;
-  background:#111
+  background:#111;
 }
 
 /* TOAST */
@@ -620,95 +825,246 @@ textarea{
   background:#111;
   color:#fff;
   padding:14px 20px;
-  border-radius:12px;
-  z-index:2000;
+  border-radius:13px;
+  z-index:3000;
   opacity:0;
   transform:translateY(20px);
   pointer-events:none;
-  transition:.3s
+  transition:.3s;
 }
 
 .toast.show{
   opacity:1;
-  transform:translateY(0)
+  transform:translateY(0);
 }
 
-.mobilebar{
+.sidebar-overlay{
   display:none;
-  align-items:center;
-  gap:12px;
-  margin-bottom:18px
 }
 
-.menu-btn{
-  border:0;
-  background:#fff;
-  border-radius:10px;
-  padding:10px 13px;
-  font-size:20px
+/* MOBILE */
+
+.topbar-menu{
+  display:none;
 }
 
-/* RESPONSIVE */
-
-@media(max-width:1000px){
+@media(max-width:1100px){
 
   .sidebar{
-    width:230px
+    width:230px;
   }
 
   .main{
-    margin-left:230px
+    margin-left:230px;
   }
 
-  .grid{
-    grid-template-columns:repeat(2,1fr)
+  .stats-grid{
+    grid-template-columns:repeat(2,1fr);
   }
 
   .products-grid{
-    grid-template-columns:repeat(2,1fr)
+    grid-template-columns:repeat(2,1fr);
   }
 }
 
 @media(max-width:700px){
 
   .sidebar{
-    position:fixed;
-    width:285px;
-    transform:translateX(-100%);
-    transition:.25s
+    width:290px;
+    transform:translateX(-105%);
+    transition:.25s;
+    box-shadow:20px 0 50px rgba(0,0,0,.12);
   }
 
   .sidebar.open{
-    transform:translateX(0)
+    transform:translateX(0);
+  }
+
+  .sidebar-overlay{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.35);
+    z-index:950;
+    display:none;
+  }
+
+  .sidebar-overlay.open{
+    display:block;
   }
 
   .main{
     margin-left:0;
-    padding:18px
   }
 
-  .mobilebar{
-    display:flex
+  .topbar{
+    height:64px;
+    padding:0 16px;
   }
 
-  .grid{
-    grid-template-columns:1fr 1fr
+  .topbar-menu{
+    display:block;
+    border:0;
+    background:transparent;
+    font-size:25px;
+    line-height:1;
+    padding:4px;
   }
 
-  .products-grid{
-    grid-template-columns:1fr
+  .topbar-left{
+    gap:8px;
+  }
+
+  .breadcrumb{
+    font-size:13px;
+  }
+
+  .order-pill{
+    padding:7px 10px;
+    font-size:12px;
+  }
+
+  .content{
+    padding:18px 15px 40px;
   }
 
   .top{
-    align-items:flex-start
+    align-items:flex-start;
+    flex-direction:column;
+    margin-bottom:18px;
+  }
+
+  .top h1{
+    font-size:31px;
+  }
+
+  .action-row{
+    width:100%;
+  }
+
+  .action-row button{
+    flex:1;
+  }
+
+  .stats-grid{
+    grid-template-columns:1fr 1fr;
+    gap:10px;
+  }
+
+  .stat-card{
+    min-height:125px;
+    padding:17px;
+    border-radius:20px;
+  }
+
+  .stat-value{
+    font-size:24px;
+  }
+
+  .toolbar{
+    flex-direction:column;
+  }
+
+  .search-wrap,
+  .category-filter{
+    max-width:none;
+    width:100%;
+  }
+
+  .products-grid{
+    grid-template-columns:1fr 1fr;
+    gap:10px;
+  }
+
+  .product-card{
+    border-radius:18px;
+  }
+
+  .product-image{
+    height:165px;
+  }
+
+  .product-info{
+    padding:12px;
+  }
+
+  .product-info h3{
+    font-size:13px;
+    line-height:1.2;
+  }
+
+  .product-price{
+    font-size:13px;
+  }
+
+  .product-stock{
+    font-size:10px;
+  }
+
+  .product-actions{
+    grid-template-columns:1fr;
+  }
+
+  .edit,
+  .delete{
+    padding:9px;
+    font-size:11px;
+  }
+
+  .panel{
+    padding:17px;
+    border-radius:20px;
+  }
+
+  .category-row{
+    min-height:85px;
+    grid-template-columns:24px 35px 1fr 32px 32px 32px;
+    padding:0 12px;
+    gap:5px;
+  }
+
+  .category-emoji{
+    font-size:21px;
+  }
+
+  .category-name{
+    font-size:14px;
+  }
+
+  .category-slug{
+    font-size:11px;
+  }
+
+  .drag{
+    font-size:14px;
+  }
+
+  .eye{
+    font-size:16px;
+  }
+
+  .icon-btn{
+    font-size:19px;
+    padding:3px;
   }
 
   .row{
-    grid-template-columns:1fr
+    grid-template-columns:1fr;
   }
 
   .modal-box{
-    padding:18px
+    padding:18px;
+    border-radius:21px;
+  }
+}
+
+@media(max-width:390px){
+
+  .products-grid{
+    grid-template-columns:1fr;
+  }
+
+  .product-image{
+    height:210px;
   }
 }
 </style>
@@ -722,53 +1078,53 @@ textarea{
 
 <section class="login" id="login">
 
-<div class="login-card">
+  <div class="login-card">
 
-<div class="logo">
-MTECHBENIN
-</div>
+    <div class="logo">
+      MTECHBENIN
+    </div>
 
-<div class="muted">
-Espace d'administration
-</div>
+    <div class="muted">
+      Espace d'administration
+    </div>
 
-<h1>
-Connexion
-</h1>
+    <h1>
+      Connexion
+    </h1>
 
-<label>
-Email
-</label>
+    <label>
+      Email
+    </label>
 
-<input
-id="email"
-type="email"
-placeholder="Votre email Supabase"
->
+    <input
+      id="email"
+      type="email"
+      placeholder="Votre email Supabase"
+    >
 
-<label>
-Mot de passe
-</label>
+    <label>
+      Mot de passe
+    </label>
 
-<input
-id="password"
-type="password"
-placeholder="Votre mot de passe"
->
+    <input
+      id="password"
+      type="password"
+      placeholder="Votre mot de passe"
+    >
 
-<button
-class="primary"
-onclick="login()"
->
-Se connecter
-</button>
+    <button
+      class="primary"
+      onclick="login()"
+    >
+      Se connecter
+    </button>
 
-<div
-class="error"
-id="error"
-></div>
+    <div
+      class="error"
+      id="error"
+    ></div>
 
-</div>
+  </div>
 
 </section>
 
@@ -778,851 +1134,1114 @@ id="error"
 ========================= -->
 
 <section
-class="admin"
-id="admin"
+  class="admin"
+  id="admin"
 >
 
-<aside
-class="sidebar"
-id="sidebar"
->
-
-<div class="brand">
-
-MTECHBENIN
-
-<small>
-ADMINISTRATION
-</small>
-
-</div>
-
-
-<div class="nav">
-
-<button
-class="active"
-onclick="showPage('dashboard',this)"
->
-▦ &nbsp; Tableau de bord
-</button>
-
-<button
-onclick="showPage('products',this)"
->
-◇ &nbsp; Produits
-</button>
-
-<button
-onclick="showPage('features',this)"
->
-☷ &nbsp; Caractéristiques
-</button>
-
-<button
-onclick="showPage('categories',this)"
->
-▦ &nbsp; Catégories
-</button>
-
-<button
-onclick="showPage('orders',this)"
->
-▢ &nbsp; Commandes
-</button>
+  <div
+    class="sidebar-overlay"
+    id="sidebarOverlay"
+    onclick="toggleSidebar()"
+  ></div>
 
-<button
-onclick="showPage('subscriptions',this)"
->
-▣ &nbsp; Abonnements
-</button>
 
-<button
-onclick="showPage('repairs',this)"
->
-⚒ &nbsp; Réparations
-</button>
+  <!-- SIDEBAR -->
 
-<button
-onclick="showPage('customers',this)"
->
-♙ &nbsp; Clients
-</button>
+  <aside
+    class="sidebar"
+    id="sidebar"
+  >
 
-<button
-onclick="showPage('reviews',this)"
->
-□ &nbsp; Avis
-</button>
+    <div class="brand">
 
-<button
-onclick="showPage('contacts',this)"
->
-▱ &nbsp; Contacts
-</button>
+      MTECHBENIN
 
-<button
-onclick="showPage('faq',this)"
->
-? &nbsp; FAQ
-</button>
+      <small>
+        ADMINISTRATION
+      </small>
 
-<button
-onclick="showPage('legal',this)"
->
-▤ &nbsp; Pages légales
-</button>
+    </div>
 
-<button
-onclick="showPage('coupons',this)"
->
-◇ &nbsp; Coupons
-</button>
 
-<button
-onclick="showPage('hero',this)"
->
-▧ &nbsp; Hero Médias
-</button>
+    <div class="nav">
 
-</div>
+      <button
+        class="active"
+        onclick="showPage('dashboard',this)"
+      >
+        <span class="nav-icon">⌂</span>
+        Tableau de bord
+      </button>
 
 
-<button
-class="logout"
-onclick="logout()"
->
-↪ &nbsp; Déconnexion
-</button>
+      <button
+        onclick="showPage('products',this)"
+      >
+        <span class="nav-icon">▣</span>
+        Produits
+      </button>
 
-</aside>
 
+      <button
+        onclick="showPage('features',this)"
+      >
+        <span class="nav-icon">☷</span>
+        Caractéristiques
+      </button>
 
-<main class="main">
 
+      <button
+        onclick="showPage('categories',this)"
+      >
+        <span class="nav-icon">▦</span>
+        Catégories
+      </button>
 
-<div class="mobilebar">
 
-<button
-class="menu-btn"
-onclick="toggleSidebar()"
->
-☰
-</button>
+      <button
+        onclick="showPage('orders',this)"
+      >
+        <span class="nav-icon">▤</span>
+        Commandes
+      </button>
 
-<strong>
-Admin MTECHBENIN
-</strong>
 
-</div>
+      <button
+        onclick="showPage('subscriptions',this)"
+      >
+        <span class="nav-icon">◈</span>
+        Abonnements
+      </button>
 
 
-<!-- DASHBOARD -->
+      <button
+        onclick="showPage('repairs',this)"
+      >
+        <span class="nav-icon">⚒</span>
+        Réparations
+      </button>
 
-<section
-class="page active"
-id="dashboard"
->
 
-<div class="top">
+      <button
+        onclick="showPage('customers',this)"
+      >
+        <span class="nav-icon">♙</span>
+        Clients
+      </button>
 
-<div>
 
-<h1>
-Tableau de bord
-</h1>
+      <button
+        onclick="showPage('reviews',this)"
+      >
+        <span class="nav-icon">☆</span>
+        Avis
+      </button>
 
-<div class="muted">
-Vue générale de votre boutique.
-</div>
 
-</div>
+      <button
+        onclick="showPage('contacts',this)"
+      >
+        <span class="nav-icon">✉</span>
+        Contacts
+      </button>
 
-<button
-class="add-button"
-onclick="refreshAll()"
->
-↻ Actualiser
-</button>
 
-</div>
+      <button
+        onclick="showPage('faq',this)"
+      >
+        <span class="nav-icon">?</span>
+        FAQ
+      </button>
 
 
-<div class="grid">
+      <button
+        onclick="showPage('legal',this)"
+      >
+        <span class="nav-icon">▤</span>
+        Pages légales
+      </button>
 
-<div class="card">
 
-<small>
-Revenus
-</small>
+      <button
+        onclick="showPage('coupons',this)"
+      >
+        <span class="nav-icon">◇</span>
+        Coupons
+      </button>
 
-<strong id="dashRevenue">
-0 FCFA
-</strong>
 
-</div>
+      <button
+        onclick="showPage('hero',this)"
+      >
+        <span class="nav-icon">▧</span>
+        Hero Médias
+      </button>
 
+    </div>
 
-<div class="card">
 
-<small>
-Commandes
-</small>
+    <button
+      class="logout"
+      onclick="logout()"
+    >
+      ↪ &nbsp; Déconnexion
+    </button>
 
-<strong id="dashOrders">
-0
-</strong>
+  </aside>
 
-</div>
 
+  <!-- MAIN -->
 
-<div class="card">
+  <main class="main">
 
-<small>
-Produits actifs
-</small>
 
-<strong id="dashProducts">
-0
-</strong>
+    <!-- TOP BAR -->
 
-</div>
+    <header class="topbar">
 
+      <div class="topbar-left">
 
-<div class="card">
+        <button
+          class="topbar-menu"
+          onclick="toggleSidebar()"
+        >
+          ☰
+        </button>
 
-<small>
-Stock faible
-</small>
+        <div class="breadcrumb">
 
-<strong id="dashLow">
-0
-</strong>
+          Admin
 
-</div>
+          <span>
+            ›
+          </span>
 
-</div>
+          <strong id="breadcrumbName">
+            Tableau de bord
+          </strong>
 
+        </div>
 
-<div class="panel">
+      </div>
 
-<h2>
-Bienvenue
-</h2>
 
-<p class="muted">
-Gérez vos produits, photos, vidéos,
-caractéristiques et variantes depuis ce panneau.
-</p>
+      <div
+        class="order-pill"
+        title="Nombre de commandes"
+      >
 
-</div>
+        🛍️
 
-</section>
+        <span id="orderBadge">
+          0
+        </span>
 
+      </div>
 
-<!-- PRODUITS -->
+    </header>
 
-<section
-class="page"
-id="products"
->
 
-<div class="top">
+    <div class="content">
 
-<div>
 
-<h1>
-Produits
-</h1>
+      <!-- =========================
+           DASHBOARD
+      ========================= -->
 
-<div class="muted">
-Gérer les produits de votre boutique.
-</div>
+      <section
+        class="page active"
+        id="dashboard"
+      >
 
-</div>
+        <div class="top">
 
-<button
-class="add-button"
-onclick="openProductModal()"
->
-+ Ajouter un produit
-</button>
+          <div>
 
-</div>
+            <h1>
+              Tableau de bord
+            </h1>
 
+            <div class="page-subtitle">
+              Vue générale de votre boutique.
+            </div>
 
-<div class="toolbar">
+          </div>
 
-<input
-class="search"
-id="productSearch"
-placeholder="🔎 Rechercher un produit..."
-oninput="renderProducts()"
->
 
-</div>
+          <div class="action-row">
 
+            <button
+              class="refresh-button"
+              onclick="refreshAll()"
+            >
+              ↻ Actualiser
+            </button>
 
-<div
-class="products-grid"
-id="productsGrid"
-></div>
+          </div>
 
-</section>
+        </div>
 
 
-<!-- CARACTERISTIQUES -->
+        <div class="stats-grid">
 
-<section
-class="page"
-id="features"
->
 
-<div class="top">
+          <div class="stat-card">
 
-<div>
+            <div class="stat-label">
+              Revenus
+            </div>
 
-<h1>
-Caractéristiques
-</h1>
+            <strong
+              class="stat-value"
+              id="dashRevenue"
+            >
+              0 FCFA
+            </strong>
 
-<div class="muted">
-Bibliothèque utilisée pour les variantes.
-</div>
+          </div>
 
-</div>
 
-</div>
+          <div class="stat-card">
 
+            <div class="stat-label">
+              Commandes
+            </div>
 
-<div class="panel">
+            <strong
+              class="stat-value"
+              id="dashOrders"
+            >
+              0
+            </strong>
 
-<div id="featureLibrary"></div>
+          </div>
 
-<div class="row">
 
-<input
-id="newFeatureName"
-placeholder="Ex : Couleur"
->
+          <div class="stat-card">
 
-<input
-id="newFeatureValues"
-placeholder="Ex : Noir, Blanc, Bleu"
->
+            <div class="stat-label">
+              Produits actifs
+            </div>
 
-</div>
+            <strong
+              class="stat-value"
+              id="dashProducts"
+            >
+              0
+            </strong>
 
-<button
-class="add-line"
-onclick="addFeature()"
->
-+ Ajouter une caractéristique
-</button>
+          </div>
 
-</div>
 
-</section>
+          <div class="stat-card">
 
+            <div class="stat-label">
+              Stock faible
+            </div>
 
-<!-- CATEGORIES -->
+            <strong
+              class="stat-value"
+              id="dashLow"
+            >
+              0
+            </strong>
 
-<section
-class="page"
-id="categories"
->
+          </div>
 
-<div class="top">
+        </div>
 
-<div>
 
-<h1>
-Catégories
-</h1>
+        <div class="panel">
 
-<div class="muted">
-Catégories disponibles pour les produits.
-</div>
+          <h2>
+            Bienvenue dans votre administration
+          </h2>
 
-</div>
+          <p class="muted">
+            Gérez vos produits, catégories, photos,
+            vidéos, caractéristiques et variantes
+            depuis ce panneau.
+          </p>
 
-</div>
+        </div>
 
+      </section>
 
-<div class="panel">
 
-<div id="categoryList"></div>
+      <!-- =========================
+           PRODUITS
+      ========================= -->
 
-<div class="row">
+      <section
+        class="page"
+        id="products"
+      >
 
-<input
-id="newCategory"
-placeholder="Nouvelle catégorie"
->
+        <div class="top">
 
-<button
-class="add-line"
-onclick="addCategory()"
->
-Ajouter
-</button>
+          <div>
 
-</div>
+            <h1>
+              Produits
+            </h1>
 
-</div>
+            <div class="page-subtitle">
 
-</section>
+              <span id="productCount">
+                0
+              </span>
 
+              produits au total
 
-<!-- COMMANDES -->
+            </div>
 
-<section
-class="page"
-id="orders"
->
+          </div>
 
-<div class="top">
 
-<div>
+          <div class="action-row">
 
-<h1>
-Commandes
-</h1>
+            <button
+              class="refresh-button"
+              onclick="refreshAll()"
+            >
+              ↻ Actualiser
+            </button>
 
-<div class="muted">
-Toutes les commandes de vos clients.
-</div>
 
-</div>
+            <button
+              class="add-button"
+              onclick="openProductModal()"
+            >
+              ＋ Ajouter un produit
+            </button>
 
-</div>
+          </div>
 
-<div class="panel">
+        </div>
 
-<div class="empty">
 
-🛒
+        <div class="toolbar-card">
 
-<h2>
-Commandes
-</h2>
+          <div class="toolbar">
 
-<p>
-La connexion de cette section à votre système
-de paiement/commande sera faite ensuite.
-</p>
+            <div class="search-wrap">
 
-</div>
+              <span class="search-icon">
+                ⌕
+              </span>
 
-</div>
+              <input
+                id="productSearch"
+                placeholder="Rechercher un produit..."
+                oninput="renderProducts()"
+              >
 
-</section>
+            </div>
 
 
-<!-- ABONNEMENTS -->
+            <select
+              class="category-filter"
+              id="productFilter"
+              onchange="renderProducts()"
+            >
 
-<section
-class="page"
-id="subscriptions"
->
+              <option value="">
+                Toutes catégories
+              </option>
 
-<div class="top">
+            </select>
 
-<div>
+          </div>
 
-<h1>
-Abonnements
-</h1>
+        </div>
 
-<div class="muted">
-Services digitaux.
-</div>
 
-</div>
+        <div
+          class="products-grid"
+          id="productsGrid"
+        ></div>
 
-</div>
+      </section>
 
 
-<div class="panel">
+      <!-- =========================
+           CARACTERISTIQUES
+      ========================= -->
 
-<table class="table">
+      <section
+        class="page"
+        id="features"
+      >
 
-<tr>
-<th>Service</th>
-<th>Prix</th>
-<th>Statut</th>
-</tr>
+        <div class="top">
 
-<tr>
-<td>Netflix</td>
-<td>2 000 FCFA</td>
-<td><span class="badge">Actif</span></td>
-</tr>
+          <div>
 
-<tr>
-<td>Apple Music</td>
-<td>1 500 FCFA</td>
-<td><span class="badge">Actif</span></td>
-</tr>
+            <h1>
+              Caractéristiques
+            </h1>
 
-<tr>
-<td>Apple TV</td>
-<td>1 500 FCFA</td>
-<td><span class="badge">Actif</span></td>
-</tr>
+            <div class="page-subtitle">
+              Bibliothèque utilisée pour les variantes.
+            </div>
 
-<tr>
-<td>Apple Services</td>
-<td>2 500 FCFA</td>
-<td><span class="badge">Actif</span></td>
-</tr>
+          </div>
 
-</table>
+        </div>
 
-</div>
 
-</section>
+        <div class="panel">
 
+          <div id="featureLibrary"></div>
 
-<!-- REPARATIONS -->
 
-<section
-class="page"
-id="repairs"
->
+          <div class="row">
 
-<div class="top">
+            <input
+              id="newFeatureName"
+              placeholder="Ex : Couleur"
+            >
 
-<div>
+            <input
+              id="newFeatureValues"
+              placeholder="Ex : Noir, Blanc, Bleu"
+            >
 
-<h1>
-Réparations
-</h1>
+          </div>
 
-<div class="muted">
-Demandes de réparation.
-</div>
 
-</div>
+          <button
+            class="add-line"
+            onclick="addFeature()"
+          >
+            + Ajouter une caractéristique
+          </button>
 
-</div>
+        </div>
 
-<div class="panel">
+      </section>
 
-<div class="empty">
 
-🔧
+      <!-- =========================
+           CATEGORIES
+      ========================= -->
 
-<h2>
-Aucune demande
-</h2>
+      <section
+        class="page"
+        id="categories"
+      >
 
-<p>
-Les demandes apparaîtront ici lorsque cette partie
-sera connectée au site.
-</p>
+        <div class="top">
 
-</div>
+          <div>
 
-</div>
+            <h1>
+              Catégories
+            </h1>
 
-</section>
+            <div class="page-subtitle">
 
+              <span id="categoryCount">
+                0
+              </span>
 
-<!-- CLIENTS -->
+              catégories au total
 
-<section
-class="page"
-id="customers"
->
+            </div>
 
-<div class="top">
+          </div>
 
-<div>
 
-<h1>
-Clients
-</h1>
+          <div class="action-row">
 
-<div class="muted">
-Clients de MTECHBENIN.
-</div>
+            <button
+              class="refresh-button"
+              onclick="renderCategories()"
+            >
+              ↻ Actualiser
+            </button>
 
-</div>
 
-</div>
+            <button
+              class="add-button"
+              onclick="focusNewCategory()"
+            >
+              ＋ Ajouter
+            </button>
 
-<div class="panel">
+          </div>
 
-<div class="empty">
+        </div>
 
-👥
 
-<h2>
-Clients
-</h2>
+        <div class="panel">
 
-<p>
-Cette section sera connectée aux commandes
-et comptes clients.
-</p>
+          <div
+            class="category-list"
+            id="categoryList"
+          ></div>
 
-</div>
 
-</div>
+          <div
+            class="row"
+            style="margin-top:18px"
+          >
 
-</section>
+            <input
+              id="newCategory"
+              placeholder="Nouvelle catégorie"
+            >
 
 
-<!-- AVIS -->
+            <button
+              class="add-line"
+              onclick="addCategory()"
+            >
+              ＋ Ajouter la catégorie
+            </button>
 
-<section
-class="page"
-id="reviews"
->
+          </div>
 
-<div class="top">
+        </div>
 
-<div>
+      </section>
 
-<h1>
-Avis
-</h1>
 
-<div class="muted">
-Avis clients.
-</div>
+      <!-- =========================
+           COMMANDES
+      ========================= -->
 
-</div>
+      <section
+        class="page"
+        id="orders"
+      >
 
-</div>
+        <div class="top">
 
-<div class="panel">
+          <div>
 
-<div class="empty">
+            <h1>
+              Commandes
+            </h1>
 
-💬
+            <div class="page-subtitle">
+              Toutes les commandes de vos clients.
+            </div>
 
-<h2>
-Aucun avis
-</h2>
+          </div>
 
-</div>
+        </div>
 
-</div>
 
-</section>
+        <div class="panel">
 
+          <div class="empty">
 
-<!-- CONTACTS -->
+            <div class="empty-icon">
+              🛒
+            </div>
 
-<section
-class="page"
-id="contacts"
->
+            <h2>
+              Commandes
+            </h2>
 
-<div class="top">
+            <p>
+              Cette section pourra être reliée
+              à ta table de commandes Supabase.
+            </p>
 
-<div>
+          </div>
 
-<h1>
-Contacts
-</h1>
+        </div>
 
-<div class="muted">
-Messages reçus.
-</div>
+      </section>
 
-</div>
 
-</div>
+      <!-- =========================
+           ABONNEMENTS
+      ========================= -->
 
-<div class="panel">
+      <section
+        class="page"
+        id="subscriptions"
+      >
 
-<div class="empty">
+        <div class="top">
 
-✉️
+          <div>
 
-<h2>
-Aucun contact
-</h2>
+            <h1>
+              Abonnements
+            </h1>
 
-</div>
+            <div class="page-subtitle">
+              Services digitaux.
+            </div>
 
-</div>
+          </div>
 
-</section>
+        </div>
 
 
-<!-- FAQ -->
+        <div class="panel">
 
-<section
-class="page"
-id="faq"
->
+          <div class="table-container">
 
-<div class="top">
+            <table class="table">
 
-<div>
+              <tr>
 
-<h1>
-FAQ
-</h1>
+                <th>
+                  Service
+                </th>
 
-<div class="muted">
-Questions fréquentes.
-</div>
+                <th>
+                  Prix
+                </th>
 
-</div>
+                <th>
+                  Statut
+                </th>
 
-</div>
+              </tr>
 
-<div class="panel">
 
-<div class="empty">
+              <tr>
 
-❓
+                <td>
+                  Netflix
+                </td>
 
-<h2>
-FAQ
-</h2>
+                <td>
+                  2 000 FCFA
+                </td>
 
-<p>
-La gestion des questions sera ajoutée ici.
-</p>
+                <td>
+                  <span class="badge">
+                    Actif
+                  </span>
+                </td>
 
-</div>
+              </tr>
 
-</div>
 
-</section>
+              <tr>
 
+                <td>
+                  Apple Music
+                </td>
 
-<!-- LEGAL -->
+                <td>
+                  1 500 FCFA
+                </td>
 
-<section
-class="page"
-id="legal"
->
+                <td>
+                  <span class="badge">
+                    Actif
+                  </span>
+                </td>
 
-<div class="top">
+              </tr>
 
-<div>
 
-<h1>
-Pages légales
-</h1>
+              <tr>
 
-<div class="muted">
-Configuration des pages légales.
-</div>
+                <td>
+                  Apple TV
+                </td>
 
-</div>
+                <td>
+                  1 500 FCFA
+                </td>
 
-</div>
+                <td>
+                  <span class="badge">
+                    Actif
+                  </span>
+                </td>
 
-<div class="panel">
+              </tr>
 
-<div class="empty">
 
-📄
+              <tr>
 
-<h2>
-Pages légales
-</h2>
+                <td>
+                  Apple Services
+                </td>
 
-</div>
+                <td>
+                  2 500 FCFA
+                </td>
 
-</div>
+                <td>
+                  <span class="badge">
+                    Actif
+                  </span>
+                </td>
 
-</section>
+              </tr>
 
+            </table>
 
-<!-- COUPONS -->
+          </div>
 
-<section
-class="page"
-id="coupons"
->
+        </div>
 
-<div class="top">
+      </section>
 
-<div>
 
-<h1>
-Coupons
-</h1>
+      <!-- =========================
+           AUTRES
+      ========================= -->
 
-<div class="muted">
-Codes promotionnels.
-</div>
+      <section
+        class="page"
+        id="repairs"
+      >
 
-</div>
+        <div class="top">
 
-</div>
+          <div>
 
-<div class="panel">
+            <h1>
+              Réparations
+            </h1>
 
-<div class="empty">
+            <div class="page-subtitle">
+              Demandes de réparation.
+            </div>
 
-🏷️
+          </div>
 
-<h2>
-Aucun coupon
-</h2>
+        </div>
 
-</div>
 
-</div>
+        <div class="panel">
 
-</section>
+          <div class="empty">
 
+            <div class="empty-icon">
+              🔧
+            </div>
 
-<!-- HERO -->
+            <h2>
+              Aucune demande
+            </h2>
 
-<section
-class="page"
-id="hero"
->
+            <p>
+              Les demandes apparaîtront ici
+              lorsque cette partie sera connectée.
+            </p>
 
-<div class="top">
+          </div>
 
-<div>
+        </div>
 
-<h1>
-Hero Médias
-</h1>
+      </section>
 
-<div class="muted">
-Votre bibliothèque Hero existante n'est pas modifiée.
-</div>
 
-</div>
+      <section
+        class="page"
+        id="customers"
+      >
 
-</div>
+        <div class="top">
 
-<div class="panel">
+          <div>
 
-<div class="empty">
+            <h1>
+              Clients
+            </h1>
 
-🖼️
+            <div class="page-subtitle">
+              Clients de MTECHBENIN.
+            </div>
 
-<h2>
-Hero Médias
-</h2>
+          </div>
 
-<p>
-Les éléments existants restent inchangés.
-</p>
+        </div>
 
-</div>
 
-</div>
+        <div class="panel">
 
-</section>
+          <div class="empty">
 
+            <div class="empty-icon">
+              👥
+            </div>
 
-</main>
+            <h2>
+              Clients
+            </h2>
+
+            <p>
+              Cette section sera connectée
+              aux commandes et comptes clients.
+            </p>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <section
+        class="page"
+        id="reviews"
+      >
+
+        <div class="top">
+
+          <div>
+
+            <h1>
+              Avis
+            </h1>
+
+            <div class="page-subtitle">
+              Avis clients.
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <div class="panel">
+
+          <div class="empty">
+
+            <div class="empty-icon">
+              💬
+            </div>
+
+            <h2>
+              Aucun avis
+            </h2>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <section
+        class="page"
+        id="contacts"
+      >
+
+        <div class="top">
+
+          <div>
+
+            <h1>
+              Contacts
+            </h1>
+
+            <div class="page-subtitle">
+              Messages reçus.
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <div class="panel">
+
+          <div class="empty">
+
+            <div class="empty-icon">
+              ✉️
+            </div>
+
+            <h2>
+              Aucun contact
+            </h2>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <section
+        class="page"
+        id="faq"
+      >
+
+        <div class="top">
+
+          <div>
+
+            <h1>
+              FAQ
+            </h1>
+
+            <div class="page-subtitle">
+              Questions fréquentes.
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <div class="panel">
+
+          <div class="empty">
+
+            <div class="empty-icon">
+              ❓
+            </div>
+
+            <h2>
+              FAQ
+            </h2>
+
+            <p>
+              La gestion des questions sera ajoutée ici.
+            </p>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <section
+        class="page"
+        id="legal"
+      >
+
+        <div class="top">
+
+          <div>
+
+            <h1>
+              Pages légales
+            </h1>
+
+            <div class="page-subtitle">
+              Configuration des pages légales.
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <div class="panel">
+
+          <div class="empty">
+
+            <div class="empty-icon">
+              📄
+            </div>
+
+            <h2>
+              Pages légales
+            </h2>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <section
+        class="page"
+        id="coupons"
+      >
+
+        <div class="top">
+
+          <div>
+
+            <h1>
+              Coupons
+            </h1>
+
+            <div class="page-subtitle">
+              Codes promotionnels.
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <div class="panel">
+
+          <div class="empty">
+
+            <div class="empty-icon">
+              🏷️
+            </div>
+
+            <h2>
+              Aucun coupon
+            </h2>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <section
+        class="page"
+        id="hero"
+      >
+
+        <div class="top">
+
+          <div>
+
+            <h1>
+              Hero Médias
+            </h1>
+
+            <div class="page-subtitle">
+              Bibliothèque Hero du site.
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <div class="panel">
+
+          <div class="empty">
+
+            <div class="empty-icon">
+              🖼️
+            </div>
+
+            <h2>
+              Hero Médias
+            </h2>
+
+            <p>
+              Les éléments existants restent inchangés.
+            </p>
+
+          </div>
+
+        </div>
+
+      </section>
+
+    </div>
+
+  </main>
 
 </section>
 
@@ -1632,359 +2251,351 @@ Les éléments existants restent inchangés.
 ========================= -->
 
 <div
-class="modal"
-id="productModal"
+  class="modal"
+  id="productModal"
 >
 
-<div class="modal-box">
+  <div class="modal-box">
 
 
-<div class="modal-header">
+    <div class="modal-header">
 
-<h2 id="modalTitle">
-Ajouter un produit
-</h2>
+      <h2 id="modalTitle">
+        Ajouter un produit
+      </h2>
 
-<button
-class="close"
-onclick="closeProductModal()"
->
-×
-</button>
+      <button
+        class="close"
+        onclick="closeProductModal()"
+      >
+        ×
+      </button>
 
-</div>
+    </div>
 
 
-<input
-type="hidden"
-id="productId"
->
+    <input
+      type="hidden"
+      id="productId"
+    >
 
 
-<!-- NOM -->
+    <div class="form-group">
 
-<div class="form-group">
+      <label>
+        Nom du produit *
+      </label>
 
-<label>
-Nom du produit *
-</label>
+      <input
+        id="productName"
+        placeholder="Ex : iPhone 17 Pro"
+      >
 
-<input
-id="productName"
-placeholder="Ex : iPhone 17 Pro"
->
+    </div>
 
-</div>
 
+    <div class="row">
 
-<!-- PRIX STOCK -->
 
-<div class="row">
+      <div class="form-group">
 
-<div class="form-group">
+        <label>
+          Prix (FCFA) *
+        </label>
 
-<label>
-Prix (FCFA) *
-</label>
+        <input
+          id="productPrice"
+          type="number"
+          placeholder="500000"
+        >
 
-<input
-id="productPrice"
-type="number"
-placeholder="500000"
->
+      </div>
 
-</div>
 
+      <div class="form-group">
 
-<div class="form-group">
+        <label>
+          Stock
+        </label>
 
-<label>
-Stock
-</label>
+        <input
+          id="productStock"
+          type="number"
+          placeholder="10"
+        >
 
-<input
-id="productStock"
-type="number"
-placeholder="10"
->
+      </div>
 
-</div>
+    </div>
 
-</div>
 
+    <div class="form-group">
 
-<!-- CATEGORIE -->
+      <label>
+        Catégorie
+      </label>
 
-<div class="form-group">
+      <select
+        id="productCategory"
+      ></select>
 
-<label>
-Catégorie
-</label>
+    </div>
 
-<select id="productCategory"></select>
 
-</div>
+    <div class="form-group">
 
+      <label>
+        Description
+      </label>
 
-<!-- DESCRIPTION -->
+      <textarea
+        id="productDescription"
+        placeholder="Description du produit..."
+      ></textarea>
 
-<div class="form-group">
+    </div>
 
-<label>
-Description
-</label>
 
-<textarea
-id="productDescription"
-placeholder="Description du produit..."
-></textarea>
+    <div class="section-title">
+      Photos et vidéo
+    </div>
 
-</div>
 
+    <div class="file-box">
 
-<!-- MEDIA -->
+      <label>
+        Photo du produit
+      </label>
 
-<div class="section-title">
-Photos et vidéo
-</div>
+      <input
+        id="productImageFile"
+        type="file"
+        accept="image/*"
+        onchange="previewFile('image')"
+      >
 
+      <div
+        class="preview"
+        id="imagePreview"
+      ></div>
 
-<div class="file-box">
+      <div
+        class="progress"
+        id="imageProgress"
+      >
 
-<label>
-Photo du produit
-</label>
+        <div></div>
 
-<input
-id="productImageFile"
-type="file"
-accept="image/*"
-onchange="previewFile('image')"
->
+      </div>
 
-<div
-class="preview"
-id="imagePreview"
-></div>
+    </div>
 
-<div
-class="progress"
-id="imageProgress"
->
-<div></div>
-</div>
 
-</div>
+    <div
+      class="file-box"
+      style="margin-top:10px"
+    >
 
+      <label>
+        Vidéo du produit
+      </label>
 
-<div
-class="file-box"
-style="margin-top:10px"
->
+      <input
+        id="productVideoFile"
+        type="file"
+        accept="video/*"
+        onchange="previewFile('video')"
+      >
 
-<label>
-Vidéo du produit
-</label>
+      <div
+        class="preview"
+        id="videoPreview"
+      ></div>
 
-<input
-id="productVideoFile"
-type="file"
-accept="video/*"
-onchange="previewFile('video')"
->
+      <div
+        class="progress"
+        id="videoProgress"
+      >
 
-<div
-class="preview"
-id="videoPreview"
-></div>
+        <div></div>
 
-<div
-class="progress"
-id="videoProgress"
->
-<div></div>
-</div>
+      </div>
 
-</div>
+    </div>
 
 
-<div
-class="form-group"
-style="margin-top:10px"
->
+    <div
+      class="form-group"
+      style="margin-top:10px"
+    >
 
-<label>
-Ou URL d'image
-</label>
+      <label>
+        Ou URL d'image
+      </label>
 
-<input
-id="productImage"
-placeholder="https://..."
->
+      <input
+        id="productImage"
+        placeholder="https://..."
+      >
 
-</div>
+    </div>
 
 
-<div class="form-group">
+    <div class="form-group">
 
-<label>
-Ou URL de vidéo
-</label>
+      <label>
+        Ou URL de vidéo
+      </label>
 
-<input
-id="productVideo"
-placeholder="https://..."
->
+      <input
+        id="productVideo"
+        placeholder="https://..."
+      >
 
-</div>
+    </div>
 
 
-<!-- VISIBILITE -->
+    <div class="section-title">
+      Visibilité
+    </div>
 
-<div class="section-title">
-Visibilité
-</div>
 
+    <div class="switch-row">
 
-<div class="switch-row">
+      <div>
 
-<div>
+        <strong>
+          Produit visible
+        </strong>
 
-<strong>
-Produit visible
-</strong>
+        <div class="muted">
+          Affiché sur le site public
+        </div>
 
-<div class="muted">
-Affiché sur le site public
-</div>
+      </div>
 
-</div>
 
+      <button
+        id="visibleSwitch"
+        class="switch on"
+        onclick="toggleSwitch('visibleSwitch')"
+      >
 
-<button
-id="visibleSwitch"
-class="switch on"
-onclick="toggleSwitch('visibleSwitch')"
->
+        <i></i>
 
-<i></i>
+      </button>
 
-</button>
+    </div>
 
-</div>
 
+    <div class="switch-row">
 
-<div class="switch-row">
+      <div>
 
-<div>
+        <strong>
+          Coup de cœur
+        </strong>
 
-<strong>
-Coup de cœur
-</strong>
+        <div class="muted">
+          Mettre en avant le produit
+        </div>
 
-<div class="muted">
-Afficher dans « Nos Coups de Cœur »
-</div>
+      </div>
 
-</div>
 
+      <button
+        id="featuredSwitch"
+        class="switch"
+        onclick="toggleSwitch('featuredSwitch')"
+      >
 
-<button
-id="featuredSwitch"
-class="switch"
-onclick="toggleSwitch('featuredSwitch')"
->
+        <i></i>
 
-<i></i>
+      </button>
 
-</button>
+    </div>
 
-</div>
 
+    <div class="section-title">
+      Spécifications techniques
+    </div>
 
-<!-- SPECIFICATIONS -->
 
-<div class="section-title">
-Spécifications techniques
-</div>
+    <div
+      id="specList"
+      class="spec-list"
+    ></div>
 
 
-<div
-id="specList"
-class="spec-list"
-></div>
+    <button
+      class="add-line"
+      onclick="addSpecRow()"
+    >
+      + Ajouter une spécification
+    </button>
 
 
-<button
-class="add-line"
-onclick="addSpecRow()"
->
-+ Ajouter une spécification
-</button>
+    <div class="section-title">
+      Variantes
+    </div>
 
 
-<!-- VARIANTES -->
+    <div
+      class="muted"
+      style="margin-bottom:10px"
+    >
+      Exemples : Couleur, Taille, Modèle.
+    </div>
 
-<div class="section-title">
-Variantes
-</div>
 
+    <div
+      id="variantList"
+      class="variant-list"
+    ></div>
 
-<div
-class="muted"
-style="margin-bottom:10px"
->
-Exemples : Couleur, Taille, Modèle.
-</div>
 
+    <button
+      class="add-line"
+      onclick="addVariantRow()"
+    >
+      + Ajouter un type de variante
+    </button>
 
-<div
-id="variantList"
-class="variant-list"
-></div>
 
+    <div class="form-actions">
 
-<button
-class="add-line"
-onclick="addVariantRow()"
->
-+ Ajouter un type de variante
-</button>
+      <button
+        class="cancel"
+        onclick="closeProductModal()"
+      >
+        Annuler
+      </button>
 
 
-<!-- BOUTONS -->
+      <button
+        class="save"
+        onclick="saveProduct()"
+      >
+        Enregistrer le produit
+      </button>
 
-<div class="form-actions">
+    </div>
 
-<button
-class="cancel"
-onclick="closeProductModal()"
->
-Annuler
-</button>
 
-<button
-class="save"
-onclick="saveProduct()"
->
-Enregistrer le produit
-</button>
-
-</div>
-
-
-</div>
+  </div>
 
 </div>
 
 
 <div
-class="toast"
-id="toast"
+  class="toast"
+  id="toast"
 ></div>
 
 
-<!-- SUPABASE -->
+<!-- =========================
+     SUPABASE
+========================= -->
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
@@ -1999,12 +2610,6 @@ const SUPABASE_URL =
 "https://eldbudjhbsnvuffjpiue.supabase.co";
 
 
-/*
-   IMPORTANT :
-   Mets ici ta clé sb_publishable_...
-   PAS ta clé sb_secret_...
-*/
-
 const SUPABASE_PUBLISHABLE_KEY =
 "sb_publishable_u8yaezMW2z78tLG7DnIe3g_kjVQIlde";
 
@@ -2013,38 +2618,88 @@ const PRODUCT_BUCKET =
 "products";
 
 
-/*
-   TON NOUVEL UTILISATEUR ADMIN
-*/
-
-const ADMIN_UUID =
-"eb0a43a7-d1f1-440e-b7bb-a7844fdaac57";
-
-
 const sb =
 window.supabase.createClient(
-SUPABASE_URL,
-SUPABASE_PUBLISHABLE_KEY
+  SUPABASE_URL,
+  SUPABASE_PUBLISHABLE_KEY
 );
 
 
 let editingId = null;
 
+let allProducts = [];
+
+
+/* ==========================================
+   CATEGORIES
+========================================== */
+
+const defaultCategories = [
+
+"T-shirt",
+
+"Basket",
+
+"For men",
+
+"Téléphone/Tablette/Pc",
+
+"Écouteurs",
+
+"Enceintes",
+
+"Vapes",
+
+"Univers des femmes",
+
+"Accessoires"
+
+];
+
 
 let categories =
 JSON.parse(
-localStorage.getItem("mtech_categories")
-||
-'["Smartphones","Ordinateurs","Accessoires","Écouteurs","Enceintes","Autres"]'
+  localStorage.getItem(
+    "mtech_categories"
+  )
+  ||
+  JSON.stringify(
+    defaultCategories
+  )
 );
 
 
 let features =
 JSON.parse(
-localStorage.getItem("mtech_features")
-||
-"[]"
+  localStorage.getItem(
+    "mtech_features"
+  )
+  ||
+  "[]"
 );
+
+
+const categoryIcons = {
+
+"T-shirt":"🛍️",
+
+"Basket":"👟",
+
+"For men":"⌚",
+
+"Téléphone/Tablette/Pc":"📱",
+
+"Écouteurs":"🎧",
+
+"Enceintes":"🔊",
+
+"Vapes":"💨",
+
+"Univers des femmes":"🌸",
+
+"Accessoires":"🎮"
+
+};
 
 
 /* ==========================================
@@ -2054,15 +2709,23 @@ localStorage.getItem("mtech_features")
 function toast(message){
 
 const t =
-document.getElementById("toast");
+document.getElementById(
+  "toast"
+);
 
-t.textContent = message;
+t.textContent =
+message;
 
-t.classList.add("show");
+t.classList.add(
+  "show"
+);
 
 setTimeout(
-()=>t.classList.remove("show"),
-2600
+  ()=>
+    t.classList.remove(
+      "show"
+    ),
+  2600
 );
 
 }
@@ -2070,22 +2733,81 @@ setTimeout(
 
 function esc(value){
 
-return String(value ?? "")
-.replace(/&/g,"&amp;")
-.replace(/</g,"&lt;")
-.replace(/>/g,"&gt;")
-.replace(/"/g,"&quot;")
-.replace(/'/g,"&#039;");
+return String(
+  value ?? ""
+)
+
+.replace(
+  /&/g,
+  "&amp;"
+)
+
+.replace(
+  /</g,
+  "&lt;"
+)
+
+.replace(
+  />/g,
+  "&gt;"
+)
+
+.replace(
+  /"/g,
+  "&quot;"
+)
+
+.replace(
+  /'/g,
+  "&#039;"
+);
 
 }
 
 
 function money(value){
 
-return Number(value || 0)
-.toLocaleString("fr-FR")
+return Number(
+  value || 0
+)
+
+.toLocaleString(
+  "fr-FR"
+)
+
 +
 " FCFA";
+
+}
+
+
+function slugify(value){
+
+return String(
+  value || ""
+)
+
+.normalize(
+  "NFD"
+)
+
+.replace(
+  /[\u0300-\u036f]/g,
+  ""
+)
+
+.toLowerCase()
+
+.trim()
+
+.replace(
+  /[^a-z0-9]+/g,
+  "-"
+)
+
+.replace(
+  /^-+|-+$/g,
+  "");
 
 }
 
@@ -2094,36 +2816,141 @@ return Number(value || 0)
    NAVIGATION
 ========================================== */
 
-function showPage(id,button){
+const pageNames = {
+
+dashboard:
+"Tableau de bord",
+
+products:
+"Produits",
+
+features:
+"Caractéristiques",
+
+categories:
+"Catégories",
+
+orders:
+"Commandes",
+
+subscriptions:
+"Abonnements",
+
+repairs:
+"Réparations",
+
+customers:
+"Clients",
+
+reviews:
+"Avis",
+
+contacts:
+"Contacts",
+
+faq:
+"FAQ",
+
+legal:
+"Pages légales",
+
+coupons:
+"Coupons",
+
+hero:
+"Hero Médias"
+
+};
+
+
+function showPage(
+  id,
+  button
+){
 
 document
-.querySelectorAll(".page")
+.querySelectorAll(
+  ".page"
+)
 .forEach(
-x=>x.classList.remove("active")
+  x =>
+    x.classList.remove(
+      "active"
+    )
 );
 
-document
-.getElementById(id)
-.classList.add("active");
 
-
-document
-.querySelectorAll(".nav button")
-.forEach(
-x=>x.classList.remove("active")
+const page =
+document.getElementById(
+  id
 );
 
-button.classList.add("active");
+
+if(page)
+page.classList.add(
+  "active"
+);
+
+
+document
+.querySelectorAll(
+  ".nav button"
+)
+.forEach(
+  x =>
+    x.classList.remove(
+      "active"
+    )
+);
+
+
+if(button)
+button.classList.add(
+  "active"
+);
+
+
+document
+.getElementById(
+  "breadcrumbName"
+)
+.textContent =
+pageNames[id]
+||
+id;
 
 
 if(id==="products")
 renderProducts();
 
 
-if(innerWidth<=700)
+if(id==="categories")
+renderCategories();
+
+
+if(id==="features")
+renderFeatures();
+
+
+if(window.innerWidth<=700){
+
 document
-.getElementById("sidebar")
-.classList.remove("open");
+.getElementById(
+  "sidebar"
+)
+.classList.remove(
+  "open"
+);
+
+document
+.getElementById(
+  "sidebarOverlay"
+)
+.classList.remove(
+  "open"
+);
+
+}
 
 }
 
@@ -2131,8 +2958,21 @@ document
 function toggleSidebar(){
 
 document
-.getElementById("sidebar")
-.classList.toggle("open");
+.getElementById(
+  "sidebar"
+)
+.classList.toggle(
+  "open"
+);
+
+
+document
+.getElementById(
+  "sidebarOverlay"
+)
+.classList.toggle(
+  "open"
+);
 
 }
 
@@ -2145,7 +2985,9 @@ function toggleSwitch(id){
 
 document
 .getElementById(id)
-.classList.toggle("on");
+.classList.toggle(
+  "on"
+);
 
 }
 
@@ -2155,7 +2997,9 @@ function isOn(id){
 return document
 .getElementById(id)
 .classList
-.contains("on");
+.contains(
+  "on"
+);
 
 }
 
@@ -2168,31 +3012,57 @@ async function login(){
 
 const email =
 document
-.getElementById("email")
+.getElementById(
+  "email"
+)
 .value
 .trim();
 
 
 const password =
 document
-.getElementById("password")
+.getElementById(
+  "password"
+)
 .value;
 
 
 const error =
 document
-.getElementById("error");
+.getElementById(
+  "error"
+);
 
 
-error.style.display="none";
+error.style.display =
+"none";
+
+
+if(
+  !email ||
+  !password
+){
+
+error.textContent =
+"Veuillez saisir votre email et votre mot de passe.";
+
+error.style.display =
+"block";
+
+return;
+
+}
 
 
 const {
-error:e
+  error:e
 } =
 await sb.auth.signInWithPassword({
+
 email,
+
 password
+
 });
 
 
@@ -2203,7 +3073,8 @@ error.textContent =
 +
 e.message;
 
-error.style.display="block";
+error.style.display =
+"block";
 
 return;
 
@@ -2235,13 +3106,19 @@ location.reload();
 async function showAdmin(){
 
 document
-.getElementById("login")
-.style.display="none";
+.getElementById(
+  "login"
+)
+.style.display =
+"none";
 
 
 document
-.getElementById("admin")
-.style.display="block";
+.getElementById(
+  "admin"
+)
+.style.display =
+"block";
 
 
 renderCategories();
@@ -2260,14 +3137,14 @@ await refreshAll();
 (async()=>{
 
 const {
-data
+  data
 } =
 await sb.auth.getSession();
 
 
 if(data.session){
 
-showAdmin();
+await showAdmin();
 
 }
 
@@ -2281,17 +3158,24 @@ showAdmin();
 async function getProducts(){
 
 const {
-data,
-error
+  data,
+  error
 } =
 await sb
-.from("products")
-.select("*")
+
+.from(
+  "products"
+)
+
+.select(
+  "*"
+)
+
 .order(
-"created_at",
-{
-ascending:false
-}
+  "created_at",
+  {
+    ascending:false
+  }
 );
 
 
@@ -2300,9 +3184,9 @@ if(error){
 console.error(error);
 
 toast(
-"Erreur : "
-+
-error.message
+  "Erreur : "
+  +
+  error.message
 );
 
 return [];
@@ -2311,6 +3195,56 @@ return [];
 
 
 return data || [];
+
+}
+
+
+/* ==========================================
+   FILTRE PRODUITS
+========================================== */
+
+function updateProductFilter(){
+
+const select =
+document.getElementById(
+  "productFilter"
+);
+
+
+const current =
+select.value;
+
+
+select.innerHTML =
+
+'<option value="">Toutes catégories</option>'
+
++
+
+categories
+
+.map(
+  c =>
+    `
+    <option value="${esc(c)}">
+      ${esc(c)}
+    </option>
+    `
+)
+
+.join("");
+
+
+if(
+  categories.includes(
+    current
+  )
+){
+
+select.value =
+current;
+
+}
 
 }
 
@@ -2325,23 +3259,80 @@ const products =
 await getProducts();
 
 
-document
-.getElementById("dashProducts")
-.textContent =
-products.filter(
-x=>x.active
-).length;
+allProducts =
+products;
 
 
 document
-.getElementById("dashLow")
+.getElementById(
+  "dashProducts"
+)
 .textContent =
+
 products.filter(
-x=>Number(x.stock || 0)<=3
-).length;
+  x => x.active
+)
+.length;
 
 
-renderProducts(products);
+document
+.getElementById(
+  "dashLow"
+)
+.textContent =
+
+products.filter(
+  x =>
+    Number(
+      x.stock || 0
+    )
+    <= 3
+)
+.length;
+
+
+document
+.getElementById(
+  "productCount"
+)
+.textContent =
+products.length;
+
+
+renderProducts(
+  products
+);
+
+
+updateProductFilter();
+
+
+/*
+  Les commandes ne sont pas inventées.
+*/
+
+document
+.getElementById(
+  "dashOrders"
+)
+.textContent =
+"0";
+
+
+document
+.getElementById(
+  "orderBadge"
+)
+.textContent =
+"0";
+
+
+document
+.getElementById(
+  "dashRevenue"
+)
+.textContent =
+"0 FCFA";
 
 }
 
@@ -2350,11 +3341,13 @@ renderProducts(products);
    AFFICHAGE PRODUITS
 ========================================== */
 
-async function renderProducts(given){
+function renderProducts(
+  given
+){
 
 const grid =
 document.getElementById(
-"productsGrid"
+  "productsGrid"
 );
 
 
@@ -2364,151 +3357,286 @@ return;
 
 const all =
 given ||
-await getProducts();
+allProducts;
 
 
 const q =
 (
+  document
+  .getElementById(
+    "productSearch"
+  )
+  ?.value
+  ||
+  ""
+)
+.toLowerCase()
+.trim();
+
+
+const category =
 document
 .getElementById(
-"productSearch"
+  "productFilter"
 )
 ?.value
 ||
-""
-)
-.toLowerCase();
+"";
 
 
 const list =
 all.filter(
-p=>
-(p.name || "")
-.toLowerCase()
-.includes(q)
+  p => {
+
+    const matchesSearch =
+
+      (
+        p.name ||
+        ""
+      )
+      .toLowerCase()
+      .includes(q)
+
+      ||
+
+      (
+        p.category ||
+        ""
+      )
+      .toLowerCase()
+      .includes(q);
+
+
+    const matchesCategory =
+
+      !category
+      ||
+      p.category === category;
+
+
+    return (
+      matchesSearch
+      &&
+      matchesCategory
+    );
+
+  }
 );
 
 
 grid.innerHTML =
+
 list.length
+
 ?
-list.map(p=>`
 
-<article class="product-card">
+list
 
-<div class="product-image">
-
-${
-p.image_url
-?
+.map(
+  p =>
 `
-<img
-src="${esc(p.image_url)}"
-alt="${esc(p.name)}"
+
+<article
+  class="product-card"
 >
-`
-:
-`
-<span class="no-image">
-📦
-</span>
-`
-}
+
+
+<div
+  class="product-image"
+>
+
 
 ${
-p.video_url
-?
-`
-<span class="media-badge">
-🎥 Vidéo
-</span>
-`
-:
-""
+  p.image_url
+
+  ?
+
+  `
+  <img
+    src="${esc(p.image_url)}"
+    alt="${esc(p.name)}"
+    loading="lazy"
+  >
+  `
+
+  :
+
+  `
+  <span
+    class="no-image"
+  >
+    📦
+  </span>
+  `
 }
+
+
+${
+  p.video_url
+
+  ?
+
+  `
+  <span
+    class="media-badge"
+  >
+    🎥 Vidéo
+  </span>
+  `
+
+  :
+
+  ""
+}
+
 
 </div>
 
 
-<div class="product-info">
+<div
+  class="product-info"
+>
+
 
 <h3>
 ${esc(p.name)}
 </h3>
 
-<div class="product-price">
+
+<div
+  class="product-price"
+>
 ${money(p.price)}
 </div>
 
-<div class="product-stock">
-Stock : ${p.stock}
+
+<div
+  class="product-stock"
+>
+Stock :
+${Number(p.stock || 0)}
 </div>
 
 
-<div class="product-tags">
+<div
+  class="product-tags"
+>
+
 
 ${
-p.active
-?
-'<span class="tag">Visible</span>'
-:
-'<span class="tag">Masqué</span>'
+  p.active
+
+  ?
+
+  `
+  <span class="tag">
+    Visible
+  </span>
+  `
+
+  :
+
+  `
+  <span class="tag off">
+    Masqué
+  </span>
+  `
 }
 
 
 ${
-p.featured
-?
-'<span class="tag featured">❤️ Coup de cœur</span>'
-:
-""
+  p.featured
+
+  ?
+
+  `
+  <span
+    class="tag featured"
+  >
+    ❤️ Coup de cœur
+  </span>
+  `
+
+  :
+
+  ""
 }
 
+
+${
+  p.category
+
+  ?
+
+  `
+  <span class="tag">
+    ${esc(p.category)}
+  </span>
+  `
+
+  :
+
+  ""
+}
+
+
 </div>
 
 
-<div class="product-actions">
+<div
+  class="product-actions"
+>
+
 
 <button
-class="edit"
-onclick="editProduct(${p.id})"
+  class="edit"
+  onclick="editProduct(${Number(p.id)})"
 >
-Modifier
+  Modifier
 </button>
 
 
 <button
-class="delete"
-onclick="deleteProduct(${p.id})"
+  class="delete"
+  onclick="deleteProduct(${Number(p.id)})"
 >
-Supprimer
+  Supprimer
 </button>
 
-</div>
 
 </div>
+
+
+</div>
+
 
 </article>
 
-`).join("")
+`
+)
+
+.join("")
 
 :
 
 `
 
 <div
-class="empty"
-style="grid-column:1/-1"
+  class="empty"
+  style="grid-column:1/-1"
 >
 
-📦
+<div class="empty-icon">
+  📦
+</div>
 
 <h2>
-Aucun produit
+  Aucun produit
 </h2>
 
 <p>
-Ajoutez votre premier produit.
+  Modifiez votre recherche
+  ou ajoutez un produit.
 </p>
 
 </div>
@@ -2526,19 +3654,25 @@ function fillCategories(){
 
 const select =
 document.getElementById(
-"productCategory"
+  "productCategory"
 );
 
 
 select.innerHTML =
+
 categories
+
 .map(
-c=>`
-<option>
-${esc(c)}
+  c =>
+`
+<option
+  value="${esc(c)}"
+>
+  ${esc(c)}
 </option>
 `
 )
+
 .join("");
 
 }
@@ -2546,93 +3680,271 @@ ${esc(c)}
 
 function renderCategories(){
 
+document
+.getElementById(
+  "categoryCount"
+)
+.textContent =
+categories.length;
+
+
 fillCategories();
+
+updateProductFilter();
 
 
 document
 .getElementById(
-"categoryList"
+  "categoryList"
 )
 .innerHTML =
+
 categories
+
 .map(
-(c,i)=>`
+  (c,i) =>
+`
 
-<div class="switch-row">
+<div
+  class="category-row"
+>
 
-<strong>
-${esc(c)}
-</strong>
+
+<span
+  class="drag"
+>
+  ⁝⁝
+</span>
+
+
+<span
+  class="category-emoji"
+>
+  ${categoryIcons[c] || "📦"}
+</span>
+
+
+<div>
+
+<div
+  class="category-name"
+>
+  ${esc(c)}
+</div>
+
+
+<div
+  class="category-slug"
+>
+  /${esc(slugify(c))}
+</div>
+
+</div>
+
+
+<span
+  class="eye"
+>
+  ◉
+</span>
+
 
 <button
-class="delete"
-style="flex:0 0 auto"
-onclick="removeCategory(${i})"
+  class="icon-btn"
+  title="Modifier"
+  onclick="renameCategory(${i})"
 >
-Supprimer
+  ✎
 </button>
+
+
+<button
+  class="icon-btn danger"
+  title="Supprimer"
+  onclick="removeCategory(${i})"
+>
+  ♜
+</button>
+
 
 </div>
 
 `
 )
+
 .join("");
+
+}
+
+
+function focusNewCategory(){
+
+const input =
+document.getElementById(
+  "newCategory"
+);
+
+
+input.focus();
+
+input.scrollIntoView({
+  behavior:"smooth",
+  block:"center"
+});
 
 }
 
 
 function addCategory(){
 
-const value =
-document
-.getElementById(
-"newCategory"
-)
-.value
-.trim();
-
-
-if(!value)
-return;
-
-
-if(!categories.includes(value))
-categories.push(value);
-
-
-localStorage.setItem(
-"mtech_categories",
-JSON.stringify(categories)
+const input =
+document.getElementById(
+  "newCategory"
 );
 
 
-document
-.getElementById(
-"newCategory"
-)
-.value="";
+const value =
+input.value.trim();
+
+
+if(!value){
+
+toast(
+  "Entrez le nom de la catégorie."
+);
+
+return;
+
+}
+
+
+if(
+  categories.some(
+    x =>
+      x.toLowerCase()
+      ===
+      value.toLowerCase()
+  )
+){
+
+toast(
+  "Cette catégorie existe déjà."
+);
+
+return;
+
+}
+
+
+categories.push(
+  value
+);
+
+
+localStorage.setItem(
+  "mtech_categories",
+  JSON.stringify(
+    categories
+  )
+);
+
+
+input.value =
+"";
 
 
 renderCategories();
+
+toast(
+  "Catégorie ajoutée."
+);
+
+}
+
+
+function renameCategory(index){
+
+const current =
+categories[index];
+
+
+const value =
+prompt(
+  "Nouveau nom de la catégorie :",
+  current
+);
+
+
+if(value===null)
+return;
+
+
+const name =
+value.trim();
+
+
+if(
+  !name
+  ||
+  name===current
+)
+return;
+
+
+categories[index] =
+name;
+
+
+localStorage.setItem(
+  "mtech_categories",
+  JSON.stringify(
+    categories
+  )
+);
+
+
+renderCategories();
+
+toast(
+  "Catégorie modifiée."
+);
 
 }
 
 
 function removeCategory(index){
 
+const name =
+categories[index];
+
+
+if(
+  !confirm(
+    `Supprimer la catégorie "${name}" ?`
+  )
+)
+return;
+
+
 categories.splice(
-index,
-1
+  index,
+  1
 );
 
 
 localStorage.setItem(
-"mtech_categories",
-JSON.stringify(categories)
+  "mtech_categories",
+  JSON.stringify(
+    categories
+  )
 );
 
 
 renderCategories();
+
+toast(
+  "Catégorie supprimée."
+);
 
 }
 
@@ -2645,44 +3957,61 @@ function renderFeatures(){
 
 document
 .getElementById(
-"featureLibrary"
+  "featureLibrary"
 )
 .innerHTML =
+
 features.length
 
 ?
 
 features
-.map(
-(f,i)=>`
 
-<div class="switch-row">
+.map(
+  (f,i) =>
+`
+
+<div
+  class="switch-row"
+>
+
 
 <div>
 
 <strong>
-${esc(f.name)}
+  ${esc(f.name)}
 </strong>
 
-<div class="muted">
-${f.values.map(esc).join(" · ")}
+
+<div
+  class="muted"
+>
+
+${
+  (f.values || [])
+  .map(esc)
+  .join(" · ")
+}
+
 </div>
 
 </div>
 
 
 <button
-class="delete"
-style="flex:0 0 auto"
-onclick="removeFeature(${i})"
+  class="delete"
+  style="flex:0 0 auto"
+  onclick="removeFeature(${i})"
 >
-Supprimer
+  Supprimer
 </button>
+
 
 </div>
 
 `
 )
+
 .join("")
 
 :
@@ -2690,7 +4019,7 @@ Supprimer
 `
 
 <div class="empty">
-Aucune caractéristique.
+  Aucune caractéristique.
 </div>
 
 `;
@@ -2703,7 +4032,7 @@ function addFeature(){
 const name =
 document
 .getElementById(
-"newFeatureName"
+  "newFeatureName"
 )
 .value
 .trim();
@@ -2712,11 +4041,16 @@ document
 const values =
 document
 .getElementById(
-"newFeatureValues"
+  "newFeatureValues"
 )
 .value
+
 .split(",")
-.map(x=>x.trim())
+
+.map(
+  x => x.trim()
+)
+
 .filter(Boolean);
 
 
@@ -2725,32 +4059,43 @@ return;
 
 
 features.push({
+
 name,
+
 values
+
 });
 
 
 localStorage.setItem(
-"mtech_features",
-JSON.stringify(features)
+  "mtech_features",
+  JSON.stringify(
+    features
+  )
 );
 
 
 document
 .getElementById(
-"newFeatureName"
+  "newFeatureName"
 )
-.value="";
+.value =
+"";
 
 
 document
 .getElementById(
-"newFeatureValues"
+  "newFeatureValues"
 )
-.value="";
+.value =
+"";
 
 
 renderFeatures();
+
+toast(
+  "Caractéristique ajoutée."
+);
 
 }
 
@@ -2758,14 +4103,16 @@ renderFeatures();
 function removeFeature(index){
 
 features.splice(
-index,
-1
+  index,
+  1
 );
 
 
 localStorage.setItem(
-"mtech_features",
-JSON.stringify(features)
+  "mtech_features",
+  JSON.stringify(
+    features
+  )
 );
 
 
@@ -2780,85 +4127,100 @@ renderFeatures();
 
 function clearModal(){
 
-editingId=null;
+editingId =
+null;
 
 
 document
 .getElementById(
-"modalTitle"
+  "modalTitle"
 )
 .textContent =
 "Ajouter un produit";
 
 
 [
-"productName",
-"productPrice",
-"productStock",
-"productImage",
-"productVideo",
-"productDescription"
+  "productName",
+  "productPrice",
+  "productStock",
+  "productImage",
+  "productVideo",
+  "productDescription"
 ]
+
 .forEach(
-id=>
-document.getElementById(id).value=""
+  id =>
+    document
+    .getElementById(id)
+    .value =
+    ""
 );
 
 
 document
 .getElementById(
-"productImageFile"
+  "productImageFile"
 )
-.value="";
+.value =
+"";
 
 
 document
 .getElementById(
-"productVideoFile"
+  "productVideoFile"
 )
-.value="";
+.value =
+"";
 
 
 document
 .getElementById(
-"imagePreview"
+  "imagePreview"
 )
-.innerHTML="";
+.innerHTML =
+"";
 
 
 document
 .getElementById(
-"videoPreview"
+  "videoPreview"
 )
-.innerHTML="";
+.innerHTML =
+"";
 
 
 document
 .getElementById(
-"visibleSwitch"
+  "visibleSwitch"
 )
-.classList.add("on");
+.classList.add(
+  "on"
+);
 
 
 document
 .getElementById(
-"featuredSwitch"
+  "featuredSwitch"
 )
-.classList.remove("on");
+.classList.remove(
+  "on"
+);
 
 
 document
 .getElementById(
-"specList"
+  "specList"
 )
-.innerHTML="";
+.innerHTML =
+"";
 
 
 document
 .getElementById(
-"variantList"
+  "variantList"
 )
-.innerHTML="";
+.innerHTML =
+"";
 
 
 fillCategories();
@@ -2870,11 +4232,14 @@ function openProductModal(){
 
 clearModal();
 
+
 document
 .getElementById(
-"productModal"
+  "productModal"
 )
-.classList.add("open");
+.classList.add(
+  "open"
+);
 
 }
 
@@ -2883,26 +4248,34 @@ function closeProductModal(){
 
 document
 .getElementById(
-"productModal"
+  "productModal"
 )
-.classList.remove("open");
+.classList.remove(
+  "open"
+);
 
 }
 
 
 /* ==========================================
-   PREVIEW IMAGE / VIDEO
+   PREVIEW
 ========================================== */
 
 function previewFile(type){
 
 const input =
 document.getElementById(
-type==="image"
-?
-"productImageFile"
-:
-"productVideoFile"
+
+  type === "image"
+
+  ?
+
+  "productImageFile"
+
+  :
+
+  "productVideoFile"
+
 );
 
 
@@ -2915,34 +4288,46 @@ return;
 
 
 const url =
-URL.createObjectURL(file);
+URL.createObjectURL(
+  file
+);
 
 
 const box =
 document.getElementById(
-type==="image"
-?
-"imagePreview"
-:
-"videoPreview"
+
+  type === "image"
+
+  ?
+
+  "imagePreview"
+
+  :
+
+  "videoPreview"
+
 );
 
 
 box.innerHTML =
-type==="image"
+
+type === "image"
 
 ?
 
 `
-<img src="${url}">
+<img
+  src="${url}"
+  alt="Aperçu"
+>
 `
 
 :
 
 `
 <video
-src="${url}"
-controls
+  src="${url}"
+  controls
 ></video>
 `;
 
@@ -2954,36 +4339,42 @@ controls
 ========================================== */
 
 function addSpecRow(
-property="",
-value=""
+  property="",
+  value=""
 ){
 
 const div =
-document.createElement("div");
+document.createElement(
+  "div"
+);
 
 
 div.className =
 "item-row spec-row";
 
 
-div.innerHTML = `
+div.innerHTML =
+
+`
 
 <input
-class="spec-prop"
-placeholder="Propriété (ex : Connectivité)"
-value="${esc(property)}"
+  class="spec-prop"
+  placeholder="Propriété"
+  value="${esc(property)}"
 >
 
+
 <input
-class="spec-value"
-placeholder="Valeur (ex : Bluetooth 5.3)"
-value="${esc(value)}"
+  class="spec-value"
+  placeholder="Valeur"
+  value="${esc(value)}"
 >
+
 
 <button
-onclick="this.parentElement.remove()"
+  onclick="this.parentElement.remove()"
 >
-×
+  ×
 </button>
 
 `;
@@ -2991,9 +4382,11 @@ onclick="this.parentElement.remove()"
 
 document
 .getElementById(
-"specList"
+  "specList"
 )
-.appendChild(div);
+.appendChild(
+  div
+);
 
 }
 
@@ -3002,34 +4395,38 @@ function readSpecs(){
 
 return [
 
-...
-document
-.querySelectorAll(
-".spec-row"
-)
+  ...
+  document
+  .querySelectorAll(
+    ".spec-row"
+  )
 
 ]
-.map(row=>({
 
-property:
-row
-.querySelector(
-".spec-prop"
+.map(
+  row => ({
+
+    property:
+      row
+      .querySelector(
+        ".spec-prop"
+      )
+      .value
+      .trim(),
+
+    value:
+      row
+      .querySelector(
+        ".spec-value"
+      )
+      .value
+      .trim()
+
+  })
 )
-.value
-.trim(),
 
-value:
-row
-.querySelector(
-".spec-value"
-)
-.value
-.trim()
-
-}))
 .filter(
-x=>x.property
+  x => x.property
 );
 
 }
@@ -3040,36 +4437,42 @@ x=>x.property
 ========================================== */
 
 function addVariantRow(
-name="",
-values=[]
+  name="",
+  values=[]
 ){
 
 const div =
-document.createElement("div");
+document.createElement(
+  "div"
+);
 
 
 div.className =
 "item-row variant-row";
 
 
-div.innerHTML = `
+div.innerHTML =
+
+`
 
 <input
-class="variant-name"
-placeholder="Type (ex : Couleur)"
-value="${esc(name)}"
+  class="variant-name"
+  placeholder="Type (ex : Couleur)"
+  value="${esc(name)}"
 >
 
+
 <input
-class="variant-values"
-placeholder="Valeurs séparées par virgules"
-value="${esc(values.join(", "))}"
+  class="variant-values"
+  placeholder="Valeurs séparées par virgules"
+  value="${esc(values.join(", "))}"
 >
+
 
 <button
-onclick="this.parentElement.remove()"
+  onclick="this.parentElement.remove()"
 >
-×
+  ×
 </button>
 
 `;
@@ -3077,9 +4480,11 @@ onclick="this.parentElement.remove()"
 
 document
 .getElementById(
-"variantList"
+  "variantList"
 )
-.appendChild(div);
+.appendChild(
+  div
+);
 
 }
 
@@ -3088,49 +4493,58 @@ function readVariants(){
 
 return [
 
-...
-document
-.querySelectorAll(
-".variant-row"
-)
+  ...
+  document
+  .querySelectorAll(
+    ".variant-row"
+  )
 
 ]
-.map(row=>({
 
-name:
-row
-.querySelector(
-".variant-name"
+.map(
+  row => ({
+
+    name:
+      row
+      .querySelector(
+        ".variant-name"
+      )
+      .value
+      .trim(),
+
+    values:
+      row
+      .querySelector(
+        ".variant-values"
+      )
+      .value
+
+      .split(",")
+
+      .map(
+        x => x.trim()
+      )
+
+      .filter(Boolean)
+
+  })
 )
-.value
-.trim(),
 
-values:
-row
-.querySelector(
-".variant-values"
-)
-.value
-.split(",")
-.map(x=>x.trim())
-.filter(Boolean)
-
-}))
 .filter(
-x=>x.name
+  x => x.name
 );
 
 }
 
 
 /* ==========================================
-   UPLOAD SUPABASE STORAGE
+   UPLOAD SUPABASE
 ========================================== */
 
 async function uploadFile(
-file,
-folder,
-progressId
+  file,
+  folder,
+  progressId
 ){
 
 if(!file)
@@ -3138,75 +4552,94 @@ return null;
 
 
 const ext =
+
 (
-file.name
-.split(".")
-.pop()
-||
-"bin"
+  file.name
+  .split(".")
+  .pop()
+  ||
+  "bin"
 )
+
 .toLowerCase();
 
 
 const path =
+
 `${folder}/${crypto.randomUUID()}.${ext}`;
 
 
-const bar =
-document
-.querySelector(
-`#${progressId} div`
+const progress =
+document.getElementById(
+  progressId
 );
 
 
-document
-.getElementById(
-progressId
-)
-.style.display="block";
+const bar =
+progress.querySelector(
+  "div"
+);
+
+
+progress.style.display =
+"block";
+
+
+bar.style.width =
+"10%";
 
 
 const {
-error
+  error
 } =
+
 await sb
+
 .storage
-.from(PRODUCT_BUCKET)
+
+.from(
+  PRODUCT_BUCKET
+)
+
 .upload(
-path,
-file,
-{
-upsert:false,
-contentType:file.type
-}
+  path,
+  file,
+  {
+    upsert:false,
+    contentType:file.type
+  }
 );
 
 
 if(error){
 
-document
-.getElementById(
-progressId
-)
-.style.display="none";
-
+progress.style.display =
+"none";
 
 throw error;
 
 }
 
 
-if(bar)
-bar.style.width="100%";
+bar.style.width =
+"100%";
 
 
 const {
-data
+  data
 } =
+
 sb
+
 .storage
-.from(PRODUCT_BUCKET)
-.getPublicUrl(path);
+
+.from(
+  PRODUCT_BUCKET
+)
+
+.getPublicUrl(
+  path
+);
 
 
 return data.publicUrl;
@@ -3223,7 +4656,7 @@ async function saveProduct(){
 const name =
 document
 .getElementById(
-"productName"
+  "productName"
 )
 .value
 .trim();
@@ -3232,7 +4665,7 @@ document
 if(!name){
 
 alert(
-"Veuillez entrer le nom du produit."
+  "Veuillez entrer le nom du produit."
 );
 
 return;
@@ -3243,7 +4676,7 @@ return;
 const imageFile =
 document
 .getElementById(
-"productImageFile"
+  "productImageFile"
 )
 .files[0];
 
@@ -3251,7 +4684,7 @@ document
 const videoFile =
 document
 .getElementById(
-"productVideoFile"
+  "productVideoFile"
 )
 .files[0];
 
@@ -3259,7 +4692,7 @@ document
 let image =
 document
 .getElementById(
-"productImage"
+  "productImage"
 )
 .value
 .trim()
@@ -3270,7 +4703,7 @@ null;
 let video =
 document
 .getElementById(
-"productVideo"
+  "productVideo"
 )
 .value
 .trim()
@@ -3280,13 +4713,14 @@ null;
 
 try{
 
+
 if(imageFile){
 
 image =
 await uploadFile(
-imageFile,
-"images",
-"imageProgress"
+  imageFile,
+  "images",
+  "imageProgress"
 );
 
 }
@@ -3296,9 +4730,9 @@ if(videoFile){
 
 video =
 await uploadFile(
-videoFile,
-"videos",
-"videoProgress"
+  videoFile,
+  "videos",
+  "videoProgress"
 );
 
 }
@@ -3310,30 +4744,30 @@ name,
 
 price:
 Number(
-document
-.getElementById(
-"productPrice"
-)
-.value
-||
-0
+  document
+  .getElementById(
+    "productPrice"
+  )
+  .value
+  ||
+  0
 ),
 
 stock:
 Number(
-document
-.getElementById(
-"productStock"
-)
-.value
-||
-0
+  document
+  .getElementById(
+    "productStock"
+  )
+  .value
+  ||
+  0
 ),
 
 category:
 document
 .getElementById(
-"productCategory"
+  "productCategory"
 )
 .value
 ||
@@ -3348,7 +4782,7 @@ video,
 description:
 document
 .getElementById(
-"productDescription"
+  "productDescription"
 )
 .value
 .trim()
@@ -3356,10 +4790,14 @@ document
 null,
 
 active:
-isOn("visibleSwitch"),
+isOn(
+  "visibleSwitch"
+),
 
 featured:
-isOn("featuredSwitch"),
+isOn(
+  "featuredSwitch"
+),
 
 specifications:
 readSpecs(),
@@ -3376,19 +4814,40 @@ let result;
 if(editingId){
 
 result =
+
 await sb
-.from("products")
-.update(payload)
-.eq("id",editingId)
+
+.from(
+  "products"
+)
+
+.update(
+  payload
+)
+
+.eq(
+  "id",
+  editingId
+)
+
 .select()
 .single();
+
 
 }else{
 
 result =
+
 await sb
-.from("products")
-.insert(payload)
+
+.from(
+  "products"
+)
+
+.insert(
+  payload
+)
+
 .select()
 .single();
 
@@ -3400,28 +4859,39 @@ throw result.error;
 
 
 toast(
+
 editingId
+
 ?
+
 "Produit modifié"
+
 :
+
 "Produit ajouté"
+
 );
 
 
 closeProductModal();
 
+
 await refreshAll();
 
-
 }
+
+
 catch(error){
 
-console.error(error);
+console.error(
+  error
+);
+
 
 alert(
-"Erreur : "
-+
-error.message
+  "Erreur : "
+  +
+  error.message
 );
 
 }
@@ -3436,20 +4906,36 @@ error.message
 async function editProduct(id){
 
 const {
-data:p,
-error
+  data:p,
+  error
 } =
+
 await sb
-.from("products")
-.select("*")
-.eq("id",id)
+
+.from(
+  "products"
+)
+
+.select(
+  "*"
+)
+
+.eq(
+  "id",
+  id
+)
+
 .single();
 
 
-if(error || !p){
+if(
+  error
+  ||
+  !p
+){
 
 alert(
-"Produit introuvable."
+  "Produit introuvable."
 );
 
 return;
@@ -3460,12 +4946,13 @@ return;
 clearModal();
 
 
-editingId=id;
+editingId =
+id;
 
 
 document
 .getElementById(
-"modalTitle"
+  "modalTitle"
 )
 .textContent =
 "Modifier le produit";
@@ -3473,31 +4960,37 @@ document
 
 document
 .getElementById(
-"productName"
+  "productName"
 )
 .value =
-p.name || "";
+p.name
+||
+"";
 
 
 document
 .getElementById(
-"productPrice"
+  "productPrice"
 )
 .value =
-p.price ?? "";
+p.price
+??
+"";
 
 
 document
 .getElementById(
-"productStock"
+  "productStock"
 )
 .value =
-p.stock ?? "";
+p.stock
+??
+"";
 
 
 document
 .getElementById(
-"productCategory"
+  "productCategory"
 )
 .value =
 p.category
@@ -3509,7 +5002,7 @@ categories[0]
 
 document
 .getElementById(
-"productImage"
+  "productImage"
 )
 .value =
 p.image_url
@@ -3519,7 +5012,7 @@ p.image_url
 
 document
 .getElementById(
-"productVideo"
+  "productVideo"
 )
 .value =
 p.video_url
@@ -3529,7 +5022,7 @@ p.video_url
 
 document
 .getElementById(
-"productDescription"
+  "productDescription"
 )
 .value =
 p.description
@@ -3537,87 +5030,81 @@ p.description
 "";
 
 
-if(p.active){
-
 document
 .getElementById(
-"visibleSwitch"
+  "visibleSwitch"
 )
-.classList.add("on");
-
-}
-else{
-
-document
-.getElementById(
-"visibleSwitch"
-)
-.classList.remove("on");
-
-}
-
-
-if(p.featured){
-
-document
-.getElementById(
-"featuredSwitch"
-)
-.classList.add("on");
-
-}
-else{
-
-document
-.getElementById(
-"featuredSwitch"
-)
-.classList.remove("on");
-
-}
-
-
-(
-Array.isArray(
-p.specifications
-)
-?
-p.specifications
-:
-[]
-)
-.forEach(
-x=>
-addSpecRow(
-x.property,
-x.value
-)
-);
-
-
-(
-Array.isArray(
-p.variants
-)
-?
-p.variants
-:
-[]
-)
-.forEach(
-x=>
-addVariantRow(
-x.name,
-x.values || []
-)
+.classList.toggle(
+  "on",
+  !!p.active
 );
 
 
 document
 .getElementById(
-"productModal"
+  "featuredSwitch"
 )
-.classList.add("open");
+.classList.toggle(
+  "on",
+  !!p.featured
+);
+
+
+(
+  Array.isArray(
+    p.specifications
+  )
+
+  ?
+
+  p.specifications
+
+  :
+
+  []
+
+)
+
+.forEach(
+  x =>
+    addSpecRow(
+      x.property,
+      x.value
+    )
+);
+
+
+(
+  Array.isArray(
+    p.variants
+  )
+
+  ?
+
+  p.variants
+
+  :
+
+  []
+
+)
+
+.forEach(
+  x =>
+    addVariantRow(
+      x.name,
+      x.values || []
+    )
+);
+
+
+document
+.getElementById(
+  "productModal"
+)
+.classList.add(
+  "open"
+);
 
 }
 
@@ -3629,14 +5116,24 @@ document
 async function deleteProduct(id){
 
 const {
-data:p
+  data:p
 } =
+
 await sb
-.from("products")
-.select(
-"name,image_url,video_url"
+
+.from(
+  "products"
 )
-.eq("id",id)
+
+.select(
+  "name"
+)
+
+.eq(
+  "id",
+  id
+)
+
 .single();
 
 
@@ -3645,28 +5142,37 @@ return;
 
 
 if(
-!confirm(
-`Supprimer "${p.name}" ?`
-)
+  !confirm(
+    `Supprimer "${p.name}" ?`
+  )
 )
 return;
 
 
 const {
-error
+  error
 } =
+
 await sb
-.from("products")
+
+.from(
+  "products"
+)
+
 .delete()
-.eq("id",id);
+
+.eq(
+  "id",
+  id
+);
 
 
 if(error){
 
 alert(
-"Erreur : "
-+
-error.message
+  "Erreur : "
+  +
+  error.message
 );
 
 return;
@@ -3675,13 +5181,53 @@ return;
 
 
 toast(
-"Produit supprimé"
+  "Produit supprimé"
 );
 
 
 await refreshAll();
 
 }
+
+
+/* ==========================================
+   RACCOURCIS
+========================================== */
+
+document.addEventListener(
+  "keydown",
+  e => {
+
+    if(
+      e.key === "Escape"
+    ){
+
+      closeProductModal();
+
+    }
+
+  }
+);
+
+
+document
+.getElementById(
+  "password"
+)
+.addEventListener(
+  "keydown",
+  e => {
+
+    if(
+      e.key === "Enter"
+    ){
+
+      login();
+
+    }
+
+  }
+);
 
 </script>
 
