@@ -1,1843 +1,2558 @@
 <!DOCTYPE html>
 <html lang="fr">
-
 <head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>MTECH BENIN</title>
+
+<meta name="description"
+content="MTECH BENIN - Smartphones, accessoires, abonnements, produits numériques et réparation.">
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<style>
+
+/* =========================================================
+   RESET
+========================================================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    margin:0;
+    background:#fff;
+    color:#181818;
+    font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "SF Pro Display",
+        "SF Pro Text",
+        "Helvetica Neue",
+        Arial,
+        sans-serif;
+    overflow-x:hidden;
+}
+
+button,
+input,
+textarea,
+select{
+    font:inherit;
+}
+
+button{
+    cursor:pointer;
+}
+
+a{
+    color:inherit;
+    text-decoration:none;
+}
+
+img,
+video{
+    display:block;
+    max-width:100%;
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.site-header{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:76px;
+    z-index:5000;
 
-    <meta charset="UTF-8">
+    background:rgba(255,255,255,.94);
+    backdrop-filter:blur(20px);
+    -webkit-backdrop-filter:blur(20px);
 
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0,
-          maximum-scale=1.0, user-scalable=no">
+    border-bottom:1px solid rgba(0,0,0,.06);
 
-    <meta name="theme-color" content="#ffffff">
+    transition:.3s;
+}
 
-    <title>
-        MTECHBENIN — Écouteurs, Enceintes & Abonnements Digitaux
-    </title>
+.site-header.scrolled{
+    box-shadow:0 8px 30px rgba(0,0,0,.08);
+}
 
-    <meta name="description"
-          content="MTECHBENIN — Produits technologiques, accessoires, abonnements digitaux et services de réparation au Bénin.">
+.header-inner{
+    max-width:1450px;
+    height:100%;
+    margin:auto;
+    padding:0 35px;
 
-    <style>
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+}
 
-        /* =====================================================
-           RESET
-        ===================================================== */
+.logo{
+    font-size:27px;
+    font-weight:900;
+    letter-spacing:-1.5px;
+}
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+.header-actions{
+    display:flex;
+    align-items:center;
+    gap:7px;
+}
 
-        html {
-            scroll-behavior: smooth;
-        }
+.header-button{
+    position:relative;
 
-        body {
-            font-family:
-                -apple-system,
-                BlinkMacSystemFont,
-                "SF Pro Display",
-                "SF Pro Text",
-                "Segoe UI",
-                Roboto,
-                Helvetica,
-                Arial,
-                sans-serif;
+    width:46px;
+    height:46px;
 
-            background: #ffffff;
-            color: #111111;
+    border:0;
+    background:transparent;
 
-            overflow-x: hidden;
+    color:#666;
 
-            -webkit-font-smoothing: antialiased;
-        }
+    display:flex;
+    align-items:center;
+    justify-content:center;
 
-        button,
-        a {
-            -webkit-tap-highlight-color: transparent;
-        }
+    font-size:25px;
+}
 
+.header-button:hover{
+    color:#111;
+}
 
-        /* =====================================================
-           HEADER
-        ===================================================== */
+.cart-number{
+    position:absolute;
+    top:0;
+    right:-1px;
 
-        .header {
+    min-width:21px;
+    height:21px;
 
-            position: fixed;
+    padding:0 5px;
 
-            top: 0;
-            left: 0;
-            right: 0;
+    background:#df2929;
+    color:#fff;
 
-            height: 86px;
+    border-radius:50px;
 
-            background: rgba(255,255,255,0.97);
+    font-size:11px;
+    font-weight:900;
 
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
 
-            display: flex;
 
-            align-items: center;
-            justify-content: space-between;
+/* =========================================================
+   MENU
+========================================================= */
 
-            padding: 0 40px;
+.mobile-menu{
+    position:fixed;
 
-            z-index: 1000;
+    top:85px;
+    right:15px;
 
-            border-bottom: 1px solid rgba(0,0,0,0.04);
+    width:280px;
 
-            transition: 0.3s ease;
-        }
+    padding:12px;
 
-        .header.scrolled {
+    background:#fff;
 
-            box-shadow:
-                0 5px 30px rgba(0,0,0,0.08);
-        }
+    border-radius:25px;
 
+    box-shadow:0 20px 60px rgba(0,0,0,.16);
 
-        /* LOGO */
+    opacity:0;
+    visibility:hidden;
+    transform:translateY(-15px);
 
-        .logo {
+    transition:.25s;
 
-            color: #171717;
+    z-index:4900;
+}
 
-            font-size: 27px;
+.mobile-menu.active{
+    opacity:1;
+    visibility:visible;
+    transform:translateY(0);
+}
 
-            font-weight: 800;
+.mobile-menu a{
+    display:block;
 
-            letter-spacing: -1.5px;
+    padding:16px;
 
-            text-decoration: none;
-        }
+    border-radius:15px;
 
+    font-weight:700;
+}
 
-        /* HEADER RIGHT */
+.mobile-menu a:hover{
+    background:#f5f5f5;
+}
 
-        .header-actions {
 
-            display: flex;
+/* =========================================================
+   HERO
+========================================================= */
 
-            align-items: center;
+.hero{
+    position:relative;
 
-            gap: 24px;
-        }
+    margin-top:76px;
 
+    width:100%;
+    height:calc(100svh - 76px);
 
-        .header-button {
+    min-height:620px;
 
-            width: 38px;
-            height: 38px;
+    overflow:hidden;
 
-            border: none;
+    background:#080808;
+}
 
-            background: transparent;
+.hero-slides{
+    width:100%;
+    height:100%;
 
-            display: flex;
+    position:relative;
+}
 
-            align-items: center;
-            justify-content: center;
+.hero-slide{
+    position:absolute;
+    inset:0;
 
-            cursor: pointer;
+    opacity:0;
+    visibility:hidden;
 
-            color: #686970;
+    transition:opacity .8s ease;
+}
 
-            position: relative;
+.hero-slide.active{
+    opacity:1;
+    visibility:visible;
+}
 
-            transition: 0.25s ease;
-        }
+.hero-media{
+    position:absolute;
+    inset:0;
 
-        .header-button:hover {
+    width:100%;
+    height:100%;
 
-            color: #111111;
-        }
+    object-fit:cover;
+}
 
+.hero-overlay{
+    position:absolute;
+    inset:0;
 
-        /* =====================================================
-           ICONES SVG
-        ===================================================== */
+    background:
+        linear-gradient(
+            90deg,
+            rgba(0,0,0,.72),
+            rgba(0,0,0,.35),
+            rgba(0,0,0,.12)
+        );
+}
 
-        .icon {
+.hero-content{
+    position:absolute;
 
-            width: 27px;
-            height: 27px;
+    left:6%;
+    bottom:12%;
 
-            fill: none;
+    max-width:720px;
 
-            stroke: currentColor;
+    color:#fff;
 
-            stroke-width: 1.8;
+    z-index:5;
+}
 
-            stroke-linecap: round;
-            stroke-linejoin: round;
-        }
+.hero-label{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
 
+    padding:12px 20px;
 
-        /* PANIER */
+    margin-bottom:25px;
 
-        .cart-count {
+    border-radius:50px;
 
-            position: absolute;
+    background:rgba(20,20,20,.72);
+    border:1px solid rgba(255,255,255,.18);
 
-            top: -5px;
-            right: -5px;
+    font-size:15px;
+    font-weight:800;
 
-            width: 22px;
-            height: 22px;
+    letter-spacing:1.5px;
+}
 
-            background: #e50914;
+.hero-label-dot{
+    width:8px;
+    height:8px;
 
-            color: white;
+    border-radius:50%;
 
-            border-radius: 50%;
+    background:#f22;
+}
 
-            font-size: 11px;
+.hero-title{
+    font-size:clamp(45px,7vw,90px);
 
-            font-weight: 800;
+    line-height:.95;
 
-            display: flex;
+    letter-spacing:-5px;
 
-            align-items: center;
-            justify-content: center;
-        }
+    margin-bottom:25px;
+}
 
+.hero-subtitle{
+    font-size:clamp(22px,3vw,38px);
 
-        /* =====================================================
-           HERO
-        ===================================================== */
+    font-weight:800;
 
-        .hero {
+    margin-bottom:25px;
+}
 
-            position: relative;
+.hero-price{
+    display:inline-block;
 
-            height: 100vh;
+    padding:15px 25px;
 
-            min-height: 680px;
+    margin-bottom:25px;
 
-            padding-top: 86px;
+    border-radius:50px;
 
-            overflow: hidden;
+    background:rgba(20,20,20,.82);
 
-            display: flex;
+    color:#ff3030;
 
-            align-items: center;
-        }
+    font-weight:900;
+}
 
+.hero-buttons{
+    display:flex;
+    gap:12px;
+}
 
-        /* IMAGE HERO */
+.hero-button{
+    padding:16px 28px;
 
-        .hero-background {
+    border-radius:17px;
 
-            position: absolute;
+    font-weight:800;
 
-            inset: 0;
+    border:1px solid transparent;
+}
 
-            z-index: 0;
+.hero-button.primary{
+    background:#fff;
+    color:#111;
+}
 
-            background:
+.hero-button.secondary{
+    background:rgba(255,255,255,.12);
+    color:#fff;
+    border-color:rgba(255,255,255,.25);
+}
 
-                linear-gradient(
-                    135deg,
-                    #272727,
-                    #888888 45%,
-                    #252525
-                );
+.hero-dots{
+    position:absolute;
 
-            background-size: cover;
+    left:50%;
+    bottom:28px;
 
-            background-position: center;
+    transform:translateX(-50%);
 
-            transform: scale(1.03);
+    display:flex;
+    gap:8px;
 
-            animation: heroZoom 15s ease-in-out infinite alternate;
-        }
+    z-index:20;
+}
 
+.hero-dot{
+    width:9px;
+    height:9px;
 
-        /*
-        Si tu as ton image Hero, place-la dans :
+    border-radius:50%;
 
-        images/hero.jpg
+    background:#777;
 
-        puis décommente ceci :
+    border:0;
 
-        .hero-background {
-            background-image: url("images/hero.jpg");
-        }
-        */
+    padding:0;
 
+    transition:.3s;
+}
 
-        @keyframes heroZoom {
+.hero-dot.active{
+    width:38px;
+    border-radius:20px;
 
-            from {
-                transform: scale(1.03);
-            }
+    background:#fff;
+}
 
-            to {
-                transform: scale(1.09);
-            }
-        }
 
+/* =========================================================
+   SECTIONS
+========================================================= */
 
-        /* OVERLAY */
+.section{
+    padding:105px 35px;
+}
 
-        .hero-overlay {
+.section-container{
+    max-width:1400px;
+    margin:auto;
+}
 
-            position: absolute;
+.section-label{
+    margin-bottom:20px;
 
-            inset: 0;
+    color:#777;
 
-            z-index: 1;
+    font-size:14px;
+    font-weight:900;
 
-            background:
-                linear-gradient(
-                    90deg,
-                    rgba(0,0,0,0.62) 0%,
-                    rgba(0,0,0,0.38) 48%,
-                    rgba(0,0,0,0.18) 100%
-                );
-        }
+    letter-spacing:2px;
+}
 
+.section-title{
+    margin-bottom:45px;
 
-        /* HERO CONTENT */
+    font-size:clamp(42px,6vw,72px);
 
-        .hero-content {
+    line-height:.95;
 
-            position: relative;
+    letter-spacing:-4px;
+}
 
-            z-index: 5;
 
-            width: 100%;
+/* =========================================================
+   CATALOGUE
+========================================================= */
 
-            max-width: 1300px;
+.categories-grid{
+    display:grid;
 
-            margin: auto;
+    grid-template-columns:
+        repeat(4,1fr);
 
-            padding: 0 55px;
-        }
+    gap:22px;
+}
 
+.category-card{
+    min-height:225px;
 
-        /* BADGE */
+    padding:25px;
 
-        .hero-badge {
+    border-radius:35px;
 
-            display: inline-flex;
+    background:#fff;
 
-            align-items: center;
+    box-shadow:
+        0 12px 40px rgba(0,0,0,.07);
 
-            gap: 14px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
 
-            padding: 16px 27px;
+    text-align:center;
 
-            border-radius: 50px;
+    transition:.3s;
 
-            background:
-                rgba(35,35,35,0.70);
+    cursor:pointer;
+}
 
-            border:
-                1px solid rgba(255,255,255,0.13);
+.category-card:hover{
+    transform:translateY(-6px);
 
-            backdrop-filter: blur(15px);
+    box-shadow:
+        0 20px 50px rgba(0,0,0,.11);
+}
 
-            -webkit-backdrop-filter: blur(15px);
+.category-icon{
+    width:90px;
+    height:90px;
 
-            color: #eeeeee;
+    margin-bottom:25px;
 
-            font-size: 16px;
+    border-radius:30px;
 
-            font-weight: 700;
+    background:#f5f5f5;
 
-            letter-spacing: 1px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
 
-            margin-bottom: 55px;
-        }
+    font-size:38px;
+}
 
+.category-name{
+    font-size:21px;
+    font-weight:900;
+}
 
-        .red-dot {
 
-            width: 11px;
-            height: 11px;
+/* =========================================================
+   PRODUCTS
+========================================================= */
 
-            border-radius: 50%;
+.products-section{
+    background:#f7f7f7;
+}
 
-            background: #e50914;
+.products-grid{
+    display:grid;
 
-            box-shadow:
-                0 0 12px rgba(229,9,20,0.65);
-        }
+    grid-template-columns:
+        repeat(4,1fr);
 
+    gap:20px;
+}
 
-        /* TITRE */
+.product-card{
+    overflow:hidden;
 
-        .hero-title {
+    background:#fff;
 
-            color: white;
+    border-radius:30px;
 
-            font-size:
-                clamp(48px, 7vw, 84px);
+    box-shadow:
+        0 10px 30px rgba(0,0,0,.05);
 
-            line-height: 1;
+    transition:.3s;
+}
 
-            letter-spacing: -4px;
+.product-card:hover{
+    transform:translateY(-5px);
+}
 
-            font-weight: 800;
+.product-media{
+    height:320px;
 
-            margin-bottom: 50px;
+    background:#eee;
 
-            max-width: 900px;
-        }
+    overflow:hidden;
+}
 
+.product-media img,
+.product-media video{
+    width:100%;
+    height:100%;
 
-        /* PRIX */
+    object-fit:cover;
+}
 
-        .hero-price {
+.product-info{
+    padding:22px;
+}
 
-            display: inline-block;
+.product-category{
+    margin-bottom:8px;
 
-            padding: 18px 30px;
+    color:#888;
 
-            border-radius: 35px;
+    font-size:11px;
+    font-weight:700;
 
-            background:
-                rgba(55,45,47,0.72);
+    text-transform:uppercase;
 
-            border:
-                1px solid rgba(255,255,255,0.08);
+    letter-spacing:1.5px;
+}
 
-            backdrop-filter: blur(14px);
+.product-name{
+    margin-bottom:10px;
 
-            -webkit-backdrop-filter: blur(14px);
+    font-size:21px;
+    font-weight:900;
+}
 
-            color: #ff2424;
+.product-description{
+    margin-bottom:15px;
 
-            font-size: 23px;
+    color:#777;
 
-            font-weight: 700;
+    font-size:13px;
+    line-height:1.5;
+}
 
-            margin-bottom: 52px;
-        }
+.product-price{
+    margin-bottom:8px;
 
+    font-size:20px;
+    font-weight:900;
+}
 
-        /* BOUTONS */
+.product-stock{
+    margin-bottom:15px;
 
-        .hero-buttons {
+    color:#777;
 
-            display: flex;
+    font-size:12px;
+}
 
-            align-items: center;
+.product-button{
+    width:100%;
 
-            gap: 45px;
-        }
+    padding:14px;
 
+    border:0;
 
-        .btn-primary {
+    border-radius:50px;
 
-            min-width: 285px;
+    background:#111;
+    color:#fff;
 
-            padding: 21px 32px;
+    font-weight:800;
+}
 
-            border-radius: 24px;
+.product-button:disabled{
+    background:#aaa;
+}
 
-            display: inline-flex;
 
-            align-items: center;
+/* =========================================================
+   SUBSCRIPTIONS
+========================================================= */
 
-            justify-content: space-between;
+.subscriptions-section{
+    overflow:hidden;
 
-            gap: 20px;
+    background:#090909;
+    color:#fff;
+}
 
-            background:
-                rgba(70,60,62,0.75);
+.subscription-heading{
+    display:flex;
+    align-items:flex-end;
+    justify-content:space-between;
 
-            border:
-                1px solid rgba(255,255,255,0.13);
+    gap:30px;
 
-            backdrop-filter: blur(14px);
+    margin-bottom:40px;
+}
 
-            -webkit-backdrop-filter: blur(14px);
+.subscriptions-section .section-label{
+    color:#888;
+}
 
-            color: #ffffff;
+.subscription-heading .section-title{
+    margin-bottom:0;
+}
 
-            text-decoration: none;
+.carousel-buttons{
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
 
-            font-size: 21px;
+.carousel-button{
+    width:58px;
+    height:58px;
 
-            font-weight: 700;
+    border-radius:50%;
 
-            transition: 0.3s ease;
-        }
+    border:1px solid #444;
 
+    background:#222;
+    color:#fff;
 
-        .btn-primary:hover {
+    font-size:27px;
+}
 
-            background: #ffffff;
+.subscription-track{
+    display:flex;
+    gap:22px;
 
-            color: #111111;
+    overflow-x:auto;
 
-            transform: translateY(-3px);
-        }
+    padding-bottom:15px;
 
+    scroll-snap-type:x mandatory;
 
-        .arrow {
+    scrollbar-width:none;
+}
 
-            font-size: 27px;
+.subscription-track::-webkit-scrollbar{
+    display:none;
+}
 
-            line-height: 1;
-        }
+.subscription-card{
+    position:relative;
 
+    flex:0 0 330px;
 
-        .btn-secondary {
+    height:520px;
 
-            color: #ffffff;
+    overflow:hidden;
 
-            text-decoration: none;
+    border-radius:35px;
 
-            font-size: 21px;
+    background:#151515;
 
-            font-weight: 500;
+    scroll-snap-align:center;
+}
 
-            transition: 0.3s ease;
-        }
+.subscription-media{
+    position:absolute;
+    inset:0;
 
+    width:100%;
+    height:100%;
 
-        .btn-secondary:hover {
+    object-fit:cover;
 
-            opacity: 0.6;
-        }
+    background:#111;
+}
 
+.subscription-overlay{
+    position:absolute;
+    inset:0;
 
-        /* =====================================================
-           SECTION
-        ===================================================== */
+    background:
+        linear-gradient(
+            to top,
+            rgba(0,0,0,.95),
+            rgba(0,0,0,.05) 70%
+        );
+}
 
-        .section {
+.subscription-content{
+    position:absolute;
 
-            padding: 100px 7%;
+    left:30px;
+    right:30px;
+    bottom:30px;
 
-            background: #ffffff;
-        }
+    z-index:5;
+}
 
+.subscription-name{
+    margin-bottom:8px;
 
-        .section-label {
+    font-size:30px;
+    font-weight:900;
+}
 
-            color: #e50914;
+.subscription-description{
+    margin-bottom:22px;
 
-            font-size: 13px;
+    color:#aaa;
 
-            font-weight: 800;
+    line-height:1.4;
+}
 
-            letter-spacing: 2px;
-        }
+.subscription-price{
+    margin-bottom:20px;
+}
 
+.subscription-price strong{
+    font-size:22px;
+}
 
-        .section-title {
+.subscribe-button{
+    padding:15px 25px;
 
-            margin-top: 12px;
+    border:0;
 
-            font-size: 44px;
+    border-radius:50px;
 
-            letter-spacing: -2px;
+    background:#fff;
+    color:#111;
 
-            font-weight: 800;
-        }
+    font-weight:800;
+}
 
+.video-control{
+    position:absolute;
 
-        .section-description {
+    top:22px;
+    right:22px;
 
-            color: #777;
+    width:52px;
+    height:52px;
 
-            margin-top: 12px;
+    z-index:20;
 
-            font-size: 17px;
-        }
+    border-radius:50%;
 
+    border:1px solid rgba(255,255,255,.4);
 
-        /* =====================================================
-           PRODUITS
-        ===================================================== */
+    background:rgba(0,0,0,.4);
+    color:#fff;
 
-        .products-grid {
+    font-size:18px;
+}
 
-            margin-top: 55px;
 
-            display: grid;
+/* =========================================================
+   ANNONCES
+========================================================= */
 
-            grid-template-columns:
-                repeat(3, 1fr);
+.announcement-box{
+    position:relative;
 
-            gap: 25px;
-        }
+    height:470px;
 
+    overflow:hidden;
 
-        .product-card {
+    border-radius:35px;
 
-            background: #f5f5f5;
+    background:#eee;
+}
 
-            border-radius: 25px;
+.announcement-track{
+    display:flex;
 
-            overflow: hidden;
+    width:100%;
+    height:100%;
 
-            transition: 0.3s ease;
-        }
+    transition:transform .7s ease;
+}
 
+.announcement-slide{
+    position:relative;
 
-        .product-card:hover {
+    min-width:100%;
+    height:100%;
+}
 
-            transform: translateY(-7px);
+.announcement-slide img,
+.announcement-slide video{
+    width:100%;
+    height:100%;
 
-            box-shadow:
-                0 20px 50px rgba(0,0,0,0.10);
-        }
+    object-fit:cover;
+}
 
+.announcement-slide video{
+    pointer-events:none;
+}
 
-        .product-image {
+.announcement-overlay{
+    position:absolute;
+    inset:0;
 
-            height: 290px;
+    background:
+        linear-gradient(
+            to top,
+            rgba(0,0,0,.65),
+            transparent 60%
+        );
+}
 
-            background:
-                linear-gradient(
-                    135deg,
-                    #eeeeee,
-                    #dddddd
-                );
+.announcement-content{
+    position:absolute;
 
-            display: flex;
+    left:35px;
+    bottom:35px;
 
-            align-items: center;
-            justify-content: center;
+    color:#fff;
 
-            overflow: hidden;
-        }
+    z-index:5;
+}
 
+.announcement-discount{
+    margin-bottom:12px;
 
-        .product-image img {
+    font-size:28px;
+    font-weight:900;
+}
 
-            width: 100%;
-            height: 100%;
+.announcement-link{
+    font-weight:800;
+}
 
-            object-fit: cover;
-        }
+.announcement-dots{
+    display:flex;
 
+    justify-content:center;
 
-        .product-placeholder {
+    gap:8px;
 
-            font-size: 70px;
+    margin-top:22px;
+}
 
-            opacity: 0.25;
-        }
+.announcement-dot{
+    width:9px;
+    height:9px;
 
+    border:0;
 
-        .product-content {
+    padding:0;
 
-            padding: 25px;
-        }
+    border-radius:50%;
 
+    background:#ccc;
+}
 
-        .product-content h3 {
+.announcement-dot.active{
+    width:32px;
 
-            font-size: 20px;
+    border-radius:20px;
 
-            margin-bottom: 12px;
-        }
+    background:#111;
+}
 
 
-        .product-price {
+/* =========================================================
+   STATISTICS
+========================================================= */
 
-            color: #e50914;
+.stats-grid{
+    display:grid;
 
-            font-weight: 800;
+    grid-template-columns:
+        repeat(4,1fr);
 
-            margin-bottom: 20px;
-        }
+    gap:22px;
+}
 
+.stat-card{
+    min-height:210px;
 
-        .product-button {
+    border-radius:35px;
 
-            width: 100%;
+    background:#fff;
 
-            border: none;
+    box-shadow:
+        0 12px 40px rgba(0,0,0,.07);
 
-            border-radius: 12px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
 
-            padding: 14px;
+    text-align:center;
+}
 
-            background: #111111;
+.stat-number{
+    margin-bottom:10px;
 
-            color: white;
+    font-size:52px;
+    font-weight:900;
 
-            font-weight: 700;
+    letter-spacing:-3px;
+}
 
-            cursor: pointer;
+.stat-label{
+    color:#777;
 
-            transition: 0.25s ease;
-        }
+    font-size:18px;
+}
 
 
-        .product-button:hover {
+/* =========================================================
+   REVIEWS
+========================================================= */
 
-            background: #e50914;
-        }
+.reviews-track{
+    display:flex;
 
+    gap:20px;
 
-        /* =====================================================
-           ABONNEMENTS
-        ===================================================== */
+    overflow-x:auto;
 
-        .subscriptions {
+    scrollbar-width:none;
 
-            background: #f5f5f5;
-        }
+    padding:10px 5px 30px;
+}
 
+.reviews-track::-webkit-scrollbar{
+    display:none;
+}
 
-        .subscription-grid {
+.review-card{
+    flex:0 0 470px;
 
-            margin-top: 50px;
+    min-height:380px;
 
-            display: grid;
+    padding:35px;
 
-            grid-template-columns:
-                repeat(3,1fr);
+    border-radius:35px;
 
-            gap: 25px;
-        }
+    background:#fff;
 
+    box-shadow:
+        0 12px 40px rgba(0,0,0,.07);
+}
 
-        .subscription-card {
+.review-stars{
+    margin-bottom:25px;
 
-            background: #ffffff;
+    color:#df2e2e;
 
-            border-radius: 25px;
+    font-size:25px;
 
-            padding: 35px;
+    letter-spacing:3px;
+}
 
-            min-height: 230px;
+.review-text{
+    margin-bottom:25px;
 
-            border:
-                1px solid #eeeeee;
+    font-size:21px;
 
-            transition: 0.3s ease;
-        }
+    line-height:1.5;
+}
 
+.review-photo{
+    width:90px;
+    height:90px;
 
-        .subscription-card:hover {
+    margin-bottom:20px;
 
-            transform: translateY(-5px);
+    border-radius:20px;
 
-            box-shadow:
-                0 15px 40px rgba(0,0,0,0.08);
-        }
+    object-fit:cover;
+}
 
+.review-product{
+    display:inline-block;
 
-        .subscription-logo {
+    margin-bottom:25px;
 
-            font-size: 30px;
+    padding:11px 17px;
 
-            font-weight: 800;
+    border-radius:50px;
 
-            margin-bottom: 25px;
-        }
+    background:#f4f4f4;
 
+    color:#777;
+}
 
-        .subscription-card h3 {
+.review-author{
+    padding-top:20px;
 
-            font-size: 22px;
+    border-top:1px solid #eee;
 
-            margin-bottom: 10px;
-        }
+    font-weight:800;
+}
 
 
-        .subscription-card p {
+/* =========================================================
+   CLIENT GALLERY
+========================================================= */
 
-            color: #777;
+.gallery-section{
+    overflow:hidden;
+}
 
-            margin-bottom: 20px;
-        }
+.gallery-wrapper{
+    width:100%;
+    overflow:hidden;
+}
 
+.gallery-track{
+    display:flex;
+    gap:22px;
 
-        .subscription-price {
+    width:max-content;
 
-            color: #e50914;
+    animation:
+        galleryScroll
+        55s
+        linear
+        infinite;
+}
 
-            font-size: 20px;
+.gallery-track:hover{
+    animation-play-state:paused;
+}
 
-            font-weight: 800;
-        }
+.gallery-item{
+    width:330px;
+    height:430px;
 
+    flex-shrink:0;
 
-        /* =====================================================
-           REPARATION
-        ===================================================== */
+    overflow:hidden;
 
-        .repair {
+    border-radius:35px;
 
-            background: #111111;
+    background:#eee;
+}
 
-            color: #ffffff;
+.gallery-item img{
+    width:100%;
+    height:100%;
 
-            text-align: center;
-        }
+    object-fit:cover;
+}
 
+@keyframes galleryScroll{
 
-        .repair .section-label {
+    from{
+        transform:translateX(0);
+    }
 
-            color: #ff3030;
-        }
+    to{
+        transform:translateX(-50%);
+    }
 
+}
 
-        .repair .section-title {
 
-            color: white;
-        }
+/* =========================================================
+   REPAIR
+========================================================= */
 
+.repair-box{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
 
-        .repair .section-description {
+    gap:40px;
 
-            color: #aaaaaa;
+    padding:70px;
 
-            max-width: 650px;
+    border-radius:40px;
 
-            margin-left: auto;
-            margin-right: auto;
-        }
+    background:#f3f3f3;
+}
 
+.repair-title{
+    margin-bottom:20px;
 
-        .repair-button {
+    font-size:clamp(40px,6vw,70px);
 
-            display: inline-block;
+    line-height:.95;
 
-            margin-top: 35px;
+    letter-spacing:-4px;
+}
 
-            padding: 17px 35px;
+.repair-description{
+    max-width:650px;
 
-            border-radius: 30px;
+    color:#777;
 
-            background: #ffffff;
+    line-height:1.7;
+}
 
-            color: #111111;
+.repair-button{
+    flex-shrink:0;
 
-            text-decoration: none;
+    padding:18px 30px;
 
-            font-weight: 700;
+    border-radius:50px;
 
-            transition: 0.3s ease;
-        }
+    background:#111;
+    color:#fff;
 
+    font-weight:800;
+}
 
-        .repair-button:hover {
 
-            background: #e50914;
+/* =========================================================
+   FOOTER
+========================================================= */
 
-            color: white;
-        }
+footer{
+    padding:80px 35px 130px;
 
+    background:#0b0b0b;
+    color:#fff;
+}
 
-        /* =====================================================
-           FOOTER
-        ===================================================== */
+.footer-grid{
+    max-width:1400px;
 
-        footer {
+    margin:auto;
 
-            padding: 45px 25px;
+    display:grid;
 
-            background: #ffffff;
+    grid-template-columns:
+        2fr 1fr 1fr 1fr;
 
-            text-align: center;
+    gap:50px;
+}
 
-            color: #777;
+.footer-logo{
+    margin-bottom:20px;
 
-            font-size: 14px;
-        }
+    font-size:30px;
+    font-weight:900;
+}
 
+.footer-description{
+    max-width:430px;
 
-        footer strong {
+    color:#888;
 
-            color: #111111;
-        }
+    line-height:1.7;
+}
 
+.footer-column h4{
+    margin-bottom:20px;
+}
 
-        /* =====================================================
-           MENU MOBILE
-        ===================================================== */
+.footer-column a{
+    display:block;
 
-        .mobile-menu {
+    margin-bottom:12px;
 
-            position: fixed;
+    color:#888;
+}
 
-            inset: 0;
+.footer-column a:hover{
+    color:#fff;
+}
 
-            z-index: 3000;
+.copyright{
+    max-width:1400px;
 
-            background: #ffffff;
+    margin:60px auto 0;
 
-            transform: translateX(100%);
+    padding-top:25px;
 
-            transition:
-                transform 0.4s
-                cubic-bezier(.77,0,.18,1);
-        }
+    border-top:1px solid #292929;
 
+    color:#666;
 
-        .mobile-menu.open {
+    font-size:13px;
+}
 
-            transform: translateX(0);
-        }
 
+/* =========================================================
+   BOTTOM NAV
+========================================================= */
 
-        .mobile-menu-header {
+.bottom-nav{
+    display:none;
+}
 
-            height: 86px;
 
-            display: flex;
+/* =========================================================
+   LOADING
+========================================================= */
 
-            align-items: center;
+.loading{
+    grid-column:1/-1;
 
-            justify-content: space-between;
+    padding:60px;
 
-            padding: 0 25px;
+    text-align:center;
 
-            border-bottom:
-                1px solid #eeeeee;
-        }
+    color:#777;
+}
 
 
-        .mobile-menu-logo {
+/* =========================================================
+   RESPONSIVE
+========================================================= */
 
-            font-size: 24px;
+@media(max-width:1100px){
 
-            font-weight: 800;
-        }
+    .categories-grid,
+    .products-grid,
+    .stats-grid{
+        grid-template-columns:
+            repeat(2,1fr);
+    }
 
+    .footer-grid{
+        grid-template-columns:
+            repeat(2,1fr);
+    }
 
-        .close-menu {
+}
 
-            border: none;
+@media(max-width:700px){
 
-            background: transparent;
+    body{
+        padding-bottom:76px;
+    }
 
-            font-size: 32px;
+    .header-inner{
+        padding:0 25px;
+    }
 
-            cursor: pointer;
-        }
+    .logo{
+        font-size:24px;
+    }
 
+    .hero{
+        min-height:620px;
+    }
 
-        .mobile-links {
+    .hero-content{
+        left:25px;
+        right:25px;
+        bottom:90px;
+    }
 
-            display: flex;
+    .hero-title{
+        font-size:47px;
+        letter-spacing:-3px;
+    }
 
-            flex-direction: column;
+    .hero-subtitle{
+        font-size:23px;
+    }
 
-            padding: 25px;
-        }
+    .hero-buttons{
+        width:100%;
+    }
 
+    .hero-button{
+        flex:1;
+        text-align:center;
+    }
 
-        .mobile-links a {
+    .section{
+        padding:80px 25px;
+    }
 
-            display: flex;
+    .section-title{
+        font-size:45px;
+        letter-spacing:-3px;
+    }
 
-            align-items: center;
+    .categories-grid{
+        grid-template-columns:
+            repeat(2,1fr);
 
-            gap: 18px;
+        gap:18px;
+    }
 
-            padding: 22px 5px;
+    .category-card{
+        min-height:190px;
 
-            color: #111111;
+        border-radius:28px;
+    }
 
-            text-decoration: none;
+    .category-icon{
+        width:75px;
+        height:75px;
 
-            border-bottom:
-                1px solid #eeeeee;
+        margin-bottom:20px;
 
-            font-size: 19px;
+        border-radius:24px;
 
-            font-weight: 600;
-        }
+        font-size:30px;
+    }
 
+    .category-name{
+        font-size:17px;
+    }
 
-        /* =====================================================
-           NAVIGATION BASSE MOBILE
-        ===================================================== */
+    .products-grid{
+        grid-template-columns:1fr;
+    }
 
-        .bottom-navigation {
+    .product-media{
+        height:350px;
+    }
 
-            display: none;
-        }
+    .subscription-heading{
+        flex-direction:column;
+        align-items:flex-start;
+    }
 
+    .subscription-card{
+        flex-basis:82vw;
+    }
 
-        /* =====================================================
-           MOBILE
-        ===================================================== */
+    .announcement-box{
+        height:360px;
+        border-radius:30px;
+    }
 
-        @media (max-width: 768px) {
+    .stats-grid{
+        grid-template-columns:
+            repeat(2,1fr);
 
-            body {
+        gap:18px;
+    }
 
-                padding-bottom: 86px;
-            }
+    .stat-card{
+        min-height:180px;
+        border-radius:28px;
+    }
 
+    .stat-number{
+        font-size:34px;
+    }
 
-            .header {
+    .stat-label{
+        font-size:15px;
+    }
 
-                height: 86px;
+    .review-card{
+        flex-basis:88vw;
+    }
 
-                padding:
-                    0 20px;
-            }
+    .gallery-item{
+        width:260px;
+        height:350px;
 
+        border-radius:28px;
+    }
 
-            .logo {
+    .repair-box{
+        flex-direction:column;
+        align-items:flex-start;
 
-                font-size: 23px;
-            }
+        padding:45px 30px;
 
+        border-radius:30px;
+    }
 
-            .header-actions {
+    .repair-button{
+        width:100%;
+        text-align:center;
+    }
 
-                gap: 11px;
-            }
+    .footer-grid{
+        grid-template-columns:1fr;
+    }
 
+    .bottom-nav{
+        position:fixed;
 
-            .header-button {
+        left:0;
+        bottom:0;
 
-                width: 35px;
-                height: 35px;
-            }
+        width:100%;
+        height:76px;
 
+        z-index:4500;
 
-            .hero {
+        display:flex;
 
-                height:
-                    calc(100vh - 86px);
+        background:rgba(255,255,255,.97);
 
-                min-height: 700px;
+        backdrop-filter:blur(20px);
+        -webkit-backdrop-filter:blur(20px);
 
-                padding-top: 86px;
+        border-top:1px solid #eee;
+    }
 
-                align-items: center;
-            }
+    .bottom-nav a{
+        flex:1;
 
+        display:flex;
+        flex-direction:column;
+        align-items:center;
+        justify-content:center;
 
-            .hero-background {
+        gap:5px;
 
-                background-position:
-                    60% center;
-            }
+        color:#777;
 
+        font-size:12px;
+    }
 
-            .hero-overlay {
+    .bottom-nav a.active{
+        color:#111;
+        font-weight:800;
+    }
 
-                background:
-                    linear-gradient(
-                        90deg,
-                        rgba(0,0,0,0.62),
-                        rgba(0,0,0,0.25)
-                    );
-            }
+    .bottom-icon{
+        font-size:24px;
+    }
 
+}
 
-            .hero-content {
 
-                padding: 0 39px;
+/* =========================================================
+   SMALL PHONES
+========================================================= */
 
-                margin-top: -15px;
-            }
+@media(max-width:380px){
 
+    .hero-title{
+        font-size:40px;
+    }
 
-            .hero-badge {
+    .category-card{
+        min-height:165px;
+    }
 
-                font-size: 12px;
+    .category-name{
+        font-size:15px;
+    }
 
-                padding:
-                    14px 20px;
+}
 
-                margin-bottom: 58px;
-            }
-
-
-            .hero-title {
-
-                font-size: 47px;
-
-                line-height: 1.04;
-
-                letter-spacing: -2.5px;
-
-                margin-bottom: 53px;
-            }
-
-
-            .hero-price {
-
-                font-size: 18px;
-
-                padding:
-                    17px 24px;
-
-                margin-bottom: 64px;
-            }
-
-
-            .hero-buttons {
-
-                gap: 28px;
-            }
-
-
-            .btn-primary {
-
-                min-width: 0;
-
-                width: 285px;
-
-                padding:
-                    20px 26px;
-
-                font-size: 19px;
-            }
-
-
-            .btn-secondary {
-
-                font-size: 18px;
-            }
-
-
-            .section {
-
-                padding:
-                    75px 20px;
-            }
-
-
-            .section-title {
-
-                font-size: 32px;
-            }
-
-
-            .products-grid,
-            .subscription-grid {
-
-                grid-template-columns: 1fr;
-
-                gap: 20px;
-            }
-
-
-            /* NAVIGATION MOBILE */
-
-            .bottom-navigation {
-
-                position: fixed;
-
-                left: 0;
-                right: 0;
-                bottom: 0;
-
-                height: 86px;
-
-                background:
-                    rgba(255,255,255,0.96);
-
-                backdrop-filter:
-                    blur(20px);
-
-                -webkit-backdrop-filter:
-                    blur(20px);
-
-                border-top:
-                    1px solid #eeeeee;
-
-                display: grid;
-
-                grid-template-columns:
-                    repeat(4,1fr);
-
-                z-index: 2000;
-            }
-
-
-            .bottom-item {
-
-                display: flex;
-
-                flex-direction: column;
-
-                align-items: center;
-
-                justify-content: center;
-
-                gap: 6px;
-
-                color: #777;
-
-                text-decoration: none;
-
-                font-size: 13px;
-
-                position: relative;
-            }
-
-
-            .bottom-item svg {
-
-                width: 25px;
-                height: 25px;
-
-                fill: none;
-
-                stroke: currentColor;
-
-                stroke-width: 1.8;
-
-                stroke-linecap: round;
-
-                stroke-linejoin: round;
-            }
-
-
-            .bottom-item.active {
-
-                color: #111111;
-
-                font-weight: 700;
-            }
-
-
-            .bottom-dot {
-
-                position: absolute;
-
-                bottom: 5px;
-
-                width: 6px;
-                height: 6px;
-
-                background: #111111;
-
-                border-radius: 50%;
-            }
-        }
-
-
-        /* =====================================================
-           PETITS IPHONE
-        ===================================================== */
-
-        @media (max-width: 390px) {
-
-            .hero-content {
-
-                padding: 0 25px;
-            }
-
-
-            .hero-title {
-
-                font-size: 42px;
-            }
-
-
-            .hero-price {
-
-                font-size: 16px;
-            }
-
-
-            .btn-primary {
-
-                width: 220px;
-
-                font-size: 17px;
-            }
-
-
-            .btn-secondary {
-
-                font-size: 16px;
-            }
-        }
-
-    </style>
-
+</style>
 </head>
 
 
 <body>
 
 
-<!-- =====================================================
+<!-- =========================================================
      HEADER
-===================================================== -->
+========================================================= -->
 
-<header class="header" id="header">
+<header
+    class="site-header"
+    id="siteHeader"
+>
 
-    <a href="#" class="logo">
-        MTECHBENIN
-    </a>
+    <div class="header-inner">
 
+        <a
+            href="#accueil"
+            class="logo"
+        >
+            MTECHBENIN
+        </a>
 
-    <div class="header-actions">
+        <div class="header-actions">
 
-        <!-- RECHERCHE -->
-
-        <button class="header-button"
+            <button
+                class="header-button"
                 onclick="openSearch()"
-                aria-label="Recherche">
+                aria-label="Rechercher"
+            >
+                ⌕
+            </button>
 
-            <svg class="icon"
-                 viewBox="0 0 24 24">
-
-                <circle cx="11" cy="11" r="7"></circle>
-
-                <line x1="16.5"
-                      y1="16.5"
-                      x2="22"
-                      y2="22"></line>
-
-            </svg>
-
-        </button>
-
-
-        <!-- PANIER -->
-
-        <button class="header-button"
+            <button
+                class="header-button"
                 onclick="openCart()"
-                aria-label="Panier">
+                aria-label="Panier"
+            >
+                🛒
 
-            <svg class="icon"
-                 viewBox="0 0 24 24">
+                <span
+                    class="cart-number"
+                    id="cartNumber"
+                >
+                    0
+                </span>
+            </button>
 
-                <circle cx="9" cy="20" r="1"></circle>
+            <button
+                class="header-button"
+                onclick="toggleMenu()"
+                aria-label="Menu"
+            >
+                ☰
+            </button>
 
-                <circle cx="18" cy="20" r="1"></circle>
-
-                <path d="M3 4h2l2.2 11.2a2 2 0 0 0 2 1.6h7.9a2 2 0 0 0 2-1.6L21 8H6"></path>
-
-            </svg>
-
-            <span class="cart-count" id="cartCount">
-                2
-            </span>
-
-        </button>
-
-
-        <!-- MENU -->
-
-        <button class="header-button"
-                onclick="openMenu()"
-                aria-label="Menu">
-
-            <svg class="icon"
-                 viewBox="0 0 24 24">
-
-                <line x1="4"
-                      y1="7"
-                      x2="20"
-                      y2="7"></line>
-
-                <line x1="4"
-                      y1="12"
-                      x2="20"
-                      y2="12"></line>
-
-                <line x1="4"
-                      y1="17"
-                      x2="20"
-                      y2="17"></line>
-
-            </svg>
-
-        </button>
+        </div>
 
     </div>
 
 </header>
 
 
+<!-- =========================================================
+     MENU
+========================================================= -->
 
-<!-- =====================================================
-     MENU MOBILE
-===================================================== -->
+<div
+    class="mobile-menu"
+    id="mobileMenu"
+>
 
-<div class="mobile-menu" id="mobileMenu">
+    <a href="#accueil">
+        Accueil
+    </a>
 
-    <div class="mobile-menu-header">
+    <a href="#catalogue">
+        Notre catalogue
+    </a>
 
-        <div class="mobile-menu-logo">
-            MTECHBENIN
-        </div>
+    <a href="#produits">
+        Produits
+    </a>
 
-        <button class="close-menu"
-                onclick="closeMenu()">
+    <a href="#abonnements">
+        Abonnements
+    </a>
 
-            ×
+    <a href="#annonces">
+        Annonces
+    </a>
 
-        </button>
+    <a href="#avis">
+        Avis clients
+    </a>
 
-    </div>
+    <a href="#clients">
+        Clients satisfaits
+    </a>
 
-
-    <nav class="mobile-links">
-
-        <a href="#accueil"
-           onclick="closeMenu()">
-
-            🏠
-            Accueil
-
-        </a>
-
-
-        <a href="#abonnements"
-           onclick="closeMenu()">
-
-            📺
-            Abonnements
-
-        </a>
-
-
-        <a href="#produits"
-           onclick="closeMenu()">
-
-            ▦
-            Produits
-
-        </a>
-
-
-        <a href="#reparation"
-           onclick="closeMenu()">
-
-            ⚙
-            Réparation
-
-        </a>
-
-    </nav>
+    <a href="#reparation">
+        Réparation
+    </a>
 
 </div>
 
 
-
-<!-- =====================================================
+<!-- =========================================================
      HERO
-===================================================== -->
+========================================================= -->
 
-<main>
+<section
+    class="hero"
+    id="accueil"
+>
 
-<section class="hero"
-         id="accueil">
+    <div
+        class="hero-slides"
+        id="heroSlides"
+    >
 
+        <div class="hero-slide active">
 
-    <div class="hero-background"></div>
+            <div
+                style="
+                    position:absolute;
+                    inset:0;
+                    background:
+                    linear-gradient(
+                        135deg,
+                        #080808,
+                        #444
+                    );
+                "
+            ></div>
 
-    <div class="hero-overlay"></div>
+            <div class="hero-overlay"></div>
 
+            <div class="hero-content">
 
-    <div class="hero-content">
+                <div class="hero-label">
 
+                    <span class="hero-label-dot"></span>
 
-        <div class="hero-badge">
+                    LE MEILLEUR AU QUOTIDIEN
 
-            <span class="red-dot"></span>
+                </div>
 
-            LE MEILLEUR AU QUOTIDIEN
+                <h1 class="hero-title">
+                    MTECH BENIN
+                </h1>
 
-        </div>
+                <div class="hero-subtitle">
+                    Élégance - Performance
+                </div>
 
+                <div class="hero-price">
+                    À partir de 50 000 FCFA
+                </div>
 
-        <h1 class="hero-title">
+                <div class="hero-buttons">
 
-            Élégance - Performance
+                    <a
+                        href="#produits"
+                        class="hero-button primary"
+                    >
+                        Découvrir →
+                    </a>
 
-        </h1>
+                    <a
+                        href="#produits"
+                        class="hero-button secondary"
+                    >
+                        Tout voir
+                    </a>
 
+                </div>
 
-        <div class="hero-price">
-
-            À partir de 50 000 fcfa
-
-        </div>
-
-
-        <div class="hero-buttons">
-
-
-            <a href="#produits"
-               class="btn-primary">
-
-                <span>
-                    Découvrir
-                </span>
-
-                <span class="arrow">
-                    →
-                </span>
-
-            </a>
-
-
-            <a href="#produits"
-               class="btn-secondary">
-
-                Tout voir
-
-            </a>
-
+            </div>
 
         </div>
 
     </div>
+
+    <div
+        class="hero-dots"
+        id="heroDots"
+    ></div>
 
 </section>
 
 
+<!-- =========================================================
+     CATALOGUE
+========================================================= -->
 
-<!-- =====================================================
-     PRODUITS
-===================================================== -->
+<section
+    class="section"
+    id="catalogue"
+>
 
-<section class="section"
-         id="produits">
+    <div class="section-container">
 
-
-    <div>
-
-        <span class="section-label">
-            NOS PRODUITS
-        </span>
+        <div class="section-label">
+            CATÉGORIES
+        </div>
 
         <h2 class="section-title">
-            Découvrez notre sélection
+            Notre Catalogue
         </h2>
 
-        <p class="section-description">
-            Les accessoires et produits technologiques
-            sélectionnés par MTECHBENIN.
-        </p>
+        <div
+            class="categories-grid"
+            id="categoriesGrid"
+        >
 
-    </div>
+            <div
+                class="category-card"
+                onclick="filterProducts('Abonnements')"
+            >
+                <div class="category-icon">
+                    📺
+                </div>
 
+                <div class="category-name">
+                    Abonnements
+                </div>
+            </div>
 
-    <div class="products-grid">
+            <div
+                class="category-card"
+                onclick="filterProducts('Accessoires')"
+            >
+                <div class="category-icon">
+                    🎮
+                </div>
 
+                <div class="category-name">
+                    Accessoires
+                </div>
+            </div>
 
-        <article class="product-card">
+            <div
+                class="category-card"
+                onclick="filterProducts('Basket')"
+            >
+                <div class="category-icon">
+                    📦
+                </div>
 
-            <div class="product-image">
+                <div class="category-name">
+                    Basket
+                </div>
+            </div>
 
-                <div class="product-placeholder">
+            <div
+                class="category-card"
+                onclick="filterProducts('Écouteurs')"
+            >
+                <div class="category-icon">
                     🎧
                 </div>
 
+                <div class="category-name">
+                    Écouteurs
+                </div>
             </div>
 
-            <div class="product-content">
-
-                <h3>
-                    Écouteurs sans fil
-                </h3>
-
-                <p class="product-price">
-                    À partir de 15 000 FCFA
-                </p>
-
-                <button class="product-button"
-                        onclick="addToCart('Écouteurs sans fil')">
-
-                    Ajouter au panier
-
-                </button>
-
-            </div>
-
-        </article>
-
-
-
-        <article class="product-card">
-
-            <div class="product-image">
-
-                <div class="product-placeholder">
+            <div
+                class="category-card"
+                onclick="filterProducts('Enceintes')"
+            >
+                <div class="category-icon">
                     🔊
                 </div>
 
+                <div class="category-name">
+                    Enceintes
+                </div>
             </div>
 
-            <div class="product-content">
+            <div
+                class="category-card"
+                onclick="filterProducts('For men')"
+            >
+                <div class="category-icon">
+                    ⌚
+                </div>
 
-                <h3>
-                    Enceintes Bluetooth
-                </h3>
+                <div class="category-name">
+                    For men
+                </div>
+            </div>
 
-                <p class="product-price">
-                    À partir de 25 000 FCFA
-                </p>
+        </div>
 
-                <button class="product-button"
-                        onclick="addToCart('Enceinte Bluetooth')">
+    </div>
 
-                    Ajouter au panier
+</section>
 
+
+<!-- =========================================================
+     PRODUITS
+========================================================= -->
+
+<section
+    class="section products-section"
+    id="produits"
+>
+
+    <div class="section-container">
+
+        <div class="section-label">
+            BOUTIQUE
+        </div>
+
+        <h2 class="section-title">
+            Nos produits
+        </h2>
+
+        <div
+            class="products-grid"
+            id="productsGrid"
+        >
+
+            <div class="loading">
+                Chargement des produits...
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     ABONNEMENTS
+========================================================= -->
+
+<section
+    class="section subscriptions-section"
+    id="abonnements"
+>
+
+    <div class="section-container">
+
+        <div class="subscription-heading">
+
+            <div>
+
+                <div class="section-label">
+                    DIGITAL
+                </div>
+
+                <h2 class="section-title">
+                    Abonnements
+                </h2>
+
+            </div>
+
+            <div class="carousel-buttons">
+
+                <button
+                    class="carousel-button"
+                    onclick="moveSubscriptions(-1)"
+                >
+                    ‹
                 </button>
 
+                <button
+                    class="carousel-button"
+                    onclick="moveSubscriptions(1)"
+                >
+                    ›
+                </button>
+
+                <span>
+                    Voir tout →
+                </span>
+
             </div>
 
-        </article>
+        </div>
 
 
+        <div
+            class="subscription-track"
+            id="subscriptionTrack"
+        >
 
-        <article class="product-card">
+            <!-- Apple Music -->
 
-            <div class="product-image">
+            <article class="subscription-card">
 
-                <div class="product-placeholder">
-                    📱
+                <img
+                    class="subscription-media"
+                    src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=1000&q=85"
+                    alt="Apple Music"
+                >
+
+                <div class="subscription-overlay"></div>
+
+                <div class="subscription-content">
+
+                    <h3 class="subscription-name">
+                        Apple Music
+                    </h3>
+
+                    <p class="subscription-description">
+                        Des millions de titres à écouter.
+                    </p>
+
+                    <div class="subscription-price">
+                        Dès <strong>1 500 FCFA</strong>/mois
+                    </div>
+
+                    <button class="subscribe-button">
+                        S'abonner
+                    </button>
+
+                </div>
+
+            </article>
+
+
+            <!-- Apple TV VIDEO -->
+
+            <article class="subscription-card">
+
+                <video
+                    class="subscription-media"
+                    muted
+                    loop
+                    playsinline
+                    preload="metadata"
+                ></video>
+
+                <button
+                    class="video-control"
+                    onclick="toggleSubscriptionVideo(this)"
+                >
+                    🔇
+                </button>
+
+                <div class="subscription-overlay"></div>
+
+                <div class="subscription-content">
+
+                    <h3 class="subscription-name">
+                        Apple TV
+                    </h3>
+
+                    <p class="subscription-description">
+                        Le meilleur du divertissement.
+                    </p>
+
+                    <div class="subscription-price">
+                        Dès <strong>1 500 FCFA</strong>/mois
+                    </div>
+
+                    <button class="subscribe-button">
+                        S'abonner
+                    </button>
+
+                </div>
+
+            </article>
+
+
+            <!-- Netflix -->
+
+            <article class="subscription-card">
+
+                <img
+                    class="subscription-media"
+                    src="https://images.unsplash.com/photo-1574375927938-d5a98e8ffe85?auto=format&fit=crop&w=1000&q=85"
+                    alt="Netflix"
+                >
+
+                <div class="subscription-overlay"></div>
+
+                <div class="subscription-content">
+
+                    <h3 class="subscription-name">
+                        Netflix
+                    </h3>
+
+                    <p class="subscription-description">
+                        Films et séries à volonté.
+                    </p>
+
+                    <div class="subscription-price">
+                        Dès <strong>2 000 FCFA</strong>/mois
+                    </div>
+
+                    <button class="subscribe-button">
+                        S'abonner
+                    </button>
+
+                </div>
+
+            </article>
+
+
+            <!-- Apple Services -->
+
+            <article class="subscription-card">
+
+                <img
+                    class="subscription-media"
+                    src="https://images.unsplash.com/photo-1516280440614-37939bbacd81?auto=format&fit=crop&w=1000&q=85"
+                    alt="Apple Services"
+                >
+
+                <div class="subscription-overlay"></div>
+
+                <div class="subscription-content">
+
+                    <h3 class="subscription-name">
+                        Apple Services
+                    </h3>
+
+                    <p class="subscription-description">
+                        Music, TV, Arcade et iCloud+.
+                    </p>
+
+                    <div class="subscription-price">
+                        Dès <strong>2 500 FCFA</strong>
+                    </div>
+
+                    <button class="subscribe-button">
+                        S'abonner
+                    </button>
+
+                </div>
+
+            </article>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     ANNONCES
+========================================================= -->
+
+<section
+    class="section"
+    id="annonces"
+>
+
+    <div class="section-container">
+
+        <div class="section-label">
+            ANNONCE
+        </div>
+
+        <div class="announcement-box">
+
+            <div
+                class="announcement-track"
+                id="announcementTrack"
+            >
+
+                <div class="announcement-slide">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1546868871-7041f2a55e12?auto=format&fit=crop&w=1400&q=85"
+                        alt="Annonce"
+                    >
+
+                    <div class="announcement-overlay"></div>
+
+                    <div class="announcement-content">
+
+                        <div class="announcement-discount">
+                            -35%
+                        </div>
+
+                        <div class="announcement-link">
+                            Découvrir ↗
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="announcement-slide">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1603313011105-4a2d1f6c5e8b?auto=format&fit=crop&w=1400&q=85"
+                        alt="Annonce"
+                    >
+
+                    <div class="announcement-overlay"></div>
+
+                    <div class="announcement-content">
+
+                        <div class="announcement-discount">
+                            NOUVEAUTÉ
+                        </div>
+
+                        <div class="announcement-link">
+                            Découvrir ↗
+                        </div>
+
+                    </div>
+
                 </div>
 
             </div>
 
-            <div class="product-content">
+        </div>
 
-                <h3>
-                    Accessoires
-                </h3>
+        <div
+            class="announcement-dots"
+            id="announcementDots"
+        ></div>
 
-                <p class="product-price">
-                    À partir de 5 000 FCFA
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     STATISTIQUES
+========================================================= -->
+
+<section class="section">
+
+    <div class="section-container">
+
+        <div class="stats-grid">
+
+            <div class="stat-card">
+
+                <div class="stat-number">
+                    53712+
+                </div>
+
+                <div class="stat-label">
+                    Clients satisfaits
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-number">
+                    126328+
+                </div>
+
+                <div class="stat-label">
+                    Commandes livrées
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-number">
+                    4.8/5
+                </div>
+
+                <div class="stat-label">
+                    Note moyenne
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-number">
+                    7 ans
+                </div>
+
+                <div class="stat-label">
+                    D'expertise
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     AVIS
+========================================================= -->
+
+<section
+    class="section"
+    id="avis"
+>
+
+    <div class="section-container">
+
+        <div class="section-label">
+            TÉMOIGNAGES
+        </div>
+
+        <h2 class="section-title">
+            Ils parlent de nous
+        </h2>
+
+        <div class="reviews-track">
+
+            <article class="review-card">
+
+                <div class="review-stars">
+                    ★★★★★
+                </div>
+
+                <p class="review-text">
+                    « Très confortable »
                 </p>
 
-                <button class="product-button"
-                        onclick="addToCart('Accessoire')">
+                <img
+                    class="review-photo"
+                    src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=300&q=85"
+                    alt="Client"
+                >
 
-                    Ajouter au panier
+                <div class="review-product">
+                    Bose QuietComfort Ultra
+                </div>
 
-                </button>
+                <div class="review-author">
+                    Wilfried — Stade
+                </div>
 
-            </div>
+            </article>
 
-        </article>
 
+            <article class="review-card">
+
+                <div class="review-stars">
+                    ★★★★★
+                </div>
+
+                <p class="review-text">
+                    « Produit reçu rapidement et très bonne qualité. »
+                </p>
+
+                <img
+                    class="review-photo"
+                    src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=300&q=85"
+                    alt="Cliente"
+                >
+
+                <div class="review-product">
+                    Accessoire
+                </div>
+
+                <div class="review-author">
+                    Cliente MTECH — Cotonou
+                </div>
+
+            </article>
+
+
+            <article class="review-card">
+
+                <div class="review-stars">
+                    ★★★★★
+                </div>
+
+                <p class="review-text">
+                    « Service sérieux, je recommande. »
+                </p>
+
+                <div class="review-product">
+                    Smartphone
+                </div>
+
+                <div class="review-author">
+                    Client MTECH
+                </div>
+
+            </article>
+
+        </div>
 
     </div>
 
 </section>
 
 
+<!-- =========================================================
+     CLIENTS SATISFAITS
+========================================================= -->
 
-<!-- =====================================================
-     ABONNEMENTS
-===================================================== -->
+<section
+    class="section gallery-section"
+    id="clients"
+>
 
-<section class="section subscriptions"
-         id="abonnements">
+    <div class="section-container">
 
+        <div class="section-label">
+            EN IMAGES
+        </div>
 
-    <span class="section-label">
-        SERVICES DIGITAUX
-    </span>
+        <h2 class="section-title">
+            Nos clients satisfaits
+        </h2>
 
-
-    <h2 class="section-title">
-        Abonnements
-    </h2>
-
-
-    <p class="section-description">
-        Retrouvez vos services digitaux préférés
-        directement sur MTECHBENIN.
-    </p>
+    </div>
 
 
-    <div class="subscription-grid">
+    <div class="gallery-wrapper">
 
+        <div class="gallery-track">
 
-        <div class="subscription-card">
-
-            <div class="subscription-logo">
-                NETFLIX
+            <div class="gallery-item">
+                <img
+                    src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=700&q=85"
+                    alt="Client satisfait"
+                >
             </div>
 
-            <h3>
-                Netflix
-            </h3>
+            <div class="gallery-item">
+                <img
+                    src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=700&q=85"
+                    alt="Client satisfait"
+                >
+            </div>
 
-            <p>
-                Abonnement mensuel.
-            </p>
+            <div class="gallery-item">
+                <img
+                    src="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&w=700&q=85"
+                    alt="Cliente satisfaite"
+                >
+            </div>
 
-            <div class="subscription-price">
-                À partir de 2 000 FCFA
+            <div class="gallery-item">
+                <img
+                    src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=700&q=85"
+                    alt="Client satisfait"
+                >
+            </div>
+
+
+            <div class="gallery-item">
+                <img
+                    src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=700&q=85"
+                    alt="Client satisfait"
+                >
+            </div>
+
+            <div class="gallery-item">
+                <img
+                    src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=700&q=85"
+                    alt="Client satisfait"
+                >
+            </div>
+
+            <div class="gallery-item">
+                <img
+                    src="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&w=700&q=85"
+                    alt="Cliente satisfaite"
+                >
+            </div>
+
+            <div class="gallery-item">
+                <img
+                    src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=700&q=85"
+                    alt="Client satisfait"
+                >
             </div>
 
         </div>
-
-
-
-        <div class="subscription-card">
-
-            <div class="subscription-logo">
-                
-            </div>
-
-            <h3>
-                Apple Music
-            </h3>
-
-            <p>
-                Profitez de votre musique
-                préférée.
-            </p>
-
-            <div class="subscription-price">
-                À partir de 1 500 FCFA
-            </div>
-
-        </div>
-
-
-
-        <div class="subscription-card">
-
-            <div class="subscription-logo">
-                
-            </div>
-
-            <h3>
-                Apple Services
-            </h3>
-
-            <p>
-                Apple TV, Arcade et iCloud+.
-            </p>
-
-            <div class="subscription-price">
-                À partir de 2 500 FCFA
-            </div>
-
-        </div>
-
 
     </div>
 
 </section>
 
 
-
-<!-- =====================================================
+<!-- =========================================================
      REPARATION
-===================================================== -->
+========================================================= -->
 
-<section class="section repair"
-         id="reparation">
+<section
+    class="section"
+    id="reparation"
+>
 
+    <div class="section-container">
 
-    <span class="section-label">
-        MTECH SERVICE
-    </span>
+        <div class="repair-box">
 
+            <div>
 
-    <h2 class="section-title">
-        Réparation
-    </h2>
+                <div class="section-label">
+                    SERVICE
+                </div>
 
+                <h2 class="repair-title">
+                    Votre appareil
+                    a un problème ?
+                </h2>
 
-    <p class="section-description">
+                <p class="repair-description">
+                    MTECH BENIN propose des services de réparation
+                    et de maintenance pour smartphones, ordinateurs
+                    et appareils électroniques.
+                </p>
 
-        Réparation de smartphones,
-        ordinateurs et appareils électroniques.
+            </div>
 
-    </p>
+            <a
+                href="https://wa.me/22960506320"
+                target="_blank"
+                rel="noopener"
+                class="repair-button"
+            >
+                Nous contacter
+            </a>
 
+        </div>
 
-    <a href="https://wa.me/22960506320"
-       class="repair-button">
-
-        Demander une réparation
-
-    </a>
+    </div>
 
 </section>
 
 
-</main>
-
-
-
-<!-- =====================================================
+<!-- =========================================================
      FOOTER
-===================================================== -->
+========================================================= -->
 
 <footer>
 
-    <strong>
-        MTECHBENIN
-    </strong>
+    <div class="footer-grid">
 
-    <br><br>
+        <div>
 
-    © 2026 MTECHBENIN.
-    Tous droits réservés.
+            <div class="footer-logo">
+                MTECH BENIN
+            </div>
+
+            <p class="footer-description">
+                Technologie, accessoires, produits numériques,
+                abonnements et services de réparation.
+            </p>
+
+        </div>
+
+
+        <div class="footer-column">
+
+            <h4>
+                Boutique
+            </h4>
+
+            <a href="#produits">
+                Produits
+            </a>
+
+            <a href="#catalogue">
+                Catalogue
+            </a>
+
+            <a href="#abonnements">
+                Abonnements
+            </a>
+
+        </div>
+
+
+        <div class="footer-column">
+
+            <h4>
+                Services
+            </h4>
+
+            <a href="#reparation">
+                Réparation
+            </a>
+
+            <a href="#avis">
+                Avis clients
+            </a>
+
+            <a href="#clients">
+                Clients satisfaits
+            </a>
+
+        </div>
+
+
+        <div class="footer-column">
+
+            <h4>
+                Contact
+            </h4>
+
+            <a
+                href="https://wa.me/22960506320"
+                target="_blank"
+                rel="noopener"
+            >
+                WhatsApp
+            </a>
+
+            <a href="mailto:contact@mtechbenin.com">
+                Email
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <div class="copyright">
+        © 2026 MTECH BENIN — Tous droits réservés.
+    </div>
 
 </footer>
 
 
+<!-- =========================================================
+     MOBILE NAVIGATION
+========================================================= -->
 
-<!-- =====================================================
-     NAVIGATION MOBILE BASSE
-===================================================== -->
+<nav class="bottom-nav">
 
-<nav class="bottom-navigation">
-
-
-    <a href="#accueil"
-       class="bottom-item active">
-
-        <svg viewBox="0 0 24 24">
-
-            <path d="M3 10.5L12 3l9 7.5"></path>
-
-            <path d="M5 9.5V21h14V9.5"></path>
-
-            <path d="M9 21v-7h6v7"></path>
-
-        </svg>
+    <a
+        href="#accueil"
+        class="active"
+    >
+        <span class="bottom-icon">
+            ⌂
+        </span>
 
         <span>
             Accueil
         </span>
-
-        <span class="bottom-dot"></span>
-
     </a>
 
 
+    <a href="#abonnements">
 
-    <a href="#abonnements"
-       class="bottom-item">
-
-        <svg viewBox="0 0 24 24">
-
-            <rect x="3"
-                  y="5"
-                  width="18"
-                  height="14"
-                  rx="2"></rect>
-
-            <path d="M8 3v2"></path>
-
-            <path d="M16 3v2"></path>
-
-            <path d="M8 12h8"></path>
-
-        </svg>
+        <span class="bottom-icon">
+            ▣
+        </span>
 
         <span>
             Abonnements
@@ -1846,33 +2561,11 @@
     </a>
 
 
+    <a href="#produits">
 
-    <a href="#produits"
-       class="bottom-item">
-
-        <svg viewBox="0 0 24 24">
-
-            <rect x="4"
-                  y="4"
-                  width="6"
-                  height="6"></rect>
-
-            <rect x="14"
-                  y="4"
-                  width="6"
-                  height="6"></rect>
-
-            <rect x="4"
-                  y="14"
-                  width="6"
-                  height="6"></rect>
-
-            <rect x="14"
-                  y="14"
-                  width="6"
-                  height="6"></rect>
-
-        </svg>
+        <span class="bottom-icon">
+            ▦
+        </span>
 
         <span>
             Produits
@@ -1881,19 +2574,11 @@
     </a>
 
 
+    <a href="#reparation">
 
-    <a href="#reparation"
-       class="bottom-item">
-
-        <svg viewBox="0 0 24 24">
-
-            <circle cx="12"
-                    cy="12"
-                    r="3"></circle>
-
-            <path d="M19.4 15a1.7 1.7 0 0 0 .3 1.9l.1.1-1.8 1.8-.1-.1a1.7 1.7 0 0 0-1.9-.3 1.7 1.7 0 0 0-1 1.6V21h-2.5v-.1a1.7 1.7 0 0 0-1-1.6 1.7 1.7 0 0 0-1.9.3l-.1.1-1.8-1.8.1-.1A1.7 1.7 0 0 0 8 15a1.7 1.7 0 0 0-1.6-1H6v-2.5h.4A1.7 1.7 0 0 0 8 10a1.7 1.7 0 0 0-.3-1.9l-.1-.1 1.8-1.8.1.1a1.7 1.7 0 0 0 1.9.3 1.7 1.7 0 0 0 1-1.6V5h2.5v.1a1.7 1.7 0 0 0 1 1.6 1.7 1.7 0 0 0 1.9-.3l.1-.1 1.8 1.8-.1.1a1.7 1.7 0 0 0-.3 1.9 1.7 1.7 0 0 0 1.6 1h.4V14h-.4a1.7 1.7 0 0 0-1.5 1z"></path>
-
-        </svg>
+        <span class="bottom-icon">
+            ⚙
+        </span>
 
         <span>
             Réparation
@@ -1901,114 +2586,371 @@
 
     </a>
 
-
 </nav>
 
 
-
-<!-- =====================================================
-     JAVASCRIPT
-===================================================== -->
-
 <script>
 
-    /* =====================================================
-       MENU
-    ===================================================== */
+/* =========================================================
+   SUPABASE
+========================================================= */
 
-    function openMenu() {
+const SUPABASE_URL =
+"https://eldbudjhbsnvuffjpiue.supabase.co";
 
-        document
-            .getElementById("mobileMenu")
-            .classList
-            .add("open");
+/*
+   COLLE TA CLÉ sb_publishable_... ICI.
+   JAMAIS la clé sb_secret_...
+*/
 
-        document.body.style.overflow = "hidden";
+const SUPABASE_PUBLISHABLE_KEY =
+"sb_publishable_u8yaezMW2z78tLG7DnIe3g_kjVQIlde";
+
+const supabaseClient =
+window.supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_PUBLISHABLE_KEY
+);
+
+
+/* =========================================================
+   VARIABLES
+========================================================= */
+
+let products = [];
+let cart = [];
+
+let heroIndex = 0;
+let heroTimer = null;
+
+let announcementIndex = 0;
+
+
+/* =========================================================
+   UTILITAIRES
+========================================================= */
+
+function escapeHtml(value){
+
+    if(
+        value === null ||
+        value === undefined
+    ){
+        return "";
     }
 
-
-    function closeMenu() {
-
-        document
-            .getElementById("mobileMenu")
-            .classList
-            .remove("open");
-
-        document.body.style.overflow = "";
-    }
+    return String(value)
+        .replace(/&/g,"&amp;")
+        .replace(/</g,"&lt;")
+        .replace(/>/g,"&gt;")
+        .replace(/"/g,"&quot;")
+        .replace(/'/g,"&#039;");
+}
 
 
+function formatPrice(price){
 
-    /* =====================================================
-       PANIER
-    ===================================================== */
+    return new Intl.NumberFormat(
+        "fr-FR"
+    ).format(
+        Number(price || 0)
+    ) + " FCFA";
+}
 
-    let cartCount = 2;
 
+/* =========================================================
+   HERO SUPABASE
+========================================================= */
 
-    function addToCart(product) {
+async function loadHero(){
 
-        cartCount++;
-
-        document
-            .getElementById("cartCount")
-            .textContent = cartCount;
-
-        alert(
-            product +
-            " a été ajouté au panier."
+    const container =
+        document.getElementById(
+            "heroSlides"
         );
-    }
 
-
-    function openCart() {
-
-        alert(
-            "Votre panier contient " +
-            cartCount +
-            " article(s)."
+    const dots =
+        document.getElementById(
+            "heroDots"
         );
-    }
 
+    try{
 
-
-    /* =====================================================
-       RECHERCHE
-    ===================================================== */
-
-    function openSearch() {
-
-        const query =
-            prompt("Que recherchez-vous ?");
-
-        if (query) {
-
-            alert(
-                "Recherche : " + query
+        const result =
+            await supabaseClient
+            .from("hero_slides")
+            .select("*")
+            .order(
+                "id",
+                {
+                    ascending:true
+                }
             );
+
+        if(result.error){
+
+            console.error(
+                "Erreur Hero :",
+                result.error
+            );
+
+            return;
         }
+
+        const rows =
+            result.data || [];
+
+        if(!rows.length){
+            return;
+        }
+
+        container.innerHTML = "";
+        dots.innerHTML = "";
+
+        rows.forEach(
+            (slide,index)=>{
+
+                const videoUrl =
+                    slide.video_url ||
+                    slide.video ||
+                    "";
+
+                const imageUrl =
+                    slide.image_url ||
+                    slide.image ||
+                    "";
+
+                const mediaUrl =
+                    slide.media_url ||
+                    slide.url ||
+                    videoUrl ||
+                    imageUrl ||
+                    "";
+
+                const title =
+                    slide.title ||
+                    slide.name ||
+                    "MTECH BENIN";
+
+                const subtitle =
+                    slide.subtitle ||
+                    slide.description ||
+                    "Élégance - Performance";
+
+                const price =
+                    slide.price_text ||
+                    slide.price ||
+                    "À partir de 50 000 FCFA";
+
+
+                let mediaHTML = "";
+
+
+                if(videoUrl){
+
+                    mediaHTML = `
+                        <video
+                            class="hero-media"
+                            src="${escapeHtml(videoUrl)}"
+                            muted
+                            autoplay
+                            loop
+                            playsinline
+                            preload="auto"
+                        ></video>
+                    `;
+
+                }else if(
+                    mediaUrl &&
+                    /\.(mp4|webm|mov)(\?|$)/i
+                    .test(mediaUrl)
+                ){
+
+                    mediaHTML = `
+                        <video
+                            class="hero-media"
+                            src="${escapeHtml(mediaUrl)}"
+                            muted
+                            autoplay
+                            loop
+                            playsinline
+                            preload="auto"
+                        ></video>
+                    `;
+
+                }else{
+
+                    mediaHTML = `
+                        <img
+                            class="hero-media"
+                            src="${escapeHtml(mediaUrl)}"
+                            alt="${escapeHtml(title)}"
+                        >
+                    `;
+
+                }
+
+
+                const element =
+                    document.createElement(
+                        "div"
+                    );
+
+                element.className =
+                    "hero-slide" +
+                    (
+                        index === 0
+                            ? " active"
+                            : ""
+                    );
+
+
+                element.innerHTML = `
+
+                    ${mediaHTML}
+
+                    <div class="hero-overlay"></div>
+
+                    <div class="hero-content">
+
+                        <div class="hero-label">
+
+                            <span class="hero-label-dot"></span>
+
+                            LE MEILLEUR AU QUOTIDIEN
+
+                        </div>
+
+                        <h1 class="hero-title">
+                            ${escapeHtml(title)}
+                        </h1>
+
+                        <div class="hero-subtitle">
+                            ${escapeHtml(subtitle)}
+                        </div>
+
+                        <div class="hero-price">
+                            ${escapeHtml(price)}
+                        </div>
+
+                        <div class="hero-buttons">
+
+                            <a
+                                href="#produits"
+                                class="hero-button primary"
+                            >
+                                Découvrir →
+                            </a>
+
+                            <a
+                                href="#produits"
+                                class="hero-button secondary"
+                            >
+                                Tout voir
+                            </a>
+
+                        </div>
+
+                    </div>
+                `;
+
+
+                container.appendChild(
+                    element
+                );
+
+
+                const dot =
+                    document.createElement(
+                        "button"
+                    );
+
+                dot.className =
+                    "hero-dot" +
+                    (
+                        index === 0
+                            ? " active"
+                            : ""
+                    );
+
+                dot.onclick =
+                    ()=>{
+                        showHero(index);
+                    };
+
+                dots.appendChild(
+                    dot
+                );
+
+            }
+        );
+
+
+        heroIndex = 0;
+
+        startHero();
+
+    }catch(error){
+
+        console.error(
+            "Hero:",
+            error
+        );
+
     }
 
+}
 
 
-    /* =====================================================
-       HEADER AU SCROLL
-    ===================================================== */
+function showHero(index){
 
-    window.addEventListener(
-        "scroll",
-        function() {
+    const slides =
+        document.querySelectorAll(
+            ".hero-slide"
+        );
 
-            const header =
-                document.getElementById("header");
+    const dots =
+        document.querySelectorAll(
+            ".hero-dot"
+        );
 
-            if (window.scrollY > 30) {
+    if(!slides.length){
+        return;
+    }
 
-                header.classList.add("scrolled");
+    heroIndex =
+        (index + slides.length)
+        %
+        slides.length;
 
-            } else {
 
-                header.classList.remove("scrolled");
+    slides.forEach(
+        (slide,i)=>{
+
+            slide.classList.toggle(
+                "active",
+                i === heroIndex
+            );
+
+            const video =
+                slide.querySelector(
+                    "video"
+                );
+
+            if(video){
+
+                if(i === heroIndex){
+
+                    video.currentTime = 0;
+
+                    video.play()
+                        .catch(()=>{});
+
+                }else{
+
+                    video.pause();
+
+                }
 
             }
 
@@ -2016,67 +2958,836 @@
     );
 
 
+    dots.forEach(
+        (dot,i)=>{
 
-    /* =====================================================
-       NAVIGATION ACTIVE
-    ===================================================== */
+            dot.classList.toggle(
+                "active",
+                i === heroIndex
+            );
 
-    const bottomItems =
-        document.querySelectorAll(
-            ".bottom-item"
+        }
+    );
+
+}
+
+
+function startHero(){
+
+    clearInterval(heroTimer);
+
+    heroTimer =
+        setInterval(
+            ()=>{
+
+                const slides =
+                    document.querySelectorAll(
+                        ".hero-slide"
+                    );
+
+                if(
+                    slides.length > 1
+                ){
+
+                    showHero(
+                        heroIndex + 1
+                    );
+
+                }
+
+            },
+            7000
+        );
+
+}
+
+
+/* =========================================================
+   PRODUCTS
+========================================================= */
+
+async function loadProducts(){
+
+    const grid =
+        document.getElementById(
+            "productsGrid"
+        );
+
+    try{
+
+        const result =
+            await supabaseClient
+            .from("products")
+            .select(`
+                id,
+                created_at,
+                name,
+                price,
+                stock,
+                category,
+                image_url,
+                video_url,
+                description,
+                active,
+                featured
+            `)
+            .eq(
+                "active",
+                true
+            )
+            .order(
+                "created_at",
+                {
+                    ascending:false
+                }
+            );
+
+
+        if(result.error){
+
+            console.error(
+                result.error
+            );
+
+            grid.innerHTML = `
+                <div class="loading">
+                    Impossible de charger les produits.
+                </div>
+            `;
+
+            return;
+        }
+
+
+        products =
+            result.data || [];
+
+
+        renderProducts(
+            products
         );
 
 
-    bottomItems.forEach(
-        function(item) {
+    }catch(error){
 
-            item.addEventListener(
-                "click",
-                function() {
+        console.error(
+            error
+        );
 
-                    bottomItems.forEach(
-                        function(i) {
+        grid.innerHTML = `
+            <div class="loading">
+                Erreur de connexion.
+            </div>
+        `;
 
-                            i.classList.remove(
-                                "active"
-                            );
+    }
 
-                            const dot =
-                                i.querySelector(
-                                    ".bottom-dot"
-                                );
+}
 
-                            if (dot) {
 
-                                dot.remove();
+function renderProducts(list){
 
+    const grid =
+        document.getElementById(
+            "productsGrid"
+        );
+
+
+    if(!list.length){
+
+        grid.innerHTML = `
+            <div class="loading">
+                Aucun produit disponible.
+            </div>
+        `;
+
+        return;
+    }
+
+
+    grid.innerHTML =
+        list.map(
+            product => {
+
+                const name =
+                    escapeHtml(
+                        product.name
+                    );
+
+                const category =
+                    escapeHtml(
+                        product.category ||
+                        "Produit"
+                    );
+
+                const description =
+                    escapeHtml(
+                        product.description ||
+                        ""
+                    );
+
+                const stock =
+                    Number(
+                        product.stock || 0
+                    );
+
+
+                let media = "";
+
+
+                if(product.video_url){
+
+                    media = `
+                        <video
+                            src="${escapeHtml(product.video_url)}"
+                            muted
+                            autoplay
+                            loop
+                            playsinline
+                            preload="metadata"
+                        ></video>
+                    `;
+
+                }else if(product.image_url){
+
+                    media = `
+                        <img
+                            src="${escapeHtml(product.image_url)}"
+                            alt="${name}"
+                            loading="lazy"
+                        >
+                    `;
+
+                }else{
+
+                    media = `
+                        <div
+                            style="
+                                width:100%;
+                                height:100%;
+                                display:flex;
+                                align-items:center;
+                                justify-content:center;
+                                color:#888;
+                            "
+                        >
+                            Image indisponible
+                        </div>
+                    `;
+
+                }
+
+
+                return `
+
+                    <article class="product-card">
+
+                        <div class="product-media">
+                            ${media}
+                        </div>
+
+                        <div class="product-info">
+
+                            <div class="product-category">
+                                ${category}
+                            </div>
+
+                            <h3 class="product-name">
+                                ${name}
+                            </h3>
+
+                            ${
+                                description
+                                ?
+                                `
+                                    <p class="product-description">
+                                        ${description}
+                                    </p>
+                                `
+                                :
+                                ""
                             }
 
-                        }
-                    );
+                            <div class="product-price">
+                                ${formatPrice(product.price)}
+                            </div>
+
+                            <div class="product-stock">
+
+                                ${
+                                    stock > 0
+                                    ?
+                                    stock +
+                                    " disponible"
+                                    :
+                                    "Rupture de stock"
+                                }
+
+                            </div>
+
+                            <button
+                                class="product-button"
+                                ${
+                                    stock <= 0
+                                    ?
+                                    "disabled"
+                                    :
+                                    ""
+                                }
+                                onclick="addToCart(${product.id})"
+                            >
+
+                                ${
+                                    stock > 0
+                                    ?
+                                    "Ajouter au panier"
+                                    :
+                                    "Indisponible"
+                                }
+
+                            </button>
+
+                        </div>
+
+                    </article>
+
+                `;
+
+            }
+        ).join("");
+
+}
 
 
-                    item.classList.add(
-                        "active"
-                    );
+function filterProducts(category){
+
+    const filtered =
+        products.filter(
+            product =>
+                String(
+                    product.category || ""
+                )
+                .toLowerCase()
+                ===
+                String(category)
+                .toLowerCase()
+        );
 
 
-                    if (
-                        !item.querySelector(
-                            ".bottom-dot"
-                        )
-                    ) {
+    renderProducts(
+        filtered
+    );
 
-                        const dot =
-                            document.createElement(
-                                "span"
+
+    document
+        .getElementById(
+            "produits"
+        )
+        .scrollIntoView({
+            behavior:"smooth"
+        });
+
+}
+
+
+/* =========================================================
+   PANIER
+========================================================= */
+
+function addToCart(id){
+
+    const product =
+        products.find(
+            item =>
+                Number(item.id)
+                ===
+                Number(id)
+        );
+
+
+    if(!product){
+        return;
+    }
+
+
+    cart.push(
+        product
+    );
+
+
+    updateCart();
+
+
+    alert(
+        product.name +
+        " a été ajouté au panier."
+    );
+
+}
+
+
+function updateCart(){
+
+    document
+        .getElementById(
+            "cartNumber"
+        )
+        .textContent =
+        cart.length;
+
+}
+
+
+function openCart(){
+
+    if(!cart.length){
+
+        alert(
+            "Votre panier est vide."
+        );
+
+        return;
+    }
+
+
+    const total =
+        cart.reduce(
+            (
+                sum,
+                item
+            ) =>
+                sum +
+                Number(
+                    item.price || 0
+                ),
+            0
+        );
+
+
+    alert(
+        "Panier : " +
+        cart.length +
+        " article(s)\n\n" +
+        "Total : " +
+        formatPrice(total)
+    );
+
+}
+
+
+/* =========================================================
+   ABONNEMENTS
+========================================================= */
+
+function moveSubscriptions(direction){
+
+    const track =
+        document.getElementById(
+            "subscriptionTrack"
+        );
+
+    const amount =
+        window.innerWidth < 700
+        ?
+        window.innerWidth * .82
+        :
+        352;
+
+
+    track.scrollBy({
+        left:
+            amount * direction,
+        behavior:
+            "smooth"
+    });
+
+}
+
+
+function toggleSubscriptionVideo(button){
+
+    const card =
+        button.closest(
+            ".subscription-card"
+        );
+
+    const video =
+        card.querySelector(
+            "video"
+        );
+
+
+    if(!video){
+        return;
+    }
+
+
+    if(video.paused){
+
+        video.muted = false;
+
+        video.play()
+            .then(
+                ()=>{
+                    button.textContent =
+                        "⏸";
+                }
+            )
+            .catch(
+                ()=>{
+                    video.muted = true;
+
+                    video.play()
+                        .catch(()=>{});
+                }
+            );
+
+    }else{
+
+        video.pause();
+
+        button.textContent =
+            "▶";
+
+    }
+
+}
+
+
+/* =========================================================
+   VIDEO ABONNEMENT AU CENTRE
+========================================================= */
+
+const subscriptionObserver =
+    new IntersectionObserver(
+        entries => {
+
+            entries.forEach(
+                entry => {
+
+                    const card =
+                        entry.target;
+
+                    const video =
+                        card.querySelector(
+                            "video"
+                        );
+
+
+                    if(!video){
+                        return;
+                    }
+
+
+                    if(
+                        entry.isIntersecting &&
+                        entry.intersectionRatio >= .65
+                    ){
+
+                        video.muted = true;
+
+                        video.play()
+                            .catch(
+                                ()=>{}
                             );
 
-                        dot.className =
-                            "bottom-dot";
+                    }else{
 
-                        item.appendChild(dot);
+                        video.pause();
+
                     }
+
+                }
+            );
+
+        },
+        {
+            threshold:[
+                .65
+            ]
+        }
+    );
+
+
+document
+    .querySelectorAll(
+        ".subscription-card"
+    )
+    .forEach(
+        card =>
+            subscriptionObserver.observe(
+                card
+            )
+    );
+
+
+/* =========================================================
+   ANNONCES
+========================================================= */
+
+const announcementTrack =
+    document.getElementById(
+        "announcementTrack"
+    );
+
+const announcementSlides =
+    document.querySelectorAll(
+        ".announcement-slide"
+    );
+
+const announcementDots =
+    document.getElementById(
+        "announcementDots"
+    );
+
+
+announcementSlides.forEach(
+    (
+        slide,
+        index
+    )=>{
+
+        const dot =
+            document.createElement(
+                "button"
+            );
+
+        dot.className =
+            "announcement-dot" +
+            (
+                index === 0
+                ?
+                " active"
+                :
+                ""
+            );
+
+        dot.onclick =
+            ()=>{
+                showAnnouncement(
+                    index
+                );
+            };
+
+        announcementDots.appendChild(
+            dot
+        );
+
+    }
+);
+
+
+function showAnnouncement(index){
+
+    if(!announcementSlides.length){
+        return;
+    }
+
+
+    announcementIndex =
+        index %
+        announcementSlides.length;
+
+
+    announcementTrack.style.transform =
+        "translateX(-" +
+        (
+            announcementIndex * 100
+        ) +
+        "%)";
+
+
+    document
+        .querySelectorAll(
+            ".announcement-dot"
+        )
+        .forEach(
+            (
+                dot,
+                i
+            )=>{
+
+                dot.classList.toggle(
+                    "active",
+                    i === announcementIndex
+                );
+
+            }
+        );
+
+}
+
+
+/*
+   Défilement automatique.
+   Les vidéos restent toujours muettes.
+*/
+
+setInterval(
+    ()=>{
+
+        showAnnouncement(
+            announcementIndex + 1
+        );
+
+    },
+    5000
+);
+
+
+/* =========================================================
+   RECHERCHE
+========================================================= */
+
+function openSearch(){
+
+    const query =
+        prompt(
+            "Que recherchez-vous ?"
+        );
+
+
+    if(!query){
+        return;
+    }
+
+
+    const results =
+        products.filter(
+            product => {
+
+                const text =
+                    (
+                        product.name +
+                        " " +
+                        (
+                            product.category ||
+                            ""
+                        ) +
+                        " " +
+                        (
+                            product.description ||
+                            ""
+                        )
+                    )
+                    .toLowerCase();
+
+
+                return text.includes(
+                    query.toLowerCase()
+                );
+
+            }
+        );
+
+
+    renderProducts(
+        results
+    );
+
+
+    document
+        .getElementById(
+            "produits"
+        )
+        .scrollIntoView({
+            behavior:"smooth"
+        });
+
+}
+
+
+/* =========================================================
+   MENU
+========================================================= */
+
+function toggleMenu(){
+
+    document
+        .getElementById(
+            "mobileMenu"
+        )
+        .classList.toggle(
+            "active"
+        );
+
+}
+
+
+document
+    .querySelectorAll(
+        ".mobile-menu a"
+    )
+    .forEach(
+        link => {
+
+            link.addEventListener(
+                "click",
+                ()=>{
+                    document
+                        .getElementById(
+                            "mobileMenu"
+                        )
+                        .classList.remove(
+                            "active"
+                        );
+                }
+            );
+
+        }
+    );
+
+
+/* =========================================================
+   HEADER SCROLL
+========================================================= */
+
+window.addEventListener(
+    "scroll",
+    ()=>{
+
+        document
+            .getElementById(
+                "siteHeader"
+            )
+            .classList.toggle(
+                "scrolled",
+                window.scrollY > 20
+            );
+
+    }
+);
+
+
+/* =========================================================
+   BOTTOM NAV
+========================================================= */
+
+document
+    .querySelectorAll(
+        ".bottom-nav a"
+    )
+    .forEach(
+        link => {
+
+            link.addEventListener(
+                "click",
+                ()=>{
+
+                    document
+                        .querySelectorAll(
+                            ".bottom-nav a"
+                        )
+                        .forEach(
+                            item =>
+                                item.classList.remove(
+                                    "active"
+                                )
+                        );
+
+                    link.classList.add(
+                        "active"
+                    );
 
                 }
             );
@@ -2084,9 +3795,25 @@
         }
     );
 
+
+/* =========================================================
+   INITIALISATION
+========================================================= */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    async ()=>{
+
+        await loadHero();
+
+        await loadProducts();
+
+        updateCart();
+
+    }
+);
+
 </script>
 
-
 </body>
-
 </html>
