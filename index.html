@@ -25,6 +25,7 @@ content="MTECH BENIN - Smartphones, accessoires, abonnements, produits numériqu
 
 html{
     scroll-behavior:smooth;
+    -webkit-text-size-adjust:100%;
 }
 
 body{
@@ -40,6 +41,8 @@ body{
         Arial,
         sans-serif;
     overflow-x:hidden;
+    -webkit-font-smoothing:antialiased;
+    text-rendering:optimizeLegibility;
 }
 
 button,
@@ -51,11 +54,13 @@ select{
 
 button{
     cursor:pointer;
+    -webkit-tap-highlight-color:transparent;
 }
 
 a{
     color:inherit;
     text-decoration:none;
+    -webkit-tap-highlight-color:transparent;
 }
 
 img,
@@ -129,10 +134,18 @@ video{
     justify-content:center;
 
     font-size:25px;
+
+    transition:
+        color:.2s ease,
+        transform:.2s ease;
 }
 
 .header-button:hover{
     color:#111;
+}
+
+.header-button:active{
+    transform:scale(.94);
 }
 
 .cart-number{
@@ -202,10 +215,18 @@ video{
     border-radius:15px;
 
     font-weight:700;
+
+    transition:
+        background:.2s ease,
+        transform:.2s ease;
 }
 
 .mobile-menu a:hover{
     background:#f5f5f5;
+}
+
+.mobile-menu a:active{
+    transform:translateX(3px);
 }
 
 
@@ -362,6 +383,14 @@ video{
     font-weight:800;
 
     border:1px solid transparent;
+
+    transition:
+        transform:.2s ease,
+        background:.2s ease;
+}
+
+.hero-button:active{
+    transform:scale(.96);
 }
 
 .hero-button.primary{
@@ -479,7 +508,9 @@ video{
 
     text-align:center;
 
-    transition:.3s;
+    transition:
+        transform:.3s ease,
+        box-shadow:.3s ease;
 
     cursor:pointer;
 }
@@ -489,6 +520,10 @@ video{
 
     box-shadow:
         0 20px 50px rgba(0,0,0,.11);
+}
+
+.category-card:active{
+    transform:scale(.98);
 }
 
 .category-icon{
@@ -541,7 +576,9 @@ video{
     box-shadow:
         0 10px 30px rgba(0,0,0,.05);
 
-    transition:.3s;
+    transition:
+        transform:.3s ease,
+        box-shadow:.3s ease;
 }
 
 .product-card:hover{
@@ -625,6 +662,14 @@ video{
     color:#fff;
 
     font-weight:800;
+
+    transition:
+        transform:.2s ease,
+        opacity:.2s ease;
+}
+
+.product-button:active{
+    transform:scale(.97);
 }
 
 .product-button:disabled{
@@ -679,7 +724,21 @@ video{
     color:#fff;
 
     font-size:27px;
+
+    transition:
+        transform:.2s ease,
+        background:.2s ease;
 }
+
+.carousel-button:active{
+    transform:scale(.92);
+}
+
+
+/* IMPORTANT :
+   Sur ordinateur = grandes cartes.
+   Sur mobile = modifié plus bas pour afficher 2 cartes.
+*/
 
 .subscription-track{
     display:flex;
@@ -690,8 +749,11 @@ video{
     padding-bottom:15px;
 
     scroll-snap-type:x mandatory;
+    scroll-behavior:smooth;
 
     scrollbar-width:none;
+
+    -webkit-overflow-scrolling:touch;
 }
 
 .subscription-track::-webkit-scrollbar{
@@ -711,7 +773,17 @@ video{
 
     background:#151515;
 
-    scroll-snap-align:center;
+    scroll-snap-align:start;
+
+    box-shadow:
+        0 10px 30px rgba(0,0,0,.18);
+
+    transition:
+        transform:.25s ease;
+}
+
+.subscription-card:active{
+    transform:scale(.985);
 }
 
 .subscription-media{
@@ -782,6 +854,13 @@ video{
     color:#111;
 
     font-weight:800;
+
+    transition:
+        transform:.2s ease;
+}
+
+.subscribe-button:active{
+    transform:scale(.96);
 }
 
 .video-control{
@@ -803,6 +882,9 @@ video{
     color:#fff;
 
     font-size:18px;
+
+    backdrop-filter:blur(10px);
+    -webkit-backdrop-filter:blur(10px);
 }
 
 
@@ -836,6 +918,8 @@ video{
 
     min-width:100%;
     height:100%;
+
+    flex-shrink:0;
 }
 
 .announcement-slide img,
@@ -920,6 +1004,11 @@ video{
    STATISTICS
 ========================================================= */
 
+.stats-section{
+    padding-top:80px;
+    padding-bottom:80px;
+}
+
 .stats-grid{
     display:grid;
 
@@ -945,6 +1034,10 @@ video{
     justify-content:center;
 
     text-align:center;
+
+    transition:
+        transform:.25s ease,
+        box-shadow:.25s ease;
 }
 
 .stat-number{
@@ -954,6 +1047,8 @@ video{
     font-weight:900;
 
     letter-spacing:-3px;
+
+    color:#111;
 }
 
 .stat-label{
@@ -977,6 +1072,10 @@ video{
     scrollbar-width:none;
 
     padding:10px 5px 30px;
+
+    scroll-snap-type:x mandatory;
+
+    -webkit-overflow-scrolling:touch;
 }
 
 .reviews-track::-webkit-scrollbar{
@@ -996,6 +1095,8 @@ video{
 
     box-shadow:
         0 12px 40px rgba(0,0,0,.07);
+
+    scroll-snap-align:start;
 }
 
 .review-stars{
@@ -1212,6 +1313,8 @@ footer{
     margin-bottom:12px;
 
     color:#888;
+
+    transition:color:.2s ease;
 }
 
 .footer-column a:hover{
@@ -1258,7 +1361,7 @@ footer{
 
 
 /* =========================================================
-   RESPONSIVE
+   TABLET
 ========================================================= */
 
 @media(max-width:1100px){
@@ -1277,6 +1380,11 @@ footer{
 
 }
 
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
 @media(max-width:700px){
 
     body{
@@ -1284,148 +1392,484 @@ footer{
     }
 
     .header-inner{
-        padding:0 25px;
+        padding:0 18px;
     }
 
     .logo{
-        font-size:24px;
+        font-size:23px;
+        letter-spacing:-1px;
     }
+
+    .header-actions{
+        gap:2px;
+    }
+
+    .header-button{
+        width:42px;
+        height:42px;
+        font-size:22px;
+    }
+
+
+    /* HERO */
 
     .hero{
         min-height:620px;
     }
 
     .hero-content{
-        left:25px;
-        right:25px;
+        left:22px;
+        right:22px;
         bottom:90px;
     }
 
+    .hero-label{
+        padding:9px 14px;
+        margin-bottom:18px;
+        font-size:11px;
+        letter-spacing:1px;
+    }
+
     .hero-title{
-        font-size:47px;
-        letter-spacing:-3px;
+        font-size:42px;
+        letter-spacing:-2.5px;
+        margin-bottom:17px;
     }
 
     .hero-subtitle{
-        font-size:23px;
+        font-size:20px;
+        margin-bottom:18px;
+    }
+
+    .hero-price{
+        padding:11px 17px;
+        margin-bottom:18px;
+        font-size:13px;
     }
 
     .hero-buttons{
         width:100%;
+        gap:8px;
     }
 
     .hero-button{
         flex:1;
+        padding:13px 15px;
         text-align:center;
+        font-size:13px;
+        border-radius:14px;
     }
 
+
+    /* SECTIONS */
+
     .section{
-        padding:80px 25px;
+        padding:65px 18px;
+    }
+
+    .section-label{
+        margin-bottom:13px;
+        font-size:11px;
+        letter-spacing:1.6px;
     }
 
     .section-title{
-        font-size:45px;
-        letter-spacing:-3px;
+        margin-bottom:28px;
+        font-size:38px;
+        letter-spacing:-2.5px;
     }
+
+
+    /* CATEGORIES */
 
     .categories-grid{
         grid-template-columns:
-            repeat(2,1fr);
+            repeat(2,minmax(0,1fr));
 
-        gap:18px;
+        gap:12px;
     }
 
     .category-card{
-        min-height:190px;
-
-        border-radius:28px;
+        min-height:155px;
+        padding:16px;
+        border-radius:22px;
     }
 
     .category-icon{
-        width:75px;
-        height:75px;
-
-        margin-bottom:20px;
-
-        border-radius:24px;
-
-        font-size:30px;
+        width:62px;
+        height:62px;
+        margin-bottom:14px;
+        border-radius:20px;
+        font-size:27px;
     }
 
     .category-name{
-        font-size:17px;
+        font-size:15px;
     }
 
+
+    /* PRODUCTS */
+
     .products-grid{
-        grid-template-columns:1fr;
+        grid-template-columns:
+            repeat(2,minmax(0,1fr));
+
+        gap:12px;
+    }
+
+    .product-card{
+        border-radius:20px;
     }
 
     .product-media{
-        height:350px;
+        height:auto;
+        aspect-ratio:1 / 1;
     }
+
+    .product-info{
+        padding:14px;
+    }
+
+    .product-category{
+        font-size:9px;
+        margin-bottom:6px;
+    }
+
+    .product-name{
+        font-size:15px;
+        margin-bottom:7px;
+    }
+
+    .product-description{
+        font-size:11px;
+        margin-bottom:10px;
+    }
+
+    .product-price{
+        font-size:15px;
+        margin-bottom:6px;
+    }
+
+    .product-stock{
+        font-size:10px;
+        margin-bottom:10px;
+    }
+
+    .product-button{
+        padding:10px 6px;
+        font-size:11px;
+    }
+
+
+    /* =====================================================
+       ABONNEMENTS
+       2 CARTES VISIBLES
+    ===================================================== */
 
     .subscription-heading{
         flex-direction:column;
         align-items:flex-start;
+        gap:18px;
+        margin-bottom:25px;
+    }
+
+    .subscription-heading .section-title{
+        margin-bottom:0;
+    }
+
+    .carousel-buttons{
+        display:none;
+    }
+
+    .subscription-track{
+        gap:12px;
+
+        padding:
+            0
+            18px
+            12px;
+
+        margin:
+            0 -18px;
+
+        scroll-snap-type:x mandatory;
     }
 
     .subscription-card{
-        flex-basis:82vw;
+        /*
+           Deux cartes visibles en même temps.
+        */
+
+        flex:
+            0 0
+            calc((100% - 12px) / 2);
+
+        height:400px;
+
+        border-radius:20px;
+
+        scroll-snap-align:start;
     }
 
+    .subscription-content{
+        left:13px;
+        right:13px;
+        bottom:15px;
+    }
+
+    .subscription-name{
+        font-size:17px;
+        line-height:1.1;
+        margin-bottom:6px;
+    }
+
+    .subscription-description{
+        font-size:11px;
+        line-height:1.3;
+        margin-bottom:9px;
+    }
+
+    .subscription-price{
+        font-size:10px;
+        margin-bottom:10px;
+    }
+
+    .subscription-price strong{
+        font-size:14px;
+    }
+
+    .subscribe-button{
+        width:100%;
+        padding:9px 7px;
+        font-size:10px;
+    }
+
+    .video-control{
+        top:9px;
+        right:9px;
+        width:34px;
+        height:34px;
+        font-size:13px;
+    }
+
+
+    /* =====================================================
+       ANNONCES HORIZONTALES
+    ===================================================== */
+
     .announcement-box{
-        height:360px;
-        border-radius:30px;
+        /*
+           Format horizontal compact.
+        */
+
+        height:190px;
+
+        border-radius:20px;
+
+        overflow:hidden;
+    }
+
+    .announcement-track{
+        height:100%;
+
+        scroll-snap-type:none;
+    }
+
+    .announcement-slide{
+        min-width:100%;
+        height:100%;
+    }
+
+    .announcement-slide img,
+    .announcement-slide video{
+        object-fit:cover;
+    }
+
+    .announcement-overlay{
+        background:
+            linear-gradient(
+                90deg,
+                rgba(0,0,0,.62),
+                rgba(0,0,0,.12)
+            );
+    }
+
+    .announcement-content{
+        left:18px;
+        bottom:17px;
+    }
+
+    .announcement-discount{
+        margin-bottom:7px;
+        font-size:21px;
+        line-height:1.1;
+    }
+
+    .announcement-link{
+        font-size:12px;
+        font-weight:700;
+    }
+
+    .announcement-dots{
+        margin-top:14px;
+    }
+
+
+    /* =====================================================
+       STATISTIQUES
+    ===================================================== */
+
+    .stats-section{
+        padding:
+            55px
+            18px;
     }
 
     .stats-grid{
         grid-template-columns:
-            repeat(2,1fr);
+            repeat(2,minmax(0,1fr));
 
-        gap:18px;
+        gap:12px;
     }
 
     .stat-card{
-        min-height:180px;
-        border-radius:28px;
+        min-height:155px;
+
+        padding:20px 8px;
+
+        border-radius:22px;
+
+        box-shadow:
+            0 8px 25px rgba(0,0,0,.055);
     }
 
     .stat-number{
-        font-size:34px;
+        font-size:29px;
+        letter-spacing:-1.5px;
+        margin-bottom:9px;
     }
 
     .stat-label{
-        font-size:15px;
+        font-size:12px;
+        line-height:1.3;
+    }
+
+
+    /* =====================================================
+       AVIS
+    ===================================================== */
+
+    .reviews-track{
+        gap:12px;
+        padding:
+            5px
+            0
+            20px;
     }
 
     .review-card{
-        flex-basis:88vw;
+        flex:0 0 86vw;
+        min-height:300px;
+        padding:24px;
+        border-radius:22px;
+    }
+
+    .review-stars{
+        margin-bottom:18px;
+        font-size:20px;
+    }
+
+    .review-text{
+        margin-bottom:18px;
+        font-size:17px;
+    }
+
+    .review-photo{
+        width:65px;
+        height:65px;
+        border-radius:16px;
+        margin-bottom:14px;
+    }
+
+    .review-product{
+        margin-bottom:18px;
+        padding:8px 12px;
+        font-size:11px;
+    }
+
+
+    /* =====================================================
+       GALERIE
+    ===================================================== */
+
+    .gallery-track{
+        gap:12px;
+        animation-duration:55s;
     }
 
     .gallery-item{
-        width:260px;
-        height:350px;
-
-        border-radius:28px;
+        width:230px;
+        height:300px;
+        border-radius:22px;
     }
+
+
+    /* =====================================================
+       REPAIR
+    ===================================================== */
 
     .repair-box{
         flex-direction:column;
         align-items:flex-start;
 
-        padding:45px 30px;
+        padding:38px 24px;
 
-        border-radius:30px;
+        border-radius:25px;
+
+        gap:25px;
+    }
+
+    .repair-title{
+        font-size:39px;
+        letter-spacing:-2.5px;
+    }
+
+    .repair-description{
+        font-size:14px;
+        line-height:1.6;
     }
 
     .repair-button{
         width:100%;
         text-align:center;
+        padding:15px 20px;
+    }
+
+
+    /* =====================================================
+       FOOTER
+    ===================================================== */
+
+    footer{
+        padding:
+            60px
+            20px
+            120px;
     }
 
     .footer-grid{
         grid-template-columns:1fr;
+        gap:35px;
     }
+
+    .footer-logo{
+        font-size:25px;
+    }
+
+
+    /* =====================================================
+       BOTTOM NAV
+    ===================================================== */
 
     .bottom-nav{
         position:fixed;
@@ -1446,6 +1890,9 @@ footer{
         -webkit-backdrop-filter:blur(20px);
 
         border-top:1px solid #eee;
+
+        padding-bottom:
+            env(safe-area-inset-bottom);
     }
 
     .bottom-nav a{
@@ -1456,11 +1903,19 @@ footer{
         align-items:center;
         justify-content:center;
 
-        gap:5px;
+        gap:4px;
 
         color:#777;
 
-        font-size:12px;
+        font-size:10px;
+
+        transition:
+            transform:.2s ease,
+            color:.2s ease;
+    }
+
+    .bottom-nav a:active{
+        transform:scale(.92);
     }
 
     .bottom-nav a.active{
@@ -1469,28 +1924,140 @@ footer{
     }
 
     .bottom-icon{
-        font-size:24px;
+        font-size:21px;
+        line-height:1;
     }
 
 }
 
 
 /* =========================================================
-   SMALL PHONES
+   TRÈS PETITS TÉLÉPHONES
 ========================================================= */
 
 @media(max-width:380px){
 
+    .logo{
+        font-size:21px;
+    }
+
     .hero-title{
-        font-size:40px;
+        font-size:38px;
+    }
+
+    .hero-subtitle{
+        font-size:18px;
     }
 
     .category-card{
-        min-height:165px;
+        min-height:145px;
     }
 
     .category-name{
+        font-size:14px;
+    }
+
+
+    /* Encore plus compact pour garder 2 abonnements */
+
+    .subscription-track{
+        gap:10px;
+    }
+
+    .subscription-card{
+        flex:
+            0 0
+            calc((100% - 10px) / 2);
+
+        height:360px;
+        border-radius:17px;
+    }
+
+    .subscription-name{
         font-size:15px;
+    }
+
+    .subscription-description{
+        font-size:10px;
+    }
+
+    .subscription-price{
+        font-size:9px;
+    }
+
+    .subscription-price strong{
+        font-size:13px;
+    }
+
+    .subscribe-button{
+        padding:8px 5px;
+        font-size:9px;
+    }
+
+    .video-control{
+        width:31px;
+        height:31px;
+        top:8px;
+        right:8px;
+        font-size:11px;
+    }
+
+
+    /* Annonce */
+
+    .announcement-box{
+        height:170px;
+        border-radius:18px;
+    }
+
+    .announcement-content{
+        left:15px;
+        bottom:14px;
+    }
+
+    .announcement-discount{
+        font-size:19px;
+    }
+
+    .announcement-link{
+        font-size:11px;
+    }
+
+
+    /* Statistiques */
+
+    .stat-card{
+        min-height:145px;
+        border-radius:19px;
+    }
+
+    .stat-number{
+        font-size:26px;
+    }
+
+    .stat-label{
+        font-size:11px;
+    }
+
+}
+
+
+/* =========================================================
+   ACCESSIBILITÉ
+========================================================= */
+
+@media(prefers-reduced-motion:reduce){
+
+    *,
+    *::before,
+    *::after{
+
+        scroll-behavior:auto !important;
+
+        animation-duration:.01ms !important;
+        animation-iteration-count:1 !important;
+
+        transition-duration:.01ms !important;
     }
 
 }
@@ -1923,7 +2490,7 @@ footer{
             </article>
 
 
-            <!-- Apple TV VIDEO -->
+            <!-- Apple TV -->
 
             <article class="subscription-card">
 
@@ -2130,7 +2697,9 @@ footer{
      STATISTIQUES
 ========================================================= -->
 
-<section class="section">
+<section
+    class="section stats-section"
+>
 
     <div class="section-container">
 
@@ -2138,8 +2707,11 @@ footer{
 
             <div class="stat-card">
 
-                <div class="stat-number">
-                    53712+
+                <div
+                    class="stat-number"
+                    data-counter="clients"
+                >
+                    0
                 </div>
 
                 <div class="stat-label">
@@ -2151,8 +2723,11 @@ footer{
 
             <div class="stat-card">
 
-                <div class="stat-number">
-                    126328+
+                <div
+                    class="stat-number"
+                    data-counter="orders"
+                >
+                    0
                 </div>
 
                 <div class="stat-label">
@@ -2164,8 +2739,11 @@ footer{
 
             <div class="stat-card">
 
-                <div class="stat-number">
-                    4.8/5
+                <div
+                    class="stat-number"
+                    data-counter="rating"
+                >
+                    0/5
                 </div>
 
                 <div class="stat-label">
@@ -2177,8 +2755,11 @@ footer{
 
             <div class="stat-card">
 
-                <div class="stat-number">
-                    7 ans
+                <div
+                    class="stat-number"
+                    data-counter="years"
+                >
+                    0
                 </div>
 
                 <div class="stat-label">
@@ -2598,11 +3179,6 @@ footer{
 const SUPABASE_URL =
 "https://eldbudjhbsnvuffjpiue.supabase.co";
 
-/*
-   COLLE TA CLÉ sb_publishable_... ICI.
-   JAMAIS la clé sb_secret_...
-*/
-
 const SUPABASE_PUBLISHABLE_KEY =
 "sb_publishable_u8yaezMW2z78tLG7DnIe3g_kjVQIlde";
 
@@ -2659,6 +3235,211 @@ function formatPrice(price){
 
 
 /* =========================================================
+   COMPTEURS STATISTIQUES
+========================================================= */
+
+function animateCounter(
+    element,
+    target,
+    duration = 2000,
+    decimals = 0
+){
+
+    let startTime = null;
+
+
+    function updateCounter(currentTime){
+
+        if(!startTime){
+            startTime = currentTime;
+        }
+
+
+        const progress =
+            Math.min(
+                (currentTime - startTime)
+                /
+                duration,
+                1
+            );
+
+
+        /*
+           Animation douce :
+           départ rapide puis ralentissement
+        */
+
+        const easeOut =
+            1 -
+            Math.pow(
+                1 - progress,
+                3
+            );
+
+
+        const currentValue =
+            target * easeOut;
+
+
+        if(decimals > 0){
+
+            element.textContent =
+                currentValue.toFixed(
+                    decimals
+                ) + "/5";
+
+        }else{
+
+            element.textContent =
+                Math.floor(
+                    currentValue
+                ).toLocaleString(
+                    "fr-FR"
+                ) + "+";
+        }
+
+
+        if(progress < 1){
+
+            requestAnimationFrame(
+                updateCounter
+            );
+
+        }
+
+    }
+
+
+    requestAnimationFrame(
+        updateCounter
+    );
+
+}
+
+
+function startStatisticsAnimation(){
+
+    const clients =
+        document.querySelector(
+            '[data-counter="clients"]'
+        );
+
+    const orders =
+        document.querySelector(
+            '[data-counter="orders"]'
+        );
+
+    const rating =
+        document.querySelector(
+            '[data-counter="rating"]'
+        );
+
+    const years =
+        document.querySelector(
+            '[data-counter="years"]'
+        );
+
+
+    if(clients){
+
+        animateCounter(
+            clients,
+            53712,
+            2200
+        );
+
+    }
+
+
+    if(orders){
+
+        animateCounter(
+            orders,
+            126328,
+            2200
+        );
+
+    }
+
+
+    if(rating){
+
+        animateCounter(
+            rating,
+            4.8,
+            1800,
+            1
+        );
+
+    }
+
+
+    if(years){
+
+        animateCounter(
+            years,
+            7,
+            1500
+        );
+
+    }
+
+}
+
+
+/*
+   Le compteur démarre lorsque la section
+   entre dans l'écran.
+*/
+
+const statisticsSection =
+    document.querySelector(
+        ".stats-section"
+    );
+
+
+if(statisticsSection){
+
+    const statsObserver =
+        new IntersectionObserver(
+
+            (entries,observer)=>{
+
+                entries.forEach(
+                    entry => {
+
+                        if(
+                            entry.isIntersecting
+                        ){
+
+                            startStatisticsAnimation();
+
+                            observer.unobserve(
+                                entry.target
+                            );
+
+                        }
+
+                    }
+                );
+
+            },
+
+            {
+                threshold:.3
+            }
+
+        );
+
+
+    statsObserver.observe(
+        statisticsSection
+    );
+
+}
+
+
+/* =========================================================
    HERO SUPABASE
 ========================================================= */
 
@@ -2687,6 +3468,7 @@ async function loadHero(){
                 }
             );
 
+
         if(result.error){
 
             console.error(
@@ -2697,15 +3479,19 @@ async function loadHero(){
             return;
         }
 
+
         const rows =
             result.data || [];
+
 
         if(!rows.length){
             return;
         }
 
+
         container.innerHTML = "";
         dots.innerHTML = "";
+
 
         rows.forEach(
             (slide,index)=>{
@@ -2796,12 +3582,15 @@ async function loadHero(){
                         "div"
                     );
 
+
                 element.className =
                     "hero-slide" +
                     (
                         index === 0
-                            ? " active"
-                            : ""
+                        ?
+                        " active"
+                        :
+                        ""
                     );
 
 
@@ -2865,18 +3654,23 @@ async function loadHero(){
                         "button"
                     );
 
+
                 dot.className =
                     "hero-dot" +
                     (
                         index === 0
-                            ? " active"
-                            : ""
+                        ?
+                        " active"
+                        :
+                        ""
                     );
+
 
                 dot.onclick =
                     ()=>{
                         showHero(index);
                     };
+
 
                 dots.appendChild(
                     dot
@@ -2889,6 +3683,7 @@ async function loadHero(){
         heroIndex = 0;
 
         startHero();
+
 
     }catch(error){
 
@@ -2914,9 +3709,11 @@ function showHero(index){
             ".hero-dot"
         );
 
+
     if(!slides.length){
         return;
     }
+
 
     heroIndex =
         (index + slides.length)
@@ -2932,10 +3729,12 @@ function showHero(index){
                 i === heroIndex
             );
 
+
             const video =
                 slide.querySelector(
                     "video"
                 );
+
 
             if(video){
 
@@ -2944,7 +3743,9 @@ function showHero(index){
                     video.currentTime = 0;
 
                     video.play()
-                        .catch(()=>{});
+                        .catch(
+                            ()=>{}
+                        );
 
                 }else{
 
@@ -2974,7 +3775,10 @@ function showHero(index){
 
 function startHero(){
 
-    clearInterval(heroTimer);
+    clearInterval(
+        heroTimer
+    );
+
 
     heroTimer =
         setInterval(
@@ -2984,6 +3788,7 @@ function startHero(){
                     document.querySelectorAll(
                         ".hero-slide"
                     );
+
 
                 if(
                     slides.length > 1
@@ -3012,6 +3817,7 @@ async function loadProducts(){
         document.getElementById(
             "productsGrid"
         );
+
 
     try{
 
@@ -3049,11 +3855,13 @@ async function loadProducts(){
                 result.error
             );
 
+
             grid.innerHTML = `
                 <div class="loading">
                     Impossible de charger les produits.
                 </div>
             `;
+
 
             return;
         }
@@ -3073,6 +3881,7 @@ async function loadProducts(){
         console.error(
             error
         );
+
 
         grid.innerHTML = `
             <div class="loading">
@@ -3114,17 +3923,20 @@ function renderProducts(list){
                         product.name
                     );
 
+
                 const category =
                     escapeHtml(
                         product.category ||
                         "Produit"
                     );
 
+
                 const description =
                     escapeHtml(
                         product.description ||
                         ""
                     );
+
 
                 const stock =
                     Number(
@@ -3386,19 +4198,23 @@ function moveSubscriptions(direction){
             "subscriptionTrack"
         );
 
+
     const amount =
         window.innerWidth < 700
         ?
-        window.innerWidth * .82
+        window.innerWidth * .50
         :
         352;
 
 
     track.scrollBy({
+
         left:
             amount * direction,
+
         behavior:
             "smooth"
+
     });
 
 }
@@ -3410,6 +4226,7 @@ function toggleSubscriptionVideo(button){
         button.closest(
             ".subscription-card"
         );
+
 
     const video =
         card.querySelector(
@@ -3426,19 +4243,26 @@ function toggleSubscriptionVideo(button){
 
         video.muted = false;
 
+
         video.play()
             .then(
                 ()=>{
+
                     button.textContent =
                         "⏸";
+
                 }
             )
             .catch(
                 ()=>{
+
                     video.muted = true;
 
                     video.play()
-                        .catch(()=>{});
+                        .catch(
+                            ()=>{}
+                        );
+
                 }
             );
 
@@ -3455,7 +4279,7 @@ function toggleSubscriptionVideo(button){
 
 
 /* =========================================================
-   VIDEO ABONNEMENT AU CENTRE
+   VIDEO ABONNEMENT
 ========================================================= */
 
 const subscriptionObserver =
@@ -3467,6 +4291,7 @@ const subscriptionObserver =
 
                     const card =
                         entry.target;
+
 
                     const video =
                         card.querySelector(
@@ -3530,10 +4355,12 @@ const announcementTrack =
         "announcementTrack"
     );
 
+
 const announcementSlides =
     document.querySelectorAll(
         ".announcement-slide"
     );
+
 
 const announcementDots =
     document.getElementById(
@@ -3552,6 +4379,7 @@ announcementSlides.forEach(
                 "button"
             );
 
+
         dot.className =
             "announcement-dot" +
             (
@@ -3562,12 +4390,14 @@ announcementSlides.forEach(
                 ""
             );
 
+
         dot.onclick =
             ()=>{
                 showAnnouncement(
                     index
                 );
             };
+
 
         announcementDots.appendChild(
             dot
@@ -3617,11 +4447,6 @@ function showAnnouncement(index){
 
 }
 
-
-/*
-   Défilement automatique.
-   Les vidéos restent toujours muettes.
-*/
 
 setInterval(
     ()=>{
@@ -3724,6 +4549,7 @@ document
             link.addEventListener(
                 "click",
                 ()=>{
+
                     document
                         .getElementById(
                             "mobileMenu"
@@ -3731,6 +4557,7 @@ document
                         .classList.remove(
                             "active"
                         );
+
                 }
             );
 
@@ -3784,6 +4611,7 @@ document
                                     "active"
                                 )
                         );
+
 
                     link.classList.add(
                         "active"
